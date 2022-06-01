@@ -7,7 +7,12 @@ using UnityEngine;
 /// </summary>
 public static class DataStorage
 {
- 
+    //saving
+    public static string lastSceneName;
+    public static Vector3 savedPlayerLoc;
+
+    //narrative stages
+
 
 
 
