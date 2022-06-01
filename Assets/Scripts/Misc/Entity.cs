@@ -1,23 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Fungus;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
 
     public string entityName, description;
-
+    
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
+    public bool wandering;//wether it periodically moves around in an area
+    Vector3 startingPosition; //used to track starting position so we don't go too far from it while wandering
 
-    public bool moving;//wether or not it moves around physically
     public float moveDelay;//for random periodic movement if necessary
     public float moveDistance;//the amount it moves if it moves randomly 
 
     public float moveSpeed;
 
-    public NavMeshAgent NavAgent;
+    
+    //navigation
+    NavMeshAgent NavAgent;
+    public bool moving;//wether or not it moves around physically
+    Vector3 aiDestination; //the point where the AI will navigate to if 1. moving is true 2. it's not 0,0,0
+
+    //talk to
+    public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this guy
 
 
     /// <summary>
@@ -25,22 +33,18 @@ public class Entity : MonoBehaviour
     /// </summary>
     public void Interact()
     {
-
-
+        talkFunction.Invoke();
     }
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        startingPosition = transform.position;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
