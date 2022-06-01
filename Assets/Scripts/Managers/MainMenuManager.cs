@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-
+        SceneManager.LoadScene("Act 1");
     }
 
 
@@ -27,7 +28,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void Exit()
     {
-        //exit. save if required.
+        Application.Quit();
     }
 
 
