@@ -3,6 +3,9 @@
 
 using UnityEngine;
 using UnityEditor.Experimental.AssetImporters;
+#if UNITY_EDITOR
+using UnityEditor.AssetImporters;
+#endif
 using System.IO;
 
 namespace Fungus.EditorUtils
