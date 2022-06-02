@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Object : MonoBehaviour
+public class GenericObject : MonoBehaviour
 {
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
 
@@ -19,7 +19,7 @@ public class Object : MonoBehaviour
     /// </summary>
     public void Interact()
     {
-
+        DataStorage.GameManagerComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
         useFunction.Invoke();
     }
 
