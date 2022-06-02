@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Fungus;
 using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
@@ -41,10 +40,50 @@ public class Entity : MonoBehaviour
         startingPosition = transform.position;
     }
 
-
+    private float timeSinceLastWander;
     // Update is called once per frame
     void Update()
     {
+        //calculate destination
+        if (wandering)
+        {
+            if (Vector3.Distance(transform.position, aiDestination) < 0.1f) //we make the character stop wandering if it's too close to the destination
+            {
+                moving = false;
+            }
+            timeSinceLastWander += Time.deltaTime; //check if it's time to wander
+            if (timeSinceLastWander >= moveDelay)
+            {//move to a random position
+                moving = true;
+                aiDestination = new Vector3(transform.position.x + Random.Range(0, moveDistance), transform.position.y, transform.position.z + Random.Range(0, moveDistance));
+            }
+
+            if (Vector3.Distance(transform.position, startingPosition) > (3 * moveDistance)) //we make the character stop wandering if it's too close to the destination
+            {
+
+                moving = true;
+                aiDestination = startingPosition;
+            }
+        }
+
+
+        //just move
+        if (moving)
+        {
+            NavAgent.SetDestination(aiDestination);
+        }
+        
+        
+    }
+
+
+
+
+    public void MoveTo(Vector3 Destination)
+    {
+        moving = true;
+        NavAgent.SetDestination(Destination);
 
     }
+
 }
