@@ -8,17 +8,29 @@ public static class DataStorage
 {
     //registering stuff
 
+    //managers
+    public static GameManager GameManagerComponent;
+
+
+
+
+
+
+
+
+
+
     //entities
     public static Entity Player;
     public static int maxHope, currentHope;
     public static List<Entity> allLivingEntities = new List<Entity>();
 
     //objects
-    public static List<Object> allObjects = new List<Object>();
-    public static List<Object> allpickupableObjects = new List<Object>();
+    public static List<GenericObject> allObjects = new List<GenericObject>();
+    public static List<GenericObject> allpickupableObjects = new List<GenericObject>();
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
-    public static List<Object> inventoryObj = new List<Object>();
+    public static List<GenericObject> inventoryObj = new List<GenericObject>();
 
 
     //saving
