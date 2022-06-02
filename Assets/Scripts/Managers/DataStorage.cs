@@ -18,6 +18,7 @@ public static class DataStorage
     public static List<Object> allpickupableObjects = new List<Object>();
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
+    public static List<Object> inventoryObj = new List<Object>();
 
 
     //saving
@@ -58,6 +59,18 @@ public static class DataStorage
         lastSceneName = null;
         savedPlayerLoc = new Vector3(0, 0, 0);
 
+    }
+
+    public static void MakeSave()
+    {
+        //serialize all info into a json
+
+        //gotta look into how to serialize the fungus data
+    }
+
+    public static void LoadSave()
+    {
+        //deserialize all info from a json
     }
 
 }
