@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Entity player;
     // Start is called before the first frame update
     void Start()
     {
+        DataStorage.Player = player;
+
         if(DataStorage.lastSceneName != null)
         {
             DataStorage.Player.transform.position = DataStorage.savedPlayerLoc;

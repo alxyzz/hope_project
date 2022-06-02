@@ -17,8 +17,7 @@ public class Entity : MonoBehaviour
 
     public float moveSpeed;
 
-    public NavMeshAgent NavAgent;
-
+    public NavMeshAgent navAgent;
 
     /// <summary>
     /// we will call Message("Interact") on whatever NPC or object we want to interact with later so this has the same name as the object function
@@ -29,8 +28,11 @@ public class Entity : MonoBehaviour
 
     }
 
-
-
+    public void Movement(Vector3 movePoint) // moves towards a point in a set speed 
+    {
+        movePoint.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, movePoint, moveSpeed * Time.deltaTime);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,7 @@ public class Entity : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
+
     }
 }
