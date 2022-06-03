@@ -8,16 +8,29 @@ public static class DataStorage
 {
     //registering stuff
 
+    //managers
+    public static GameManager GameManagerComponent;
+
+
+
+
+
+
+
+
+
+
     //entities
     public static Entity Player;
     public static int maxHope, currentHope;
     public static List<Entity> allLivingEntities = new List<Entity>();
 
     //objects
-    public static List<Object> allObjects = new List<Object>();
-    public static List<Object> allpickupableObjects = new List<Object>();
+    public static List<GenericObject> allObjects = new List<GenericObject>();
+    public static List<GenericObject> allpickupableObjects = new List<GenericObject>();
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
+    public static List<GenericObject> inventoryObj = new List<GenericObject>();
 
 
     //saving
@@ -58,6 +71,18 @@ public static class DataStorage
         lastSceneName = null;
         savedPlayerLoc = new Vector3(0, 0, 0);
 
+    }
+
+    public static void MakeSave()
+    {
+        //serialize all info into a json
+
+        //gotta look into how to serialize the fungus data
+    }
+
+    public static void LoadSave()
+    {
+        //deserialize all info from a json
     }
 
 }
