@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
 
     
     //navigation
-    NavMeshAgent NavAgent;
+    public NavMeshAgent navAgent;
     public bool moving;//wether or not it moves around physically
     Vector3 aiDestination; //the point where the AI will navigate to if 1. moving is true 2. it's not 0,0,0
 
@@ -74,6 +74,11 @@ public class Entity : MonoBehaviour
         }
         
         
+    }
+    public void Movement(Vector3 movePoint) // moves towards a point in a set speed 
+    {
+        movePoint.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, movePoint, moveSpeed * Time.deltaTime);
     }
 
 

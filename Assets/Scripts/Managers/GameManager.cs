@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public DialogueManager CharacterInteractions;
     public ItemInteractionManager ItemInteractions;
 
-
+    public Entity player;
 
     private void Awake()
     {
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DataStorage.Player = player;
+
         if(DataStorage.lastSceneName != null)
         {
             DataStorage.Player.transform.position = DataStorage.savedPlayerLoc;
