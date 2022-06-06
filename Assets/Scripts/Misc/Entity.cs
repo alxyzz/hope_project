@@ -81,10 +81,10 @@ public class Entity : MonoBehaviour
 
     
 
-    public void Movement(Vector3 movePoint) // moves towards a point in a set speed 
+    public void Movement(Vector3 movePoint) // moves towards a hit point (Player)
     {
-        movePoint.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, movePoint, moveSpeed * Time.deltaTime);
+        moving = false;
+        navAgent.SetDestination(movePoint);
     }
 
 
