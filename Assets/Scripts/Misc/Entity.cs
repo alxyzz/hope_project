@@ -4,9 +4,10 @@ using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
-
+     
     public string entityName, description;
-    
+
+    public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
     public bool wandering;//wether it periodically moves around in an area
@@ -16,8 +17,8 @@ public class Entity : MonoBehaviour
     public float moveDistance;//the amount it moves if it moves randomly 
 
     public float moveSpeed;
+    public Rigidbody rigidBody;
 
-    
     //navigation
     public NavMeshAgent navAgent;
     public bool moving;//wether or not it moves around physically
@@ -68,13 +69,18 @@ public class Entity : MonoBehaviour
 
 
         //just move
-        if (moving)
+        if (!player && moving)
         {
-            NavAgent.SetDestination(aiDestination);
+            navAgent.SetDestination(aiDestination);
         }
         
         
     }
+
+
+
+    
+
     public void Movement(Vector3 movePoint) // moves towards a point in a set speed 
     {
         movePoint.y = transform.position.y;
@@ -87,8 +93,35 @@ public class Entity : MonoBehaviour
     public void MoveTo(Vector3 Destination)
     {
         moving = true;
-        NavAgent.SetDestination(Destination);
+        navAgent.SetDestination(Destination);
 
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {//if you enter the range of an item, and it is an item, you select it for interaction
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            {
+                
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = other.gameObject.GetComponent<GenericObject>();
+        }
+        }
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {//if you leave the range of an item, and it is an item, you deselect it
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            { 
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
+            }
+        }
+
+    }
+
 
 }

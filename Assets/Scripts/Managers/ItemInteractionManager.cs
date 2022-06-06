@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemInteractionManager : MonoBehaviour
 {
-
+    public GenericObject currentlySelectedObject;
 
 
 
