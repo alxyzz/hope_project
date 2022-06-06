@@ -25,7 +25,14 @@ public class InputManager : MonoBehaviour
         if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
         {
             if (!m_hit.collider.CompareTag("Player"))
-            DataStorage.Player.Movement(m_hit.point);
+            { 
+                DataStorage.Player.Movement(m_hit.point);
+            }
+            // todo: check whether mouse has hovered on an interactable object
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
+            }
         }
 
 
@@ -36,9 +43,6 @@ public class InputManager : MonoBehaviour
            //meth/crack/horse ketamine/LSD/PCP/weed
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
-        }
+
     }
 }
