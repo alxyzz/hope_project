@@ -16,21 +16,28 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        HideContinueIfNoSave();
+        HideContinueButtonIfNoSave();
 
 
     }
 
 
-    void HideContinueIfNoSave()
+    void HideContinueButtonIfNoSave()
     {
         if (DataStorage.lastSceneName == null)
         {
-            ContinueButton.interactable = false;
+            if (ContinueButton != null)
+            {
+                ContinueButton.interactable = false;
+            }
+            
         }
         else
         {
-            ContinueButton.interactable = true;
+            if (ContinueButton != null)
+            {
+                ContinueButton.interactable = true;
+            }
         }
     }
 
