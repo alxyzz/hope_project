@@ -23,6 +23,23 @@ public class GenericObject : MonoBehaviour
         useFunction.Invoke();
     }
 
+    public void Select(bool select)
+    {
+        if (select)
+        {
+            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = this;
+            DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial = gameObject.GetComponent<Renderer>().material;
+            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.SelectedObjectMaterial;
+        }
+        else
+        {
+            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
+            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
+        }
+        
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
