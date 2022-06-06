@@ -89,15 +89,6 @@ public class Entity : MonoBehaviour
 
 
 
-
-    public void MoveTo(Vector3 Destination)
-    {
-        moving = true;
-        navAgent.SetDestination(Destination);
-
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {//if you enter the range of an item, and it is an item, you select it for interaction. CAREFUL - this means we can't have objects too close together
         if (player)
