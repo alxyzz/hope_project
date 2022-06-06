@@ -6,7 +6,8 @@ public class Entity : MonoBehaviour
 {
      
     public string entityName, description;
-    
+
+    public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
     public bool wandering;//wether it periodically moves around in an area
@@ -68,7 +69,7 @@ public class Entity : MonoBehaviour
 
 
         //just move
-        if (moving)
+        if (!player && moving)
         {
             navAgent.SetDestination(aiDestination);
         }
