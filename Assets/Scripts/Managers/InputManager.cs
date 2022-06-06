@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     // mouse
+    [HideInInspector]
     public Vector3 mousePosition;
     public Ray m_castPoint;
     public RaycastHit m_hit;
@@ -25,6 +26,19 @@ public class InputManager : MonoBehaviour
         {
             if (!m_hit.collider.CompareTag("Player"))
             DataStorage.Player.Movement(m_hit.point);
+        }
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+           //meth/crack/horse ketamine/LSD/PCP/weed
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
         }
     }
 }

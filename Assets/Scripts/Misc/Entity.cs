@@ -17,8 +17,8 @@ public class Entity : MonoBehaviour
     public float moveDistance;//the amount it moves if it moves randomly 
 
     public float moveSpeed;
+    public Rigidbody rigidBody;
 
-    
     //navigation
     public NavMeshAgent navAgent;
     public bool moving;//wether or not it moves around physically
@@ -76,6 +76,11 @@ public class Entity : MonoBehaviour
         
         
     }
+
+
+
+    
+
     public void Movement(Vector3 movePoint) // moves towards a point in a set speed 
     {
         movePoint.y = transform.position.y;
@@ -91,5 +96,32 @@ public class Entity : MonoBehaviour
         navAgent.SetDestination(Destination);
 
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {//if you enter the range of an item, and it is an item, you select it for interaction
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            {
+                
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = other.gameObject.GetComponent<GenericObject>();
+        }
+        }
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {//if you leave the range of an item, and it is an item, you deselect it
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            { 
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
+            }
+        }
+
+    }
+
 
 }
