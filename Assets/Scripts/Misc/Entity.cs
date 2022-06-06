@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
-
+     
     public string entityName, description;
     
     public bool talks; //in case it does not want to talk
@@ -70,7 +70,7 @@ public class Entity : MonoBehaviour
         //just move
         if (moving)
         {
-            NavAgent.SetDestination(aiDestination);
+            navAgent.SetDestination(aiDestination);
         }
         
         
@@ -87,7 +87,7 @@ public class Entity : MonoBehaviour
     public void MoveTo(Vector3 Destination)
     {
         moving = true;
-        NavAgent.SetDestination(Destination);
+        navAgent.SetDestination(Destination);
 
     }
 
