@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GenericObject lastUsedObject;
+    
 
 
     //register various scripts here. just drag and drop in the inspector

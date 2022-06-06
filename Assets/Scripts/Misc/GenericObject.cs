@@ -19,7 +19,7 @@ public class GenericObject : MonoBehaviour
     /// </summary>
     public void Interact()
     {
-        DataStorage.GameManagerComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
+        DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
         useFunction.Invoke();
     }
 
