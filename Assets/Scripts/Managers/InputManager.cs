@@ -20,13 +20,18 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // finds mouse on screen, casts ray from screen to world, starts schmooving if ray touches anything other than the player itself
-        mousePosition = Input.mousePosition;
-        m_castPoint = Camera.main.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
+        if (DataStorage.GameManagerComponent.player.navAgent.isStopped == false)
         {
-            if (!m_hit.collider.CompareTag("Player"))
-            DataStorage.Player.Movement(m_hit.point);
+            mousePosition = Input.mousePosition;
+            m_castPoint = Camera.main.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
+            {
+                if (!m_hit.collider.CompareTag("Player"))
+                    DataStorage.Player.Movement(m_hit.point);
+                //Debug.Log("we're moving yes");
+            }
         }
+        
 
 
 
@@ -37,8 +42,37 @@ public class InputManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E))
-        {
+        {//interact with object
             DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {//toggle movement on RMB
+            Debug.Log("pressed RMB");
+            if (DataStorage.GameManagerComponent.player.navAgent.isStopped)
+            {
+                DataStorage.GameManagerComponent.player.ResumeMovement();
+            }
+            else
+            {
+                DataStorage.GameManagerComponent.player.PauseMovement();
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {//click on something
+            m_castPoint = Camera.main.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
+            {
+                if (m_hit.collider.CompareTag("Interactible")) 
+                {
+                    //pick up/talk/etc
+                }
+
+            }
+        }
     }
+
+
 }
