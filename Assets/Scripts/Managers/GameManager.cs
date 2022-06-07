@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
 
 
     //register various scripts here. just drag and drop in the inspector
@@ -13,11 +13,12 @@ public class GameManager : MonoBehaviour
     public MainMenuManager MainMenuManagerComponent;
     public StorylineManager StorylineManagerComponent;
     public UIManager UIManagerComponent;
-
+    public VisualsManager VisualsManagerComponent;
     public DialogueManager CharacterInteractions;
     public ItemInteractionManager ItemInteractions;
 
     public Entity player;
+
 
     private void Awake()
     {
