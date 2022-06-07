@@ -21,9 +21,10 @@ public class Entity : MonoBehaviour
 
     //navigation
     public NavMeshAgent navAgent;
-    public bool moving;//wether or not it moves around physically
     Vector3 aiDestination; //the point where the AI will navigate to if 1. moving is true 2. it's not 0,0,0
-
+    //for pausing and unpausing
+    Vector3 lastAgentVelocity;
+    NavMeshPath lastAgentPath;
     //talk to
     public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this guy
 
@@ -43,59 +44,82 @@ public class Entity : MonoBehaviour
 
     private float timeSinceLastWander;
     // Update is called once per frame
+
+
+
+
+
+
     void Update()
     {
-        //calculate destination
         if (wandering)
         {
             if (Vector3.Distance(transform.position, aiDestination) < 0.1f) //we make the character stop wandering if it's too close to the destination
             {
-                moving = false;
+                PauseMovement();
             }
             timeSinceLastWander += Time.deltaTime; //check if it's time to wander
             if (timeSinceLastWander >= moveDelay)
             {//move to a random position
-                moving = true;
+                ResumeMovement();
                 aiDestination = new Vector3(transform.position.x + Random.Range(0, moveDistance), transform.position.y, transform.position.z + Random.Range(0, moveDistance));
+
             }
 
             if (Vector3.Distance(transform.position, startingPosition) > (3 * moveDistance)) //we make the character stop wandering if it's too close to the destination
             {
 
-                moving = true;
+                ResumeMovement();
                 aiDestination = startingPosition;
             }
         }
 
 
-        //just move
-        if (!player && moving)
-        {
-            navAgent.SetDestination(aiDestination);
-        }
+        //if (!player && moving)
+        //{
+        //    navAgent.SetDestination(aiDestination);
+        //}
         
         
     }
-
 
 
     
 
+    public void PauseMovement()
+    {
+
+        Debug.Log("ran pausemovement");
+        lastAgentPath = navAgent.path;
+        lastAgentVelocity = navAgent.velocity;
+        navAgent.velocity = Vector3.zero;
+        navAgent.isStopped = true;
+        
+        
+        
+        
+    }
+
+    public void ResumeMovement()
+    {
+        Debug.Log("ran resumemovement");
+        navAgent.isStopped = false;
+        navAgent.velocity = lastAgentVelocity;
+        navAgent.SetPath(lastAgentPath);
+    }
+
+
+
+
+
+
+
+
     public void Movement(Vector3 movePoint) // moves towards a hit point (Player)
     {
-        moving = false;
         navAgent.SetDestination(movePoint);
     }
 
-
-
-
-    public void MoveTo(Vector3 Destination)
-    {
-        moving = true;
-        navAgent.SetDestination(Destination);
-
-    }
 
 
     private void OnTriggerEnter(Collider other)

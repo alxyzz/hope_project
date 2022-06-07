@@ -1598,7 +1598,6 @@ GameObject:
   - component: {fileID: 2123075248}
   - component: {fileID: 2123075247}
   - component: {fileID: 2123075246}
-  - component: {fileID: 2123075250}
   - component: {fileID: 2123075252}
   - component: {fileID: 2123075254}
   - component: {fileID: 2123075255}
@@ -1689,19 +1688,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2123075250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123075245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9ba511073e4994aa24322f6d5b13b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2123075252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,7 +1711,6 @@ MonoBehaviour:
   moveSpeed: 5
   rigidBody: {fileID: 2123075254}
   navAgent: {fileID: 2123075255}
-  moving: 1
   talkFunction:
     m_PersistentCalls:
       m_Calls: []
