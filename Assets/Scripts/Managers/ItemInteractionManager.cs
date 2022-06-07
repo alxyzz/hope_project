@@ -7,7 +7,7 @@ public class ItemInteractionManager : MonoBehaviour
     public GenericObject currentlySelectedObject;
     public GenericObject lastUsedObject;
     public Material SelectedObjectMaterial;
-    [HideInInspector]
+    //[HideInInspector]
     public Material previouslySelectedObjectMaterial;
 
 

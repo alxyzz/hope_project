@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DataStorage.Player = player;
+        DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>(); // maybe theres a better way, might be dangerous in case the player gets more children
 
         if(DataStorage.lastSceneName != null)
         {
