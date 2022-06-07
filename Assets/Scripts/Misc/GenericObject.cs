@@ -10,6 +10,7 @@ public class GenericObject : MonoBehaviour
     public string objectName, description; 
 
     public bool pickupable;
+    public bool canBePutDown; // after being picked up
 
     //usage
     public UnityEvent useFunction;//this can be changed to whatever you want to happen when you interact with this guy
@@ -39,21 +40,28 @@ public class GenericObject : MonoBehaviour
             DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
             gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
         }
-        
-
     }
 
     public void Grab() // picks up object, puts its equivalent in Player's hand, disactivates the original object
     {
-        if (DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == this && !DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled) // checks if the right mesh is highlighted, also if player has picked anything else up
+        if (DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == this) // checks if the right mesh is highlighted, also if player has picked anything else up
         {
-            DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshFilter>().mesh;
-            DataStorage.currentlyHeldObject.transform.localScale = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.transform.localScale;
-            DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
-            DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
-            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.gameObject.SetActive(false);
+            if (!DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled)
+            {
+                DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshFilter>().mesh;
+                DataStorage.currentlyHeldObject.transform.localScale = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.transform.localScale;
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else if (canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
+            {
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;                              
+                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
