@@ -502,7 +502,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 38
+  field of view: 58.3
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -527,8 +527,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.00095939165, y: -0.9924145, z: 0.122689396, w: 0.007742655}
-  m_LocalPosition: {x: -1.4545524, y: 7.436463, z: 18.068638}
+  m_LocalRotation: {x: -0.00047098473, y: -0.99670506, z: 0.08091043, w: -0.0056839054}
+  m_LocalPosition: {x: -1.1530486, y: 4.4506583, z: 10.897501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1392,6 +1392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0549763741bdc4f4fbb451147e113292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hopeSlider: {fileID: 0}
 --- !u!114 &1932278521
 MonoBehaviour:
   m_ObjectHideFlags: 0
