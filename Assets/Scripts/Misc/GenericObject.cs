@@ -7,6 +7,7 @@ public class GenericObject : MonoBehaviour
 {
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
 
+
     public string objectName, description;
     public Material originalMat;
     public bool pickupable;
@@ -41,25 +42,6 @@ public class GenericObject : MonoBehaviour
         }
     }
 
-    public void Grab() // picks up object, puts its equivalent in Player's hand, disactivates the original object
-    {
-        if (DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == this) // checks if the right mesh is highlighted, also if player has picked anything else up
-        {
-            if (!DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled)
-            {
-                DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshFilter>().mesh;
-                DataStorage.currentlyHeldObject.transform.localScale = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.transform.localScale;
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.currentlyHeldObject.GetComponent<GenericObject>().originalMat;
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
-                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
-            }
-            else if (canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
-            {
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;                              
-                DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
