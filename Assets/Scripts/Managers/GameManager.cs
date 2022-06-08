@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     //register various scripts here. just drag and drop in the inspector
     public CameraManager CameraManagerComponent;
     public InputManager InputManagerComponent;
-    public MainMenuManager MainMenuManagerComponent;
     public StorylineManager StorylineManagerComponent;
     public UIManager UIManagerComponent;
     public VisualsManager VisualsManagerComponent;
