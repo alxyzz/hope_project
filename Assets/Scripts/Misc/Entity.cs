@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
-     
+
     public string entityName, description;
 
     public bool player = false;
@@ -79,12 +79,12 @@ public class Entity : MonoBehaviour
         //{
         //    navAgent.SetDestination(aiDestination);
         //}
-        
-        
+
+
     }
 
 
-    
+
 
     public void PauseMovement()
     {
@@ -94,10 +94,10 @@ public class Entity : MonoBehaviour
         lastAgentVelocity = navAgent.velocity;
         navAgent.velocity = Vector3.zero;
         navAgent.isStopped = true;
-        
-        
-        
-        
+
+
+
+
     }
 
     public void ResumeMovement()
@@ -129,10 +129,10 @@ public class Entity : MonoBehaviour
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
                 other.gameObject.GetComponent<GenericObject>().Select(true);
-                
+
+            }
         }
-        }
-        
+
     }
 
     private void OnTriggerExit(Collider other)

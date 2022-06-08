@@ -7,8 +7,8 @@ public class GenericObject : MonoBehaviour
 {
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
 
-    public string objectName, description; 
-
+    public string objectName, description;
+    public Material originalMat;
     public bool pickupable;
     public bool canBePutDown; // after being picked up
 
@@ -31,14 +31,13 @@ public class GenericObject : MonoBehaviour
         {
             hasHighlightedObject = true;
             DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = this;
-            DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial = gameObject.GetComponent<Renderer>().material;
             gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.SelectedObjectMaterial;
         }
         else
         {
             hasHighlightedObject = false;
             DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
-            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
+            gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }
 
@@ -50,7 +49,7 @@ public class GenericObject : MonoBehaviour
             {
                 DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshFilter>().mesh;
                 DataStorage.currentlyHeldObject.transform.localScale = DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.transform.localScale;
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.previouslySelectedObjectMaterial;
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.currentlyHeldObject.GetComponent<GenericObject>().originalMat;
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
                 DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
             }
@@ -65,7 +64,7 @@ public class GenericObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalMat = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
