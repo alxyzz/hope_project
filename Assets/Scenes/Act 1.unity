@@ -1760,7 +1760,7 @@ MonoBehaviour:
   UIManagerComponent: {fileID: 1932278520}
   VisualsManagerComponent: {fileID: 1932278527}
   CharacterInteractions: {fileID: 1932278525}
-  ItemInteractions: {fileID: 0}
+  ItemInteractions: {fileID: 1932278523}
   player: {fileID: 2123075252}
   pickupableObjects: {fileID: 0}
 --- !u!4 &1932278519
