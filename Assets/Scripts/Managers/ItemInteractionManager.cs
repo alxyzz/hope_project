@@ -19,7 +19,7 @@ public class ItemInteractionManager : MonoBehaviour
             {
                 DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = currentlySelectedObject.GetComponent<MeshFilter>().mesh;
                 DataStorage.currentlyHeldObject.transform.localScale = currentlySelectedObject.transform.localScale;
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = previouslySelectedObjectMaterial;
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.currentlyHeldObject.GetComponent<GenericObject>().originalMat;
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
                 currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
             }
