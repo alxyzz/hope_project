@@ -1762,7 +1762,7 @@ MonoBehaviour:
   CharacterInteractions: {fileID: 1932278525}
   ItemInteractions: {fileID: 1932278523}
   player: {fileID: 2123075252}
-  pickupableObjects: {fileID: 0}
+  pickupableObjects: {fileID: 930862547}
 --- !u!4 &1932278519
 Transform:
   m_ObjectHideFlags: 0
