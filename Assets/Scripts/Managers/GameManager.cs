@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public ItemInteractionManager ItemInteractions;
 
     public Entity player;
+    public GameObject pickupableObjects;
 
     private void Awake()
     {
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DataStorage.Player = player;
+        DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>();
+        // for loop to put pickupable objects in a list
+
 
         if(DataStorage.lastSceneName != null)
         {
