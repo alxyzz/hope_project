@@ -26,16 +26,16 @@ public class InputManager : MonoBehaviour
             {
                 DataStorage.Player.Movement(m_hit.point);
             }
-            // todo: check whether mouse has hovered on an interactable object
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 GenericObject targetObject = m_hit.collider.GetComponent<GenericObject>();
                 Entity targetEntity = m_hit.collider.GetComponent<Entity>();
-                if (targetObject != null)
+                if (targetObject != null && DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == targetObject)
                 {
                     Debug.Log("hit object " + m_hit.transform.name);
-                    DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = targetObject;
+                    //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = targetObject;
                     DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
                 }
                 else if (targetEntity != null)

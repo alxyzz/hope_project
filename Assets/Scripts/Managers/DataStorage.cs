@@ -27,6 +27,7 @@ public static class DataStorage
     public static List<Entity> allLivingEntities = new List<Entity>();
 
     //objects
+    public static GenericObject currentlyHeldObject; // object that player currently holds (the Grab child of Player GameObject)
     public static List<GenericObject> allObjects = new List<GenericObject>();
     public static List<GenericObject> allpickupableObjects = new List<GenericObject>();
     //if you want to get list of items that cant be picked up
