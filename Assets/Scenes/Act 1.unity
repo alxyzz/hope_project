@@ -496,7 +496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235914865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 0, z: 0}
+  m_LocalPosition: {x: 0.53, y: -0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1460,9 +1460,9 @@ MonoBehaviour:
   useFunction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1626135654}
+      - m_Target: {fileID: 1932278523}
         m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Test
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1515,7 +1515,6 @@ GameObject:
   - component: {fileID: 1816049008}
   - component: {fileID: 1816049007}
   - component: {fileID: 1816049006}
-  - component: {fileID: 1816049011}
   m_Layer: 7
   m_Name: book2
   m_TagString: Untagged
@@ -1567,15 +1566,15 @@ MonoBehaviour:
   objectName: book2
   description: 
   originalMat: {fileID: 0}
-  pickupable: 0
+  pickupable: 1
   canBePutDown: 0
   useFunction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1816049011}
+      - m_Target: {fileID: 1932278523}
         m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 6
+        m_MethodName: Test
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1647,22 +1646,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816049004}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1816049011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816049004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f603caa368142bd41819ea52ab3e5831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentlySelectedObject: {fileID: 0}
-  lastUsedObject: {fileID: 0}
-  SelectedObjectMaterial: {fileID: 2100000, guid: e2467f866f8d370498d79fa119ef160c,
-    type: 2}
 --- !u!1 &1879795724
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,11 +31,11 @@ public class GameManager : MonoBehaviour
     {
         DataStorage.Player = player;
         DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>();
-        // for loop to put pickupable objects in a list
-        //allObjects
-        foreach (GenericObject pObject in pickupableObjects)
+
+
+        foreach (Transform pObject in pickupableObjects)
         {
-            DataStorage.allpickupableObjects.Add(pObject);
+            DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
         }
 
         if(DataStorage.lastSceneName != null)
