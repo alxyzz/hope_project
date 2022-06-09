@@ -24,6 +24,7 @@ public class GenericObject : MonoBehaviour
     {
         DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
         useFunction.Invoke();
+
     }
 
     public void Select(bool select) // highlights the selectable object (is kind of broken, either the trigger doesnt 
