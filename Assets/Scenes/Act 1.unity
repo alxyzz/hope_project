@@ -1758,7 +1758,7 @@ MonoBehaviour:
   InputManagerComponent: {fileID: 1932278524}
   StorylineManagerComponent: {fileID: 1932278521}
   UIManagerComponent: {fileID: 1932278520}
-  VisualsManagerComponent: {fileID: 1932278527}
+  TripManagerComponent: {fileID: 1932278527}
   CharacterInteractions: {fileID: 1932278525}
   ItemInteractions: {fileID: 1932278523}
   player: {fileID: 2123075252}
@@ -1868,11 +1868,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42a2fbf8a1d9204d8a5f05bbdbfc63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tripStatus: 1
   allObjects: []
-  hallucinationStrength: 0
-  wobbleStrength: 0
-  colorChangeStrength: 0
-  tripInSeconds: 30
+  hallucinationStrength: 2
+  chromaticAberrationVariationRate: 11
+  wobbleStrength: 2
+  colorChangeStrength: 15
+  tripInSeconds: 10
+  timeLeft: 0
+  badTripProfile: {fileID: 11400000, guid: 566f2654ac7cfec43bbf8f6607ca8f88, type: 2}
+  goodTripProfile: {fileID: 11400000, guid: 2fe08fae493fbc642a9f3ccfc2af6c80, type: 2}
+  soberProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  globalVolume: {fileID: 832575518}
 --- !u!1 &1950194255
 GameObject:
   m_ObjectHideFlags: 0

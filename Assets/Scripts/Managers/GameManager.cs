@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public InputManager InputManagerComponent;
     public StorylineManager StorylineManagerComponent;
     public UIManager UIManagerComponent;
-    public VisualsManager VisualsManagerComponent;
+    public TripManager TripManagerComponent;
     public DialogueManager CharacterInteractions;
     public ItemInteractionManager ItemInteractions;
 

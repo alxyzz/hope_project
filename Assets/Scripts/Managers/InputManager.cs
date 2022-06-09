@@ -65,20 +65,27 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
-
-            if (DataStorage.maxHope > 20)
+            if (DataStorage.GameManagerComponent.TripManagerComponent.tripStatus == 1)
             {
-                DataStorage.GameManagerComponent.VisualsManagerComponent.Trip();
-                DataStorage.maxHope -= 15;
-            }
-            else
-            {
-                //addiction - hopeless. different hallucinations, bad trip?
-                DataStorage.GameManagerComponent.VisualsManagerComponent.BadTrip();
-            }
+                Debug.Log("already sober so we will be taking a little chemical enjoyment");
+                if (DataStorage.maxHope > 20)
+                {
+                    DataStorage.GameManagerComponent.TripManagerComponent.Trip();
+                    DataStorage.maxHope -= 15;
+                    Debug.Log("good trip");
+                }
+                else
+                {
+                    //addiction - hopeless. different hallucinations, bad trip?
+                    DataStorage.GameManagerComponent.TripManagerComponent.BadTrip();
+                    Debug.Log("bad trip");
+                }
 
-            DataStorage.timesUsedDrugs++;
+                DataStorage.timesUsedDrugs++;
+            }
+            
 
 
         }
