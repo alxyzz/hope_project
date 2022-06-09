@@ -22,7 +22,7 @@ public static class DataStorage
 
     //entities
     public static Entity Player;
-    public static int maxHope, currentHope;
+    public static int maxHope = 100, currentHope = 100;
     public static bool isHigh;
     public static List<Entity> allLivingEntities = new List<Entity>();
 

@@ -88,7 +88,7 @@ public class TripManager : MonoBehaviour
     {
         if (alternateST)
         {
-            goodTripST.balance.value -= colorChangeStrength * Time.deltaTime;
+            goodTripST.balance.value += colorChangeStrength * Time.deltaTime;
         }
         else
         {
