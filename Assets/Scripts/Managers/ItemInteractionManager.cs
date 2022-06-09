@@ -9,11 +9,9 @@ public class ItemInteractionManager : MonoBehaviour
     public Material SelectedObjectMaterial;
 
 
-
-
-    public void Grab(bool canBePutDown) // picks up object, puts its equivalent in Player's hand, disactivates the original object
+    public void Grab()   // picks up object, puts its equivalent in Player's hand, disactivates the original object
     {
-        if (currentlySelectedObject == this) // checks if the right mesh is highlighted, also if player has picked anything else up
+        if (currentlySelectedObject == this && currentlySelectedObject.pickupable) // checks if the right mesh is highlighted, also if player has picked anything else up
         {
             if (!DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled)
             {
@@ -23,7 +21,7 @@ public class ItemInteractionManager : MonoBehaviour
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
                 currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
             }
-            else if (canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
+            else if (DataStorage.currentlyHeldObject.canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
             {
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
                 currentlySelectedObject.GetComponent<MeshRenderer>().enabled = true;

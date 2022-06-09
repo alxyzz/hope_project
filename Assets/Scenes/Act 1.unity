@@ -1456,14 +1456,14 @@ MonoBehaviour:
   description: 
   originalMat: {fileID: 0}
   pickupable: 1
-  canBePutDown: 0
+  canBePutDown: 1
   useFunction:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1626135654}
         m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 6
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1515,7 +1515,6 @@ GameObject:
   - component: {fileID: 1816049008}
   - component: {fileID: 1816049007}
   - component: {fileID: 1816049006}
-  - component: {fileID: 1816049012}
   - component: {fileID: 1816049011}
   m_Layer: 7
   m_Name: book2
@@ -1532,7 +1531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816049004}
   m_LocalRotation: {x: -0, y: 0.38170028, z: -0, w: 0.9242862}
-  m_LocalPosition: {x: -7.14, y: -2.52, z: -6.005003}
+  m_LocalPosition: {x: -7.14, y: -2.52, z: 4.03}
   m_LocalScale: {x: 0.80848, y: 0.27983, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1568,14 +1567,14 @@ MonoBehaviour:
   objectName: book2
   description: 
   originalMat: {fileID: 0}
-  pickupable: 1
+  pickupable: 0
   canBePutDown: 0
   useFunction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932278517}
+      - m_Target: {fileID: 1816049011}
         m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Grab
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1664,21 +1663,6 @@ MonoBehaviour:
   lastUsedObject: {fileID: 0}
   SelectedObjectMaterial: {fileID: 2100000, guid: e2467f866f8d370498d79fa119ef160c,
     type: 2}
---- !u!114 &1816049012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816049004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f603caa368142bd41819ea52ab3e5831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentlySelectedObject: {fileID: 0}
-  lastUsedObject: {fileID: 0}
-  SelectedObjectMaterial: {fileID: 0}
 --- !u!1 &1879795724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1746,7 @@ MonoBehaviour:
   CharacterInteractions: {fileID: 1932278525}
   ItemInteractions: {fileID: 1932278523}
   player: {fileID: 2123075252}
-  pickupableObjects: {fileID: 930862547}
+  pickupableObjects: {fileID: 930862548}
 --- !u!4 &1932278519
 Transform:
   m_ObjectHideFlags: 0
@@ -2084,11 +2068,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 5
+  m_Speed: 4
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
