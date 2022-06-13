@@ -15,7 +15,8 @@ public class TripManager : MonoBehaviour
     FourthStageTrip fourthStageTripState = new FourthStageTrip();
     FifthStageTrip fifthStageTripState = new FifthStageTrip();
 
-
+    //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
+    
 
     public List<Light> allObjects = new List<Light>(); //so we can do fancy lightshows
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
@@ -44,8 +45,6 @@ public class TripManager : MonoBehaviour
     {
         soberTripState.NextStage = firstStageTripState;
         firstStageTripState.PreviousStage = soberTripState;
-
-        soberTripState.NextStage = firstStageTripState;
 
         firstStageTripState.PreviousStage = soberTripState;
         firstStageTripState.NextStage = secondStageTripState;
@@ -98,6 +97,7 @@ public class TripManager : MonoBehaviour
 
 
         public virtual bool seeUnreality { get; } //see weird objects from stage 2 onwards;
+        public virtual bool graphicVariance { get; } //see weird objects from stage 2 onwards;
         protected bool flipWorld { get; }
         public AudioClip backgroundMusic { get; set; }
 
@@ -156,6 +156,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
 
@@ -172,6 +173,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
@@ -187,6 +189,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
@@ -201,6 +204,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
@@ -215,6 +219,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
@@ -229,6 +234,7 @@ public class TripManager : MonoBehaviour
     {
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
+        new public bool graphicVariance = false;
         new public bool flipWorld = false;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
@@ -364,37 +370,48 @@ public class TripManager : MonoBehaviour
 
 
 
-    void TripCycle()
-    {
-        switch (tripStatus)
-        {
-            case 1://sober
+    ////void TripCycle()
+    ////{
+    ////    switch (tripStatus)
+    ////    {
+    ////        case 1://sober
 
-                break;
-            case 2://good trip
-                //DoGoodTripCycleCA();
-                //DoGoodTripCycleST();
+    ////            break;
+    ////        case 2://good trip
+    ////            //DoGoodTripCycleCA();
+    ////            //DoGoodTripCycleST();
 
-                timeLeft -= Time.deltaTime;
-                CheckEndTrip();
-                break;
-            case 3: //bad trip
+    ////            timeLeft -= Time.deltaTime;
+    ////            CheckEndTrip();
+    ////            break;
+    ////        case 3: //bad trip
 
-                //DoBadTripCycleCA();
-                //DoBadTripCycleST();
-                timeLeft -= Time.deltaTime;
-                CheckEndTrip();
-                break;
-        }
-    }
+    ////            //DoBadTripCycleCA();
+    ////            //DoBadTripCycleST();
+    ////            timeLeft -= Time.deltaTime;
+    ////            CheckEndTrip();
+    ////            break;
+    ////    }
+    ////}
 
 
     private void Update()
     {
-        TripCycle();
+        //TripCycle();
+
+
+
 
     }
 
+
+    //this also contains stuff we don't want to define in the drug trip's Cycle proc
+    private void DrugCycle()
+    {
+
+
+        currentDrugState.Cycle();
+    }
 
     private void CheckEndTrip()
     {
@@ -408,16 +425,13 @@ public class TripManager : MonoBehaviour
 
     public void GetSober()
     {
-        globalVolume.profile = soberProfile;
-        tripStatus = 1;
+        currentDrugState.ComeDown();
     }
 
     public void Trip()
     {
         Debug.Log("having a good time");
-        //globalVolume.profile = goodTripProfile;
-        tripStatus = 2;
-        timeLeft = 30;
+        currentDrugState.Intensify();
     }
 
     public void BadTrip()
