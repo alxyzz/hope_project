@@ -8,13 +8,27 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
 
     public Slider hopeSlider;
+    public Canvas ingameMenu;
+    
 
-    private void Update()
+
+
+
+    public void ToggleIngameMenu()
     {
-        //hopeSlider.maxValue = DataStorage.maxHope;
-        //hopeSlider.value = DataStorage.currentHope;
-    }
+        if (ingameMenu.gameObject.activeSelf)
+        {
+            Time.timeScale = 0;
+            ingameMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            ingameMenu.gameObject.SetActive(true);
+        }
 
+
+    }
 
 
 
