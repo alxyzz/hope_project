@@ -2450,6 +2450,7 @@ GameObject:
   - component: {fileID: 1932278520}
   - component: {fileID: 1932278527}
   - component: {fileID: 1932278523}
+  - component: {fileID: 1932278528}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2476,6 +2477,7 @@ MonoBehaviour:
   TripManagerComponent: {fileID: 1932278527}
   CharacterInteractions: {fileID: 1932278525}
   ItemInteractions: {fileID: 1932278523}
+  SoundManagerComponent: {fileID: 1932278528}
   player: {fileID: 2123075252}
   pickupableObjects: {fileID: 930862548}
 --- !u!4 &1932278519
@@ -2593,10 +2595,27 @@ MonoBehaviour:
   colorChangeStrength: 30
   tripInSeconds: 10
   timeLeft: 0
-  badTripProfile: {fileID: 11400000, guid: 566f2654ac7cfec43bbf8f6607ca8f88, type: 2}
-  goodTripProfile: {fileID: 11400000, guid: 2fe08fae493fbc642a9f3ccfc2af6c80, type: 2}
+  workingProfile: {fileID: 0}
   soberProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  firstStageProfile: {fileID: 0}
+  secondStageProfile: {fileID: 0}
+  thirdStageTripProfile: {fileID: 0}
+  fourthStageTripProfile: {fileID: 0}
+  fifthStageTripProfile: {fileID: 0}
   globalVolume: {fileID: 832575518}
+--- !u!114 &1932278528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932278517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58617c61430862a47a4d75328411543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 0}
 --- !u!1 &1950194255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,8 +2869,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 2102162856}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
