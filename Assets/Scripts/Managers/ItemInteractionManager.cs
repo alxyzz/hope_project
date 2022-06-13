@@ -9,28 +9,31 @@ public class ItemInteractionManager : MonoBehaviour
     public Material SelectedObjectMaterial;
 
 
-
-
-    public void Grab(bool canBePutDown) // picks up object, puts its equivalent in Player's hand, disactivates the original object
+    public void Grab()   // picks up object, puts its equivalent in Player's hand, disactivates the original object
     {
-        if (currentlySelectedObject == this) // checks if the right mesh is highlighted, also if player has picked anything else up
+        if (DataStorage.allpickupableObjects.Contains(lastUsedObject) && lastUsedObject.pickupable) // checks if the right mesh is highlighted, also if player has picked anything else up
         {
             if (!DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled)
             {
-                DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = currentlySelectedObject.GetComponent<MeshFilter>().mesh;
-                DataStorage.currentlyHeldObject.transform.localScale = currentlySelectedObject.transform.localScale;
-                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = DataStorage.currentlyHeldObject.GetComponent<GenericObject>().originalMat;
+                Debug.Log("Grab is doing the thing");
+                DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = lastUsedObject.GetComponent<MeshFilter>().mesh;
+                DataStorage.currentlyHeldObject.transform.localScale = lastUsedObject.transform.localScale;
+                DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = lastUsedObject.GetComponent<GenericObject>().originalMat;
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
-                currentlySelectedObject.GetComponent<MeshRenderer>().enabled = false;
+                lastUsedObject.GetComponent<MeshRenderer>().enabled = false;
             }
-            else if (canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
+            else if (currentlySelectedObject.canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
             {
+                Debug.Log("Grab is putting it down");
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
                 currentlySelectedObject.GetComponent<MeshRenderer>().enabled = true;
             }
         }
     }
-
+    public void Test()
+    {
+        Debug.LogWarning("Testing events");
+    }
 
 
 
