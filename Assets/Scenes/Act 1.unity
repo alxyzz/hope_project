@@ -1873,7 +1873,7 @@ MonoBehaviour:
   hallucinationStrength: 2
   chromaticAberrationVariationRate: 11
   wobbleStrength: 2
-  colorChangeStrength: 100
+  colorChangeStrength: 30
   tripInSeconds: 10
   timeLeft: 0
   badTripProfile: {fileID: 11400000, guid: 566f2654ac7cfec43bbf8f6607ca8f88, type: 2}
