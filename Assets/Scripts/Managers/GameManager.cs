@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DataStorage.GameManagerComponent = this;
+
+        if (DataStorage.lastSceneName != null)
+        {
+            DataStorage.lastSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log(DataStorage.lastSceneName + " is the current scene name");
+            DataStorage.Player.transform.position = DataStorage.savedPlayerLoc;
+            //later on, this is where we can do stuff like checking if there's a file with the current game state saved as a json (all kinds of booleans probably) and load it
+        }
     }
 
 
@@ -38,11 +47,7 @@ public class GameManager : MonoBehaviour
             DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
         }
 
-        if(DataStorage.lastSceneName != null)
-        {
-            DataStorage.Player.transform.position = DataStorage.savedPlayerLoc;
-            //later on, this is where we can do stuff like checking if there's a file with the current game state saved as a json (all kinds of booleans probably) and load it
-        }
+        
         
     }
 
