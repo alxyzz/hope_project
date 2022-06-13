@@ -91,6 +91,18 @@ public class InputManager : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("pressed ESC to pop up ingame menu");
+            
+
+
+
+        }
+
+
+
+
     }
 
 
