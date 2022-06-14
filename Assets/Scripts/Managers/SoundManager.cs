@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     AudioSource aSource; //for music coz it should play from the camera
-    public AudioClip backgroundMusic; 
-
+    public AudioClip backgroundMusic;
+    public AudioClip locationBasedBackgroundMusic;
 
 
 

@@ -67,11 +67,9 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
-
-            Debug.Log("already sober so we will be taking a little chemical enjoyment");
             if (DataStorage.maxHope > 20)
             {
-                DataStorage.GameManagerComponent.TripManagerComponent.Trip();
+                DataStorage.GameManagerComponent.TripManagerComponent.GetHigh();
                 DataStorage.maxHope -= 15;
                 Debug.Log("good trip");
             }
@@ -92,7 +90,7 @@ public class InputManager : MonoBehaviour
             
                 Debug.Log("already sober so we will be taking a little chemical enjoyment");
                 
-                    DataStorage.GameManagerComponent.TripManagerComponent.Soberize();
+                    DataStorage.GameManagerComponent.TripManagerComponent.GetLow();
                     
             
 

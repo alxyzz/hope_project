@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,14 +8,7 @@ public class TripManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public int tripStatus = 0;
-    public DrugTrip currentDrugState;
-    SoberTrip soberTripState = new SoberTrip();
-    FirstStageTrip firstStageTripState = new FirstStageTrip();
-    SecondStageTrip secondStageTripState = new SecondStageTrip();
-    ThirdStageTrip thirdStageTripState = new ThirdStageTrip();
-    FourthStageTrip fourthStageTripState = new FourthStageTrip();
-    FifthStageTrip fifthStageTripState = new FifthStageTrip();
-
+    AudioClip soberBackgroundAudio, firstBackgroundAudio, secondBackgroundAudio, thirdBackgroundAudio, fourthBackgroundAudio, fifthBackgroundAudio;
     //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
 
 
@@ -22,63 +16,24 @@ public class TripManager : MonoBehaviour
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
     public float timeLeft; //this will probably not be based on time, and more on events happening, so the player does not feel rushed
     [SerializeField]
-    private VolumeProfile soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
+    private VolumeProfile workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
+    
     [SerializeField]
     private Volume globalVolume;
 
 
 
 
-    void Start()
+    void Awake()
     {
-        SetupTrips();
-        currentDrugState = soberTripState;
         ReinitializeProfileQualities();
-
-
-
     }
 
+    public bool seeUnreality; //see weird objects from stage 2 onwards;
+    public bool graphicVariance; //see weird objects from stage 2 onwards;
+    protected bool flipWorld;
+    public AudioClip backgroundMusic;
 
-    void SetupTrips()
-    {
-        soberTripState.NextStage = firstStageTripState;
-        firstStageTripState.PreviousStage = soberTripState;
-
-        firstStageTripState.PreviousStage = soberTripState;
-        firstStageTripState.NextStage = secondStageTripState;
-
-        secondStageTripState.PreviousStage = firstStageTripState;
-        secondStageTripState.NextStage = thirdStageTripState;
-
-        thirdStageTripState.PreviousStage = secondStageTripState;
-        thirdStageTripState.NextStage = fourthStageTripState;
-
-        fourthStageTripState.PreviousStage = thirdStageTripState;
-        fourthStageTripState.NextStage = fifthStageTripState;
-
-        fifthStageTripState.PreviousStage = fourthStageTripState;
-        fifthStageTripState.NextStage = null; //death
-
-
-        soberTripState.backgroundMusic = fifthBackgroundAudio;
-        firstStageTripState.backgroundMusic = fifthBackgroundAudio;
-        secondStageTripState.backgroundMusic = fifthBackgroundAudio;
-        thirdStageTripState.backgroundMusic = fifthBackgroundAudio;
-        fourthStageTripState.backgroundMusic = fifthBackgroundAudio;
-        fifthStageTripState.backgroundMusic = fifthBackgroundAudio;
-
-
-        //workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
-        soberTripState.associatedProfile = soberProfile;
-        firstStageTripState.associatedProfile = firstStageProfile;
-        secondStageTripState.associatedProfile = secondStageProfile;
-        thirdStageTripState.associatedProfile = thirdStageTripProfile;
-        fourthStageTripState.associatedProfile = fourthStageTripProfile;
-        fifthStageTripState.associatedProfile = fifthStageTripProfile;
-    }
-
-    AudioClip soberBackgroundAudio, firstBackgroundAudio, secondBackgroundAudio, thirdBackgroundAudio, fourthBackgroundAudio, fifthBackgroundAudio;
 
     /*
 0. Sober --> everything a bit shitty  ;(
@@ -90,168 +45,14 @@ public class TripManager : MonoBehaviour
      */
 
 
-    public abstract class DrugTrip
-    {
-        public VolumeProfile associatedProfile;
 
-
-        public virtual bool seeUnreality { get; } //see weird objects from stage 2 onwards;
-        public virtual bool graphicVariance { get; } //see weird objects from stage 2 onwards;
-        protected bool flipWorld { get; }
-        public AudioClip backgroundMusic { get; set; }
-
-
-
-
-
-
-
-        public DrugTrip PreviousStage { get; set; }
-        public DrugTrip NextStage { get; set; }
-
-
-        /// <summary>
-        /// this runs when the drug state changes. use delays if you want something to be done periodically
-        /// </summary>
-        /// 
-        public virtual void OnGet()
-        {
-            if (associatedProfile != null)
-            {
-                DataStorage.GameManagerComponent.TripManagerComponent.globalVolume.profile = associatedProfile;
-                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(backgroundMusic);
-                if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
-                else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
-                DataStorage.GameManagerComponent.TripManagerComponent.ReinitializeProfileQualities();
-            }
-
-        }
-        public virtual void Cycle()
-        {
-
-        }
-
-        public virtual void ComeDown()
-        {//go back a level
-            if (this.GetType() != typeof(SoberTrip))
-            {
-                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState = PreviousStage;
-                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState.OnGet();
-            }
-        }
-
-        public virtual void Intensify()
-        {//go back a level
-            if (this.GetType() != typeof(FifthStageTrip))
-            {
-                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState = NextStage;
-                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState.OnGet();
-            }
-        }
-
-
-    }
-
-    class SoberTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = false;
-        new public AudioClip backgroundMusic { get; set; }
-
-        public new DrugTrip PreviousStage = null;
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-
-    }
-    class FirstStageTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = false;
-        new public AudioClip backgroundMusic { get; set; }
-        public new DrugTrip PreviousStage { get; set; }
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-
-    }
-    class SecondStageTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = false;
-        new public AudioClip backgroundMusic { get; set; }
-        public new DrugTrip PreviousStage { get; set; }
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-    }
-    class ThirdStageTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = false;
-        new public AudioClip backgroundMusic { get; set; }
-        public new DrugTrip PreviousStage { get; set; }
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-    }
-    class FourthStageTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = true;
-        new public AudioClip backgroundMusic { get; set; }
-        public new DrugTrip PreviousStage { get; set; }
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-    }
-    class FifthStageTrip : DrugTrip
-    {
-        new VolumeProfile associatedProfile { get; set; }
-        new public bool seeUnreality = false;
-        new public bool graphicVariance = false;
-        new public bool flipWorld = false;
-        new public AudioClip backgroundMusic { get; set; }
-        public new DrugTrip PreviousStage { get; set; }
-        public new DrugTrip NextStage { get; set; }
-
-        public override void Cycle()
-        {
-
-        }
-    }
 
     ChromaticAberration profileChromaticAberration;
     SplitToning profileSplitToning;
 
 
-    bool alternateCA;
-    bool alternateST;
+    private bool alternateCA;//not important - used to make the value go from one side of the range to another
+    private bool alternateST;
 
 
     /// <summary>
@@ -263,12 +64,12 @@ public class TripManager : MonoBehaviour
         ChromaticAberration tmp;
         SplitToning tmp2;
 
-        if (currentDrugState.associatedProfile.TryGet<ChromaticAberration>(out tmp))
+        if (workingProfile.TryGet<ChromaticAberration>(out tmp))
         {
             profileChromaticAberration = tmp;
         }
 
-        if (currentDrugState.associatedProfile.TryGet<SplitToning>(out tmp2))
+        if (workingProfile.TryGet<SplitToning>(out tmp2))
         {
             profileSplitToning = tmp2;
         }
@@ -276,87 +77,47 @@ public class TripManager : MonoBehaviour
     }
 
 
-    //void DoGoodTripCycleCA()
-    //{
-    //    if (alternateCA)
-    //    {
-    //        goodTripCA.intensity.value = Mathf.Clamp(goodTripCA.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, goodTripCA.intensity.min, goodTripCA.intensity.max);
-    //    }
-    //    else
-    //    {
-    //        goodTripCA.intensity.value = Mathf.Clamp(goodTripCA.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, goodTripCA.intensity.min, goodTripCA.intensity.max);
-    //    }
+    void CycleCA()
+    {
+        if (alternateCA)
+        {
+            profileChromaticAberration.intensity.value = Mathf.Clamp(profileChromaticAberration.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, profileChromaticAberration.intensity.min, profileChromaticAberration.intensity.max);
+        }
+        else
+        {
+            profileChromaticAberration.intensity.value = Mathf.Clamp(profileChromaticAberration.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, profileChromaticAberration.intensity.min, profileChromaticAberration.intensity.max);
+        }
 
-    //    if (goodTripCA.intensity.value >= goodTripCA.intensity.max)
-    //    {
-    //        alternateCA = false;
-    //    }
-    //    else if (goodTripCA.intensity.value <= goodTripCA.intensity.min)
-    //    {
-    //        alternateCA = true;
-    //    }
-    //}
-    //void DoGoodTripCycleST()
-    //{
-    //    if (alternateST)
-    //    {
-    //        goodTripST.balance.value += colorChangeStrength * Time.deltaTime;
-    //    }
-    //    else
-    //    {
-    //        goodTripST.balance.value -= colorChangeStrength * Time.deltaTime;
-    //    }
+        if (profileChromaticAberration.intensity.value >= profileChromaticAberration.intensity.max)
+        {
+            alternateCA = false;
+        }
+        else if (profileChromaticAberration.intensity.value <= profileChromaticAberration.intensity.min)
+        {
+            alternateCA = true;
+        }
+    }
 
-    //    if (goodTripST.balance.value >= 100)
-    //    {
-    //        alternateST = false;
-    //    }
-    //    else if (goodTripST.balance.value <= -100)
-    //    {
-    //        alternateST = true;
-    //    }
-    //}
+    void CycleST()
+    {
+        if (alternateST)
+        {
+            profileSplitToning.balance.value += colorChangeStrength * Time.deltaTime;
+        }
+        else
+        {
+            profileSplitToning.balance.value -= colorChangeStrength * Time.deltaTime;
+        }
 
-    //void DoBadTripCycleCA()
-    //{
-    //    if (alternateCA)
-    //    {
-    //        badTripCA.intensity.value = Mathf.Clamp(badTripCA.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, badTripCA.intensity.min, badTripCA.intensity.max);
-    //    }
-    //    else
-    //    {
-    //        badTripCA.intensity.value = Mathf.Clamp(badTripCA.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, badTripCA.intensity.min, badTripCA.intensity.max);
-    //    }
-
-    //    if (badTripCA.intensity.value >= badTripCA.intensity.max)
-    //    {
-    //        alternateCA = false;
-    //    }
-    //    else if (badTripCA.intensity.value <= badTripCA.intensity.min)
-    //    {
-    //        alternateCA = true;
-    //    }
-    //}
-    //void DoBadTripCycleST()
-    //{
-    //    if (alternateST)
-    //    {
-    //        badTripST.balance.value -= colorChangeStrength * Time.deltaTime;
-    //    }
-    //    else
-    //    {
-    //        badTripST.balance.value -= colorChangeStrength * Time.deltaTime;
-    //    }
-
-    //    if (badTripST.balance.value >= 100)
-    //    {
-    //        alternateST = false;
-    //    }
-    //    else if (badTripST.balance.value <= -100)
-    //    {
-    //        alternateST = true;
-    //    }
-    //}
+        if (profileSplitToning.balance.value >= 100)
+        {
+            alternateST = false;
+        }
+        else if (profileSplitToning.balance.value <= -100)
+        {
+            alternateST = true;
+        }
+    }
 
 
 
@@ -400,30 +161,90 @@ public class TripManager : MonoBehaviour
     private void DrugCycle()
     {
 
-
-        currentDrugState.Cycle();
-        CheckEndTrip();
-    }
-
-    private void CheckEndTrip()
-    {
-        if (timeLeft <= 0)
+        if (workingProfile != null)
         {
-            currentDrugState.ComeDown();
+            
         }
+        else
+        {
+            Debug.LogError("current drug state was null - " + workingProfile);
+        }
+        
+        //CheckEndTrip();
     }
 
-    public void Soberize()
+    //private void CheckEndTrip()
+    //{
+    //    if (timeLeft <= 0)
+    //    {
+    //        currentDrugState.ComeDown();
+    //    }
+    //}
+
+    void OnDrugStateChange()
+    {
+        switch (tripStatus)
+        {
+            case 0:
+                flipWorld = false;
+                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(soberBackgroundAudio);
+                
+                break;
+
+
+            case 1:
+                flipWorld = false;
+                break;
+
+
+            case 2:
+                flipWorld = false;
+                break;
+
+
+            case 3:
+                flipWorld = false;
+                break;
+
+
+            case 4:
+                flipWorld = true;
+                break;
+
+            case 5:
+                flipWorld = false;
+                StartCoroutine(delayedDeath()); // I feel numb...
+                break;
+
+            default:
+                tripStatus = 0;
+                OnDrugStateChange();
+                break;
+        }
+
+        if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
+        else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
+        ReinitializeProfileQualities();
+    }
+
+    public void GetLow()
     {
         Debug.Log("got a bit more sober");
-        currentDrugState.ComeDown();
+        tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
+        
     }
 
 
-    public void Trip()
+    public void GetHigh()
     {
         Debug.Log("having a good time. trip is intensifying");
-        currentDrugState.Intensify();
+        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 5);
+    }
+
+    IEnumerator delayedDeath()
+    {
+
+        yield return new WaitForSecondsRealtime(10);
     }
 
     public void Fadeout()
