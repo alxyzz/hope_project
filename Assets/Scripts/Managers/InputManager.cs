@@ -67,25 +67,35 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
-            if (DataStorage.GameManagerComponent.TripManagerComponent.tripStatus == 1)
-            {
-                Debug.Log("already sober so we will be taking a little chemical enjoyment");
-                if (DataStorage.maxHope > 20)
-                {
-                    DataStorage.GameManagerComponent.TripManagerComponent.Trip();
-                    DataStorage.maxHope -= 15;
-                    Debug.Log("good trip");
-                }
-                else
-                {
-                    //addiction - hopeless. different hallucinations, bad trip?
-                    //DataStorage.GameManagerComponent.TripManagerComponent.BadTrip();
-                    //Debug.Log("bad trip");
-                }
 
-                DataStorage.timesUsedDrugs++;
+            Debug.Log("already sober so we will be taking a little chemical enjoyment");
+            if (DataStorage.maxHope > 20)
+            {
+                DataStorage.GameManagerComponent.TripManagerComponent.Trip();
+                DataStorage.maxHope -= 15;
+                Debug.Log("good trip");
             }
+            else
+            {
+                //addiction - hopeless. different hallucinations, bad trip?
+                //DataStorage.GameManagerComponent.TripManagerComponent.BadTrip();
+                //Debug.Log("bad trip");
+            }
+            DataStorage.timesUsedDrugs++;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Debug.Log("pressed j debug sober button");
+            //meth/crack/horse ketamine/LSD/PCP/weed
             
+                Debug.Log("already sober so we will be taking a little chemical enjoyment");
+                
+                    DataStorage.GameManagerComponent.TripManagerComponent.Soberize();
+                    
+            
+
 
 
         }
@@ -94,7 +104,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("pressed ESC to pop up ingame menu");
-            
+
 
 
 

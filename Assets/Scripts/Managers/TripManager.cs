@@ -22,7 +22,7 @@ public class TripManager : MonoBehaviour
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
     public float timeLeft; //this will probably not be based on time, and more on events happening, so the player does not feel rushed
     [SerializeField]
-    private VolumeProfile workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
+    private VolumeProfile soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
     [SerializeField]
     private Volume globalVolume;
 
@@ -118,7 +118,7 @@ public class TripManager : MonoBehaviour
         {
             if (associatedProfile != null)
             {
-                DataStorage.GameManagerComponent.TripManagerComponent.workingProfile = associatedProfile;
+                DataStorage.GameManagerComponent.TripManagerComponent.globalVolume.profile = associatedProfile;
                 if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(backgroundMusic);
                 if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
                 else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
@@ -413,7 +413,7 @@ public class TripManager : MonoBehaviour
         }
     }
 
-    private void Soberize()
+    public void Soberize()
     {
         Debug.Log("got a bit more sober");
         currentDrugState.ComeDown();
@@ -422,7 +422,7 @@ public class TripManager : MonoBehaviour
 
     public void Trip()
     {
-        Debug.Log("having a good time");
+        Debug.Log("having a good time. trip is intensifying");
         currentDrugState.Intensify();
     }
 
