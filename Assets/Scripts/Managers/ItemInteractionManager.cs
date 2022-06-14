@@ -8,6 +8,10 @@ public class ItemInteractionManager : MonoBehaviour
     public GenericObject lastUsedObject;
     public Material SelectedObjectMaterial;
 
+    
+
+
+
 
     public void Grab()   // picks up object, puts its equivalent in Player's hand, disactivates the original object
     {
@@ -37,7 +41,7 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
-
+    
 
 
 

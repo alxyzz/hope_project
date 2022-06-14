@@ -12,9 +12,12 @@ public class GenericObject : MonoBehaviour
     public Material originalMat;
     public bool pickupable;
     public bool canBePutDown; // after being picked up
+    public Sprite itemSprite;
+
 
     //usage
-    public UnityEvent useFunction;//this can be changed to whatever you want to happen when you interact with this guy
+    public UnityEvent useInWorld;//this can be changed to whatever you want to happen when you interact with this guy
+    public UnityEvent useInInventory;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
     private bool hasHighlightedObject;
     /// <summary>
@@ -23,7 +26,19 @@ public class GenericObject : MonoBehaviour
     public void Interact()
     {
         DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
-        useFunction.Invoke();
+        if (useInWorld != null)
+        {
+            useInWorld.Invoke();
+        }
+    }
+    public void Use()
+    {
+        DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
+        if (useInInventory != null)
+        {
+            useInInventory.Invoke();
+        }
+        
 
     }
 

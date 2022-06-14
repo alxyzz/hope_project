@@ -16,7 +16,7 @@ public class TripManager : MonoBehaviour
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
     public float timeLeft; //this will probably not be based on time, and more on events happening, so the player does not feel rushed
     [SerializeField]
-    private VolumeProfile workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageTripProfile, fourthStageTripProfile, fifthStageTripProfile;
+    private VolumeProfile workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageProfile, fourthStageProfile, fifthStageProfile;
     
     [SerializeField]
     private Volume globalVolume;
@@ -186,6 +186,7 @@ public class TripManager : MonoBehaviour
         switch (tripStatus)
         {
             case 0:
+                workingProfile = soberProfile;
                 flipWorld = false;
                 if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(soberBackgroundAudio);
                 
@@ -193,25 +194,30 @@ public class TripManager : MonoBehaviour
 
 
             case 1:
+                workingProfile = firstStageProfile;
                 flipWorld = false;
                 break;
 
 
             case 2:
+                workingProfile = secondStageProfile;
                 flipWorld = false;
                 break;
 
 
             case 3:
+                workingProfile = thirdStageProfile;
                 flipWorld = false;
                 break;
 
 
             case 4:
+                workingProfile = fourthStageProfile;
                 flipWorld = true;
                 break;
 
             case 5:
+                workingProfile = fifthStageProfile;
                 flipWorld = false;
                 StartCoroutine(delayedDeath()); // I feel numb...
                 break;
