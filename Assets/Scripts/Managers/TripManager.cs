@@ -32,9 +32,8 @@ public class TripManager : MonoBehaviour
     void Start()
     {
         SetupTrips();
-        //InitializeOverrides();
         currentDrugState = soberTripState;
-
+        ReinitializeProfileQualities();
 
 
 
@@ -112,7 +111,7 @@ public class TripManager : MonoBehaviour
 
 
         /// <summary>
-        /// this runs every tick. use delays if you want something to be done periodically
+        /// this runs when the drug state changes. use delays if you want something to be done periodically
         /// </summary>
         /// 
         public virtual void OnGet()
@@ -120,10 +119,10 @@ public class TripManager : MonoBehaviour
             if (associatedProfile != null)
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.workingProfile = associatedProfile;
-                if (backgroundMusic != null)
-                {
-                    DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(backgroundMusic);
-                }
+                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(backgroundMusic);
+                if (flipWorld)Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
+                else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
+                DataStorage.GameManagerComponent.TripManagerComponent.ReinitializeProfileQualities();
             }
             
         }
