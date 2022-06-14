@@ -79,8 +79,8 @@ public class InputManager : MonoBehaviour
                 else
                 {
                     //addiction - hopeless. different hallucinations, bad trip?
-                    DataStorage.GameManagerComponent.TripManagerComponent.BadTrip();
-                    Debug.Log("bad trip");
+                    //DataStorage.GameManagerComponent.TripManagerComponent.BadTrip();
+                    //Debug.Log("bad trip");
                 }
 
                 DataStorage.timesUsedDrugs++;

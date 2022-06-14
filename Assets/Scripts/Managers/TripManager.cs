@@ -16,7 +16,7 @@ public class TripManager : MonoBehaviour
     FifthStageTrip fifthStageTripState = new FifthStageTrip();
 
     //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
-    
+
 
     public List<Light> allObjects = new List<Light>(); //so we can do fancy lightshows
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
@@ -120,11 +120,11 @@ public class TripManager : MonoBehaviour
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.workingProfile = associatedProfile;
                 if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(backgroundMusic);
-                if (flipWorld)Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
+                if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
                 else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
                 DataStorage.GameManagerComponent.TripManagerComponent.ReinitializeProfileQualities();
             }
-            
+
         }
         public virtual void Cycle()
         {
@@ -388,7 +388,7 @@ public class TripManager : MonoBehaviour
 
     private void Update()
     {
-        //TripCycle();
+        DrugCycle();
 
 
 
@@ -402,22 +402,23 @@ public class TripManager : MonoBehaviour
 
 
         currentDrugState.Cycle();
+        CheckEndTrip();
     }
 
     private void CheckEndTrip()
     {
         if (timeLeft <= 0)
         {
-            GetSober();
+            currentDrugState.ComeDown();
         }
     }
 
-
-
-    public void GetSober()
+    private void Soberize()
     {
+        Debug.Log("got a bit more sober");
         currentDrugState.ComeDown();
     }
+
 
     public void Trip()
     {
@@ -425,18 +426,9 @@ public class TripManager : MonoBehaviour
         currentDrugState.Intensify();
     }
 
-    public void BadTrip()
-    {
-        Debug.Log("having a BAD time");
-        //globalVolume.profile = badTripProfile;
-        tripStatus = 3;
-        timeLeft = 30;
-    }
-
-
     public void Fadeout()
     {
-
+        //this should make the screen fade to black
 
     }
 
