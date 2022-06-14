@@ -137,6 +137,7 @@ public class TripManager : MonoBehaviour
             if (this.GetType() != typeof(SoberTrip))
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState = PreviousStage;
+                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState.OnGet();
             }
         }
 
@@ -145,12 +146,12 @@ public class TripManager : MonoBehaviour
             if (this.GetType() != typeof(FifthStageTrip))
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState = NextStage;
+                DataStorage.GameManagerComponent.TripManagerComponent.currentDrugState.OnGet();
             }
         }
 
 
     }
-
 
     class SoberTrip : DrugTrip
     {
@@ -220,7 +221,7 @@ public class TripManager : MonoBehaviour
         new VolumeProfile associatedProfile { get; set; }
         new public bool seeUnreality = false;
         new public bool graphicVariance = false;
-        new public bool flipWorld = false;
+        new public bool flipWorld = true;
         new public AudioClip backgroundMusic { get; set; }
         public new DrugTrip PreviousStage { get; set; }
         public new DrugTrip NextStage { get; set; }
@@ -254,35 +255,26 @@ public class TripManager : MonoBehaviour
     bool alternateST;
 
 
+    /// <summary>
+    /// refreshes the references to the current profile qualities , like chromatic aberration intensity, so we can modify them gradually
+    /// </summary>
+    void ReinitializeProfileQualities()
+    {
 
-    //void InitializeOverrides()
-    //{
+        ChromaticAberration tmp;
+        SplitToning tmp2;
 
-    //    ChromaticAberration tmp;
-    //    SplitToning tmp2;
+        if (currentDrugState.associatedProfile.TryGet<ChromaticAberration>(out tmp))
+        {
+            profileChromaticAberration = tmp;
+        }
 
-    //    Volume volume = gameObject.GetComponent<Volume>();
+        if (currentDrugState.associatedProfile.TryGet<SplitToning>(out tmp2))
+        {
+            profileSplitToning = tmp2;
+        }
 
-    //    if (badTripProfile.TryGet<ChromaticAberration>(out tmp))
-    //    {
-    //        badTripCA = tmp;
-    //    }
-
-    //    if (goodTripProfile.TryGet<ChromaticAberration>(out tmp))
-    //    {
-    //        goodTripCA = tmp;
-    //    }
-
-    //    if (badTripProfile.TryGet<SplitToning>(out tmp2))
-    //    {
-    //        badTripST = tmp2;
-    //    }
-
-    //    if (goodTripProfile.TryGet<SplitToning>(out tmp2))
-    //    {
-    //        goodTripST = tmp2;
-    //    }
-    //}
+    }
 
 
     //void DoGoodTripCycleCA()
