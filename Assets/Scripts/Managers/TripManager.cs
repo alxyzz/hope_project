@@ -62,7 +62,7 @@ public class TripManager : MonoBehaviour
     /// </summary>
     void ReinitializeProfileQualities()
     {
-
+        
         ChromaticAberration tmp;
         SplitToning tmp2;
 
@@ -188,6 +188,7 @@ public class TripManager : MonoBehaviour
 
     void OnDrugStateChange()
     {
+        Debug.Log("drug state changed");
         switch (tripStatus)
         {
             case 0:

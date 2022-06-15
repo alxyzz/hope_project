@@ -71,6 +71,10 @@ public class InputManager : MonoBehaviour
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.GetHigh();
                 DataStorage.maxHope -= 20;
+                if (DataStorage.currentHope > DataStorage.maxHope)
+                {
+                    DataStorage.currentHope = DataStorage.maxHope;
+                }
                 DataStorage.GameManagerComponent.UIManagerComponent.RefreshHopeVisualisation();
                 Debug.Log("good trip");
             }

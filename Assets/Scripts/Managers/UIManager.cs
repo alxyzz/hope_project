@@ -17,9 +17,9 @@ public class UIManager : MonoBehaviour
 
 
     public void RefreshHopeVisualisation()
-    {
-        maxHopeText.text = DataStorage.maxHope.ToString() + "%";
-        hopeSlider.value = DataStorage.maxHope;
+    {//Current Hope<br>100%<br Max Hope <br>100%
+        maxHopeText.text = "Current Hope<br>"+ DataStorage.currentHope.ToString() +"%<br>Max Hope<br>"+ DataStorage.maxHope.ToString()+"%";
+        hopeSlider.value = DataStorage.currentHope;
         if (IsBetween(DataStorage.maxHope, 0, 20))
         {
             hopeVisualizerImage.sprite = hopeVis5;
