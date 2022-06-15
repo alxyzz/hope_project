@@ -7,140 +7,115 @@ using UnityEngine.Rendering.Universal;
 public class TripManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int tripStatus = 1;
+    public int tripStatus = 0;
+    AudioClip soberBackgroundAudio, firstBackgroundAudio, secondBackgroundAudio, thirdBackgroundAudio, fourthBackgroundAudio, fifthBackgroundAudio;
+    //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
+
+
     public List<Light> allObjects = new List<Light>(); //so we can do fancy lightshows
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
     public float timeLeft; //this will probably not be based on time, and more on events happening, so the player does not feel rushed
     [SerializeField]
-    private VolumeProfile badTripProfile, goodTripProfile, soberProfile;
+    private VolumeProfile soberProfile, firstStageProfile, secondStageProfile, thirdStageProfile, fourthStageProfile, fifthStageProfile;
+    [HideInInspector]
+    private VolumeProfile workingProfile;
+
     [SerializeField]
     private Volume globalVolume;
 
 
-    ChromaticAberration badTripCA;
-    ChromaticAberration goodTripCA;
 
-    SplitToning badTripST;
-    SplitToning goodTripST;
-    bool alternateCA;
-    bool alternateST;
-    void Start()
+
+    void Awake()
     {
-        InitializeOverrides();
-
-
-
-
-
+        ReinitializeProfileQualities();
     }
 
-    void InitializeOverrides()
+    private bool seeUnreality; //see weird objects from stage 2 onwards;
+    private bool graphicVariance; //see weird objects from stage 2 onwards;
+    private bool flipWorld;
+    public AudioClip backgroundMusic;
+
+
+    /*
+0. Sober --> everything a bit shitty  ;(
+1. Drug use/stage --> the player is forced in the "tutorial level" (no impact on maximum hope) ; everything beautiful and pastel coloured/light colours (we stay with this colouring for the other stages)
+2. Drug use/stage --> Objects switch with more unrealistic objects (table might be a bathtub --> we can re-use objects!) and new objects and characters appear (just a few); 
+3. Drug use/stage --> everything is getting a bit distorted (filters (?))and stops making sense;  character might become abstract/ lose colour and be white and black (we can basically do whatever we feel like and find funny in this stage :D)
+4. Drug use/stage --> Nothing changes regarding the environment/characters, BUT the environment is turned upside down; the character is walking on the ceiling limiting  possible interactions to a minimum 
+5. Drug use/stage --> player dies of overdose. A countdown and weird music starts (death is inevitable) ; countdown ends: ambulance siren and blackout 
+     */
+
+
+
+
+    ChromaticAberration profileChromaticAberration;
+    SplitToning profileSplitToning;
+
+
+    private bool alternateCA;//not important - used to make the value go from one side of the range to another
+    private bool alternateST;
+
+
+    /// <summary>
+    /// refreshes the references to the current profile qualities , like chromatic aberration intensity, so we can modify them gradually
+    /// </summary>
+    void ReinitializeProfileQualities()
     {
 
         ChromaticAberration tmp;
         SplitToning tmp2;
 
-        Volume volume = gameObject.GetComponent<Volume>();
-
-        if (badTripProfile.TryGet<ChromaticAberration>(out tmp))
+        if (workingProfile.TryGet<ChromaticAberration>(out tmp))
         {
-            badTripCA = tmp;
+            profileChromaticAberration = tmp;
         }
 
-        if (goodTripProfile.TryGet<ChromaticAberration>(out tmp))
+        if (workingProfile.TryGet<SplitToning>(out tmp2))
         {
-            goodTripCA = tmp;
+            profileSplitToning = tmp2;
         }
 
-        if (badTripProfile.TryGet<SplitToning>(out tmp2))
-        {
-            badTripST = tmp2;
-        }
-
-        if (goodTripProfile.TryGet<SplitToning>(out tmp2))
-        {
-            goodTripST = tmp2;
-        }
     }
 
 
-    void DoGoodTripCycleCA()
+    void CycleCA()
     {
         if (alternateCA)
         {
-            goodTripCA.intensity.value = Mathf.Clamp(goodTripCA.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, goodTripCA.intensity.min, goodTripCA.intensity.max);
+            profileChromaticAberration.intensity.value = Mathf.Clamp(profileChromaticAberration.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, profileChromaticAberration.intensity.min, profileChromaticAberration.intensity.max);
         }
         else
         {
-            goodTripCA.intensity.value = Mathf.Clamp(goodTripCA.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, goodTripCA.intensity.min, goodTripCA.intensity.max);
+            profileChromaticAberration.intensity.value = Mathf.Clamp(profileChromaticAberration.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, profileChromaticAberration.intensity.min, profileChromaticAberration.intensity.max);
         }
 
-        if (goodTripCA.intensity.value >= goodTripCA.intensity.max)
+        if (profileChromaticAberration.intensity.value >= profileChromaticAberration.intensity.max)
         {
             alternateCA = false;
         }
-        else if (goodTripCA.intensity.value <= goodTripCA.intensity.min)
+        else if (profileChromaticAberration.intensity.value <= profileChromaticAberration.intensity.min)
         {
             alternateCA = true;
         }
     }
-    void DoGoodTripCycleST()
+
+    void CycleST()
     {
         if (alternateST)
         {
-            goodTripST.balance.value += colorChangeStrength * Time.deltaTime;
+            profileSplitToning.balance.value += colorChangeStrength * Time.deltaTime;
         }
         else
         {
-            goodTripST.balance.value -= colorChangeStrength * Time.deltaTime;
+            profileSplitToning.balance.value -= colorChangeStrength * Time.deltaTime;
         }
 
-        if (goodTripST.balance.value >= 100)
+        if (profileSplitToning.balance.value >= 100)
         {
             alternateST = false;
         }
-        else if (goodTripST.balance.value <= -100)
-        {
-            alternateST = true;
-        }
-    }
-
-    void DoBadTripCycleCA()
-    {
-        if (alternateCA)
-        {
-            badTripCA.intensity.value = Mathf.Clamp(badTripCA.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, badTripCA.intensity.min, badTripCA.intensity.max);
-        }
-        else
-        {
-            badTripCA.intensity.value = Mathf.Clamp(badTripCA.intensity.value - chromaticAberrationVariationRate * Time.deltaTime, badTripCA.intensity.min, badTripCA.intensity.max);
-        }
-
-        if (badTripCA.intensity.value >= badTripCA.intensity.max)
-        {
-            alternateCA = false;
-        }
-        else if (badTripCA.intensity.value <= badTripCA.intensity.min)
-        {
-            alternateCA = true;
-        }
-    }
-    void DoBadTripCycleST()
-    {
-        if (alternateST)
-        {
-            badTripST.balance.value -= colorChangeStrength * Time.deltaTime;
-        }
-        else
-        {
-            badTripST.balance.value -= colorChangeStrength * Time.deltaTime;
-        }
-
-        if (badTripST.balance.value >= 100)
-        {
-            alternateST = false;
-        }
-        else if (badTripST.balance.value <= -100)
+        else if (profileSplitToning.balance.value <= -100)
         {
             alternateST = true;
         }
@@ -149,74 +124,143 @@ public class TripManager : MonoBehaviour
 
 
 
-    void TripCycle()
-    {
-        switch (tripStatus)
-        {
-            case 1://sober
+    ////void TripCycle()
+    ////{
+    ////    switch (tripStatus)
+    ////    {
+    ////        case 1://sober
 
-                break;
-            case 2://good trip
-                //DoGoodTripCycleCA();
-                DoGoodTripCycleST();
+    ////            break;
+    ////        case 2://good trip
+    ////            //DoGoodTripCycleCA();
+    ////            //DoGoodTripCycleST();
 
-                timeLeft -= Time.deltaTime;
-                CheckEndTrip();
-                break;
-            case 3: //bad trip
+    ////            timeLeft -= Time.deltaTime;
+    ////            CheckEndTrip();
+    ////            break;
+    ////        case 3: //bad trip
 
-                DoBadTripCycleCA();
-                DoBadTripCycleST();
-                timeLeft -= Time.deltaTime;
-                CheckEndTrip();
-                break;
-        }
-    }
+    ////            //DoBadTripCycleCA();
+    ////            //DoBadTripCycleST();
+    ////            timeLeft -= Time.deltaTime;
+    ////            CheckEndTrip();
+    ////            break;
+    ////    }
+    ////}
 
 
     private void Update()
     {
-        TripCycle();
+        DrugCycle();
+
+
+
 
     }
 
-
-    private void CheckEndTrip()
+    private void DrugCycle()
     {
-        if (timeLeft <= 0)
+
+        if (workingProfile != null)
         {
-            GetSober();
+            if (tripStatus != 0)
+            {
+                CycleCA();
+                CycleST();
+            }
+
         }
+        else
+        {
+            Debug.LogError("current drug state was null - " + workingProfile);
+        }
+
+        //CheckEndTrip();
     }
 
+    //private void CheckEndTrip()
+    //{
+    //    if (timeLeft <= 0)
+    //    {
+    //        currentDrugState.ComeDown();
+    //    }
+    //}
 
-
-    public void GetSober()
+    void OnDrugStateChange()
     {
-        globalVolume.profile = soberProfile;
-        tripStatus = 1;
+        switch (tripStatus)
+        {
+            case 0:
+                workingProfile = soberProfile;
+                flipWorld = false;
+                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(soberBackgroundAudio);
+
+                break;
+
+
+            case 1:
+                workingProfile = firstStageProfile;
+                flipWorld = false;
+                break;
+
+
+            case 2:
+                workingProfile = secondStageProfile;
+                flipWorld = false;
+                break;
+
+
+            case 3:
+                workingProfile = thirdStageProfile;
+                flipWorld = false;
+                break;
+
+
+            case 4:
+                workingProfile = fourthStageProfile;
+                flipWorld = true;
+                break;
+
+            case 5:
+                workingProfile = fifthStageProfile;
+                flipWorld = false;
+                StartCoroutine(delayedDeath()); // I feel numb...
+                break;
+
+            default:
+                tripStatus = 0;
+                OnDrugStateChange();
+                break;
+        }
+
+        if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
+        else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
+        ReinitializeProfileQualities();
     }
 
-    public void Trip()
+    public void GetLow()
     {
-        Debug.Log("having a good time");
-        globalVolume.profile = goodTripProfile;
-        tripStatus = 2;
-        timeLeft = 30;
+        Debug.Log("got a bit more sober");
+        tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
+
     }
 
-    public void BadTrip()
+
+    public void GetHigh()
     {
-        Debug.Log("having a BAD time");
-        globalVolume.profile = badTripProfile;
-        tripStatus = 3;
-        timeLeft = 30;
+        Debug.Log("having a good time. trip is intensifying");
+        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 5);
     }
 
+    IEnumerator delayedDeath()
+    {
+
+        yield return new WaitForSecondsRealtime(10);
+    }
 
     public void Fadeout()
     {
-
+        //this should make the screen fade to black
 
     }
 

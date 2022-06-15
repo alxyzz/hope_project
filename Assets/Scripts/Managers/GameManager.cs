@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public TripManager TripManagerComponent;
     public DialogueManager CharacterInteractions;
     public ItemInteractionManager ItemInteractions;
-
+    public SoundManager SoundManagerComponent;
     public Entity player;
     public Transform pickupableObjects;
 

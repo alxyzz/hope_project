@@ -32,7 +32,7 @@ public static class DataStorage
     public static List<GenericObject> allpickupableObjects = new List<GenericObject>();
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
-    public static List<GenericObject> inventoryObj = new List<GenericObject>();
+    public static List<GenericObject> objectsInInventory = new List<GenericObject>(); //maximum 3 items i think? coz only 3 slots in the design UI
 
 
     //saving
