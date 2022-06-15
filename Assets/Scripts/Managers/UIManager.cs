@@ -14,7 +14,10 @@ public class UIManager : MonoBehaviour
     public Image hopeVisualizerImage;
     public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5; //going from hopeful to hopeless.
 
-
+    private void Start()
+    {
+        RefreshHopeVisualisation();
+    }
 
     public void RefreshHopeVisualisation()
     {//Current Hope<br>100%<br Max Hope <br>100%

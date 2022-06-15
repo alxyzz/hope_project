@@ -62,7 +62,11 @@ public class TripManager : MonoBehaviour
     /// </summary>
     void ReinitializeProfileQualities()
     {
-        
+        if (workingProfile == null)
+        {
+            Debug.Log("working profile was null. Cancelling  ReinitializeProfileQualities()");
+            return;
+        }
         ChromaticAberration tmp;
         SplitToning tmp2;
 
@@ -81,6 +85,10 @@ public class TripManager : MonoBehaviour
 
     void CycleCA()
     {
+        if (profileChromaticAberration == null)
+        {
+            ReinitializeProfileQualities();
+        }
         if (alternateCA)
         {
             profileChromaticAberration.intensity.value = Mathf.Clamp(profileChromaticAberration.intensity.value + chromaticAberrationVariationRate * Time.deltaTime, profileChromaticAberration.intensity.min, profileChromaticAberration.intensity.max);
@@ -102,6 +110,11 @@ public class TripManager : MonoBehaviour
 
     void CycleST()
     {
+        if (profileSplitToning == null)
+        {
+            ReinitializeProfileQualities();
+        }
+
         if (alternateST)
         {
             profileSplitToning.balance.value += colorChangeStrength * Time.deltaTime;
@@ -173,6 +186,7 @@ public class TripManager : MonoBehaviour
         else
         {
             Debug.LogError("current drug state was null - " + workingProfile);
+            workingProfile = soberProfile;
         }
 
         //CheckEndTrip();
