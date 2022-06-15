@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,35 +10,33 @@ public class UIManager : MonoBehaviour
     public Slider hopeSlider;
     public Canvas ingameMenu;
     public List<InventoryUIObject> inventorySlotList = new List<InventoryUIObject>();
-
+    public TextMeshProUGUI maxHopeText;
     public Image hopeVisualizerImage;
-    public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5, hopeVis6; //going from hopeful to hopeless.
+    public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5; //going from hopeful to hopeless.
 
 
 
     public void RefreshHopeVisualisation()
     {
-        if (IsBetween(DataStorage.maxHope, 0, 25))
-        {
-            hopeVisualizerImage.sprite = hopeVis6;
-        }
-        else if (IsBetween(DataStorage.maxHope, 26, 50))
+        maxHopeText.text = DataStorage.maxHope.ToString() + "%";
+        hopeSlider.value = DataStorage.maxHope;
+        if (IsBetween(DataStorage.maxHope, 0, 20))
         {
             hopeVisualizerImage.sprite = hopeVis5;
         }
-        else if (IsBetween(DataStorage.maxHope, 51, 75))
+        else if (IsBetween(DataStorage.maxHope, 20, 40))
         {
             hopeVisualizerImage.sprite = hopeVis4;
         }
-        else if (IsBetween(DataStorage.maxHope, 76, 100))
+        else if (IsBetween(DataStorage.maxHope, 40, 60))
         {
             hopeVisualizerImage.sprite = hopeVis3;
         }
-        else if (IsBetween(DataStorage.maxHope, 101, 125))
+        else if (IsBetween(DataStorage.maxHope, 60, 80))
         {
             hopeVisualizerImage.sprite = hopeVis2;
         }
-        else if (IsBetween(DataStorage.maxHope, 126, 130))
+        else if (IsBetween(DataStorage.maxHope, 80, 100))
         {
             hopeVisualizerImage.sprite = hopeVis1;
         }

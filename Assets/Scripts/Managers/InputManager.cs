@@ -67,10 +67,11 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
-            if (DataStorage.maxHope > 20)
+            if (DataStorage.maxHope > 0)
             {
                 DataStorage.GameManagerComponent.TripManagerComponent.GetHigh();
-                DataStorage.maxHope -= 15;
+                DataStorage.maxHope -= 20;
+                DataStorage.GameManagerComponent.UIManagerComponent.RefreshHopeVisualisation();
                 Debug.Log("good trip");
             }
             else

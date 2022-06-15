@@ -16,8 +16,10 @@ public class TripManager : MonoBehaviour
     public int hallucinationStrength, chromaticAberrationVariationRate, wobbleStrength, colorChangeStrength, tripInSeconds = 30;
     public float timeLeft; //this will probably not be based on time, and more on events happening, so the player does not feel rushed
     [SerializeField]
-    private VolumeProfile workingProfile, soberProfile, firstStageProfile, secondStageProfile, thirdStageProfile, fourthStageProfile, fifthStageProfile;
-    
+    private VolumeProfile soberProfile, firstStageProfile, secondStageProfile, thirdStageProfile, fourthStageProfile, fifthStageProfile;
+    [HideInInspector]
+    private VolumeProfile workingProfile;
+
     [SerializeField]
     private Volume globalVolume;
 
@@ -29,9 +31,9 @@ public class TripManager : MonoBehaviour
         ReinitializeProfileQualities();
     }
 
-    public bool seeUnreality; //see weird objects from stage 2 onwards;
-    public bool graphicVariance; //see weird objects from stage 2 onwards;
-    protected bool flipWorld;
+    private bool seeUnreality; //see weird objects from stage 2 onwards;
+    private bool graphicVariance; //see weird objects from stage 2 onwards;
+    private bool flipWorld;
     public AudioClip backgroundMusic;
 
 
@@ -156,20 +158,23 @@ public class TripManager : MonoBehaviour
 
     }
 
-
-    //this also contains stuff we don't want to define in the drug trip's Cycle proc
     private void DrugCycle()
     {
 
         if (workingProfile != null)
         {
-            
+            if (tripStatus != 0)
+            {
+                CycleCA();
+                CycleST();
+            }
+
         }
         else
         {
             Debug.LogError("current drug state was null - " + workingProfile);
         }
-        
+
         //CheckEndTrip();
     }
 
@@ -189,7 +194,7 @@ public class TripManager : MonoBehaviour
                 workingProfile = soberProfile;
                 flipWorld = false;
                 if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(soberBackgroundAudio);
-                
+
                 break;
 
 
@@ -237,7 +242,7 @@ public class TripManager : MonoBehaviour
     {
         Debug.Log("got a bit more sober");
         tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
-        
+
     }
 
 
