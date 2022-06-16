@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour
 {
 
     public string entityName, description;
-
+        
     public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
