@@ -203,7 +203,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &64558214
 GameObject:
@@ -450,7 +450,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &199224020
 GameObject:
@@ -938,7 +938,7 @@ Transform:
   - {fileID: 1182745836}
   - {fileID: 992971807}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 9.282, y: -180, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -1081,7 +1081,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 429756918}
   - component: {fileID: 429756917}
   - component: {fileID: 429756919}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 516979093}
   - component: {fileID: 516979095}
   - component: {fileID: 516979094}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 594245587}
   - component: {fileID: 594245589}
   - component: {fileID: 594245588}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlotBorder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1661,7 +1661,8 @@ GameObject:
   - component: {fileID: 709795678}
   - component: {fileID: 709795680}
   - component: {fileID: 709795679}
-  m_Layer: 0
+  - component: {fileID: 709795681}
+  m_Layer: 5
   m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1688,7 +1689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347.4, y: -182.5}
+  m_AnchoredPosition: {x: -365, y: -174.86}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709795679
@@ -1729,6 +1730,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709795677}
   m_CullTransparentMesh: 1
+--- !u!61 &709795681
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709795677}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 22.753931, y: 1.400238}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 43.707386, y: 48.60811}
+  m_EdgeRadius: 0
 --- !u!1 &745698970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,7 +1767,7 @@ GameObject:
   - component: {fileID: 745698971}
   - component: {fileID: 745698973}
   - component: {fileID: 745698972}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HopeVisualizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1755,7 +1782,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745698970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000000071064}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1766,8 +1793,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -347, y: -188}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 259, y: 125}
+  m_SizeDelta: {x: 95.7649, y: 86.929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745698972
 MonoBehaviour:
@@ -1854,7 +1881,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &863361562
 GameObject:
@@ -1866,7 +1893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 863361563}
   - component: {fileID: 863361564}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2187,7 +2214,7 @@ Transform:
   - {fileID: 121035015}
   - {fileID: 199224021}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033336350
 GameObject:
@@ -2200,7 +2227,7 @@ GameObject:
   - component: {fileID: 1033336351}
   - component: {fileID: 1033336353}
   - component: {fileID: 1033336352}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2277,7 +2304,7 @@ GameObject:
   - component: {fileID: 1182745839}
   - component: {fileID: 1182745838}
   - component: {fileID: 1182745837}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2557,7 +2584,7 @@ Transform:
   m_Children:
   - {fileID: 1496239610}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377707265
 GameObject:
@@ -2602,7 +2629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1421264915}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2641,7 +2668,7 @@ GameObject:
   - component: {fileID: 1469054637}
   - component: {fileID: 1469054639}
   - component: {fileID: 1469054638}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2715,8 +2742,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3087,7 +3114,7 @@ MonoBehaviour:
   originalMat: {fileID: 0}
   pickupable: 1
   canBePutDown: 1
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   useInWorld:
     m_PersistentCalls:
       m_Calls:
@@ -3158,7 +3185,7 @@ GameObject:
   - component: {fileID: 1698641132}
   - component: {fileID: 1698641134}
   - component: {fileID: 1698641133}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3266,7 +3293,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816049004
 GameObject:
@@ -3335,7 +3362,7 @@ MonoBehaviour:
   originalMat: {fileID: 0}
   pickupable: 1
   canBePutDown: 1
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   useInWorld:
     m_PersistentCalls:
       m_Calls:
@@ -3570,7 +3597,7 @@ GameObject:
   - component: {fileID: 1908609287}
   - component: {fileID: 1908609289}
   - component: {fileID: 1908609288}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlotBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3942,7 +3969,7 @@ GameObject:
   - component: {fileID: 2056733307}
   - component: {fileID: 2056733309}
   - component: {fileID: 2056733308}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlotBorder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4019,7 +4046,7 @@ GameObject:
   - component: {fileID: 2078939215}
   - component: {fileID: 2078939217}
   - component: {fileID: 2078939216}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4140,6 +4167,8 @@ GameObject:
   - component: {fileID: 2102162869}
   - component: {fileID: 2102162867}
   - component: {fileID: 2102162870}
+  - component: {fileID: 2102162872}
+  - component: {fileID: 2102162871}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -4163,7 +4192,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 51.63014
     y: 158.26028
-    width: 156.26862
+    width: 155.6
     height: 40
   tint: {r: 1, g: 0, b: 0, a: 1}
   useCustomTint: 1
@@ -4210,7 +4239,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 68
     y: 64
-    width: 113.283554
+    width: 112.4
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4233,11 +4262,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 72.33221, y: -14.312548}
+  scrollPos: {x: 54.046402, y: -104.727936}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 260
-  zoom: 0.6700003
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -4247,7 +4276,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2102162868}
   selectedCommands:
-  - {fileID: 2102162870}
+  - {fileID: 2102162872}
   variables: []
   description: 
   stepPause: 0
@@ -4272,7 +4301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102162861
 MonoBehaviour:
@@ -4480,7 +4509,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 58.192432
     y: 222.82794
-    width: 145.52234
+    width: 143.6
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
@@ -4489,9 +4518,11 @@ MonoBehaviour:
   description: Test
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2102162871}
   - {fileID: 2102162869}
   - {fileID: 2102162867}
   - {fileID: 2102162870}
+  - {fileID: 2102162872}
   suppressAllAutoSelections: 0
 --- !u!114 &2102162869
 MonoBehaviour:
@@ -4540,7 +4571,7 @@ MonoBehaviour:
   itemId: 17
   indentLevel: 0
   description: Puts down book (hopefully)
-  delay: 0
+  delay: 0.5
   invokeType: 0
   staticEvent:
     m_PersistentCalls:
@@ -4549,6 +4580,118 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
         m_MethodName: Grab
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2102162871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 19
+  indentLevel: 0
+  description: Stops character movement
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278524}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ToggleCharacterMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2102162872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 18
+  indentLevel: 0
+  description: Resumes character movement
+  delay: 0.5
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278524}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ToggleCharacterMovement
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4676,7 +4819,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2123075245
 GameObject:
@@ -4715,7 +4858,7 @@ Transform:
   - {fileID: 235914866}
   - {fileID: 2143531607}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2123075252
 MonoBehaviour:
