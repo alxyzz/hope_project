@@ -39,6 +39,16 @@ public class ItemInteractionManager : MonoBehaviour
     {
         Debug.LogWarning("Testing events");
     }
+    
+    public void PutInBackpack() // item displayed in inventory (wip)
+    {
+        if (DataStorage.objectsInInventory.Count < 3)
+        {
+            int count = DataStorage.objectsInInventory.Count;
+            DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
+            DataStorage.objectsInInventory[count] = lastUsedObject;
+        }
+    }
 
 
 
