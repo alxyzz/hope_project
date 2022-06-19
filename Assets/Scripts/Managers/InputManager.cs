@@ -63,6 +63,7 @@ public class InputManager : MonoBehaviour
         }
 
 
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("pressed space");
@@ -119,6 +120,14 @@ public class InputManager : MonoBehaviour
     }
 
 
+    // vvvvvv just need this for the fungus flowchart
+    public void ToggleCharacterMovement(bool moving)
+    {
+        if (moving)
+            DataStorage.GameManagerComponent.player.PauseMovement();
+        else
+            DataStorage.GameManagerComponent.player.ResumeMovement();
+    }
 
 
 }

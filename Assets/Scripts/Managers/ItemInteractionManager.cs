@@ -8,8 +8,8 @@ public class ItemInteractionManager : MonoBehaviour
     public GenericObject lastUsedObject;
     public Material SelectedObjectMaterial;
 
-    
 
+    private bool localCanBePutDown;
 
 
 
@@ -19,24 +19,35 @@ public class ItemInteractionManager : MonoBehaviour
         {
             if (!DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled)
             {
-                Debug.Log("Grab is doing the thing");
+                //Debug.Log("Grab is doing the thing");
+                localCanBePutDown = lastUsedObject.canBePutDown;
                 DataStorage.currentlyHeldObject.GetComponent<MeshFilter>().mesh = lastUsedObject.GetComponent<MeshFilter>().mesh;
                 DataStorage.currentlyHeldObject.transform.localScale = lastUsedObject.transform.localScale;
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().material = lastUsedObject.GetComponent<GenericObject>().originalMat;
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = true;
                 lastUsedObject.GetComponent<MeshRenderer>().enabled = false;
             }
-            else if (currentlySelectedObject.canBePutDown) // puts down IN THE SAME SPOT as it was picked up from
+            else if (localCanBePutDown) // puts down IN THE SAME SPOT as it was picked up from
             {
-                Debug.Log("Grab is putting it down");
+                //Debug.Log("Grab is putting it down");
                 DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
-                currentlySelectedObject.GetComponent<MeshRenderer>().enabled = true;
+                lastUsedObject.GetComponent<MeshRenderer>().enabled = true;
             }
         }
     }
     public void Test()
     {
         Debug.LogWarning("Testing events");
+    }
+    
+    public void PutInBackpack() // item displayed in inventory (wip)
+    {
+        if (DataStorage.objectsInInventory.Count < 3)
+        {
+            int count = DataStorage.objectsInInventory.Count;
+            DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
+            DataStorage.objectsInInventory[count] = lastUsedObject;
+        }
     }
 
 

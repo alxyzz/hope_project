@@ -19,6 +19,10 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public void TalkBook()
+    {
+        selfFlowchart.ExecuteBlock("Clicked on book");
+    }
     public void TalkJulia()
     {
 
