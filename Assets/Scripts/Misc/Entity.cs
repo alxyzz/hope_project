@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour
 {
 
     public string entityName, description;
-        
+
     public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
@@ -15,10 +15,15 @@ public class Entity : MonoBehaviour
 
     public float moveDelay;//for random periodic movement if necessary
     public float moveDistance;//the amount it moves if it moves randomly 
-
+    public bool lastMovementWasRight;
     public float moveSpeed;
     public Rigidbody rigidBody;
 
+
+    Vector3 lastpos;
+    private SpriteRenderer sprenderer;
+
+    Animator animRef;
     //navigation
     public NavMeshAgent navAgent;
     Vector3 aiDestination; //the point where the AI will navigate to if 1. moving is true 2. it's not 0,0,0
@@ -34,46 +39,92 @@ public class Entity : MonoBehaviour
     /// </summary>
     public void Interact()
     {
-        talkFunction.Invoke();
+        if (!player)
+        {
+            talkFunction.Invoke();
+        }
+        
     }
+
 
     public void Start()
     {
+        sprenderer = GetComponent<SpriteRenderer>();
+        try
+        {
+            if (player)
+            {
+                animRef = GetComponent<Animator>();
+            }
+        }
+        catch
+        {
+            Debug.Log("entity " + entityName + " has no animator.");
+        }
+        
         startingPosition = transform.position;
     }
 
-    private float timeSinceLastWander;
-    // Update is called once per frame
-
-
-
-
-
+    //private float timeSinceLastWander;
 
     void Update()
     {
-        if (wandering)
+        //if (wandering)
+        //{
+        //    if (Vector3.Distance(transform.position, aiDestination) < 0.1f) //we make the character stop wandering if it's too close to the destination
+        //    {
+        //        PauseMovement();
+        //    }
+        //    timeSinceLastWander += Time.deltaTime; //check if it's time to wander
+        //    if (timeSinceLastWander >= moveDelay)
+        //    {//move to a random position
+        //        ResumeMovement();
+        //        aiDestination = new Vector3(transform.position.x + Random.Range(0, moveDistance), transform.position.y, transform.position.z + Random.Range(0, moveDistance));
+
+        //    }
+
+        //    if (Vector3.Distance(transform.position, startingPosition) > (3 * moveDistance)) //we make the character stop wandering if it's too close to the destination
+        //    {
+
+        //        ResumeMovement();
+        //        aiDestination = startingPosition;
+        //    }
+        //}
+        if (player)
         {
-            if (Vector3.Distance(transform.position, aiDestination) < 0.1f) //we make the character stop wandering if it's too close to the destination
+            if (transform.position.x > lastpos.x)
+            {//moved left
+                animRef.SetBool("walkLeft", true);
+                animRef.SetBool("walkRight", false);
+                animRef.SetBool("lookLeft", false);
+                lastMovementWasRight = false;
+
+            }
+            else if (transform.position.x < lastpos.x)
+            {//moved right
+                animRef.SetBool("walkRight", true);
+                animRef.SetBool("walkLeft", false);
+                animRef.SetBool("lookLeft", false);
+                lastMovementWasRight = true;
+            }
+
+            if (lastpos == transform.position)
             {
-                PauseMovement();
-            }
-            timeSinceLastWander += Time.deltaTime; //check if it's time to wander
-            if (timeSinceLastWander >= moveDelay)
-            {//move to a random position
-                ResumeMovement();
-                aiDestination = new Vector3(transform.position.x + Random.Range(0, moveDistance), transform.position.y, transform.position.z + Random.Range(0, moveDistance));
+                animRef.SetBool("walkRight", false);
+                animRef.SetBool("walkLeft", false);
+                if (lastMovementWasRight)
+                {
+                    animRef.SetBool("lookLeft", false);
+                }
+                else
+                {
+                    animRef.SetBool("lookLeft", true);
+                }
 
             }
-
-            if (Vector3.Distance(transform.position, startingPosition) > (3 * moveDistance)) //we make the character stop wandering if it's too close to the destination
-            {
-
-                ResumeMovement();
-                aiDestination = startingPosition;
-            }
+            lastpos = transform.position;
         }
-
+        
 
         //if (!player && moving)
         //{
@@ -95,6 +146,9 @@ public class Entity : MonoBehaviour
         navAgent.velocity = Vector3.zero;
         navAgent.isStopped = true;
 
+        animRef.SetBool("walkRight", false);
+        animRef.SetBool("walkLeft", false);
+
 
 
 
@@ -106,6 +160,9 @@ public class Entity : MonoBehaviour
         navAgent.isStopped = false;
         navAgent.velocity = lastAgentVelocity;
         navAgent.SetPath(lastAgentPath);
+        Debug.LogError("animRef.SetBool(\"isWalking\", !navAgent.isStopped);" + " state is  !navAgent.isStopped");
+
+
     }
 
 
