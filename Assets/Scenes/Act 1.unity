@@ -107,15 +107,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.3
-    agentHeight: 1.5
-    agentSlope: 45
+    agentRadius: 0.32
+    agentHeight: 1.47
+    agentSlope: 45.1
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.1
+    cellSize: 0.10666666
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -6092,6 +6092,7 @@ GameObject:
   - component: {fileID: 5534493765903796588}
   - component: {fileID: 2667316307026911275}
   - component: {fileID: 2114822900006106514}
+  - component: {fileID: 5534493765903796589}
   m_Layer: 6
   m_Name: Floor_Bathroom
   m_TagString: Untagged
@@ -7762,6 +7763,19 @@ Transform:
   m_Father: {fileID: 666112558004550103}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5534493765903796589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769100577591488711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8248618, y: 0.06138854, z: 2.3178144}
+  m_Center: {x: -0.00000005960464, y: 0, z: 0.000000014901161}
 --- !u!4 &5562768669367670039
 Transform:
   m_ObjectHideFlags: 0
