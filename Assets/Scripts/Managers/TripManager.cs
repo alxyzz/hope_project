@@ -185,7 +185,7 @@ public class TripManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("current drug state was null - " + workingProfile);
+            Debug.Log("current drug state was null - " + workingProfile);
             workingProfile = soberProfile;
         }
 
