@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Ground
   - Pickupable
-  - 
-  - 
-  - 
+  - Scenery
+  - Player
+  - Entity
   - 
   - 
   - 
