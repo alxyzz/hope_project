@@ -6,7 +6,7 @@ public class Entity : MonoBehaviour
 {
 
     public string entityName, description;
-        
+
     public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
@@ -37,15 +37,29 @@ public class Entity : MonoBehaviour
         talkFunction.Invoke();
     }
 
+
+    Animator animRef;
     public void Start()
     {
+        try
+        {
+            if (player)
+            {
+                animRef = GetComponent<Animator>();
+            }
+        }
+        catch
+        {
+            Debug.Log("entity " + entityName + " has no animator.");
+        }
+        
         startingPosition = transform.position;
     }
 
     private float timeSinceLastWander;
     // Update is called once per frame
 
-
+    Vector3 lastpos;
 
 
 
@@ -73,7 +87,19 @@ public class Entity : MonoBehaviour
                 aiDestination = startingPosition;
             }
         }
-
+        if (player)
+        {
+            if (lastpos == transform.position)
+            {
+                animRef.SetBool("isMoving", false);
+            }
+            else
+            {
+                animRef.SetBool("isMoving", true);
+            }
+            lastpos = transform.position;
+        }
+        
 
         //if (!player && moving)
         //{
@@ -95,6 +121,8 @@ public class Entity : MonoBehaviour
         navAgent.velocity = Vector3.zero;
         navAgent.isStopped = true;
 
+        animRef.SetBool("isMoving", !navAgent.isStopped);
+
 
 
 
@@ -106,6 +134,9 @@ public class Entity : MonoBehaviour
         navAgent.isStopped = false;
         navAgent.velocity = lastAgentVelocity;
         navAgent.SetPath(lastAgentPath);
+        Debug.LogError("animRef.SetBool(\"isWalking\", !navAgent.isStopped);" + " state is  !navAgent.isStopped");
+        animRef.SetBool("isMoving", !navAgent.isStopped);
+
     }
 
 
