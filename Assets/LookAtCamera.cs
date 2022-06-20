@@ -17,14 +17,14 @@ public class LookAtCamera : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, 5f, transform.eulerAngles.z);
-        if (transform.position.x > xloc)
-        {//moved left
-            sprenderer.flipX = false;
-        }
-        else if (transform.position.x < xloc)
-        {//moved right
-            sprenderer.flipX = true;
-        }
+        //if (transform.position.x > xloc)
+        //{//moved left
+        //    sprenderer.flipX = false;
+        //}
+        //else if (transform.position.x < xloc)
+        //{//moved right
+        //    sprenderer.flipX = true;
+        //}
 
 
 
