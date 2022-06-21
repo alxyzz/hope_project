@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
         {
             talkFunction.Invoke();
         }
-        
+
     }
 
 
@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
         {
             Debug.Log("entity " + entityName + " has no animator.");
         }
-        
+
         startingPosition = transform.position;
     }
 
@@ -124,18 +124,86 @@ public class Entity : MonoBehaviour
             }
             lastpos = transform.position;
         }
-        
+        if (entityName == "Cat")
+        {
+            Transform playertrans = DataStorage.Player.transform;
+            //if x negative and z negative -> look upright
+            //if x positive and z negative -> look upleft
 
-        //if (!player && moving)
-        //{
-        //    navAgent.SetDestination(aiDestination);
-        //}
+            //if x positive and z positive -> look downleft
+            //if x negative and z positive -> look downright
+            //the following take precedence due to more specific conditions
+            //if player is directly to the x+ but z is within 2f -> look left
+            //if player is directly to the x- but z is within 2f -> look right
+            // if player is directly to the z+ but x is within 2f -> look down
+            //if player is directly to the z- but x is within 2f -> look up
+            if (Vector3.Distance(playertrans.position, transform.position) > LookAnimation_LookRadius)
+            {//not looking at anyone
+                animRef.SetInteger("lookDir", 9);
+
+            }
+
+            else
+            if (playertrans.position.x > transform.position.x && (Mathf.Abs(playertrans.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            {//look left done
+                animRef.SetInteger("lookDir", 4);
+            }
+            else if (playertrans.position.x < transform.position.x && (Mathf.Abs(playertrans.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            {//look right done
+                animRef.SetInteger("lookDir", 5);
+            }
+            else if (playertrans.position.z > transform.position.z && (Mathf.Abs(playertrans.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            {//look down done
+                animRef.SetInteger("lookDir", 7);
+            }
+            else if (playertrans.position.z < transform.position.z && (Mathf.Abs(playertrans.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            {//look up done
+                animRef.SetInteger("lookDir", 2);
+            }
+            else
+            if (playertrans.position.x > transform.position.x && playertrans.position.z > transform.position.z)
+            {//look downleft done
+                animRef.SetInteger("lookDir", 6);
+            }
+            else if (playertrans.position.x < transform.position.x && playertrans.position.z > transform.position.z)
+            {//look downright done
+                animRef.SetInteger("lookDir", 8);
+            }
+            else if (playertrans.position.x < transform.position.x && playertrans.position.z < transform.position.z)
+            {//look upright done
+                animRef.SetInteger("lookDir", 3);
+            }
+            else if (playertrans.position.x > transform.position.x && playertrans.position.z < transform.position.z)
+            {//look upleft done
+                animRef.SetInteger("lookDir", 1);
+            }
+
+
+
+
+
+
+
+        }
+
+
 
 
     }
 
+    public float LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
+    public float LookAnimation_LookRadius;
 
-
+    public bool IsBetween(double testValue, double bound1, double bound2)
+    {
+        return (testValue >= System.Math.Min(bound1, bound2) && testValue <= System.Math.Max(bound1, bound2));
+    }
+    public float CalculateAngle180_v3(Vector3 fromDir, Vector3 toDir)
+    {
+        float angle = Quaternion.FromToRotation(fromDir, toDir).eulerAngles.y;
+        if (angle > 180) { return angle - 360f; }
+        return angle;
+    }
 
     public void PauseMovement()
     {
@@ -190,6 +258,12 @@ public class Entity : MonoBehaviour
 
             }
         }
+        else if (entityName == "Cat")
+        {
+
+        }
+
+
 
     }
 
@@ -203,6 +277,12 @@ public class Entity : MonoBehaviour
                 other.gameObject.GetComponent<GenericObject>().Select(false);
             }
         }
+        else if (entityName == "Cat")
+        {
+
+        }
+
+
 
     }
 
