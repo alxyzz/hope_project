@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class StorylineManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public int BathroomExaminedObjects;
+    public int BathroomTargetExaminedObjects; //hit this number in previous variable to be able to see the inventory
+
+    public string CurrentLevel;
+    public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor;
+    
+
+    private void Update()
     {
-        
+        switch (CurrentLevel)
+        {
+            case "BathroomFirstEntry":
+                
+                break;
+            default:
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

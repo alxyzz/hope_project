@@ -9,10 +9,35 @@ public class UIManager : MonoBehaviour
 
     public Slider hopeSlider;
     public Canvas ingameMenu;
+    public Canvas UICanvas;
     public List<InventoryUIObject> inventorySlotList = new List<InventoryUIObject>();
     public TextMeshProUGUI maxHopeText;
     public Image hopeVisualizerImage;
     public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5; //going from hopeful to hopeless.
+    /// <summary>
+    /// maximum amount of messages that can be on the screen at the same time
+    /// </summary>
+    public int messageMaxStackedAmount;
+    /// <summary>
+    /// the distance messages appear from the player
+    /// </summary>
+    public float messageVerticalOffsetFromPlayer;
+    /// <summary>
+    /// time until a message fades
+    /// </summary>
+    public float messageFadeTime;
+
+    public float messageSlideSpeed;
+    public List<PopUpMessageScript> messageQueue = new List<PopUpMessageScript>();
+
+
+
+
+    //UI visiblity states
+    [HideInInspector]
+    public bool backpackVisible = false, hopeVisible = false;
+    public GameObject invParent, hopeParent;
+
 
     private void Start()
     {
@@ -21,6 +46,16 @@ public class UIManager : MonoBehaviour
 
     public void RefreshHopeVisualisation()
     {//Current Hope<br>100%<br Max Hope <br>100%
+
+        if (!hopeVisible)
+        {
+            hopeParent.SetActive(false);
+            return;
+        }
+        else
+        {
+            hopeParent.SetActive(true);
+        }
         maxHopeText.text = "Current Hope<br>"+ DataStorage.currentHope.ToString() +"%<br>Max Hope<br>"+ DataStorage.maxHope.ToString()+"%";
         hopeSlider.value = DataStorage.currentHope;
         if (IsBetween(DataStorage.maxHope, 0, 20))
@@ -79,7 +114,37 @@ public class UIManager : MonoBehaviour
 
             }
         }
+        if (!backpackVisible)
+        {
+            invParent.SetActive(false);
+            return;
+        }
+        else
+        {
+            invParent.SetActive(true);
+        }
 
+    }
+
+    /// <summary>
+    /// pop up a message above the player character
+    /// </summary>
+    /// <param name="message"></param>
+    public void TalkToSelf(string message)
+    {
+        
+        
+        foreach (PopUpMessageScript item in messageQueue)
+        {
+            item.MakeWay();
+        }
+        GameObject b = ObjectPooling.Instance.SpawnFromPool("messageBox", new Vector3(Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).x, Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).y + messageVerticalOffsetFromPlayer, Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).z), Quaternion.identity);
+        PopUpMessageScript c = b.GetComponent<PopUpMessageScript>();
+        messageQueue.Add(c);
+        c.ChangeText(message);
+        c.slideSpeed = messageSlideSpeed;
+        c.movedUpMaxAmount = messageMaxStackedAmount;
+        c.StartCoroutine("timedDisappearance");
 
     }
 
