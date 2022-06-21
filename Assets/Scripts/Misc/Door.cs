@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
 {
 
     public bool goesToNextScene;
+    public Transform Destination;
 
     /// <summary>
     /// Door, aka portal to next level
@@ -20,8 +21,19 @@ public class Door : MonoBehaviour
             {
                 Invoke(nameof(LoadNextScene), 1f);
             }
+            else
+            {
+                GotoDestination();
+            }
             
         }
+    }
+
+
+    public void GotoDestination()
+    {
+        Debug.LogWarning("Teleporting through door.");
+        DataStorage.Player.transform.position = Destination.position;
     }
     public void LoadNextScene()
     {

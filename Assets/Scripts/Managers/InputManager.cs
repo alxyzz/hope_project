@@ -77,7 +77,6 @@ public class InputManager : MonoBehaviour
                     DataStorage.currentHope = DataStorage.maxHope;
                 }
                 DataStorage.GameManagerComponent.UIManagerComponent.RefreshHopeVisualisation();
-                Debug.Log("good trip");
             }
             else
             {
@@ -107,9 +106,13 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) ////////////////////////////////////////USE BUTTON
         {
             Debug.Log("pressed z use button");
+            if (fakestuffint> 6)
+            {
+                fakestuffint = 0;
+            }
 
-
-            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("YOOOO TEXTBOX");
+            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox(fakeStuff[fakestuffint]);
+            fakestuffint++;
             //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
 
 
@@ -132,10 +135,18 @@ public class InputManager : MonoBehaviour
 
 
     }
+    //    Mirror/sink: “Damn this outfit looks good…but not on me.” (Pop-up picture with a mirror reflection)
+    //Magazines: „Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, Fucking dumbass town,… *sigh* whatever.”
+    //Toilette: “Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…”
+    //Bathtub: “I could really use a bath. I haven’t been home in days.”
+    //Door: “I don’t feel like leaving yet.”
+
+    int fakestuffint = 0;
+    string[]  fakeStuff = new string[8]{ "Damn this outfit looks good… but not on me.", "Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, Fucking dumbass town,… *sigh* whatever.", "Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…", "I could really use a bath. I haven’t been home in days.", "I don’t feel like leaving yet.", "Hmm. I found a pill in my pocket. I guess I could try one...", "WOOOOW...", " I feel sick..."};
 
 
-    // vvvvvv just need this for the fungus flowchart
-    public void ToggleCharacterMovement(bool moving)
+// vvvvvv just need this for the fungus flowchart
+public void ToggleCharacterMovement(bool moving)
     {
         if (moving)
             DataStorage.GameManagerComponent.player.PauseMovement();
