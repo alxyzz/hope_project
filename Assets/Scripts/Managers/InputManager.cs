@@ -22,10 +22,10 @@ public class InputManager : MonoBehaviour
         m_castPoint = Camera.main.ScreenPointToRay(mousePosition);
         if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
         {
-            if (!m_hit.collider.CompareTag("Player"))
-            {
-                DataStorage.Player.Movement(m_hit.point);
-            }
+            //if (!m_hit.collider.CompareTag("Player"))
+            //{
+            //    DataStorage.Player.Movement(m_hit.point);
+            //}
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -51,18 +51,18 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {//toggle movement on RMB
-            Debug.Log("pressed RMB");
-            if (DataStorage.GameManagerComponent.player.navAgent.isStopped)
-            {
-                DataStorage.GameManagerComponent.player.ResumeMovement();
-            }
-            else
-            {
-                DataStorage.GameManagerComponent.player.PauseMovement();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse1))
+        //{//toggle movement on RMB
+        //    Debug.Log("pressed RMB");
+        //    if (DataStorage.GameManagerComponent.player.navAgent.isStopped)
+        //    {
+        //        DataStorage.GameManagerComponent.player.ResumeMovement();
+        //    }
+        //    else
+        //    {
+        //        DataStorage.GameManagerComponent.player.PauseMovement();
+        //    }
+        //}
 
 
 
@@ -148,13 +148,13 @@ public class InputManager : MonoBehaviour
 
 
 // vvvvvv just need this for the fungus flowchart
-public void ToggleCharacterMovement(bool moving)
-    {
-        if (moving)
-            DataStorage.GameManagerComponent.player.PauseMovement();
-        else
-            DataStorage.GameManagerComponent.player.ResumeMovement();
-    }
+//public void ToggleCharacterMovement(bool moving)
+//    {
+//        if (moving)
+//            DataStorage.GameManagerComponent.player.PauseMovement();
+//        else
+//            DataStorage.GameManagerComponent.player.ResumeMovement();
+//    }
 
 
 }
