@@ -150,7 +150,7 @@ public class UIManager : MonoBehaviour
         c.slideSpeed = messageSlideSpeed;
         c.movedUpMaxAmount = messageMaxStackedAmount;
         c.fadeTime = messageFadeTime;
-        c.StartCoroutine("timedDisappearance");
+        c.StartCoroutine("TimedDisappearance");
         MessageBoxAmtLimit();
 
 
@@ -158,7 +158,7 @@ public class UIManager : MonoBehaviour
 
     private void MessageBoxAmtLimit()
     {
-        if (messageQueue.Count >= 12)
+        if (messageQueue.Count >= messageMaxStackedAmount)
         {
             messageQueue[0].Disappear();
             //messageQueue.RemoveAt(0); probably dont need this

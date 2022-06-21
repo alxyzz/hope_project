@@ -45,11 +45,18 @@ public class ItemInteractionManager : MonoBehaviour
     
     public void PutInBackpack() // item displayed in inventory (wip)
     {
+        //Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
         if (DataStorage.objectsInInventory.Count < 3)
         {
             int count = DataStorage.objectsInInventory.Count;
             DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
             DataStorage.objectsInInventory[count] = lastUsedObject;
+            DataStorage.GameManagerComponent.UIManagerComponent.inventorySlotList[count].containedObject = lastUsedObject;
+            DataStorage.GameManagerComponent.UIManagerComponent.inventorySlotList[count].EquipItemHere();
+        }
+        else
+        {
+            Debug.LogWarning("Inventory is full :(");
         }
     }
 
