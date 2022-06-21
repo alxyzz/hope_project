@@ -24,16 +24,17 @@ public static class DataStorage
     public static Entity Player;
     public static int maxHope = 100, currentHope = 100;
     public static bool isHigh;
-    public static List<Entity> allLivingEntities = new List<Entity>();
+    public static List<Entity> allLivingEntities = new();
 
     //objects
     public static GenericObject currentlyHeldObject; // object that player currently holds (the Grab child of Player GameObject)
-    public static List<GenericObject> allObjects = new List<GenericObject>();
-    public static List<GenericObject> allpickupableObjects = new List<GenericObject>();
+    public static List<GenericObject> allObjects = new();
+    public static List<GenericObject> allpickupableObjects = new();
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
-    public static List<GenericObject> objectsInInventory = new List<GenericObject>(); //maximum 3 items i think? coz only 3 slots in the design UI
-    public static List<Light> lightsInWorld = new List<Light>();
+    public static List<GenericObject> objectsInInventory = new(); //maximum 3 items i think? coz only 3 slots in the design UI
+    public static List<InventoryUIObject> inventorySlots = new(); // sprite slots in inventory 
+    public static List<Light> lightsInWorld = new();
     //inventory UI objects are stored in UIManager
 
 
