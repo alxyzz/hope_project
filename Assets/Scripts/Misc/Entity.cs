@@ -52,7 +52,7 @@ public class Entity : MonoBehaviour
         sprenderer = GetComponent<SpriteRenderer>();
         try
         {
-            if (player)
+            if (GetComponent<Animator>() != null)
             {
                 animRef = GetComponent<Animator>();
             }
