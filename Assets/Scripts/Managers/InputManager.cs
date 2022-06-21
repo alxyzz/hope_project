@@ -32,11 +32,13 @@ public class InputManager : MonoBehaviour
 
                 GenericObject targetObject = m_hit.collider.GetComponent<GenericObject>();
                 Entity targetEntity = m_hit.collider.GetComponent<Entity>();
-                if (targetObject != null && DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == targetObject)
+                //if (targetObject != null && DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == targetObject)
+                if (targetObject != null)
                 {
                     Debug.Log("hit object " + m_hit.transform.name);
                     //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = targetObject;
-                    DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
+                    //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
+                    targetObject.Interact();
                 }
                 else if (targetEntity != null)
                 {
