@@ -150,7 +150,7 @@ public class UIManager : MonoBehaviour
         c.slideSpeed = messageSlideSpeed;
         c.movedUpMaxAmount = messageMaxStackedAmount;
         c.fadeTime = messageFadeTime;
-        c.StartCoroutine("timedDisappearance");
+        c.StartCoroutine("TimedDisappearance");
         MessageBoxAmtLimit();
 
 

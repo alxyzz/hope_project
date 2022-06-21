@@ -34,7 +34,7 @@ public class PopUpMessageScript : MonoBehaviour
     }
 
 
-    IEnumerator timedDisappearance()
+    IEnumerator TimedDisappearance()
     {
 
         yield return new WaitForSecondsRealtime(fadeTime);
