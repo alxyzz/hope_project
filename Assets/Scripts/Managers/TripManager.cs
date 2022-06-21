@@ -248,6 +248,7 @@ public class TripManager : MonoBehaviour
                 break;
         }
 
+        globalVolume.profile = workingProfile;
         if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
         else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
         ReinitializeProfileQualities();
@@ -255,16 +256,20 @@ public class TripManager : MonoBehaviour
 
     public void GetLow()
     {
-        Debug.Log("got a bit more sober");
+        Debug.Log("got a bit more sober. trip level is " + tripStatus.ToString());
         tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
+        OnDrugStateChange();
 
     }
 
 
     public void GetHigh()
     {
-        Debug.Log("having a good time. trip is intensifying");
-        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 5);
+        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
+        Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
+        OnDrugStateChange();
+
+
     }
 
     IEnumerator delayedDeath()
