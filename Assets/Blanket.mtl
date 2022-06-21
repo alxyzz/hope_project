@@ -116,6 +116,7 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd oBEYpOSTER.png
 Ni 1.00
 newmtl lambert20SG
 illum 4
@@ -129,6 +130,7 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd Cat-Gen.jpg
 Ni 1.00
 newmtl lambert22SG
 illum 4
@@ -179,12 +181,6 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Cat_CatEye_Albedo.png
-Ni 1.00
-newmtl lambert30SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
 Ni 1.00
 newmtl lambert31SG
 illum 4
