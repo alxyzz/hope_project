@@ -205,33 +205,33 @@ public class Entity : MonoBehaviour
         return angle;
     }
 
-    public void PauseMovement()
-    {
+    //public void PauseMovement()
+    //{
 
-        Debug.Log("ran pausemovement");
-        lastAgentPath = navAgent.path;
-        lastAgentVelocity = navAgent.velocity;
-        navAgent.velocity = Vector3.zero;
-        navAgent.isStopped = true;
+    //    Debug.Log("ran pausemovement");
+    //    lastAgentPath = navAgent.path;
+    //    lastAgentVelocity = navAgent.velocity;
+    //    navAgent.velocity = Vector3.zero;
+    //    navAgent.isStopped = true;
 
-        animRef.SetBool("walkRight", false);
-        animRef.SetBool("walkLeft", false);
-
-
+    //    animRef.SetBool("walkRight", false);
+    //    animRef.SetBool("walkLeft", false);
 
 
-    }
-
-    public void ResumeMovement()
-    {
-        Debug.Log("ran resumemovement");
-        navAgent.isStopped = false;
-        navAgent.velocity = lastAgentVelocity;
-        navAgent.SetPath(lastAgentPath);
-        Debug.LogError("animRef.SetBool(\"isWalking\", !navAgent.isStopped);" + " state is  !navAgent.isStopped");
 
 
-    }
+    //}
+
+    //public void ResumeMovement()
+    //{
+    //    Debug.Log("ran resumemovement");
+    //    navAgent.isStopped = false;
+    //    navAgent.velocity = lastAgentVelocity;
+    //    navAgent.SetPath(lastAgentPath);
+    //    Debug.LogError("animRef.SetBool(\"isWalking\", !navAgent.isStopped);" + " state is  !navAgent.isStopped");
+
+
+    //}
 
 
 
