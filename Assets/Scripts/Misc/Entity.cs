@@ -180,11 +180,12 @@ public class Entity : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other)
-    {//if you enter the range of an item, and it is an item, you select it for interaction. CAREFUL - this means we can't have objects too close together
+    {//if you enter the range of an item you select it for interaction. CAREFUL - this means we can't have objects too close together
         if (player)
         {
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
+                Debug.Log("entered the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
                 other.gameObject.GetComponent<GenericObject>().Select(true);
 
             }
@@ -198,6 +199,7 @@ public class Entity : MonoBehaviour
         {
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
+                Debug.Log("left the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
                 other.gameObject.GetComponent<GenericObject>().Select(false);
             }
         }

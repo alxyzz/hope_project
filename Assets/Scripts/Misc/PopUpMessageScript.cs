@@ -14,6 +14,7 @@ public class PopUpMessageScript : MonoBehaviour
     [HideInInspector]
     public float slideSpeed; //this is modified on spawn
 
+    public TMPro.TextMeshProUGUI TextRef;
 
 
     /// <summary>
@@ -37,6 +38,7 @@ public class PopUpMessageScript : MonoBehaviour
     {
 
         yield return new WaitForSecondsRealtime(fadeTime);
+        Debug.Log("disappearing messagebox.");
         Disappear();
     }
 
@@ -47,6 +49,11 @@ public class PopUpMessageScript : MonoBehaviour
     {
         RectTransform b = (RectTransform)transform;
         targetPosition = new Vector3(transform.position.x, transform.position.y + 2 + b.rect.height, transform.position.z) ;
+        //movedUpAmount++;
+        //if (movedUpAmount >= movedUpMaxAmount)
+        //{
+        //    Disappear();
+        //}
     }
 
     public void Disappear()
@@ -59,8 +66,8 @@ public class PopUpMessageScript : MonoBehaviour
     }
     public void ChangeText(string text)
     {
-        TMPro.TextMeshProUGUI b = GetComponent<TMPro.TextMeshProUGUI>();
-        b.text = text; //content fitter deals with the box fitting the text
+        
+        TextRef.text = text; //content fitter deals with the box fitting the text
 
     }
 
@@ -69,7 +76,7 @@ public class PopUpMessageScript : MonoBehaviour
     {
         if (targetPosition != null)
         {
-            transform.position = Vector3.Lerp(transform.position, (Vector3)targetPosition, slideSpeed);
+            transform.position = Vector3.Lerp(transform.position, (Vector3)targetPosition, slideSpeed*Time.deltaTime);
             if (Vector3.Distance(transform.position, (Vector3)targetPosition) < 1f)
             {
                 targetPosition = null; //stop moving
