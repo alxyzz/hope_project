@@ -13,6 +13,9 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
+
+
+
     public void Grab()   // picks up object, puts its equivalent in Player's hand, disactivates the original object
     {
         if (DataStorage.allpickupableObjects.Contains(lastUsedObject) && lastUsedObject.pickupable) // checks if the right mesh is highlighted, also if player has picked anything else up
@@ -50,10 +53,51 @@ public class ItemInteractionManager : MonoBehaviour
         }
     }
 
+    /// hardcoded object interactions
 
 
-    
 
 
+
+    //////BATHROOM ROOM START
+
+
+
+
+    public void UseMirror()
+    {
+        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Damn, this outfit looks good…<br>But not on me.”");
+
+
+    }
+
+    public void UseMagazines()
+    {
+        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
+    }
+    public void UseToilet()
+    {
+        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
+    }
+
+    public void UseBathtub()
+    {
+        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("I could really use a bath. I haven’t been home in days.");
+    }
+
+    public void UseDoor()
+    {
+        if (DataStorage.GameManagerComponent.StorylineManagerComponent.BathroomExaminedObjects == DataStorage.GameManagerComponent.StorylineManagerComponent.BathroomTargetExaminedObjects)
+        {
+            //we leave
+
+        }
+        else
+        {
+            DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("I don’t feel like leaving yet.");
+        }
+        
+    }
+    //////BATHROOM ROOM END
 
 }

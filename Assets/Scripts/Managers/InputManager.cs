@@ -104,6 +104,20 @@ public class InputManager : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Z)) ////////////////////////////////////////USE BUTTON
+        {
+            Debug.Log("pressed z use button");
+
+
+
+            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
+
+
+
+
+
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
