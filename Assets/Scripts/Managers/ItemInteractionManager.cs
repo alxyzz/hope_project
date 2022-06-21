@@ -66,23 +66,23 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseMirror()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Damn, this outfit looks good…<br>But not on me.”");
+        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
 
 
     }
 
     public void UseMagazines()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
+        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
     }
     public void UseToilet()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
+        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
     }
 
     public void UseBathtub()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("I could really use a bath. I haven’t been home in days.");
+        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I could really use a bath. I haven’t been home in days.");
     }
 
     public void UseDoor()
@@ -94,7 +94,7 @@ public class ItemInteractionManager : MonoBehaviour
         }
         else
         {
-            DataStorage.GameManagerComponent.UIManagerComponent.TalkToSelf("I don’t feel like leaving yet.");
+            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I don’t feel like leaving yet.");
         }
         
     }

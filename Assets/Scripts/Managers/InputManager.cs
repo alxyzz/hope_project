@@ -109,8 +109,8 @@ public class InputManager : MonoBehaviour
             Debug.Log("pressed z use button");
 
 
-
-            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
+            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("YOOOO TEXTBOX");
+            //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
 
 
 

@@ -130,23 +130,38 @@ public class UIManager : MonoBehaviour
     /// pop up a message above the player character
     /// </summary>
     /// <param name="message"></param>
-    public void TalkToSelf(string message)
+    public void PopupMessagebox(string message)
     {
-        
+        List<PopUpMessageScript> messages = new List<PopUpMessageScript>(messageQueue);
         
         foreach (PopUpMessageScript item in messageQueue)
         {
-            item.MakeWay();
+            if (item.isActiveAndEnabled)
+            {
+                item.MakeWay();
+            }
+            
         }
-        GameObject b = ObjectPooling.Instance.SpawnFromPool("messageBox", new Vector3(Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).x, Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).y + messageVerticalOffsetFromPlayer, Camera.main.WorldToViewportPoint(DataStorage.Player.transform.position).z), Quaternion.identity);
+        GameObject b = ObjectPooling.Instance.SpawnFromPool("messageBox", new Vector3(Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).x, Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).y + messageVerticalOffsetFromPlayer, 0f), Quaternion.identity);
+        b.transform.SetParent(UICanvas.transform);
         PopUpMessageScript c = b.GetComponent<PopUpMessageScript>();
         messageQueue.Add(c);
         c.ChangeText(message);
         c.slideSpeed = messageSlideSpeed;
         c.movedUpMaxAmount = messageMaxStackedAmount;
+        c.fadeTime = messageFadeTime;
         c.StartCoroutine("timedDisappearance");
+        MessageBoxAmtLimit();
+
 
     }
 
-
+    private void MessageBoxAmtLimit()
+    {
+        if (messageQueue.Count >= 12)
+        {
+            messageQueue[0].Disappear();
+            //messageQueue.RemoveAt(0); probably dont need this
+        }
+    }
 }
