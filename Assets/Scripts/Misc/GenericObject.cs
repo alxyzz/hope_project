@@ -15,7 +15,8 @@ public class GenericObject : MonoBehaviour
     public bool visibleHigh, visibleSober;
     public string objectName, description;
     public Sprite itemSprite; //as seen in inventory
-
+    [HideInInspector]
+    public bool inRangeOfPlayer;//wether we are close enough to click 
 
 
     [Space(10)]
@@ -87,19 +88,17 @@ public class GenericObject : MonoBehaviour
 
     }
 
-    public void Select(bool select) // highlights the selectable object
+    public void Highlight(bool select) // highlights the selectable object
     {
 
         if (select && !hasHighlightedObject)
         {
             hasHighlightedObject = true;
-            DataStorage.GameManagerComponent.ItemComponent.currentlySelectedObject = this;
             gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
         }
         else
         {
             hasHighlightedObject = false;
-            DataStorage.GameManagerComponent.ItemComponent.currentlySelectedObject = null;
             gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }

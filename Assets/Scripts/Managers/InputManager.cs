@@ -34,12 +34,16 @@ public class InputManager : MonoBehaviour
                 Entity targetEntity = m_hit.collider.GetComponent<Entity>();
                 if (targetObject != null)
                 {
-                    Debug.Log("hit object " + m_hit.transform.name);
-                    targetObject.Interact();
+                    if (targetObject.inRangeOfPlayer)
+                    {
+                        Debug.Log("hit object " + m_hit.transform.name);
+                        targetObject.Interact();
+                    }
+                    
                 }
                 else if (targetEntity != null)
                 {
-                    //this uses the UnityEvent of that item -> which in turn runs a function in DialogueManager -> which runs the fungus 
+                    //this uses the UnityEvent of that item -> which in turn runs a function in DialogueManager -> which runs the fungus block
                     targetEntity.Interact();
                 }
 
