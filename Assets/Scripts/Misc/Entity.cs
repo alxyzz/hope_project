@@ -69,27 +69,6 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
-        //if (wandering)
-        //{
-        //    if (Vector3.Distance(transform.position, aiDestination) < 0.1f) //we make the character stop wandering if it's too close to the destination
-        //    {
-        //        PauseMovement();
-        //    }
-        //    timeSinceLastWander += Time.deltaTime; //check if it's time to wander
-        //    if (timeSinceLastWander >= moveDelay)
-        //    {//move to a random position
-        //        ResumeMovement();
-        //        aiDestination = new Vector3(transform.position.x + Random.Range(0, moveDistance), transform.position.y, transform.position.z + Random.Range(0, moveDistance));
-
-        //    }
-
-        //    if (Vector3.Distance(transform.position, startingPosition) > (3 * moveDistance)) //we make the character stop wandering if it's too close to the destination
-        //    {
-
-        //        ResumeMovement();
-        //        aiDestination = startingPosition;
-        //    }
-        //}
         if (player)
         {
             if (transform.position.x > lastpos.x)

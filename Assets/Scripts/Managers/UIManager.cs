@@ -156,6 +156,45 @@ public class UIManager : MonoBehaviour
 
     }
 
+
+    public void PopUpDecisionDialog(GenericObject target)
+    {
+        //List<PopUpMessageScript> messages = new List<PopUpMessageScript>(messageQueue);
+
+        //foreach (PopUpMessageScript item in messageQueue)
+        //{
+        //    if (item.isActiveAndEnabled)
+        //    {
+        //        item.MakeWay();
+        //    }
+
+        //}
+        //GameObject b = ObjectPooling.Instance.SpawnFromPool("messageBox", new Vector3(Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).x, Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).y + messageVerticalOffsetFromPlayer, 0f), Quaternion.identity);
+        //b.transform.SetParent(UICanvas.transform);
+        //PopUpMessageScript c = b.GetComponent<PopUpMessageScript>();
+        //messageQueue.Add(c);
+        //c.ChangeText(message);
+        //c.slideSpeed = messageSlideSpeed;
+        //c.movedUpMaxAmount = messageMaxStackedAmount;
+        //c.fadeTime = messageFadeTime;
+        //c.StartCoroutine("TimedDisappearance");
+        //MessageBoxAmtLimit();
+
+
+    }
+
+    public class DecisionOption
+    {
+        string decisionName;
+        string decisionHopeModifier;
+
+
+
+    }
+
+
+
+
     private void MessageBoxAmtLimit()
     {
         if (messageQueue.Count >= messageMaxStackedAmount)

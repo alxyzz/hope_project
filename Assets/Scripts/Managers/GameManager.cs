@@ -9,16 +9,25 @@ public class GameManager : MonoBehaviour
 
 
     //register various scripts here. just drag and drop in the inspector
-    public CameraManager CameraManagerComponent;
-    public InputManager InputManagerComponent;
-    public StorylineManager StorylineManagerComponent;
-    public UIManager UIManagerComponent;
-    public TripManager TripManagerComponent;
-    public DialogueManager CharacterInteractions;
-    public ItemInteractionManager ItemInteractions;
-    public SoundManager SoundManagerComponent;
+    public CameraManager CameraComponent;
+    public InputManager InputComponent;
+    public StorylineManager StorylineComponent;
+    public UIManager UIComponent;
+    public TripManager TripComponent;
+    public DialogueManager DialogueComponent;
+    public ItemInteractionManager ItemComponent;
+    public SoundManager SoundComponent;
     public Entity player;
     public Transform pickupableObjects;
+
+
+    public void ChangeHope(int amt)
+    {
+        DataStorage.currentHope += amt;
+
+        UIComponent.RefreshHopeVisualisation();
+    }
+
 
 
     private void Awake()

@@ -863,20 +863,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: currently held object
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  useInInventory:
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &278948603
@@ -2988,20 +2990,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: currently held object
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  useInInventory:
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!23 &1496239612
@@ -3263,56 +3267,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: book
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 1
   canBePutDown: 1
-  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1932278525}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: TalkBook
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: PutInBackpack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!64 &1626135653
@@ -3341,9 +3311,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f603caa368142bd41819ea52ab3e5831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fungusReference: {fileID: 0}
   currentlySelectedObject: {fileID: 0}
   lastUsedObject: {fileID: 0}
   SelectedObjectMaterial: {fileID: 0}
+  obj_TV: {fileID: 0}
+  obj_chips: {fileID: 0}
 --- !u!1 &1685074916
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,44 +3612,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: book2
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 1
   canBePutDown: 1
-  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1932278525}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: TalkBook
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!135 &1816049008
@@ -4170,6 +4121,7 @@ MonoBehaviour:
   usedToilet: 0
   usedBathtub: 0
   usedDoor: 0
+  elapsedTime: 0
 --- !u!114 &1932278523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4182,10 +4134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f603caa368142bd41819ea52ab3e5831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fungusReference: {fileID: 0}
   currentlySelectedObject: {fileID: 0}
   lastUsedObject: {fileID: 0}
   SelectedObjectMaterial: {fileID: 2100000, guid: e2467f866f8d370498d79fa119ef160c,
     type: 2}
+  obj_TV: {fileID: 0}
+  obj_chips: {fileID: 0}
 --- !u!114 &1932278524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,6 +4780,8 @@ GameObject:
   - component: {fileID: 2102162869}
   - component: {fileID: 2102162867}
   - component: {fileID: 2102162870}
+  - component: {fileID: 2102162874}
+  - component: {fileID: 2102162873}
   - component: {fileID: 2102162872}
   - component: {fileID: 2102162871}
   m_Layer: 0
@@ -4850,7 +4807,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 51.63014
     y: 158.26028
-    width: 157.36838
+    width: 152
     height: 40
   tint: {r: 1, g: 0, b: 0, a: 1}
   useCustomTint: 1
@@ -4897,7 +4854,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 68
     y: 64
-    width: 114.21051
+    width: 111
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4920,18 +4877,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 154.20267, y: -102.73973}
+  scrollPos: {x: 376.70993, y: 169.28265}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 260
-  zoom: 0.7600002
+  blockViewHeight: 262
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 2102162856}
   selectedCommands: []
   variables: []
   description: 
@@ -5163,9 +5121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 58.192432
-    y: 222.82794
-    width: 145.78944
+    x: 59.192432
+    y: 224.82794
+    width: 141
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
@@ -5174,11 +5132,9 @@ MonoBehaviour:
   description: Test
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2102162871}
   - {fileID: 2102162869}
   - {fileID: 2102162867}
   - {fileID: 2102162870}
-  - {fileID: 2102162872}
   suppressAllAutoSelections: 0
 --- !u!114 &2102162869
 MonoBehaviour:
@@ -5270,7 +5226,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &2102162871
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5280,74 +5236,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 19
+  itemId: 21
   indentLevel: 0
-  description: Stops character movement
-  delay: 0
-  invokeType: 0
-  staticEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278524}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ToggleCharacterMovement
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  booleanParameter:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
-  booleanEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  integerParameter:
-    integerRef: {fileID: 0}
-    integerVal: 0
-  integerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  floatParameter:
-    floatRef: {fileID: 0}
-    floatVal: 0
-  floatEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  stringParameter:
-    stringRef: {fileID: 0}
-    stringVal: 
-  stringEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2102162872
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102162855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 18
-  indentLevel: 0
-  description: Resumes character movement
+  description: Puts down book (hopefully)
   delay: 0.5
   invokeType: 0
   staticEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932278524}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: ToggleCharacterMovement
-        m_Mode: 6
+      - m_Target: {fileID: 1932278523}
+        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
+        m_MethodName: Grab
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5380,6 +5280,94 @@ MonoBehaviour:
   stringEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2102162872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 20
+  indentLevel: 0
+  storyText: I should probably return them to the library soon.
+  description: 
+  character: {fileID: 2143531606}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2102162873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 19
+  indentLevel: 0
+  storyText: 'Man, I haven''t read these in a long time.
+
+
+    ....
+
+'
+  description: 
+  character: {fileID: 2143531606}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2102162874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 267.2901
+    y: 155.21735
+    width: 82
+    height: 40
+  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  useCustomTint: 1
+  itemId: 22
+  blockName: click_
+  description: Test
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 2102162873}
+  - {fileID: 2102162872}
+  - {fileID: 2102162871}
+  suppressAllAutoSelections: 0
 --- !u!1 &2102250777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13946,32 +13934,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: 
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseToilet
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &6883863752015856847
@@ -14222,32 +14200,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: 
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseMagazines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7109246314776591836
@@ -14522,32 +14490,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: 
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseBathtub
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7267411706389157071
@@ -14637,32 +14595,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: Mirror
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseMirror
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7275327938230837400
@@ -15245,32 +15193,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: Door
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 0}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 0}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &7969955409465343819
@@ -16388,32 +16326,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
   objectName: 
   description: 
-  originalMat: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   singleUseInWorld: 0
-  usedInWorld: 0
   singleUseInInventory: 0
-  usedInInventory: 0
   pickupable: 0
   canBePutDown: 0
-  itemSprite: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
-  useInWorld:
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: PutInBackpack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useInInventory:
+      m_Calls: []
+  inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!23 &8794730506627742660

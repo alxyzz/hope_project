@@ -59,7 +59,7 @@ public class PopUpMessageScript : MonoBehaviour
     public void Disappear()
     {
 
-        DataStorage.GameManagerComponent.UIManagerComponent.messageQueue.Remove(this);
+        DataStorage.GameManagerComponent.UIComponent.messageQueue.Remove(this);
         targetPosition = null;
         gameObject.SetActive(false); //this makes it return to the pool
 
