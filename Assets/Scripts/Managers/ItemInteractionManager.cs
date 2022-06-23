@@ -1,17 +1,23 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInteractionManager : MonoBehaviour
 {
+    public Flowchart fungusReference;
+    [Space(10)]
+
     public GenericObject currentlySelectedObject;
     public GenericObject lastUsedObject;
     public Material SelectedObjectMaterial;
 
 
     private bool localCanBePutDown;
-
-
+    //we need to reference all interactible objects with a decision attached so we can give them the decision
+    //stage 1 tutorial
+    public GenericObject obj_TV;
+    public GenericObject obj_chips;
 
 
 
@@ -51,8 +57,8 @@ public class ItemInteractionManager : MonoBehaviour
             int count = DataStorage.objectsInInventory.Count;
             DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
             DataStorage.objectsInInventory[count] = lastUsedObject;
-            DataStorage.GameManagerComponent.UIManagerComponent.inventorySlotList[count].containedObject = lastUsedObject;
-            DataStorage.GameManagerComponent.UIManagerComponent.inventorySlotList[count].EquipItemHere();
+            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].containedObject = lastUsedObject;
+            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere();
         }
         else
         {
@@ -73,35 +79,35 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseMirror()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
-
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
+        fungusReference.ExecuteBlock("clickmirror_lvl01");
 
     }
 
     public void UseMagazines()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
     }
     public void UseToilet()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
     }
 
     public void UseBathtub()
     {
-        DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I could really use a bath. I haven’t been home in days.");
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I could really use a bath. I haven’t been home in days.");
     }
 
     public void UseDoor()
     {
-        if (DataStorage.GameManagerComponent.StorylineManagerComponent.BathroomExaminedObjects == DataStorage.GameManagerComponent.StorylineManagerComponent.BathroomTargetExaminedObjects)
+        if (DataStorage.GameManagerComponent.StorylineComponent.BathroomExaminedObjects == DataStorage.GameManagerComponent.StorylineComponent.BathroomTargetExaminedObjects)
         {
             //we leave
 
         }
         else
         {
-            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I don’t feel like leaving yet.");
+            DataStorage.GameManagerComponent.UIComponent.PopupMessagebox("I don’t feel like leaving yet.");
         }
         
     }

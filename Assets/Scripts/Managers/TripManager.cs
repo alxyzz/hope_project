@@ -208,7 +208,7 @@ public class TripManager : MonoBehaviour
             case 0:
                 workingProfile = soberProfile;
                 flipWorld = false;
-                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundManagerComponent.ChangeMusic(soberBackgroundAudio);
+                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundComponent.ChangeMusic(soberBackgroundAudio);
 
                 break;
 

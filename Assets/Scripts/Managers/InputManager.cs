@@ -32,17 +32,14 @@ public class InputManager : MonoBehaviour
 
                 GenericObject targetObject = m_hit.collider.GetComponent<GenericObject>();
                 Entity targetEntity = m_hit.collider.GetComponent<Entity>();
-                //if (targetObject != null && DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject == targetObject)
                 if (targetObject != null)
                 {
                     Debug.Log("hit object " + m_hit.transform.name);
-                    //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = targetObject;
-                    //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
                     targetObject.Interact();
                 }
                 else if (targetEntity != null)
                 {
-
+                    //this uses the UnityEvent of that item -> which in turn runs a function in DialogueManager -> which runs the fungus 
                     targetEntity.Interact();
                 }
 
@@ -72,13 +69,13 @@ public class InputManager : MonoBehaviour
             //meth/crack/horse ketamine/LSD/PCP/weed
             if (DataStorage.maxHope > 0)
             {
-                DataStorage.GameManagerComponent.TripManagerComponent.GetHigh();
+                DataStorage.GameManagerComponent.TripComponent.GetHigh();
                 DataStorage.maxHope -= 20;
                 if (DataStorage.currentHope > DataStorage.maxHope)
                 {
                     DataStorage.currentHope = DataStorage.maxHope;
                 }
-                DataStorage.GameManagerComponent.UIManagerComponent.RefreshHopeVisualisation();
+                DataStorage.GameManagerComponent.UIComponent.RefreshHopeVisualisation();
             }
             else
             {
@@ -97,7 +94,7 @@ public class InputManager : MonoBehaviour
             
                 Debug.Log("already sober so we will be taking a little chemical enjoyment");
                 
-                    DataStorage.GameManagerComponent.TripManagerComponent.GetLow();
+                    DataStorage.GameManagerComponent.TripComponent.GetLow();
                     
             
 
@@ -113,7 +110,7 @@ public class InputManager : MonoBehaviour
                 fakestuffint = 0;
             }
 
-            DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox(fakeStuff[fakestuffint]);
+            DataStorage.GameManagerComponent.UIComponent.PopupMessagebox(fakeStuff[fakestuffint]);
             fakestuffint++;
             //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
 

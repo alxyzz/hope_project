@@ -4,28 +4,37 @@ using UnityEngine.Events;
 public class GenericObject : MonoBehaviour
 {
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
-
-
-    public string objectName, description;
+    [HideInInspector]
+    public bool usedInWorld; //wether it has already been used
+    [HideInInspector]
+    public bool usedForHope; //wether it has already been used for hope gain/loss 
     [HideInInspector]
     public Material originalMat;
+    [HideInInspector]
+    public bool usedInInventory; //wether it has already been used in inventory
+
+    public string objectName, description;
+    public Sprite itemSprite; //as seen in inventory
+
+
+
+    [Space(10)]
     public bool singleUseInWorld;
-    [HideInInspector]
-    public bool usedInWorld;
     public bool singleUseInInventory;
-    [HideInInspector]
-    public bool usedInInventory;
+    [Space(5)]
     public bool pickupable;
     public bool canBePutDown; // after being picked up
-    public Sprite itemSprite;
-
-    public bool CheckIfInventory(){if (DataStorage.objectsInInventory.Contains(this)) return true; else return false;}
-
+    [Space(10)]
+    public int hopeModifierOnInteraction = 0; //ok. so some objects just straight up don't have decisions linked to them and thus just affect your hope in some cases, while others pop up a decisionmaking UI and let you decide what to do. this variable is for the former case only
+    [Space(10)]
     //usage. these are stored in ItemInteractions
-    public UnityEvent useInWorld;//this can be changed to whatever you want to happen when you interact with this guy
-    public UnityEvent useInInventory;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
+    public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
+    public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
     private bool hasHighlightedObject;
+    public bool CheckIfInventory(){if (DataStorage.objectsInInventory.Contains(this)) return true; else return false;}
+
+
     /// <summary>
     /// means usage in the world space
     /// </summary>
@@ -35,10 +44,16 @@ public class GenericObject : MonoBehaviour
         {
             return;
         }
-        DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
-        if (useInWorld != null)
+        DataStorage.GameManagerComponent.ItemComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
+        if (inworldUse_UnityEvent != null)
         {
-            useInWorld.Invoke();
+            if (!usedForHope)
+            {
+                Debug.Log("used " + objectName + " for hope. modifier was "+ hopeModifierOnInteraction.ToString());
+                DataStorage.GameManagerComponent.ChangeHope(hopeModifierOnInteraction);
+                usedForHope = true;
+            }
+            inworldUse_UnityEvent.Invoke();
         }
     }
 
@@ -51,10 +66,10 @@ public class GenericObject : MonoBehaviour
         {
             return;
         }
-        DataStorage.GameManagerComponent.ItemInteractions.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
-        if (useInInventory != null)
+        DataStorage.GameManagerComponent.ItemComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
+        if (inventoryUse_UnityEvent != null)
         {
-            useInInventory.Invoke();
+            inventoryUse_UnityEvent.Invoke();
         }
 
 
@@ -66,13 +81,13 @@ public class GenericObject : MonoBehaviour
         if (select && !hasHighlightedObject)
         {
             hasHighlightedObject = true;
-            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = this;
-            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemInteractions.SelectedObjectMaterial;
+            DataStorage.GameManagerComponent.ItemComponent.currentlySelectedObject = this;
+            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
         }
         else
         {
             hasHighlightedObject = false;
-            DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject = null;
+            DataStorage.GameManagerComponent.ItemComponent.currentlySelectedObject = null;
             gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }
