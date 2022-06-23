@@ -1,6 +1,4 @@
 using Fungus;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInteractionManager : MonoBehaviour
@@ -48,7 +46,7 @@ public class ItemInteractionManager : MonoBehaviour
     {
         Debug.LogWarning("Testing events");
     }
-    
+
     public void PutInBackpack() // item displayed in inventory (wip)
     {
         //Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
@@ -74,42 +72,92 @@ public class ItemInteractionManager : MonoBehaviour
 
     //////BATHROOM ROOM START
 
+    private bool checkifSober()
+    {
+        if (DataStorage.GameManagerComponent.TripComponent.tripStatus == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void UsePuke()
+    {//there's no puke object yet. also it disappears on being high
+
+
+        fungusReference.ExecuteBlock("click_puke_sober_tutorial");
 
 
 
+    }
     public void UseMirror()
     {
         //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
-        fungusReference.ExecuteBlock("clickmirror_lvl01");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_mirror_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_mirror_high_tutorial");
+        }
+
 
     }
 
     public void UseMagazines()
     {
-        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, fucking dumbass town,… *sigh*  whatever.”");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_magazine_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_magazine_high_tutorial");
+        }
+
     }
     public void UseToilet()
     {
-        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_toilet_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_toilet_high_tutorial");
+        }
+
     }
 
     public void UseBathtub()
     {
-        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("I could really use a bath. I haven’t been home in days.");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_bathtub_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_bathtub_high_tutorial");
+        }
+
     }
 
     public void UseDoor()
     {
-        if (DataStorage.GameManagerComponent.StorylineComponent.BathroomExaminedObjects == DataStorage.GameManagerComponent.StorylineComponent.BathroomTargetExaminedObjects)
+        if (checkifSober())
         {
-            //we leave
-
+            fungusReference.ExecuteBlock("click_door_sober_tutorial");
         }
         else
         {
-            DataStorage.GameManagerComponent.UIComponent.PopupMessagebox("I don’t feel like leaving yet.");
+            fungusReference.ExecuteBlock("click_door_high_tutorial");
         }
-        
+
+
     }
     //////BATHROOM ROOM END
 
