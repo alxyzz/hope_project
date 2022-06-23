@@ -233,14 +233,14 @@ public class Entity : MonoBehaviour
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
                 Debug.Log("entered the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
-                other.gameObject.GetComponent<GenericObject>().Select(true);
+                other.gameObject.GetComponent<GenericObject>().Highlight(true);
 
             }
         }
-        else if (entityName == "Cat")
-        {
+        //else if (entityName == "Cat")
+        //{
 
-        }
+        //}
 
 
 
@@ -253,13 +253,13 @@ public class Entity : MonoBehaviour
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
                 Debug.Log("left the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
-                other.gameObject.GetComponent<GenericObject>().Select(false);
+                other.gameObject.GetComponent<GenericObject>().Highlight(false);
             }
         }
-        else if (entityName == "Cat")
-        {
+        //else if (entityName == "Cat")
+        //{
 
-        }
+        //}
 
 
 

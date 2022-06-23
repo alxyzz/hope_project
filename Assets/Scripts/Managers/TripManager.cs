@@ -15,7 +15,7 @@ public class TripManager : MonoBehaviour
 
     // Start is called before the first frame update
     [HideInInspector]
-    public bool wasHigh; //for turning objects visible or visible based on drug state without looping thru all the objects every update
+    public bool wasHigh = true; //for turning objects visible or visible based on drug state without looping thru all the objects every update
     public int tripStatus = 0;
     AudioClip soberBackgroundAudio, firstBackgroundAudio, secondBackgroundAudio, thirdBackgroundAudio, fourthBackgroundAudio, fifthBackgroundAudio;
     //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
@@ -266,6 +266,7 @@ public class TripManager : MonoBehaviour
 
     public void ChangeHallucinatedObjectVisibilityStatus()
     {
+        
         if (wasHigh || tripStatus == 0) 
         {
             //loop through all sober-only objects and characters and set them active
@@ -278,6 +279,7 @@ public class TripManager : MonoBehaviour
             {
                 item.SetActive(false);
             }
+            Debug.Log("ChangeHallucinatedObjectVisibilityStatus() - we just got sober");
 
         }
         else if (!wasHigh || tripStatus > 0)
@@ -292,6 +294,7 @@ public class TripManager : MonoBehaviour
             {
                 item.SetActive(true);
             }
+            Debug.Log("ChangeHallucinatedObjectVisibilityStatus() - we just got high");
         }
     }
 
