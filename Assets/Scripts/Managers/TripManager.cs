@@ -6,7 +6,16 @@ using UnityEngine.Rendering.Universal;
 
 public class TripManager : MonoBehaviour
 {
+
+    [HideInInspector]
+    public List<GameObject> soberOnlyGameObjects = new();
+    [HideInInspector]
+    public List<GameObject> highOnlyGameObjects = new();
+
+
     // Start is called before the first frame update
+    [HideInInspector]
+    public bool wasHigh; //for turning objects visible or visible based on drug state without looping thru all the objects every update
     public int tripStatus = 0;
     AudioClip soberBackgroundAudio, firstBackgroundAudio, secondBackgroundAudio, thirdBackgroundAudio, fourthBackgroundAudio, fifthBackgroundAudio;
     //so when the profile changes, it takes the profile associated to the drug trip stage and sets it as the current global volume profile
@@ -202,6 +211,7 @@ public class TripManager : MonoBehaviour
 
     void OnDrugStateChange()
     {
+        ChangeHallucinatedObjectVisibilityStatus();
         Debug.Log("drug state changed");
         switch (tripStatus)
         {
@@ -254,8 +264,43 @@ public class TripManager : MonoBehaviour
         ReinitializeProfileQualities();
     }
 
+    public void ChangeHallucinatedObjectVisibilityStatus()
+    {
+        if (wasHigh || tripStatus == 0) 
+        {
+            //loop through all sober-only objects and characters and set them active
+            //loop through all hallucinated objects and characters and set them inactive
+            foreach (GameObject item in soberOnlyGameObjects)
+            {
+                item.SetActive(true);
+            }
+            foreach (GameObject item in highOnlyGameObjects)
+            {
+                item.SetActive(false);
+            }
+
+        }
+        else if (!wasHigh || tripStatus > 0)
+        {
+            //loop through all hallucinated objects and characters and set them active
+            //loop through all sober-only objects and characters and set them inactive
+            foreach (GameObject item in soberOnlyGameObjects)
+            {
+                item.SetActive(false);
+            }
+            foreach (GameObject item in highOnlyGameObjects)
+            {
+                item.SetActive(true);
+            }
+        }
+    }
+
     public void GetLow()
     {
+        if (tripStatus > 0)
+        {
+            wasHigh = true;
+        }
         Debug.Log("got a bit more sober. trip level is " + tripStatus.ToString());
         tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
         OnDrugStateChange();
@@ -265,6 +310,14 @@ public class TripManager : MonoBehaviour
 
     public void GetHigh()
     {
+        if (tripStatus == 0)
+        {
+            wasHigh = false;
+        }
+        else
+        {
+            wasHigh = true;
+        }
         tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
         Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
         OnDrugStateChange();

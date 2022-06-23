@@ -12,7 +12,7 @@ public class GenericObject : MonoBehaviour
     public Material originalMat;
     [HideInInspector]
     public bool usedInInventory; //wether it has already been used in inventory
-
+    public bool visibleHigh, visibleSober;
     public string objectName, description;
     public Sprite itemSprite; //as seen in inventory
 
@@ -32,7 +32,19 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
     private bool hasHighlightedObject;
-    public bool CheckIfInventory(){if (DataStorage.objectsInInventory.Contains(this)) return true; else return false;}
+
+
+
+    private void Start()
+    {
+        originalMat = GetComponent<Renderer>().material;
+        
+    }
+
+
+
+
+    public bool CheckIfInventory() { if (DataStorage.objectsInInventory.Contains(this)) return true; else return false; }
 
 
     /// <summary>
@@ -49,7 +61,7 @@ public class GenericObject : MonoBehaviour
         {
             if (!usedForHope)
             {
-                Debug.Log("used " + objectName + " for hope. modifier was "+ hopeModifierOnInteraction.ToString());
+                Debug.Log("used " + objectName + " for hope. modifier was " + hopeModifierOnInteraction.ToString());
                 DataStorage.GameManagerComponent.ChangeHope(hopeModifierOnInteraction);
                 usedForHope = true;
             }
@@ -92,12 +104,6 @@ public class GenericObject : MonoBehaviour
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        originalMat = GetComponent<Renderer>().material;
-    }
 
     // Update is called once per frame
     void Update()
