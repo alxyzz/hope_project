@@ -21,7 +21,7 @@ public class StorylineManager : MonoBehaviour
             case "Act 1":
                 if (CurrentRoom == "Bathroom")
                 {
-                    DelayedSpiderKickingPCOut();
+                    CheckIfSpiderAngry();
                 }
                 Debug.Log("test. StorylineManager detected Act 1 scene.");
                 
@@ -32,7 +32,16 @@ public class StorylineManager : MonoBehaviour
         }
     }
 
-    public void DelayedSpiderKickingPCOut()
+    public void SpiderKickOut()
+    {
+
+        
+        
+    }
+
+
+
+    public void CheckIfSpiderAngry()
     {
 
         elapsedTime += Time.deltaTime;
@@ -40,11 +49,7 @@ public class StorylineManager : MonoBehaviour
         {
             DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
         }
-        
+
     }
-
-
-
-
 
 }
