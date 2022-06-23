@@ -46,7 +46,7 @@ public class StorylineManager : MonoBehaviour
         DataStorage.Player.transform.position = bedroomEntryPoint.position;
     }
 
-
+    
 
     //public void ChangeRoom(string room)
     //{
