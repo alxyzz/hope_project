@@ -102,25 +102,6 @@ public class InputManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Z)) ////////////////////////////////////////USE BUTTON
-        {
-            Debug.Log("pressed z use button");
-            if (fakestuffint> 6)
-            {
-                fakestuffint = 0;
-            }
-
-            DataStorage.GameManagerComponent.UIComponent.PopupMessagebox(fakeStuff[fakestuffint]);
-            fakestuffint++;
-            //DataStorage.GameManagerComponent.ItemInteractions.currentlySelectedObject.Interact();
-
-
-
-
-
-        }
-
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("pressed ESC to pop up ingame menu");
@@ -139,9 +120,6 @@ public class InputManager : MonoBehaviour
     //Toilette: “Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…”
     //Bathtub: “I could really use a bath. I haven’t been home in days.”
     //Door: “I don’t feel like leaving yet.”
-
-    int fakestuffint = 0;
-    string[]  fakeStuff = new string[8]{ "Damn this outfit looks good… but not on me.", "Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, Fucking dumbass town,… *sigh* whatever.", "Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…", "I could really use a bath. I haven’t been home in days.", "I don’t feel like leaving yet.", "Hmm. I found a pill in my pocket. I guess I could try one...", "WOOOOW...", " I feel sick..."};
 
 
 // vvvvvv just need this for the fungus flowchart

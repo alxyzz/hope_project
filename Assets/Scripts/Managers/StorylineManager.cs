@@ -11,8 +11,14 @@ public class StorylineManager : MonoBehaviour
 
     public string CurrentLevel;
     public string CurrentRoom;
+    [HideInInspector]
     public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor;
+    [HideInInspector]
     public float elapsedTime;
+    [HideInInspector]
+    public bool bathroomLocked;
+    public Transform bathroomEntryPoint, bedroomEntryPoint;
+    
 
     private void Update()
     {
@@ -23,7 +29,7 @@ public class StorylineManager : MonoBehaviour
                 {
                     CheckIfSpiderAngry();
                 }
-                Debug.Log("test. StorylineManager detected Act 1 scene.");
+                Debug.Log("test. StorylineManager detected bathroom scene.");
                 
 
                 break;
@@ -34,10 +40,33 @@ public class StorylineManager : MonoBehaviour
 
     public void SpiderKickOut()
     {
-
-        
-        
+        //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
+        CurrentRoom = "Bedroom";
+        bathroomLocked = true;
+        DataStorage.Player.transform.position = bedroomEntryPoint.position;
     }
+
+    
+
+    //public void ChangeRoom(string room)
+    //{
+    //    switch (string)
+    //    {
+    //        case "Bathroom":
+    //            break;
+    //        case "Bedroom"
+    //        break;
+
+
+    //        default:
+    //            break;
+    //    }
+
+
+
+    //}
+
+
 
 
 

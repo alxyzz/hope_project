@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
             DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
         }
 
-        
-        
+        TripComponent.ChangeHallucinatedObjectVisibilityStatus();
+
     }
 
     // Update is called once per frame
