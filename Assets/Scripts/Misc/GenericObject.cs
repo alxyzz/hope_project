@@ -39,7 +39,7 @@ public class GenericObject : MonoBehaviour
     private void Start()
     {
         originalMat = GetComponent<Renderer>().material;
-        
+
     }
 
 
@@ -104,9 +104,5 @@ public class GenericObject : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 }
