@@ -91,14 +91,16 @@ public class GenericObject : MonoBehaviour
     public void Highlight(bool select) // highlights the selectable object
     {
 
-        if (select && !hasHighlightedObject)
+        if (select)
         {
             hasHighlightedObject = true;
+            //inRangeOfPlayer = true;                  
             gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
         }
         else
         {
             hasHighlightedObject = false;
+            //inRangeOfPlayer = false;
             gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }
