@@ -43,7 +43,12 @@ public class StorylineManager : MonoBehaviour
         //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
         CurrentRoom = "Bedroom";
         bathroomLocked = true;
-        DataStorage.Player.transform.position = bedroomEntryPoint.position;
+
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+
+        cc.enabled = false;
+        DataStorage.Player.transform.position = bedroomEntryPoint.transform.position;
+        cc.enabled = true;
     }
 
     
