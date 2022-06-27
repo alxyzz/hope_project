@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ac904e728b2304f9406f28b03a80d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 7969955408771190810}
 --- !u!1 &429756915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513123635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.71, y: 4.45, z: 1.808}
+  m_LocalPosition: {x: 34.384, y: 4.45, z: 1.68}
   m_LocalScale: {x: 4.44, y: 4.44, z: 4.44}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5456,7 +5456,6 @@ GameObject:
   - component: {fileID: 2102162915}
   - component: {fileID: 2102162935}
   - component: {fileID: 2102162938}
-  - component: {fileID: 2102162939}
   - component: {fileID: 2102162940}
   - component: {fileID: 2102162941}
   - component: {fileID: 2102162942}
@@ -5490,7 +5489,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -208.3697
     y: 434.6235
-    width: 155.0633
+    width: 154.70586
     height: 40
   tint: {r: 1, g: 0, b: 0, a: 1}
   useCustomTint: 1
@@ -5537,7 +5536,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -201.09071
     y: 274.9089
-    width: 112.025314
+    width: 113.529396
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5560,19 +5559,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 145.34859, y: -99.13501}
+  scrollPos: {x: -38.233383, y: -361.87943}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 607
-  zoom: 0.79
+  zoom: 0.8500002
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 2102162944}
+  selectedCommands:
+  - {fileID: 2102162947}
   variables: []
   description: 
   stepPause: 0
@@ -5805,7 +5806,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -207.8074
     y: 503.1912
-    width: 144.9367
+    width: 144.11761
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
@@ -5949,17 +5950,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 211.25902
     y: 392.3336
-    width: 196.83543
+    width: 193.52937
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 22
   blockName: click_mirror_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162873}
-  - {fileID: 2102162939}
   suppressAllAutoSelections: 0
 --- !u!114 &2102162875
 MonoBehaviour:
@@ -5976,14 +5976,14 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 208.06999
-    y: 562.9098
-    width: 210.75949
+    y: 564.40234
+    width: 204.11761
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 98
   blockName: click_bathtub_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162878}
@@ -6060,13 +6060,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 208.88991
     y: 725.5846
-    width: 194.30379
+    width: 188.8235
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 100
   blockName: click_skateboard_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162881}
@@ -6114,13 +6114,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 209.5622
     y: 624.38385
-    width: 191.77214
+    width: 186.47055
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 99
   blockName: click_door_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162885}
@@ -6169,13 +6169,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 211.79774
     y: 505.64124
-    width: 193.03796
+    width: 189.99997
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 97
   blockName: click_toilet_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162889}
@@ -6224,13 +6224,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 210.97978
     y: 443.92426
-    width: 222.1519
+    width: 217.05878
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 96
   blockName: click_magazine_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162893}
@@ -6251,13 +6251,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 208.24109
     y: 835.6669
-    width: 138.60759
+    width: 139.41174
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 102
   blockName: click_ID_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162897}
@@ -6330,15 +6330,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 208.56137
+    x: 210.05391
     y: 780.35297
-    width: 203.16455
+    width: 197.05879
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 101
   blockName: click_phone_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162901}
@@ -6386,13 +6386,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 207.16418
     y: 885.8832
-    width: 179.11392
+    width: 175.88232
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7137255, g: 0.99607843, b: 1, a: 1}
   useCustomTint: 1
   itemId: 103
   blockName: click_candyjar_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162905}
@@ -6415,13 +6415,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 211.7194
     y: 336.57123
-    width: 195.56961
+    width: 189.99997
     height: 40
-  tint: {r: 1, g: 0, b: 0.20102215, a: 1}
+  tint: {r: 0.7122642, g: 0.9943062, b: 1, a: 1}
   useCustomTint: 1
   itemId: 104
   blockName: click_puke_sober_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162910}
@@ -6586,13 +6586,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 559.7432
     y: 622.0748
-    width: 184.17722
+    width: 180.58821
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 109
   blockName: click_door_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162917}
@@ -6640,15 +6640,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 557.9751
-    y: 560.6007
-    width: 203.16455
+    x: 560.9751
+    y: 558.6007
+    width: 198.23526
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 108
   blockName: click_bathtub_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162920}
@@ -6784,13 +6784,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 558.88794
     y: 506.15002
-    width: 185.44304
+    width: 184.11761
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 107
   blockName: click_toilet_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162925}
@@ -6926,15 +6926,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 558.5244
+    x: 556.8003
     y: 445.33856
-    width: 214.55696
+    width: 211.17644
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 106
   blockName: click_magazine_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162929}
@@ -7072,13 +7072,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 558.6218
     y: 395.47827
-    width: 189.24051
+    width: 187.64702
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 105
   blockName: click_mirror_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162933}
@@ -7101,13 +7101,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 565.5303
     y: 734.13965
-    width: 195.56961
+    width: 191.17644
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 110
   blockName: click_phone_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162938}
@@ -7139,33 +7139,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &2102162939
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102162855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 87
-  indentLevel: 0
-  description: pop up mirror reflection
-  targetObject: {fileID: 0}
-  targetComponentAssemblyName: 
-  targetComponentFullname: 
-  targetComponentText: 
-  targetMethod: 
-  targetMethodText: 
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: 
-  showInherited: 0
-  callMode: 0
 --- !u!114 &2102162940
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -7237,13 +7210,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 565.45483
     y: 782.82367
-    width: 167.72153
+    width: 166.47055
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 111
   blockName: click_id_high_tutorial
-  description: Test
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162943}
@@ -7291,13 +7264,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 557.2135
     y: 853.1534
-    width: 195.56961
+    width: 127.64704
     height: 40
   tint: {r: 1, g: 0, b: 0.20102215, a: 1}
   useCustomTint: 1
   itemId: 112
-  blockName: spider_showering_tutorial
-  description: Test
+  blockName: spider_is_mad
+  description: Bathroom
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2102162946}
@@ -7347,7 +7320,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: I hear the curtains rustling.
   description: 
-  character: {fileID: 4608305988055204470}
+  character: {fileID: 2143531606}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -7378,8 +7351,8 @@ MonoBehaviour:
     Culture=neutral, PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
   targetComponentText: StorylineManager
-  targetMethod: 
-  targetMethodText: 
+  targetMethod: SpiderKickOut
+  targetMethodText: 'SpiderKickOut (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -7402,7 +7375,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 568.6877
     y: 290.1255
-    width: 136.07596
+    width: 134.70587
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7428,7 +7401,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 231.05005
     y: 253.0924
-    width: 143.67088
+    width: 140.58821
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8145,6 +8118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1770977872260614085}
+  - component: {fileID: 1770977872260614086}
   m_Layer: 0
   m_Name: Flowers
   m_TagString: Untagged
@@ -9049,8 +9023,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9221, b: 0.8039, a: 1}
-  m_Intensity: 0.15
-  m_Range: 10
+  m_Intensity: 6.01
+  m_Range: 67.32
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9088,7 +9062,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -9745,6 +9719,18 @@ Transform:
   m_Father: {fileID: 2959902018572673414}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770977872260614086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354056681750734543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0abd0ea0aad5714d919f2256633e5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1779911352230536637
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10727,8 +10713,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9221, b: 0.8039, a: 1}
-  m_Intensity: 0.15
-  m_Range: 10
+  m_Intensity: 6.01
+  m_Range: 67.32
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -10766,7 +10752,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13397,7 +13383,7 @@ GameObject:
   - component: {fileID: 4608305988055204471}
   - component: {fileID: 4608305988055204470}
   m_Layer: 9
-  m_Name: PlayerDialogueCharacter
+  m_Name: CatDialogueChar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13421,7 +13407,9 @@ MonoBehaviour:
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
-  description: Player
+  description: 'Cat
+
+'
 --- !u!4 &4608305988055204471
 Transform:
   m_ObjectHideFlags: 0
@@ -15454,6 +15442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6960746528686528271}
+  - component: {fileID: 6960746528686528272}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -16420,6 +16409,18 @@ Transform:
   m_Father: {fileID: 543450653198411198}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6960746528686528272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180640845626821691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0abd0ea0aad5714d919f2256633e5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6969456178331383182
 Transform:
   m_ObjectHideFlags: 0
@@ -17698,8 +17699,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9221, b: 0.8039, a: 1}
-  m_Intensity: 0.15
-  m_Range: 10
+  m_Intensity: 6.01
+  m_Range: 67.32
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -17737,7 +17738,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -18020,8 +18021,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9221, b: 0.8039, a: 1}
-  m_Intensity: 0.15
-  m_Range: 10
+  m_Intensity: 6.01
+  m_Range: 67.32
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -18059,7 +18060,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -19013,8 +19014,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9221, b: 0.8039, a: 1}
-  m_Intensity: 0.15
-  m_Range: 10
+  m_Intensity: 6.01
+  m_Range: 67.32
   m_SpotAngle: 45
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -19052,7 +19053,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
