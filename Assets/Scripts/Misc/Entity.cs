@@ -233,6 +233,7 @@ public class Entity : MonoBehaviour
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
                 Debug.Log("entered the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
+                //other.gameObject.GetComponent<GenericObject>().inRangeOfPlayer = true;
                 other.gameObject.GetComponent<GenericObject>().Highlight(true);
 
             }
@@ -253,6 +254,7 @@ public class Entity : MonoBehaviour
             if (other.gameObject.GetComponent<GenericObject>() != null)
             {
                 Debug.Log("left the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
+                //other.gameObject.GetComponent<GenericObject>().inRangeOfPlayer = false;
                 other.gameObject.GetComponent<GenericObject>().Highlight(false);
             }
         }
