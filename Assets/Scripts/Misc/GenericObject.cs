@@ -32,7 +32,7 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
-    private bool hasHighlightedObject;
+    private bool isHighlighted;
 
 
 
@@ -60,6 +60,7 @@ public class GenericObject : MonoBehaviour
         DataStorage.GameManagerComponent.ItemComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
         if (inworldUse_UnityEvent != null)
         {
+            Debug.Log("we just clicked " + objectName);
             if (!usedForHope)
             {
                 Debug.Log("used " + objectName + " for hope. modifier was " + hopeModifierOnInteraction.ToString());
@@ -91,14 +92,14 @@ public class GenericObject : MonoBehaviour
     public void Highlight(bool select) // highlights the selectable object
     {
 
-        if (select && !hasHighlightedObject)
+        if (select)
         {
-            hasHighlightedObject = true;
+            isHighlighted = true;
             gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
         }
         else
         {
-            hasHighlightedObject = false;
+            isHighlighted = false;
             gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }
