@@ -46,7 +46,7 @@ public class StorylineManager : MonoBehaviour
 
         CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
 
-        cc.enabled = false;
+        cc.enabled = false; //yea the character controller does not like it if you change the position, you gotta turn it off and on again...
         DataStorage.Player.transform.position = bedroomEntryPoint.transform.position;
         cc.enabled = true;
     }
@@ -78,12 +78,17 @@ public class StorylineManager : MonoBehaviour
     public void CheckIfSpiderAngry()
     {
 
-        elapsedTime += Time.deltaTime;
-        if (elapsedTime >= bathroomTimeUntilKickedOut)
-        {
-            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
-        }
+        //elapsedTime += Time.deltaTime;
+        //if (elapsedTime >= bathroomTimeUntilKickedOut)
+        //{
+        //    DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
+        //}
 
+        
+        if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
+        {
+            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad");
+        }
     }
 
 }
