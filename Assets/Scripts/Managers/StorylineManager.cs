@@ -43,7 +43,14 @@ public class StorylineManager : MonoBehaviour
         //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
         CurrentRoom = "Bedroom";
         bathroomLocked = true;
-        DataStorage.Player.transform.position = bedroomEntryPoint.position;
+
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+
+        cc.enabled = false; //yea the character controller does not like it if you change the position, you gotta turn it off and on again...
+        DataStorage.Player.transform.position = bedroomEntryPoint.transform.position;
+        cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
 
     
@@ -73,12 +80,17 @@ public class StorylineManager : MonoBehaviour
     public void CheckIfSpiderAngry()
     {
 
-        elapsedTime += Time.deltaTime;
-        if (elapsedTime >= bathroomTimeUntilKickedOut)
-        {
-            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
-        }
+        //elapsedTime += Time.deltaTime;
+        //if (elapsedTime >= bathroomTimeUntilKickedOut)
+        //{
+        //    DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
+        //}
 
+        
+        if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
+        {
+            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad");
+        }
     }
 
 }

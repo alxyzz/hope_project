@@ -18,7 +18,25 @@ public class GameManager : MonoBehaviour
     public ItemInteractionManager ItemComponent;
     public SoundManager SoundComponent;
     public Entity player;
-    public Transform pickupableObjects;
+    
+    public List<Transform> pickupableObjects = new();
+    [Space(25)]
+    public StartingPlayerRoom StartingRoomPicker;
+    /// <summary>
+    /// room in which the player starts
+    /// </summary>
+    public enum StartingPlayerRoom
+    {
+        Bathroom,
+        Bedroom
+    }
+
+
+
+
+
+
+
 
 
     public void ChangeHope(int amt)
@@ -41,6 +59,22 @@ public class GameManager : MonoBehaviour
             DataStorage.Player.transform.position = DataStorage.savedPlayerLoc;
             //later on, this is where we can do stuff like checking if there's a file with the current game state saved as a json (all kinds of booleans probably) and load it
         }
+
+        Vector3 spawnloc = new Vector3();
+        switch (StartingRoomPicker)
+        {
+            case StartingPlayerRoom.Bathroom:
+                spawnloc = StorylineComponent.bathroomEntryPoint.position;
+                break;
+            case StartingPlayerRoom.Bedroom:
+                spawnloc = StorylineComponent.bedroomEntryPoint.position;
+                break;
+            default:
+                break;
+        }
+
+        player.transform.position = spawnloc;
+
     }
 
 
@@ -57,6 +91,9 @@ public class GameManager : MonoBehaviour
         }
 
         TripComponent.ChangeHallucinatedObjectVisibilityStatus();
+
+
+
 
     }
 

@@ -19,7 +19,6 @@ public class Entity : MonoBehaviour
     public float moveSpeed;
     public Rigidbody rigidBody;
 
-
     Vector3 lastpos;
     private SpriteRenderer sprenderer;
 
@@ -33,7 +32,6 @@ public class Entity : MonoBehaviour
     //talk to
     public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this guy
 
-
     /// <summary>
     /// we will call Message("Interact") on whatever NPC or object we want to interact with later so this has the same name as the object function
     /// </summary>
@@ -45,7 +43,6 @@ public class Entity : MonoBehaviour
         }
 
     }
-
 
     public void Start()
     {
@@ -64,8 +61,6 @@ public class Entity : MonoBehaviour
 
         startingPosition = transform.position;
     }
-
-    //private float timeSinceLastWander;
 
     void Update()
     {
@@ -105,7 +100,7 @@ public class Entity : MonoBehaviour
         }
         if (entityName == "Cat")
         {
-            Transform playertrans = DataStorage.Player.transform;
+            Transform playert = DataStorage.Player.transform;
             //if x negative and z negative -> look upright
             //if x positive and z negative -> look upleft
 
@@ -116,58 +111,47 @@ public class Entity : MonoBehaviour
             //if player is directly to the x- but z is within 2f -> look right
             // if player is directly to the z+ but x is within 2f -> look down
             //if player is directly to the z- but x is within 2f -> look up
-            if (Vector3.Distance(playertrans.position, transform.position) > LookAnimation_LookRadius)
+            if (Vector3.Distance(playert.position, transform.position) > LookAnimation_LookRadius)
             {//not looking at anyone
                 animRef.SetInteger("lookDir", 9);
 
             }
 
             else
-            if (playertrans.position.x > transform.position.x && (Mathf.Abs(playertrans.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            if (playert.position.x > transform.position.x && (Mathf.Abs(playert.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
             {//look left done
                 animRef.SetInteger("lookDir", 4);
             }
-            else if (playertrans.position.x < transform.position.x && (Mathf.Abs(playertrans.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            else if (playert.position.x < transform.position.x && (Mathf.Abs(playert.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
             {//look right done
                 animRef.SetInteger("lookDir", 5);
             }
-            else if (playertrans.position.z > transform.position.z && (Mathf.Abs(playertrans.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            else if (playert.position.z > transform.position.z && (Mathf.Abs(playert.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
             {//look down done
                 animRef.SetInteger("lookDir", 7);
             }
-            else if (playertrans.position.z < transform.position.z && (Mathf.Abs(playertrans.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+            else if (playert.position.z < transform.position.z && (Mathf.Abs(playert.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
             {//look up done
                 animRef.SetInteger("lookDir", 2);
             }
             else
-            if (playertrans.position.x > transform.position.x && playertrans.position.z > transform.position.z)
+            if (playert.position.x > transform.position.x && playert.position.z > transform.position.z)
             {//look downleft done
                 animRef.SetInteger("lookDir", 6);
             }
-            else if (playertrans.position.x < transform.position.x && playertrans.position.z > transform.position.z)
+            else if (playert.position.x < transform.position.x && playert.position.z > transform.position.z)
             {//look downright done
                 animRef.SetInteger("lookDir", 8);
             }
-            else if (playertrans.position.x < transform.position.x && playertrans.position.z < transform.position.z)
+            else if (playert.position.x < transform.position.x && playert.position.z < transform.position.z)
             {//look upright done
                 animRef.SetInteger("lookDir", 3);
             }
-            else if (playertrans.position.x > transform.position.x && playertrans.position.z < transform.position.z)
+            else if (playert.position.x > transform.position.x && playert.position.z < transform.position.z)
             {//look upleft done
                 animRef.SetInteger("lookDir", 1);
             }
-
-
-
-
-
-
-
         }
-
-
-
-
     }
 
     public float LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
