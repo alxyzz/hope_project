@@ -12,6 +12,8 @@ public class TripManager : MonoBehaviour
     [HideInInspector]
     public List<GameObject> highOnlyGameObjects = new();
 
+    public DrugOverlayer Overlays;
+
 
     // Start is called before the first frame update
     [HideInInspector]
@@ -211,6 +213,8 @@ public class TripManager : MonoBehaviour
 
     void OnDrugStateChange()
     {
+        Overlays.overlaying = false;
+
         ChangeHallucinatedObjectVisibilityStatus();
         Debug.Log("drug state changed");
         switch (tripStatus)
@@ -243,6 +247,7 @@ public class TripManager : MonoBehaviour
 
             case 4:
                 workingProfile = fourthStageProfile;
+                Overlays.startOverlaying();
                 flipWorld = true;
                 break;
 
