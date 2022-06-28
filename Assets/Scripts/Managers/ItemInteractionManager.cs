@@ -47,14 +47,10 @@ public class ItemInteractionManager : MonoBehaviour
             }
         }
     }
-    public void Test()
-    {
-        Debug.LogWarning("Testing events");
-    }
 
     public void PutInBackpack() // item displayed in inventory (wip)
     {
-        //Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
+        Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
         if (DataStorage.objectsInInventory.Count < 3)
         {
             int count = DataStorage.objectsInInventory.Count;

@@ -161,6 +161,95 @@ public class Entity : MonoBehaviour
     {
         return (testValue >= System.Math.Min(bound1, bound2) && testValue <= System.Math.Max(bound1, bound2));
     }
+    public float CalculateAngle180_v3(Vector3 fromDir, Vector3 toDir)
+    {
+        float angle = Quaternion.FromToRotation(fromDir, toDir).eulerAngles.y;
+        if (angle > 180) { return angle - 360f; }
+        return angle;
+    }
+
+    //public void PauseMovement()
+    //{
+
+    //    Debug.Log("ran pausemovement");
+    //    lastAgentPath = navAgent.path;
+    //    lastAgentVelocity = navAgent.velocity;
+    //    navAgent.velocity = Vector3.zero;
+    //    navAgent.isStopped = true;
+
+    //    animRef.SetBool("walkRight", false);
+    //    animRef.SetBool("walkLeft", false);
+
+
+
+
+    //}
+
+    //public void ResumeMovement()
+    //{
+    //    Debug.Log("ran resumemovement");
+    //    navAgent.isStopped = false;
+    //    navAgent.velocity = lastAgentVelocity;
+    //    navAgent.SetPath(lastAgentPath);
+    //    Debug.LogError("animRef.SetBool(\"isWalking\", !navAgent.isStopped);" + " state is  !navAgent.isStopped");
+
+
+    //}
+
+
+
+
+
+
+
+
+    public void Movement(Vector3 movePoint) // moves towards a hit point (Player)
+    {
+        navAgent.SetDestination(movePoint);
+    }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {//if you enter the range of an item you select it for interaction. CAREFUL - this means we can't have objects too close together
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            {
+                Debug.Log("entered the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
+                //other.gameObject.GetComponent<GenericObject>().inRangeOfPlayer = true;
+                other.gameObject.GetComponent<GenericObject>().Highlight(true);
+
+            }
+        }
+        //else if (entityName == "Cat")
+        //{
+
+        //}
+
+
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {//if you leave the range of an item, and it is an item, you deselect it
+        if (player)
+        {
+            if (other.gameObject.GetComponent<GenericObject>() != null)
+            {
+                Debug.Log("left the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
+                //other.gameObject.GetComponent<GenericObject>().inRangeOfPlayer = false;
+                other.gameObject.GetComponent<GenericObject>().Highlight(false);
+            }
+        }
+        //else if (entityName == "Cat")
+        //{
+
+        //}
+
+
+
+    }
 
 
 }

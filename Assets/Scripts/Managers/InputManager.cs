@@ -32,13 +32,14 @@ public class InputManager : MonoBehaviour
 
                 GenericObject targetObject = m_hit.collider.GetComponent<GenericObject>();
                 Entity targetEntity = m_hit.collider.GetComponent<Entity>();
+                //Transform testTransform = m_hit.collider.GetComponent<Transform>();
                 if (targetObject != null)
                 {
-                    if (targetObject.inRangeOfPlayer)
-                    {
-                        Debug.Log("hit object " + m_hit.transform.name);
-                        targetObject.Interact();
-                    }
+                    //if (targetObject.inRangeOfPlayer)
+                    //{
+                    Debug.Log("hit object " + m_hit.transform.name);
+                    targetObject.Interact();
+                    //}
                     
                 }
                 else if (targetEntity != null)
@@ -46,8 +47,11 @@ public class InputManager : MonoBehaviour
                     //this uses the UnityEvent of that item -> which in turn runs a function in DialogueManager -> which runs the fungus block
                     targetEntity.Interact();
                 }
-
-
+                else
+                {
+                    //Debug.Log("target position is - " + testTransform.position);
+                    Debug.Log("hit null? Object name -" + m_hit.collider.name);
+                }
 
             }
         }
