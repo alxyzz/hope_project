@@ -49,6 +49,8 @@ public class StorylineManager : MonoBehaviour
         cc.enabled = false; //yea the character controller does not like it if you change the position, you gotta turn it off and on again...
         DataStorage.Player.transform.position = bedroomEntryPoint.transform.position;
         cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
 
     
