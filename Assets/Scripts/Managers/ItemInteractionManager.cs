@@ -1,4 +1,5 @@
 using Fungus;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemInteractionManager : MonoBehaviour
@@ -9,6 +10,10 @@ public class ItemInteractionManager : MonoBehaviour
     public GenericObject currentlySelectedObject;
     public GenericObject lastUsedObject;
     public Material SelectedObjectMaterial;
+
+
+    public Sprite placeholderItemImage;
+
 
 
     private bool localCanBePutDown;
@@ -64,11 +69,21 @@ public class ItemInteractionManager : MonoBehaviour
         }
     }
 
-    /// hardcoded object interactions
+    public List<GenericObject> startingPlayerItems = new();
+    
+    public void GivePlayerStartingItems()
+    {
+        foreach (GenericObject item in startingPlayerItems)
+        {
+
+        }
+
+
+    }
 
 
 
-
+    /// hardcoded object interactio
 
     //////BATHROOM ROOM START
 
