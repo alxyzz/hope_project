@@ -33,7 +33,6 @@ public static class DataStorage
     //if you want to get list of items that cant be picked up
     //var results = allObjects.Where(i => !allpickupableObjects.Any(e => i.Contains(e)));
     public static List<GenericObject> objectsInInventory = new(); //maximum 3 items i think? coz only 3 slots in the design UI
-    public static List<InventoryUIObject> inventorySlots = new(); // sprite slots in inventory 
     public static List<Light> lightsInWorld = new();
     //inventory UI objects are stored in UIManager
 
