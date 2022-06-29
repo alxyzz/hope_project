@@ -5,7 +5,6 @@ public class InputManager : MonoBehaviour
     // mouse
     [HideInInspector]
     public Vector3 mousePosition;
-    public Ray m_castPoint;
     public RaycastHit m_hit;
 
     // Start is called before the first frame update
@@ -14,47 +13,90 @@ public class InputManager : MonoBehaviour
 
     }
 
+
+    //    if (Input.GetMouseButtonDown(0))
+    //         {
+    //             RaycastHit raycastHit;
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //             if (Physics.Raycast(ray, out raycastHit, 100f))
+    //             {
+    //                 if (raycastHit.transform != null)
+    //                 {
+    //                    //Our custom method. 
+    //                     CurrentClickedGameObject(raycastHit.transform.gameObject);
+    //}
+    //             }
+    //         }
+
+
+
+
     // Update is called once per frame
     void Update()
     {
         // finds mouse on screen, casts ray from screen to world, starts schmooving if ray touches anything other than the player itself
-        mousePosition = Input.mousePosition;
-        m_castPoint = Camera.main.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(m_castPoint, out m_hit, Mathf.Infinity))
+
+
+
+
+
+
+
+
+        if (Input.GetMouseButtonDown(0))
         {
-            //if (!m_hit.collider.CompareTag("Player"))
-            //{
-            //    DataStorage.Player.Movement(m_hit.point);
-            //}
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out m_hit, 100f))
             {
-
-                GenericObject targetObject = m_hit.collider.GetComponent<GenericObject>();
-                Entity targetEntity = m_hit.collider.GetComponent<Entity>();
-                //Transform testTransform = m_hit.collider.GetComponent<Transform>();
-                if (targetObject != null)
+                if (m_hit.transform != null)
                 {
-                    //if (targetObject.inRangeOfPlayer)
-                    //{
-                    Debug.Log("hit object " + m_hit.transform.name);
-                    targetObject.Interact();
-                    //}
                     
-                }
-                else if (targetEntity != null)
-                {
-                    //this uses the UnityEvent of that item -> which in turn runs a function in DialogueManager -> which runs the fungus block
-                    targetEntity.Interact();
-                }
-                else
-                {
-                    //Debug.Log("target position is - " + testTransform.position);
-                    Debug.Log("hit null? Object name -" + m_hit.collider.name);
-                }
 
+
+
+
+                    GenericObject targetObject = m_hit.transform.GetComponent<GenericObject>();
+                    Entity targetEntity = m_hit.transform.GetComponent<Entity>();
+
+                    if (targetObject != null)
+                    {
+
+                        Debug.Log("hit object " + m_hit.transform.name);
+                        targetObject.Interact();
+                        //}
+
+                    }
+                    else if (targetEntity != null)
+                    {
+                        Debug.Log("hit entity " + m_hit.transform.name);
+
+                        targetEntity.Interact();
+                    }
+                    else
+                    {
+                        Debug.Log("hit non-genericobject non-entity. Object name -" + m_hit.collider.name);
+                    }
+
+
+
+                }
             }
         }
+
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Debug.Log("pressed lmb");
+
+            //Transform testTransform = m_hit.collider.GetComponent<Transform>();
+           
+
+        }
+
 
         //if (Input.GetKeyDown(KeyCode.Mouse1))
         //{//toggle movement on RMB
@@ -99,12 +141,12 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed j debug sober button");
             //meth/crack/horse ketamine/LSD/PCP/weed
-            
-                Debug.Log("already sober so we will be taking a little chemical enjoyment");
-                
-                    DataStorage.GameManagerComponent.TripComponent.GetLow();
-                    
-            
+
+            Debug.Log("already sober so we will be taking a little chemical enjoyment");
+
+            DataStorage.GameManagerComponent.TripComponent.GetLow();
+
+
 
 
 
@@ -130,14 +172,14 @@ public class InputManager : MonoBehaviour
     //Door: “I don’t feel like leaving yet.”
 
 
-// vvvvvv just need this for the fungus flowchart
-//public void ToggleCharacterMovement(bool moving)
-//    {
-//        if (moving)
-//            DataStorage.GameManagerComponent.player.PauseMovement();
-//        else
-//            DataStorage.GameManagerComponent.player.ResumeMovement();
-//    }
+    // vvvvvv just need this for the fungus flowchart
+    //public void ToggleCharacterMovement(bool moving)
+    //    {
+    //        if (moving)
+    //            DataStorage.GameManagerComponent.player.PauseMovement();
+    //        else
+    //            DataStorage.GameManagerComponent.player.ResumeMovement();
+    //    }
 
 
 }
