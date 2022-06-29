@@ -5413,8 +5413,7 @@ MonoBehaviour:
   SoundComponent: {fileID: 1932278528}
   player: {fileID: 2123075252}
   DecisionComponent: {fileID: 0}
-  pickupableObjects:
-  - {fileID: 0}
+  pickupableObjects: []
   StartingRoomPicker: 0
 --- !u!4 &1932278519
 Transform:

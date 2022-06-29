@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public DecisionManager DecisionComponent;
 
 
-    public List<Transform> pickupableObjects = new();
+    public List<Transform> pickupableObjects = new(); //empty entries here without an actual reference will cause a null exception so just doublecheck this in the inspector 
     [Space(25)]
     public StartingPlayerRoom StartingRoomPicker;
     /// <summary>
@@ -85,12 +85,20 @@ public class GameManager : MonoBehaviour
     {
         DataStorage.Player = player;
         DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>();
-        if (pickupableObjects == null) return;
-        if (pickupableObjects.Count == 0) return;
-        foreach (Transform pObject in pickupableObjects)
+        if (pickupableObjects != null)
         {
-            DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
-        }
+            if (pickupableObjects.Count != 0)
+            {
+                foreach (Transform pObject in pickupableObjects)
+                {
+                    DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
+                }
+
+            }
+
+        } 
+        
+        
 
 
     }
