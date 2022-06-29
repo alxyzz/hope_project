@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-
+        DataStorage.Player = player;
         player.transform.position = spawnloc;
 
     }
@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DataStorage.Player = player;
         DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>();
         if (pickupableObjects != null)
         {
