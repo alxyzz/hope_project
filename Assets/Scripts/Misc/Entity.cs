@@ -1,16 +1,15 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
-
+    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
     public string entityName, description;
 
     public bool player = false;
     public bool talks; //in case it does not want to talk
     public bool animating;//used for animation
-    public bool wandering;//wether it periodically moves around in an area
+   
     Vector3 startingPosition; //used to track starting position so we don't go too far from it while wandering
 
     public float moveDelay;//for random periodic movement if necessary
@@ -20,17 +19,20 @@ public class Entity : MonoBehaviour
     public Rigidbody rigidBody;
 
     Vector3 lastpos;
-    private SpriteRenderer sprenderer;
+
 
     Animator animRef;
     //navigation
-    public NavMeshAgent navAgent;
+    //public NavMeshAgent navAgent;
     Vector3 aiDestination; //the point where the AI will navigate to if 1. moving is true 2. it's not 0,0,0
     //for pausing and unpausing
     Vector3 lastAgentVelocity;
-    NavMeshPath lastAgentPath;
+    //NavMeshPath lastAgentPath;
     //talk to
-    public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this guy
+    public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this little guy
+
+    public float lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
+    public float lookAnimation_LookRadius;
 
     /// <summary>
     /// we will call Message("Interact") on whatever NPC or object we want to interact with later so this has the same name as the object function
@@ -39,14 +41,27 @@ public class Entity : MonoBehaviour
     {
         if (!player)
         {
-            talkFunction.Invoke();
+            if (relatedDecisions.Count == 0)
+            {
+                DataStorage.GameManagerComponent.DecisionComponent.ChangeTargetObject(gameObject);
+                DataStorage.GameManagerComponent.DecisionComponent.PopUp();
+                return;
+            }
+            if (talks)
+            {
+                if (talkFunction != null)
+                {
+                    talkFunction.Invoke();
+                }
+                
+            }
+            
         }
 
     }
 
     public void Start()
     {
-        sprenderer = GetComponent<SpriteRenderer>();
         try
         {
             if (GetComponent<Animator>() != null)
@@ -64,110 +79,119 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
+        HandleAnimation();
+    }
+
+
+    private void HandleAnimation()
+    {
+        if (!animating || animRef == null)
+        {
+            return;
+        }
         if (player)
         {
-            if (transform.position.x > lastpos.x)
-            {//moved left
-                animRef.SetBool("walkLeft", true);
-                animRef.SetBool("walkRight", false);
-                animRef.SetBool("lookLeft", false);
-                lastMovementWasRight = false;
-
-            }
-            else if (transform.position.x < lastpos.x)
-            {//moved right
-                animRef.SetBool("walkRight", true);
-                animRef.SetBool("walkLeft", false);
-                animRef.SetBool("lookLeft", false);
-                lastMovementWasRight = true;
-            }
-
-            if (lastpos == transform.position)
-            {
-                animRef.SetBool("walkRight", false);
-                animRef.SetBool("walkLeft", false);
-                if (lastMovementWasRight)
-                {
-                    animRef.SetBool("lookLeft", false);
-                }
-                else
-                {
-                    animRef.SetBool("lookLeft", true);
-                }
-
-            }
-            lastpos = transform.position;
+            HandlePlayerAnimation();
         }
         if (entityName == "Cat")
         {
-            Transform playert = DataStorage.Player.transform;
-            //if x negative and z negative -> look upright
-            //if x positive and z negative -> look upleft
-
-            //if x positive and z positive -> look downleft
-            //if x negative and z positive -> look downright
-            //the following take precedence due to more specific conditions
-            //if player is directly to the x+ but z is within 2f -> look left
-            //if player is directly to the x- but z is within 2f -> look right
-            // if player is directly to the z+ but x is within 2f -> look down
-            //if player is directly to the z- but x is within 2f -> look up
-            if (Vector3.Distance(playert.position, transform.position) > LookAnimation_LookRadius)
-            {//not looking at anyone
-                animRef.SetInteger("lookDir", 9);
-
-            }
-
-            else
-            if (playert.position.x > transform.position.x && (Mathf.Abs(playert.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
-            {//look left done
-                animRef.SetInteger("lookDir", 4);
-            }
-            else if (playert.position.x < transform.position.x && (Mathf.Abs(playert.position.z - transform.position.z) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
-            {//look right done
-                animRef.SetInteger("lookDir", 5);
-            }
-            else if (playert.position.z > transform.position.z && (Mathf.Abs(playert.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
-            {//look down done
-                animRef.SetInteger("lookDir", 7);
-            }
-            else if (playert.position.z < transform.position.z && (Mathf.Abs(playert.position.x - transform.position.x) < LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
-            {//look up done
-                animRef.SetInteger("lookDir", 2);
-            }
-            else
-            if (playert.position.x > transform.position.x && playert.position.z > transform.position.z)
-            {//look downleft done
-                animRef.SetInteger("lookDir", 6);
-            }
-            else if (playert.position.x < transform.position.x && playert.position.z > transform.position.z)
-            {//look downright done
-                animRef.SetInteger("lookDir", 8);
-            }
-            else if (playert.position.x < transform.position.x && playert.position.z < transform.position.z)
-            {//look upright done
-                animRef.SetInteger("lookDir", 3);
-            }
-            else if (playert.position.x > transform.position.x && playert.position.z < transform.position.z)
-            {//look upleft done
-                animRef.SetInteger("lookDir", 1);
-            }
+            HandleCatEyeTracking();
         }
     }
 
-    public float LookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
-    public float LookAnimation_LookRadius;
 
-    public bool IsBetween(double testValue, double bound1, double bound2)
+    private void HandlePlayerAnimation()
     {
-        return (testValue >= System.Math.Min(bound1, bound2) && testValue <= System.Math.Max(bound1, bound2));
-    }
-    public float CalculateAngle180_v3(Vector3 fromDir, Vector3 toDir)
-    {
-        float angle = Quaternion.FromToRotation(fromDir, toDir).eulerAngles.y;
-        if (angle > 180) { return angle - 360f; }
-        return angle;
+        if (transform.position.x > lastpos.x)
+        {//moved left
+            animRef.SetBool("walkLeft", true);
+            animRef.SetBool("walkRight", false);
+            animRef.SetBool("lookLeft", false);
+            lastMovementWasRight = false;
+
+        }
+        else if (transform.position.x < lastpos.x)
+        {//moved right
+            animRef.SetBool("walkRight", true);
+            animRef.SetBool("walkLeft", false);
+            animRef.SetBool("lookLeft", false);
+            lastMovementWasRight = true;
+        }
+
+        if (lastpos == transform.position)
+        {
+            animRef.SetBool("walkRight", false);
+            animRef.SetBool("walkLeft", false);
+            if (lastMovementWasRight)
+            {
+                animRef.SetBool("lookLeft", false);
+            }
+            else
+            {
+                animRef.SetBool("lookLeft", true);
+            }
+
+        }
+        lastpos = transform.position;
     }
 
+    private void HandleCatEyeTracking()
+    {
+        //1 2 3
+        //4   5
+        //6 7 8
+        Transform playerTransform = DataStorage.Player.transform;
+        //if x negative and z negative -> look upright
+        //if x positive and z negative -> look upleft
+
+        //if x positive and z positive -> look downleft
+        //if x negative and z positive -> look downright
+        //the following take precedence due to more specific conditions
+        //if player is directly to the x+ but z is within 2f -> look left
+        //if player is directly to the x- but z is within 2f -> look right
+        // if player is directly to the z+ but x is within 2f -> look down
+        //if player is directly to the z- but x is within 2f -> look up
+        if (Vector3.Distance(playerTransform.position, transform.position) > lookAnimation_LookRadius)
+        {//not looking at anyone
+            animRef.SetInteger("lookDir", 9);
+        }
+        else
+        if (playerTransform.position.x > transform.position.x && (Mathf.Abs(playerTransform.position.z - transform.position.z) < lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+        {//look left done
+            animRef.SetInteger("lookDir", 4);
+        }
+        else if (playerTransform.position.x < transform.position.x && (Mathf.Abs(playerTransform.position.z - transform.position.z) < lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+        {//look right done
+            animRef.SetInteger("lookDir", 5);
+        }
+        else if (playerTransform.position.z > transform.position.z && (Mathf.Abs(playerTransform.position.x - transform.position.x) < lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+        {//look down done
+            animRef.SetInteger("lookDir", 7);
+        }
+        else if (playerTransform.position.z < transform.position.z && (Mathf.Abs(playerTransform.position.x - transform.position.x) < lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference))
+        {//look up done
+            animRef.SetInteger("lookDir", 2);
+        }
+        else
+        if (playerTransform.position.x > transform.position.x && playerTransform.position.z > transform.position.z)
+        {//look downleft done
+            animRef.SetInteger("lookDir", 6);
+        }
+        else if (playerTransform.position.x < transform.position.x && playerTransform.position.z > transform.position.z)
+        {//look downright done
+            animRef.SetInteger("lookDir", 8);
+        }
+        else if (playerTransform.position.x < transform.position.x && playerTransform.position.z < transform.position.z)
+        {//look upright done
+            animRef.SetInteger("lookDir", 3);
+        }
+        else if (playerTransform.position.x > transform.position.x && playerTransform.position.z < transform.position.z)
+        {//look upleft done
+            animRef.SetInteger("lookDir", 1);
+        }
+    }
+
+    //no need for this since we no longer use navmesh for movement
     //public void PauseMovement()
     //{
 
@@ -198,15 +222,10 @@ public class Entity : MonoBehaviour
 
 
 
-
-
-
-
-
-    public void Movement(Vector3 movePoint) // moves towards a hit point (Player)
-    {
-        navAgent.SetDestination(movePoint);
-    }
+    //public void Movement(Vector3 movePoint) // moves towards a hit point (Player)
+    //{
+    //    navAgent.SetDestination(movePoint);
+    //}
 
 
 
@@ -219,16 +238,8 @@ public class Entity : MonoBehaviour
                 Debug.Log("entered the trigger range of object " + other.gameObject.GetComponent<GenericObject>().objectName);
                 //other.gameObject.GetComponent<GenericObject>().inRangeOfPlayer = true;
                 other.gameObject.GetComponent<GenericObject>().Highlight(true);
-
             }
         }
-        //else if (entityName == "Cat")
-        //{
-
-        //}
-
-
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -242,14 +253,5 @@ public class Entity : MonoBehaviour
                 other.gameObject.GetComponent<GenericObject>().Highlight(false);
             }
         }
-        //else if (entityName == "Cat")
-        //{
-
-        //}
-
-
-
     }
-
-
 }

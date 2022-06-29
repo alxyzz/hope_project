@@ -101,28 +101,28 @@ public class UIManager : MonoBehaviour
 
 
     }
+    // no need to refresh, each button refreshes itself on Update(). messy, but our game is not particularly intensive in any case. the place where this happens is InventoryUIObject.cs
+    //public void RefreshInventoryMenu()
+    //{
 
-    public void RefreshInventoryMenu()
-    {
+    //    for (int i = 0; i < DataStorage.objectsInInventory.Count; i++)
+    //    {
+    //        if (inventorySlotList[i] != null)
+    //        {
 
-        for (int i = 0; i < DataStorage.objectsInInventory.Count; i++)
-        {
-            if (inventorySlotList[i] != null)
-            {
+    //        }
+    //    }
+    //    if (!backpackVisible)
+    //    {
+    //        invParent.SetActive(false);
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        invParent.SetActive(true);
+    //    }
 
-            }
-        }
-        if (!backpackVisible)
-        {
-            invParent.SetActive(false);
-            return;
-        }
-        else
-        {
-            invParent.SetActive(true);
-        }
-
-    }
+    //}
 
     /// <summary>
     /// pop up a message above the player character

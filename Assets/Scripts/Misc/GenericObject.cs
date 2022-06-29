@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class GenericObject : MonoBehaviour
 {
+
+
+    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
     [HideInInspector]
     public bool usedInWorld; //wether it has already been used
@@ -58,6 +61,16 @@ public class GenericObject : MonoBehaviour
             return;
         }
         DataStorage.GameManagerComponent.ItemComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
+        if (CheckAndShowDecisions())//if there are decisions related to this, we will not interact the usual way
+        {
+            return;
+        }
+        CheckAndRunUseEvent();//otherwise just run the typical interaction, like for simple hope modifiers
+    }
+
+
+    private void CheckAndRunUseEvent()
+    {
         if (inworldUse_UnityEvent != null)
         {
             Debug.Log("we just clicked " + objectName);
@@ -67,8 +80,32 @@ public class GenericObject : MonoBehaviour
                 DataStorage.GameManagerComponent.ChangeHope(hopeModifierOnInteraction);
                 usedForHope = true;
             }
-            inworldUse_UnityEvent.Invoke();
+            if (inworldUse_UnityEvent!= null)
+            {
+                inworldUse_UnityEvent.Invoke();
+            }
+            
         }
+
+    }
+    private bool CheckAndShowDecisions()
+    {
+        if (relatedDecisions.Count > 0)
+        {
+            foreach (DecisionButton item in relatedDecisions)
+            {//we loop through em and pop em up
+                DataStorage.GameManagerComponent.DecisionComponent.dButtons.Add(item);
+            }
+            DataStorage.GameManagerComponent.DecisionComponent.PopUp();
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+
     }
 
     /// <summary>
