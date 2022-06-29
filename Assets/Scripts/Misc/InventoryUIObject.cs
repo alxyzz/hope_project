@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryUIObject : MonoBehaviour
 {
     public GenericObject containedObject;
+    public Image itemBorder;
     public Image itemImage;
     public TextMeshProUGUI itemName;
 
@@ -18,11 +19,13 @@ public class InventoryUIObject : MonoBehaviour
         {
             itemImage.enabled = false;
             itemName.enabled = false;
+            itemBorder.enabled = false;
         }
         else
         {
             itemImage.enabled = true;
             itemName.enabled = true;
+            itemBorder.enabled = true;
         }
     }
 
