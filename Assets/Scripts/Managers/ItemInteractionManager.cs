@@ -56,8 +56,7 @@ public class ItemInteractionManager : MonoBehaviour
             int count = DataStorage.objectsInInventory.Count;
             DataStorage.currentlyHeldObject.GetComponent<Renderer>().enabled = false;
             DataStorage.objectsInInventory[count] = lastUsedObject;
-            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].containedObject = lastUsedObject;
-            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere();
+            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere(lastUsedObject);
         }
         else
         {
