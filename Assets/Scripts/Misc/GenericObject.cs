@@ -80,7 +80,11 @@ public class GenericObject : MonoBehaviour
                 DataStorage.GameManagerComponent.ChangeHope(hopeModifierOnInteraction);
                 usedForHope = true;
             }
-            inworldUse_UnityEvent.Invoke();
+            if (inworldUse_UnityEvent!= null)
+            {
+                inworldUse_UnityEvent.Invoke();
+            }
+            
         }
 
     }

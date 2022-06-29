@@ -49,7 +49,11 @@ public class Entity : MonoBehaviour
             }
             if (talks)
             {
-                talkFunction.Invoke();
+                if (talkFunction != null)
+                {
+                    talkFunction.Invoke();
+                }
+                
             }
             
         }

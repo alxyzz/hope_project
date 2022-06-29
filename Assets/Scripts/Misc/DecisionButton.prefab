@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3321231262065145392}
   - component: {fileID: 3321231262065145395}
   - component: {fileID: 3321231262065145394}
+  - component: {fileID: 3243241002928953094}
   m_Layer: 5
   m_Name: DecisionButton
   m_TagString: Untagged
@@ -255,5 +256,22 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3321231262065145395}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3243241002928953094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321231262065145388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff15f352d66f25444a04e426d351fc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dName: 
+  nameTextObject: {fileID: 0}
+  actionOnClick:
     m_PersistentCalls:
       m_Calls: []
