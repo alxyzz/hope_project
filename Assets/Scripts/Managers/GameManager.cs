@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,7 +17,10 @@ public class GameManager : MonoBehaviour
     public ItemInteractionManager ItemComponent;
     public SoundManager SoundComponent;
     public Entity player;
-    
+
+    public DecisionManager DecisionComponent;
+
+
     public List<Transform> pickupableObjects = new();
     [Space(25)]
     public StartingPlayerRoom StartingRoomPicker;
@@ -83,16 +85,12 @@ public class GameManager : MonoBehaviour
     {
         DataStorage.Player = player;
         DataStorage.currentlyHeldObject = player.GetComponentInChildren<GenericObject>();
-
-
+        if (pickupableObjects == null) return;
+        if (pickupableObjects.Count == 0) return;
         foreach (Transform pObject in pickupableObjects)
         {
             DataStorage.allpickupableObjects.Add(pObject.GetComponent<GenericObject>());
         }
-
-        TripComponent.ChangeHallucinatedObjectVisibilityStatus();
-
-
 
 
     }
@@ -100,6 +98,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
