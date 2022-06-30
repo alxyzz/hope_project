@@ -92,6 +92,8 @@ public class GenericObject : MonoBehaviour
     {
         if (relatedDecisions.Count > 0)
         {
+            DataStorage.GameManagerComponent.DecisionComponent.TargetObject = this.gameObject;
+            DataStorage.GameManagerComponent.DecisionComponent.dButtons.Clear();
             foreach (DecisionButton item in relatedDecisions)
             {//we loop through em and pop em up
                 DataStorage.GameManagerComponent.DecisionComponent.dButtons.Add(item);
