@@ -5,6 +5,7 @@ using UnityEngine;
 public class DecisionManager : MonoBehaviour
 {
     public List<DecisionButton> dButtons = new();
+    public List<Rect> finalPositions = new();
     /// <summary>
     /// amount of space at which the button floats from the center of the popup per each move
     /// </summary>
@@ -16,6 +17,7 @@ public class DecisionManager : MonoBehaviour
     /// </summary>
     [Range(0.01f, 10f)]
     public float buttonTimeInterval;//basically the frequency of movement
+    public float timeBeforeDisappearance;//basically the frequency of movement
 
     Camera maincam;
     public void ChangeTargetObject(GameObject go)
@@ -32,10 +34,34 @@ public class DecisionManager : MonoBehaviour
 
     public void PopUp()
     {
+        int b = 0;
         foreach (DecisionButton item in dButtons)
         {
+            item.transform.position = centerPos.position;
+            item.gameObject.SetActive(true);
             item.Appear();
+            item.finalPosition = finalPositions[b].position;
+            b++;
         }
+
+    }
+
+    public void Disappear()
+    {
+
+
+    }
+
+    IEnumerator delayedDisappear()
+    {
+
+
+        yield return new WaitForSecondsRealtime(timeBeforeDisappearance);
+        foreach (DecisionButton item in dButtons)
+        {
+            item.Disappear();
+        }           
+        gameObject.SetActive(false);
 
     }
 
@@ -43,6 +69,7 @@ public class DecisionManager : MonoBehaviour
     void Start()
     {
         maincam = Camera.main;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
