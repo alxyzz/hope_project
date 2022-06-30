@@ -6,6 +6,8 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public Vector3 mousePosition;
     public RaycastHit m_hit;
+    [HideInInspector]
+    public bool IsThereAPopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,10 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
+            if (IsThereAPopUp)
+            {
+                return;
+            }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out m_hit, 100f))
             {

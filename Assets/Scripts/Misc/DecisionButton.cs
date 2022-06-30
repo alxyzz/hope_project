@@ -13,10 +13,8 @@ public class DecisionButton : MonoBehaviour
 
     public TMPro.TextMeshProUGUI nameTextObject; //this turns to dname
 
-    public UnityEngine.Events.UnityEvent actionOnClick;
-
     [HideInInspector]
-    private Vector3 finalPosition;
+    public Vector3 finalPosition;
     [HideInInspector]
     float desiredMinimumDistanceToFinalPosition;
 
@@ -32,16 +30,17 @@ public class DecisionButton : MonoBehaviour
     private Transform oldParent;
     public void Appear()
     {
-        gameObject.SetActive(true);
         oldParent = transform.parent;
-        transform.parent = DataStorage.GameManagerComponent.DecisionComponent.transform;
+        transform.SetParent(DataStorage.GameManagerComponent.DecisionComponent.transform);
+        transform.position = DataStorage.GameManagerComponent.DecisionComponent.centerPos.position;
     }
 
 
 
     public void Disappear()
     {//simply cleans up the button from the display and reparents it
-        transform.parent = oldParent;
+
+        transform.SetParent(oldParent);
         gameObject.SetActive(false);
         
 

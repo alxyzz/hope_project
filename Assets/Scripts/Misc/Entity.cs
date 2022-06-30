@@ -43,6 +43,7 @@ public class Entity : MonoBehaviour
         {
             if (relatedDecisions.Count == 0)
             {
+                DataStorage.GameManagerComponent.DecisionComponent.gameObject.SetActive(true);
                 DataStorage.GameManagerComponent.DecisionComponent.ChangeTargetObject(gameObject);
                 DataStorage.GameManagerComponent.DecisionComponent.PopUp();
                 return;
