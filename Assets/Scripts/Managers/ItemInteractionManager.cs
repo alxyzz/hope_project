@@ -53,7 +53,7 @@ public class ItemInteractionManager : MonoBehaviour
         Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
         if (DataStorage.objectsInInventory.Count < 3)
         {
-            int count = DataStorage.objectsInInventory.Count; 
+            int count = DataStorage.objectsInInventory.Count;
             DataStorage.objectsInInventory[count] = lastUsedObject;
             DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere(lastUsedObject);
             lastUsedObject.gameObject.SetActive(false);
@@ -85,7 +85,7 @@ public class ItemInteractionManager : MonoBehaviour
     }
 
     public List<GenericObject> startingPlayerItems = new();
-    
+
     public void GivePlayerStartingItems()
     {
         foreach (GenericObject item in startingPlayerItems)
@@ -142,11 +142,6 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseCandyJar()
     {
-
-
-
-
-
         DataStorage.GameManagerComponent.InputComponent.canUseDrugs = true;
         DataStorage.GameManagerComponent.TripComponent.GetHigh();
 
@@ -232,7 +227,7 @@ public class ItemInteractionManager : MonoBehaviour
         }
 
 
-         // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
+        // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
 
         Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
         if (DataStorage.objectsInInventory.Count < 3)

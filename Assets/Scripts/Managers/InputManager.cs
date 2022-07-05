@@ -8,7 +8,8 @@ public class InputManager : MonoBehaviour
     public RaycastHit m_hit;
     [HideInInspector]
     public bool IsThereAPopUp;
-
+    [HideInInspector]
+    public bool canUseDrugs;
     // Start is called before the first frame update
     void Start()
     {
@@ -122,6 +123,10 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
+            if (!canUseDrugs)
+            {
+                return;
+            }
             if (DataStorage.maxHope > 0)
             {
                 DataStorage.GameManagerComponent.TripComponent.GetHigh();

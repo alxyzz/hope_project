@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public DecisionManager DecisionComponent;
 
+    
 
     public List<Transform> pickupableObjects = new(); //empty entries here without an actual reference will cause a null exception so just doublecheck this in the inspector 
     [Space(25)]
