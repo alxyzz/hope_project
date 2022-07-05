@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,17 @@ using UnityEngine.Events;
 
 public class DecisionManager : MonoBehaviour
 {
+    [HideInInspector]
     public List<Decision> currentDecisions = new();
     public DecisionUIElement DecisionUI; //this stores references to the necessary stuff
     [HideInInspector]
     public GameObject TargetObject;
     [Range(0.01f, 10f)]
     public float buttonTimeInterval;//basically the frequency of movement
+
+
+
+
 
     Camera maincam;
     public void ChangeTargetObject(GameObject go)
@@ -37,17 +43,16 @@ public class DecisionManager : MonoBehaviour
     public class Decision : ScriptableObject
     {
         public string decisionName;
-        public UnityEvent targetMethod;
+        public Action targetMethodAction;
 
     }
 
     public void PopUp()
     {
         DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = true;
-        gameObject.SetActive(true);
         DecisionUI.UpdateSelf();
         DecisionUI.ToggleVisibility(true);
-        StartCoroutine(delayedDisappear());
+        //StartCoroutine(delayedDisappear());
     }
 
     public void Disappear()
@@ -56,14 +61,14 @@ public class DecisionManager : MonoBehaviour
         DecisionUI.ToggleVisibility(false);
     }
 
-    IEnumerator delayedDisappear()
-    {
+    //IEnumerator delayedDisappear()
+    //{
 
 
-        yield return new WaitForSecondsRealtime(timeBeforeDisappearance);
-        Disappear();
+    //    yield return new WaitForSecondsRealtime(timeBeforeDisappearance);
+    //    Disappear();
 
-    }
+    //}
 
     // Start is called before the first frame update
     void Start()

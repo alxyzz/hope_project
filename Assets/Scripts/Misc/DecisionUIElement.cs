@@ -9,7 +9,6 @@ public class DecisionUIElement : MonoBehaviour
 
 
 
-    [HideInInspector]
     public List<Button> decisionButtons = new();
 
 
@@ -24,7 +23,7 @@ public class DecisionUIElement : MonoBehaviour
     {
         foreach (Button item in decisionButtons)
         {
-            item.onClick = null;
+            item.onClick.RemoveAllListeners();
             Text txty = item.GetComponentInChildren(typeof(Text), true) as Text;
             txty.text = "";
 
@@ -36,15 +35,25 @@ public class DecisionUIElement : MonoBehaviour
     {
         ClearPreviousDecisions();
         List<Decision> decs = DataStorage.GameManagerComponent.DecisionComponent.currentDecisions;
-
+        decisionButtons.ForEach(n => n.gameObject.SetActive(true));
         for (int i = 0; i < decs.Count; i++)
         {
-            decisionButtons[i].onClick = null;
+
+            UnityEngine.Events.UnityAction mbListener = new UnityEngine.Events.UnityAction(decs[i].targetMethodAction);
+            
+            decisionButtons[i].onClick.AddListener(mbListener);
             Text txty = decisionButtons[i].GetComponentInChildren(typeof(Text), true) as Text;
             txty.text = "";
         }
 
-
+        foreach (Button item in decisionButtons)
+        {
+            Text targetText = item.GetComponentInChildren(typeof(Text), true) as Text;
+            if (targetText.text == "")
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
     }
 
 }
