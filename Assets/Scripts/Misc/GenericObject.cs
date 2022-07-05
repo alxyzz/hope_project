@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static DecisionManager;
 
 public class GenericObject : MonoBehaviour
 {
 
 
-    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
+    public System.Collections.Generic.List<Decision> relatedDecisions = new();
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
     [HideInInspector]
     public bool usedInWorld; //wether it has already been used
@@ -93,10 +94,10 @@ public class GenericObject : MonoBehaviour
         if (relatedDecisions.Count > 0)
         {
             DataStorage.GameManagerComponent.DecisionComponent.TargetObject = this.gameObject;
-            DataStorage.GameManagerComponent.DecisionComponent.dButtons.Clear();
-            foreach (DecisionButton item in relatedDecisions)
+            DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Clear();
+            foreach (Decision item in relatedDecisions)
             {//we loop through em and pop em up
-                DataStorage.GameManagerComponent.DecisionComponent.dButtons.Add(item);
+                DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Add(item);
             }
             DataStorage.GameManagerComponent.DecisionComponent.PopUp();
 

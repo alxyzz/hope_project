@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static DecisionManager;
 
 public class Entity : MonoBehaviour
 {
-    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
+    public System.Collections.Generic.List<Decision> relatedDecisions = new();
     public string entityName, description;
 
     public bool player = false;
