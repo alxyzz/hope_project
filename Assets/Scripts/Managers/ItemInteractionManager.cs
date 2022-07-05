@@ -64,6 +64,26 @@ public class ItemInteractionManager : MonoBehaviour
         }
     }
 
+
+    public void DropItem(GenericObject b)
+    {
+
+
+        b.gameObject.SetActive(true);
+        b.transform.position = DataStorage.Player.transform.position;
+        DataStorage.objectsInInventory.Remove(b);
+
+
+    }
+
+
+    public void DeleteItem(GenericObject b)
+    {
+
+        DataStorage.objectsInInventory.Remove(b);
+
+    }
+
     public List<GenericObject> startingPlayerItems = new();
     
     public void GivePlayerStartingItems()
@@ -78,7 +98,89 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
-    /// hardcoded object interactio
+    /// hardcoded object interaction
+
+
+
+
+
+    //////////ITEMS////////////////////////////////////////////////
+    ///
+
+
+
+
+    public void UseSkateboard()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("use_skateboard");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("use_skateboard_high");
+        }
+
+    }
+
+    public void UsePhone()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("use_phone");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("use_phone_high");
+        }
+
+    }
+
+
+
+    public void UseCandyJar()
+    {
+
+
+
+
+
+        DataStorage.GameManagerComponent.InputComponent.canUseDrugs = true;
+        DataStorage.GameManagerComponent.TripComponent.GetHigh();
+
+
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("use_candyjar");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("use_candyjar_high");
+        }
+
+    }
+
+
+
+    public void UseID()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("use_id");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("use_id_high");
+        }
+
+
+    }
+
+
 
     //////BATHROOM ROOM START
 
@@ -172,7 +274,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
-    public void UseDoor()
+    public void UseDoorBathroom()
     {
         SoundPlayer.PlaySound("test_whip");
 
@@ -187,6 +289,36 @@ public class ItemInteractionManager : MonoBehaviour
 
 
     }
+
+
+
+
+
+
     //////BATHROOM ROOM END
 
+
+
+
+
+
+
+    ////// bedroom 
+    ///
+
+    public void UseDoorBedroomToBathroom()
+    {
+        SoundPlayer.PlaySound("test_whip");
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_door_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_door_high_tutorial");
+        }
+
+
+    }
 }
