@@ -9,7 +9,7 @@ public class InventoryUIObject : MonoBehaviour
     public GenericObject containedObject;
     public Image itemBorder;
     public Image itemImage;
-    public TextMeshProUGUI itemName;
+    //public TextMeshProUGUI itemName;
 
 
 
@@ -18,13 +18,13 @@ public class InventoryUIObject : MonoBehaviour
         if (containedObject == null)
         {
             itemImage.enabled = false;
-            itemName.enabled = false;
+            //itemName.enabled = false;
             itemBorder.enabled = false;
         }
         else
         {
             itemImage.enabled = true;
-            itemName.enabled = true;
+            //itemName.enabled = true;
             itemBorder.enabled = true;
         }
     }
@@ -45,11 +45,11 @@ public class InventoryUIObject : MonoBehaviour
         }
         if (containedObject.objectName != null || containedObject.objectName != "")
         {
-            itemName.text = containedObject.objectName;
+            //itemName.text = containedObject.objectName;
         }
         else
         {
-            itemName.text = "Unknown";
+            //itemName.text = "Unknown";
         }
         
 
