@@ -23,7 +23,7 @@ public class DecisionUIElement : MonoBehaviour
     {
         foreach (Button item in decisionButtons)
         {
-            item.onClick.RemoveAllListeners();
+            item.onClick.RemoveAllListeners(); //NOTE  - THIS DOES NOT REMOVE PERSISTENT EVENTS (added in inspector), only those added via code, so if yu want to do that for some reason do gameObject.GetComponent<Button>().onClick = new Button.ButtonClickedEvent();
             Text txty = item.GetComponentInChildren(typeof(Text), true) as Text;
             txty.text = "";
 
@@ -43,7 +43,7 @@ public class DecisionUIElement : MonoBehaviour
             
             decisionButtons[i].onClick.AddListener(mbListener);
             Text txty = decisionButtons[i].GetComponentInChildren(typeof(Text), true) as Text;
-            txty.text = "";
+            txty.text = decs[i].decisionName;
         }
 
         foreach (Button item in decisionButtons)
