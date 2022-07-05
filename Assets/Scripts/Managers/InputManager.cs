@@ -10,42 +10,11 @@ public class InputManager : MonoBehaviour
     public bool IsThereAPopUp;
     [HideInInspector]
     public bool canUseDrugs;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
-    //    if (Input.GetMouseButtonDown(0))
-    //         {
-    //             RaycastHit raycastHit;
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //             if (Physics.Raycast(ray, out raycastHit, 100f))
-    //             {
-    //                 if (raycastHit.transform != null)
-    //                 {
-    //                    //Our custom method. 
-    //                     CurrentClickedGameObject(raycastHit.transform.gameObject);
-    //}
-    //             }
-    //         }
-
-
 
 
     // Update is called once per frame
     void Update()
     {
-        // finds mouse on screen, casts ray from screen to world, starts schmooving if ray touches anything other than the player itself
-
-
-
-
-
-
-
-
         if (Input.GetMouseButtonDown(0))
         {
             if (IsThereAPopUp)
@@ -57,10 +26,6 @@ public class InputManager : MonoBehaviour
             {
                 if (m_hit.transform != null)
                 {
-                    
-
-
-
 
                     GenericObject targetObject = m_hit.transform.GetComponent<GenericObject>();
                     Entity targetEntity = m_hit.transform.GetComponent<Entity>();

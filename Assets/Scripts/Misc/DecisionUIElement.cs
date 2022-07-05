@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static DecisionManager;
 
 public class DecisionUIElement : MonoBehaviour
 {
 
-
+    public GameObject backgroundUIObject;
 
 
     public List<Button> decisionButtons = new();
@@ -15,6 +16,7 @@ public class DecisionUIElement : MonoBehaviour
     public void ToggleVisibility(bool togg)
     {
         gameObject.SetActive(togg);
+        backgroundUIObject.SetActive(true);//this deactivates on click. its just to cancel the dialogue
     }
 
 
@@ -39,9 +41,8 @@ public class DecisionUIElement : MonoBehaviour
         for (int i = 0; i < decs.Count; i++)
         {
 
-            UnityEngine.Events.UnityAction mbListener = new UnityEngine.Events.UnityAction(decs[i].targetMethodAction);
-            
-            decisionButtons[i].onClick.AddListener(mbListener);
+
+            decisionButtons[i].onClick.AddListener(() => decs[i].targetMethodAction.Invoke());
             Text txty = decisionButtons[i].GetComponentInChildren(typeof(Text), true) as Text;
             txty.text = decs[i].decisionName;
         }

@@ -25,7 +25,7 @@ public class DecisionManager : MonoBehaviour
         Entity entit = go.GetComponent<Entity>();
         if (genobj != null)
         {
-            currentDecisions = genobj.relatedDecisions;
+            currentDecisions = genobj.Decisions;
         }
         else if (entit != null)
         {
@@ -40,10 +40,17 @@ public class DecisionManager : MonoBehaviour
      * then we simply pop it up when it is required, no rescaling necessary because its the same object just different button effects and names
      */
     [System.Serializable]
-    public class Decision : ScriptableObject
+    public class Decision
     {
         public string decisionName;
-        public Action targetMethodAction;
+        public UnityEvent targetMethodAction;
+
+    }
+
+    public void EpicTestFunction()
+    {
+
+        Debug.LogError("lol. lmao.");
 
     }
 

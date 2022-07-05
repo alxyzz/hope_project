@@ -688,10 +688,10 @@ RectTransform:
   m_Father: {fileID: 412913657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.37, y: -50}
+  m_SizeDelta: {x: 532.74, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216674071
 MonoBehaviour:
@@ -892,7 +892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -1715,7 +1716,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 532.74, y: 0}
+  m_SizeDelta: {x: 532.74, y: 415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412913658
 MonoBehaviour:
@@ -2066,12 +2067,12 @@ GameObject:
   - component: {fileID: 529830092}
   - component: {fileID: 529830094}
   m_Layer: 5
-  m_Name: Image
+  m_Name: clickablecanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &529830091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2080,17 +2081,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529830090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000023885126}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000173932}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1802747860}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -88}
-  m_SizeDelta: {x: 5, y: -1075}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529830092
 MonoBehaviour:
@@ -3424,10 +3425,10 @@ RectTransform:
   m_Father: {fileID: 412913657}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.37, y: -155}
+  m_SizeDelta: {x: 532.74, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881699102
 MonoBehaviour:
@@ -4051,10 +4052,10 @@ RectTransform:
   m_Father: {fileID: 412913657}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.37, y: -260}
+  m_SizeDelta: {x: 532.74, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106355299
 MonoBehaviour:
@@ -5533,7 +5534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -5722,10 +5724,10 @@ RectTransform:
   m_Father: {fileID: 412913657}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 266.37, y: -365}
+  m_SizeDelta: {x: 532.74, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681619679
 MonoBehaviour:
@@ -5993,7 +5995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1802747855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6115,6 +6117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbee6677785ec94d8c2d2cb39ccb29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundUIObject: {fileID: 0}
   decisionButtons:
   - {fileID: 216674072}
   - {fileID: 0}
@@ -6182,7 +6185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13152,10 +13156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13242,7 +13244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13400,7 +13403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13521,7 +13525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13838,11 +13843,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  decisionsToInitialize:
+  - dName: Open Door
+    targetMethod:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1932278531}
+          m_TargetAssemblyTypeName: DecisionManager, Assembly-CSharp
+          m_MethodName: EpicTestFunction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
@@ -13860,19 +13878,7 @@ MonoBehaviour:
   hopeModifierOnInteraction: 0
   inworldUse_UnityEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932278523}
-        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
-        m_MethodName: UseDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -14404,7 +14410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relatedDecisions: []
+  decisionsToInitialize: []
+  Decisions: []
   usedInWorld: 0
   usedForHope: 0
   originalMat: {fileID: 0}
