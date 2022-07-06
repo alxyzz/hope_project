@@ -31,8 +31,8 @@ public class CameraMovementScript : MonoBehaviour
         float dist = player.transform.position.z - mainCam.transform.position.z;
         if (Mathf.Abs(dist) != desiredDistanceFromPlayer)
         {
-            Vector3 b = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + desiredDistanceFromPlayer - 0.1f), 0.03f);
-            transform.position = new Vector3(transform.position.x, transform.position.y, b.z ); //magic number my beloved
+            Vector3 b = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + desiredDistanceFromPlayer - 0.2f), 0.03f); //magic number my beloved
+            transform.position = new Vector3(transform.position.x, transform.position.y, b.z ); 
         }
     }
 }
