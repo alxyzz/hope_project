@@ -66,12 +66,14 @@ public class DecisionUIElement : MonoBehaviour
         //decisionButtons.ForEach(n => n.gameObject.SetActive(true));
         for (int i = 0; i < decisionsOfCurrentClickedObject.Count; i++)
         {// go through the amount of decisions, assign same amount of buttons, refresh button name and add the decision's respective UnityEvent to the onClick() of the button. ideally. this shit keeps messing up. im going to PR for now
+            Debug.Log("UpdateSelf() iteration start. index is " + i .ToString() + " THE COUNT OF THE DECISION AMOUNT IS  " + decisionsOfCurrentClickedObject.Count.ToString());
             decisionButtons[i].gameObject.SetActive(true);
             decisionButtons[i].onClick = new Button.ButtonClickedEvent();//wipes persistent listeners
             if (decisionsOfCurrentClickedObject[i] == null)
             {
                 Debug.Log("decisionsForClickedobject[i] is null!!!!!!!!! AAAAAAAAAAAAAAAA");
             }
+            Debug.Log("INDEX IS " + i.ToString() + "    THE COUNT OF THE DECISION AMOUNT IS  " +decisionsOfCurrentClickedObject.Count.ToString());
             buttonUnityEventList[i] = decisionsOfCurrentClickedObject[i].targetMethodAction;
 
             void test() { DirtyEventRunner(i); }
