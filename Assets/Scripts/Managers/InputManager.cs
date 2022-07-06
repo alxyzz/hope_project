@@ -12,13 +12,19 @@ public class InputManager : MonoBehaviour
     public bool canUseDrugs;
 
 
+    [SerializeField]
+    public float minimumDistanceToTalkToPeople;
+
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetMouseButtonDown(0))
         {
+            ///Debug.Log("raw input - mouse LMB detected");
             if (IsThereAPopUp)
             {
+              //  Debug.Log("theres a popup that blocks clicks. click ignored");
                 return;
             }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -32,17 +38,17 @@ public class InputManager : MonoBehaviour
 
                     if (targetObject != null)
                     {
-
-                        Debug.Log("hit object " + m_hit.transform.name);
-                        targetObject.Interact();
-                        //}
-
+                        if (targetObject.isHighlighted) // if the player is in ranges
+                        {
+                            targetObject.Interact();
+                        }
                     }
                     else if (targetEntity != null)
                     {
-                        Debug.Log("hit entity " + m_hit.transform.name);
-
-                        targetEntity.Interact();
+                        if (Vector3.Distance(DataStorage.Player.transform.position, targetEntity.transform.position) <= minimumDistanceToTalkToPeople)
+                        {
+                            targetEntity.Interact();
+                        }
                     }
                     else
                     {
@@ -59,29 +65,7 @@ public class InputManager : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Debug.Log("pressed lmb");
-
-            //Transform testTransform = m_hit.collider.GetComponent<Transform>();
-           
-
-        }
-
-
-        //if (Input.GetKeyDown(KeyCode.Mouse1))
-        //{//toggle movement on RMB
-        //    Debug.Log("pressed RMB");
-        //    if (DataStorage.GameManagerComponent.player.navAgent.isStopped)
-        //    {
-        //        DataStorage.GameManagerComponent.player.ResumeMovement();
-        //    }
-        //    else
-        //    {
-        //        DataStorage.GameManagerComponent.player.PauseMovement();
-        //    }
-        //}
-
+       
 
 
         if (Input.GetKeyDown(KeyCode.Space))
