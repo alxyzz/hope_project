@@ -8,6 +8,7 @@ using static DecisionManager;
 
 public class GenericObject : MonoBehaviour
 {
+
     [SerializeField]
     public DecisionInitializationObject[] decisionsToInitialize;
     [HideInInspector]
@@ -41,7 +42,7 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
-    private bool isHighlighted;
+    public bool isHighlighted;
 
 
 
