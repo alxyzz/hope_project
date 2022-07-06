@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static DecisionManager;
 
 public class Entity : MonoBehaviour
 {
-    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
+    public System.Collections.Generic.List<Decision> relatedDecisions = new();
     public string entityName, description;
 
     public bool player = false;
@@ -34,14 +35,11 @@ public class Entity : MonoBehaviour
     public float lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
     public float lookAnimation_LookRadius;
 
-    /// <summary>
-    /// we will call Message("Interact") on whatever NPC or object we want to interact with later so this has the same name as the object function
-    /// </summary>
     public void Interact()
     {
         if (!player)
         {
-            if (relatedDecisions.Count == 0)
+            if (relatedDecisions.Count != 0)
             {
                 DataStorage.GameManagerComponent.DecisionComponent.gameObject.SetActive(true);
                 DataStorage.GameManagerComponent.DecisionComponent.ChangeTargetObject(gameObject);

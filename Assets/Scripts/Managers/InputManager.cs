@@ -8,47 +8,23 @@ public class InputManager : MonoBehaviour
     public RaycastHit m_hit;
     [HideInInspector]
     public bool IsThereAPopUp;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    [HideInInspector]
+    public bool canUseDrugs;
 
 
-    //    if (Input.GetMouseButtonDown(0))
-    //         {
-    //             RaycastHit raycastHit;
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //             if (Physics.Raycast(ray, out raycastHit, 100f))
-    //             {
-    //                 if (raycastHit.transform != null)
-    //                 {
-    //                    //Our custom method. 
-    //                     CurrentClickedGameObject(raycastHit.transform.gameObject);
-    //}
-    //             }
-    //         }
-
-
-
+    [SerializeField]
+    public float minimumDistanceToTalkToPeople;
 
     // Update is called once per frame
     void Update()
     {
-        // finds mouse on screen, casts ray from screen to world, starts schmooving if ray touches anything other than the player itself
-
-
-
-
-
-
-
-
+       
         if (Input.GetMouseButtonDown(0))
         {
+            ///Debug.Log("raw input - mouse LMB detected");
             if (IsThereAPopUp)
             {
+              //  Debug.Log("theres a popup that blocks clicks. click ignored");
                 return;
             }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,27 +32,23 @@ public class InputManager : MonoBehaviour
             {
                 if (m_hit.transform != null)
                 {
-                    
-
-
-
 
                     GenericObject targetObject = m_hit.transform.GetComponent<GenericObject>();
                     Entity targetEntity = m_hit.transform.GetComponent<Entity>();
 
                     if (targetObject != null)
                     {
-
-                        Debug.Log("hit object " + m_hit.transform.name);
-                        targetObject.Interact();
-                        //}
-
+                        if (targetObject.isHighlighted) // if the player is in ranges
+                        {
+                            targetObject.Interact();
+                        }
                     }
                     else if (targetEntity != null)
                     {
-                        Debug.Log("hit entity " + m_hit.transform.name);
-
-                        targetEntity.Interact();
+                        if (Vector3.Distance(DataStorage.Player.transform.position, targetEntity.transform.position) <= minimumDistanceToTalkToPeople)
+                        {
+                            targetEntity.Interact();
+                        }
                     }
                     else
                     {
@@ -93,35 +65,17 @@ public class InputManager : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Debug.Log("pressed lmb");
-
-            //Transform testTransform = m_hit.collider.GetComponent<Transform>();
-           
-
-        }
-
-
-        //if (Input.GetKeyDown(KeyCode.Mouse1))
-        //{//toggle movement on RMB
-        //    Debug.Log("pressed RMB");
-        //    if (DataStorage.GameManagerComponent.player.navAgent.isStopped)
-        //    {
-        //        DataStorage.GameManagerComponent.player.ResumeMovement();
-        //    }
-        //    else
-        //    {
-        //        DataStorage.GameManagerComponent.player.PauseMovement();
-        //    }
-        //}
-
+       
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("pressed space");
             //meth/crack/horse ketamine/LSD/PCP/weed
+            if (!canUseDrugs)
+            {
+                return;
+            }
             if (DataStorage.maxHope > 0)
             {
                 DataStorage.GameManagerComponent.TripComponent.GetHigh();

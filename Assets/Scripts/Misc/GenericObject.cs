@@ -1,11 +1,18 @@
+using System;
+using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
+using static DecisionManager;
 
 public class GenericObject : MonoBehaviour
 {
 
-
-    public System.Collections.Generic.List<DecisionButton> relatedDecisions = new();
+    [SerializeField]
+    public DecisionInitializationObject[] decisionsToInitialize;
+    [HideInInspector]
+    public System.Collections.Generic.List<Decision> Decisions = new();
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
     [HideInInspector]
     public bool usedInWorld; //wether it has already been used
@@ -35,18 +42,65 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
-    private bool isHighlighted;
+    public bool isHighlighted;
+
+
+
+
+
+
+
+
+
+
+
+
+    [System.Serializable]
+    public class DecisionInitializationObject
+    {
+        [SerializeField]
+        public string dName;
+        public UnityEvent targetMethod;
+    }
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     private void Start()
     {
         originalMat = GetComponent<Renderer>().material;
+        foreach (DecisionInitializationObject item in decisionsToInitialize)
+        {
+
+            Decision d = new Decision();
+            
+            d.decisionName = item.dName;
+            
+            
+            d.targetMethodAction = item.targetMethod;
+            Decisions.Add(d);
+
+            Debug.Log("initialized decision \"" + item.dName + "\" and added it to the decisions list"); 
+        }
 
     }
 
 
-
+    
 
     public bool CheckIfInventory() { if (DataStorage.objectsInInventory.Contains(this)) return true; else return false; }
 
@@ -90,13 +144,13 @@ public class GenericObject : MonoBehaviour
     }
     private bool CheckAndShowDecisions()
     {
-        if (relatedDecisions.Count > 0)
+        if (Decisions.Count > 0)
         {
             DataStorage.GameManagerComponent.DecisionComponent.TargetObject = this.gameObject;
-            DataStorage.GameManagerComponent.DecisionComponent.dButtons.Clear();
-            foreach (DecisionButton item in relatedDecisions)
+            DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Clear();
+            foreach (Decision item in Decisions)
             {//we loop through em and pop em up
-                DataStorage.GameManagerComponent.DecisionComponent.dButtons.Add(item);
+                DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Add(item);
             }
             DataStorage.GameManagerComponent.DecisionComponent.PopUp();
 

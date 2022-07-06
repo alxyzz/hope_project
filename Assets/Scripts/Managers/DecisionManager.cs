@@ -1,94 +1,74 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DecisionManager : MonoBehaviour
 {
-    public List<DecisionButton> dButtons = new();
-    public List<GameObject> finalPositions = new();
+    [HideInInspector]
+    public List<Decision> currentDecisions = new();
+    public DecisionUIElement DecisionUI; //this stores references to the necessary stuff
     [HideInInspector]
     public GameObject TargetObject;
-    /// <summary>
-    /// amount of space at which the button floats from the center of the popup per each move
-    /// </summary>
-    [Range(0.01f, 10f)]
-    public float timeToDestination;
-    public Transform centerPos;
-    /// <summary>
-    /// frequency of movement
-    /// </summary>
     [Range(0.01f, 10f)]
     public float buttonTimeInterval;//basically the frequency of movement
-    public float timeBeforeDisappearance;//basically the frequency of movement
+
 
     Camera maincam;
     public void ChangeTargetObject(GameObject go)
     {
-        dButtons.Clear();
-        Vector3 objectPosition = maincam.WorldToScreenPoint(go.transform.position);
-        transform.position = new Vector3(objectPosition.x, objectPosition.y, 0);
-
-
-
+        GenericObject genobj = go.GetComponent<GenericObject>();
+        Entity entit = go.GetComponent<Entity>();
+        if (genobj != null)
+        {
+            currentDecisions = genobj.Decisions;
+        }
+        else if (entit != null)
+        {
+            currentDecisions = entit.relatedDecisions;
+        }
+        
+    }
+    /*
+     * how we do this:
+     * first we add the decisions to the object
+     * then we edit the static decision UI menu's stuff to fit the decisions
+     * then we simply pop it up when it is required, no rescaling necessary because its the same object just different button effects and names
+     */
+    [System.Serializable]
+    public class Decision
+    {
+        public string decisionName;
+        public UnityEvent targetMethodAction;
 
     }
 
+    public void EpicTestFunction()
+    {
+
+        Debug.LogError("lol. lmao.");
+
+    }
 
     public void PopUp()
     {
-
-
-        transform.position = Vector3.MoveTowards(initPos, TargetObject.transform.position, 5f);
         DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = true;
-        gameObject.SetActive(true);
-        int b = 0;
-        foreach (DecisionButton item in dButtons)
-        {
-            item.transform.position = centerPos.position;
-            item.gameObject.SetActive(true);
-            item.Appear();
-            Debug.Log("decisionmanager b is " + b.ToString());
-            item.finalPosition = finalPositions[b].transform.position;
-
-
-            b++;
-        }
-        StartCoroutine(delayedDisappear());
-
+        DecisionUI.UpdateSelf();
+        DecisionUI.ToggleVisibility(true);
+        
     }
 
     public void Disappear()
     {
-        foreach (DecisionButton item in dButtons)
-        {
-            item.Disappear();
-        }
-        dButtons.Clear();
-        TargetObject = null;
-        gameObject.SetActive(false);
         DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = false;
+        currentDecisions.Clear();
+        DecisionUI.ToggleVisibility(false);
     }
 
-    IEnumerator delayedDisappear()
-    {
-
-
-        yield return new WaitForSecondsRealtime(timeBeforeDisappearance);
-        Disappear();
-
-    }
-    Vector3 initPos;
-    // Start is called before the first frame update
     void Start()
     {
-        initPos = transform.position;
         maincam = Camera.main;
-        gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        DecisionUI.gameObject.SetActive(false);
     }
 }
