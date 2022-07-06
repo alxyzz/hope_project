@@ -15,9 +15,6 @@ public class DecisionManager : MonoBehaviour
     public float buttonTimeInterval;//basically the frequency of movement
 
 
-
-
-
     Camera maincam;
     public void ChangeTargetObject(GameObject go)
     {
@@ -59,28 +56,19 @@ public class DecisionManager : MonoBehaviour
         DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = true;
         DecisionUI.UpdateSelf();
         DecisionUI.ToggleVisibility(true);
-        //StartCoroutine(delayedDisappear());
+        
     }
 
     public void Disappear()
     {
+        DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = false;
         currentDecisions.Clear();
         DecisionUI.ToggleVisibility(false);
     }
 
-    //IEnumerator delayedDisappear()
-    //{
-
-
-    //    yield return new WaitForSecondsRealtime(timeBeforeDisappearance);
-    //    Disappear();
-
-    //}
-
-    // Start is called before the first frame update
     void Start()
     {
         maincam = Camera.main;
-        gameObject.SetActive(false);
+        DecisionUI.gameObject.SetActive(false);
     }
 }
