@@ -66,6 +66,8 @@ public class DecisionManager : MonoBehaviour
         DecisionUI.ToggleVisibility(false);
     }
 
+
+
     void Start()
     {
         maincam = Camera.main;

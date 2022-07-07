@@ -21,7 +21,7 @@ public class DecisionUIElement : MonoBehaviour
     }
 
     [HideInInspector]
-    public List<UnityEvent> buttonUnityEventList = new();//dirty but dont have time to look too deeply into this
+    public List<UnityEvent> buttonUnityEventList = new(); // the root of all problems
 
     public void DirtyEventRunner(int index)
     {
@@ -58,36 +58,50 @@ public class DecisionUIElement : MonoBehaviour
         Debug.LogError("lol. lmao.");
 
     }
+    public void RunDecisionEvent(UnityEvent action)
+    {
+        // get unityevent from decision
+        // invoke event
+        action.Invoke();
+    }
 
     public void UpdateSelf()
     {
         ClearPreviousDecisions();
         List<Decision> decisionsOfCurrentClickedObject = DataStorage.GameManagerComponent.DecisionComponent.currentDecisions;
+        Debug.LogWarning("decisions count is " + decisionsOfCurrentClickedObject.Count); // works
         //decisionButtons.ForEach(n => n.gameObject.SetActive(true));
-        for (int i = 0; i < decisionsOfCurrentClickedObject.Count; i++)
-        {// go through the amount of decisions, assign same amount of buttons, refresh button name and add the decision's respective UnityEvent to the onClick() of the button. ideally. this shit keeps messing up. im going to PR for now
-            Debug.Log("UpdateSelf() iteration start. index is " + i .ToString() + " THE COUNT OF THE DECISION AMOUNT IS  " + decisionsOfCurrentClickedObject.Count.ToString());
-            decisionButtons[i].gameObject.SetActive(true);
-            decisionButtons[i].onClick = new Button.ButtonClickedEvent();//wipes persistent listeners
-            if (decisionsOfCurrentClickedObject[i] == null)
-            {
-                Debug.Log("decisionsForClickedobject[i] is null!!!!!!!!! AAAAAAAAAAAAAAAA");
+        if (decisionsOfCurrentClickedObject != null) // works
+        {
+            for (int i = 0; i < decisionsOfCurrentClickedObject.Count; i++)
+            {// go through the amount of decisions, assign same amount of buttons, refresh button name and add the decision's respective UnityEvent to the onClick() of the button. ideally. this shit keeps messing up. im going to PR for now
+                Debug.Log("Button " + i + " is " + decisionsOfCurrentClickedObject[i].decisionName); // works once and then dies
+                decisionButtons[i].gameObject.SetActive(true);
+                decisionButtons[i].onClick = new Button.ButtonClickedEvent();//wipes persistent listeners
+                if (decisionsOfCurrentClickedObject[i] == null)
+                {
+                    Debug.Log("decisionsForClickedobject[i] is null!!!!!!!!! AAAAAAAAAAAAAAAA");
+                }
+                //buttonUnityEventList[i] = decisionsOfCurrentClickedObject[i].targetMethodAction;
+
+                //void test() { DirtyEventRunner(i); }
+                //UnityEditor.Events.UnityEventTools.AddPersistentListener(decisionButtons[i].onClick, test);
+
+                //decisionButtons[i].onClick.AddPersistentListener();
+                //decisionButtons[i].onClick.AddListener(() => decisionsForClickedobject[i].targetMethodAction.Invoke());
+                //decisionButtons[i].onClick.AddListener(() => test());
+
+                // issue with AddListener :/
+                Text txty = decisionButtons[i].GetComponentInChildren(typeof(Text), true) as Text;
+
+                txty.text = decisionsOfCurrentClickedObject[i].decisionName;
+                Debug.Log("adding listener to button " + txty.text + " \n decisionButtons[i].onClick.AddListener(() => decs[i].targetMethodAction.Invoke());   \n" + decisionsOfCurrentClickedObject[i].targetMethodAction + " is the target method action");
             }
-            Debug.Log("INDEX IS " + i.ToString() + "    THE COUNT OF THE DECISION AMOUNT IS  " +decisionsOfCurrentClickedObject.Count.ToString());
-            buttonUnityEventList[i] = decisionsOfCurrentClickedObject[i].targetMethodAction;
-
-            void test() { DirtyEventRunner(i); }
-            //UnityEditor.Events.UnityEventTools.AddPersistentListener(decisionButtons[i].onClick, test);
-
-            //decisionButtons[i].onClick.AddPersistentListener();
-            //decisionButtons[i].onClick.AddListener(() => decisionsForClickedobject[i].targetMethodAction.Invoke());
-            decisionButtons[i].onClick.AddListener(() => test());
-            Text txty = decisionButtons[i].GetComponentInChildren(typeof(Text), true) as Text;
-
-            txty.text = decisionsOfCurrentClickedObject[i].decisionName;
-            Debug.Log("adding listener to button " + txty.text + " \n decisionButtons[i].onClick.AddListener(() => decs[i].targetMethodAction.Invoke());   \n" + decisionsOfCurrentClickedObject[i].targetMethodAction + " is the target method action");
         }
-
+        else
+        {
+            Debug.LogWarning("the entire list of decisions is null idk");
+        }
         foreach (Button item in decisionButtons)
         {
             Text targetText = item.GetComponentInChildren(typeof(Text), true) as Text;
