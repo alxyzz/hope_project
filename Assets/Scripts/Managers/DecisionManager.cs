@@ -11,8 +11,6 @@ public class DecisionManager : MonoBehaviour
     public DecisionUIElement DecisionUI; //this stores references to the necessary stuff
     [HideInInspector]
     public GameObject TargetObject;
-    [Range(0.01f, 10f)]
-    public float buttonTimeInterval;//basically the frequency of movement
 
 
     Camera maincam;
@@ -22,10 +20,10 @@ public class DecisionManager : MonoBehaviour
         Entity entit = go.GetComponent<Entity>();
         if (genobj != null)
         {
-            currentDecisions = genobj.Decisions;
+            currentDecisions = genobj.contextualDecisions;
         }
         else if (entit != null)
-        {
+        {   
             currentDecisions = entit.relatedDecisions;
         }
         
@@ -40,7 +38,7 @@ public class DecisionManager : MonoBehaviour
     public class Decision
     {
         public string decisionName;
-        public UnityEvent targetMethodAction;
+        public string objectIdentification;
 
     }
 

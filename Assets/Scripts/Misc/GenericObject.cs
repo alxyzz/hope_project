@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -8,11 +9,13 @@ using static DecisionManager;
 
 public class GenericObject : MonoBehaviour
 {
+    //[SerializeField]
+    //private List<string> decisionStrings = new();
+    //[SerializeField]
+    //private string objectIdentifyingString;
 
-    [SerializeField]
-    public DecisionInitializationObject[] decisionsToInitialize;
     [HideInInspector]
-    public System.Collections.Generic.List<Decision> Decisions = new();
+    public System.Collections.Generic.List<Decision> contextualDecisions = new();
     //same as entity but we're not going to be animating these (probably) or having a navigation agent
     [HideInInspector]
     public bool usedInWorld; //wether it has already been used
@@ -54,52 +57,25 @@ public class GenericObject : MonoBehaviour
 
 
 
-
-    [System.Serializable]
-    public class DecisionInitializationObject
-    {
-        [SerializeField]
-        public string dName;
-        public UnityEvent targetMethod;
-    }
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void Start()
     {
         originalMat = GetComponent<Renderer>().material;
-        foreach (DecisionInitializationObject item in decisionsToInitialize)
-        {
-
-            Decision d = new Decision();
-            
-            d.decisionName = item.dName;
-            
-            
-            d.targetMethodAction = item.targetMethod;
-            Decisions.Add(d);
-
-            Debug.Log("initialized decision \"" + item.dName + "\" and added it to the decisions list"); 
-        }
-
+        AddStringPrefix();
     }
 
+    void AddStringPrefix()
+    {
+        //List<string> str = new List<string>();
+        //foreach (string stuff in decisionStrings)
+        //{
+        //    string b = objectIdentifyingString + stuff;
+        //    str.Add(b);
+        //}
+        //decisionStrings.Clear();
+        //decisionStrings.AddRange(str);
 
+
+    }
     
 
     public bool CheckIfInventory() { if (DataStorage.objectsInInventory.Contains(this)) return true; else return false; }
@@ -115,10 +91,10 @@ public class GenericObject : MonoBehaviour
             return;
         }
         DataStorage.GameManagerComponent.ItemComponent.lastUsedObject = this; //we store a reference of this item so we can do stuff like pick it up
-        if (CheckAndShowDecisions())//if there are decisions related to this, we will not interact the usual way
-        {
-            return;
-        }
+        //if (CheckAndShowDecisions())//if there are decisions related to this, we will not interact the usual way
+        //{
+        //    return;
+        //}
         CheckAndRunUseEvent();//otherwise just run the typical interaction, like for simple hope modifiers
     }
 
@@ -142,27 +118,26 @@ public class GenericObject : MonoBehaviour
         }
 
     }
-    private bool CheckAndShowDecisions()
-    {
-        if (Decisions.Count > 0)
-        {
-            DataStorage.GameManagerComponent.DecisionComponent.TargetObject = this.gameObject;
-            DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Clear();
-            foreach (Decision item in Decisions)
-            {//we loop through em and pop em up
-                DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Add(item);
-            }
-            DataStorage.GameManagerComponent.DecisionComponent.PopUp();
+    //private bool CheckAndShowDecisions()
+    //{
+    //    if (contextualDecisions.Count > 0)
+    //    {
+    //        Debug.Log("we are popping up");
+    //        DataStorage.GameManagerComponent.DecisionComponent.TargetObject = this.gameObject;
+    //        DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.Clear();
+    //        DataStorage.GameManagerComponent.DecisionComponent.currentDecisions.AddRange(contextualDecisions);
 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    //        DataStorage.GameManagerComponent.DecisionComponent.PopUp();
+
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
 
 
-    }
+    //}
 
     /// <summary>
     /// means usage in inventory

@@ -192,6 +192,8 @@ public class ItemInteractionManager : MonoBehaviour
         }
     }
 
+
+    //usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor
     public void UsePuke()
     {//there's no puke object yet. also it disappears on being high
 
@@ -203,6 +205,7 @@ public class ItemInteractionManager : MonoBehaviour
     }
     public void UseMirror()
     {
+        DataStorage.GameManagerComponent.StorylineComponent.usedMirror = true;
         //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
         if (checkifSober())
         {
@@ -218,6 +221,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseMagazines()
     {
+        DataStorage.GameManagerComponent.StorylineComponent.usedMagazines = true;
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_magazine_sober_tutorial");
@@ -246,6 +250,7 @@ public class ItemInteractionManager : MonoBehaviour
     }
     public void UseToilet()
     {
+        DataStorage.GameManagerComponent.StorylineComponent.usedToilet = true;
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_toilet_sober_tutorial");
@@ -259,6 +264,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseBathtub()
     {
+        DataStorage.GameManagerComponent.StorylineComponent.usedBathtub = true;
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_bathtub_sober_tutorial");
@@ -273,7 +279,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseDoorBathroom()
     {
         SoundPlayer.PlaySound("test_whip");
-
+        DataStorage.GameManagerComponent.StorylineComponent.usedDoor = true;
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_door_sober_tutorial");

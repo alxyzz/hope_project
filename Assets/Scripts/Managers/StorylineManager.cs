@@ -53,7 +53,7 @@ public class StorylineManager : MonoBehaviour
         playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
 
-    
+
 
     //public void ChangeRoom(string room)
     //{
@@ -74,7 +74,7 @@ public class StorylineManager : MonoBehaviour
     //}
 
 
-
+    public GameObject showeringSpider;
 
 
     public void CheckIfSpiderAngry()
@@ -89,7 +89,8 @@ public class StorylineManager : MonoBehaviour
         
         if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
         {
-            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad");
+            showeringSpider.SetActive(true);
+            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("ShowSpider");
         }
     }
 
