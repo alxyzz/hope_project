@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public bool IsThereAPopUp;
     [HideInInspector]
-    public bool canUseDrugs;
+    public bool canUseDrugs = false;
 
 
     [SerializeField]

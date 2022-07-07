@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public List<InventoryUIObject> inventorySlotList = new List<InventoryUIObject>();
     public TextMeshProUGUI maxHopeText;
     public Image hopeVisualizerImage;
+
     public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5; //going from hopeful to hopeless.
     /// <summary>
     /// maximum amount of messages that can be on the screen at the same time
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         RefreshHopeVisualisation();
+        RefreshBackpackVisibility();
     }
 
     public void RefreshHopeVisualisation()
@@ -78,6 +80,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void RefreshBackpackVisibility()
+    {
+        if (backpackVisible)
+        {
+            invParent.SetActive(true);
+        }
+        else
+        {
+            invParent.SetActive(false);
+        }
+
+    }
 
     public bool IsBetween(double testValue, double bound1, double bound2)
     {

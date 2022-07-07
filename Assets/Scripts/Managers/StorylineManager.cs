@@ -53,7 +53,10 @@ public class StorylineManager : MonoBehaviour
         playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
 
-
+    public void AllowDrugUse(bool togg)
+    {
+        DataStorage.GameManagerComponent.InputComponent.canUseDrugs = togg;
+    }
 
     //public void ChangeRoom(string room)
     //{
@@ -91,6 +94,8 @@ public class StorylineManager : MonoBehaviour
         {
             showeringSpider.SetActive(true);
             DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("ShowSpider");
+            DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
+            DataStorage.GameManagerComponent.UIComponent.backpackVisible = true;
         }
     }
 
