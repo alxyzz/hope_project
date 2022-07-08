@@ -23,29 +23,67 @@ public class DialogueManager : MonoBehaviour
     {
         selfFlowchart.ExecuteBlock("Clicked on book");
     }
-    public void TalkJulia()
+
+
+    //LIVING ROOM
+    public int timesTalked;
+    public void TalkFriendsCollective()
+    {
+        switch (timesTalked)
+        {
+            case 1:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk1");
+                break;
+            case 2:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk2");
+                break;
+            case 3:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk3");
+                break;
+            case 4:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk4");
+                break;
+            case 5:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk5");
+                break;
+            default:
+                selfFlowchart.ExecuteBlock("livingRoom_friends_talk_6+");
+                break;
+        }
+        
+    }
+
+    public bool enteredKitchen;
+    public void MonologueEnterKitchen()
+    {
+        if (!enteredKitchen)
+        {
+            selfFlowchart.ExecuteBlock("kitchen_onEnter");
+            enteredKitchen = true;
+        }
+    }
+
+    public void PetCatKitchen()
     {
 
+        selfFlowchart.ExecuteBlock("kitchen_petcat");
+    }
+    public void ClickWindowKitchen()
+    {
 
+        selfFlowchart.ExecuteBlock("kitchen_window");
+        DataStorage.GameManagerComponent.StorylineComponent.kitchenSunrays.SetActive(true);
+        DataStorage.GameManagerComponent.InputComponent.CharacterControllerReference.canMove = false;
+        DataStorage.Player.playerClosedEyes = true;
+        StartCoroutine("RelaxByWindow");
 
 
     }
-
-
-    public void TalkMaria()
+    IEnumerator RelaxByWindow()
     {
-
-
-
-
+        yield return new WaitForSecondsRealtime(3f);
+        DataStorage.GameManagerComponent.StorylineComponent.kitchenSunrays.SetActive(false);
+        DataStorage.GameManagerComponent.InputComponent.CharacterControllerReference.canMove = true;
+        DataStorage.Player.playerClosedEyes = false;
     }
-    public void TalkGeorge()
-    {
-
-
-
-
-    }
-
-
 }

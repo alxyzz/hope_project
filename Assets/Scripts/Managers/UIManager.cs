@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public List<InventoryUIObject> inventorySlotList = new List<InventoryUIObject>();
     public TextMeshProUGUI maxHopeText;
     public Image hopeVisualizerImage;
+
     public Sprite hopeVis1, hopeVis2, hopeVis3, hopeVis4, hopeVis5; //going from hopeful to hopeless.
     /// <summary>
     /// maximum amount of messages that can be on the screen at the same time
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         RefreshHopeVisualisation();
+        RefreshBackpackVisibility();
     }
 
     public void RefreshHopeVisualisation()
@@ -78,6 +80,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void RefreshBackpackVisibility()
+    {
+        if (backpackVisible)
+        {
+            invParent.SetActive(true);
+        }
+        else
+        {
+            invParent.SetActive(false);
+        }
+
+    }
 
     public bool IsBetween(double testValue, double bound1, double bound2)
     {
@@ -101,61 +115,6 @@ public class UIManager : MonoBehaviour
 
 
     }
-    // no need to refresh, each button refreshes itself on Update(). messy, but our game is not particularly intensive in any case. the place where this happens is InventoryUIObject.cs
-    //public void RefreshInventoryMenu()
-    //{
-
-    //    for (int i = 0; i < DataStorage.objectsInInventory.Count; i++)
-    //    {
-    //        if (inventorySlotList[i] != null)
-    //        {
-
-    //        }
-    //    }
-    //    if (!backpackVisible)
-    //    {
-    //        invParent.SetActive(false);
-    //        return;
-    //    }
-    //    else
-    //    {
-    //        invParent.SetActive(true);
-    //    }
-
-    //}
-
-    /// <summary>
-    /// pop up a message above the player character
-    /// </summary>
-    /// <param name="message"></param>
-
-
-
-    public void PopUpDecisionDialog(GenericObject target)
-    {
-        //List<PopUpMessageScript> messages = new List<PopUpMessageScript>(messageQueue);
-
-        //foreach (PopUpMessageScript item in messageQueue)
-        //{
-        //    if (item.isActiveAndEnabled)
-        //    {
-        //        item.MakeWay();
-        //    }
-
-        //}
-        //GameObject b = ObjectPooling.Instance.SpawnFromPool("messageBox", new Vector3(Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).x, Camera.main.WorldToScreenPoint(DataStorage.Player.transform.position).y + messageVerticalOffsetFromPlayer, 0f), Quaternion.identity);
-        //b.transform.SetParent(UICanvas.transform);
-        //PopUpMessageScript c = b.GetComponent<PopUpMessageScript>();
-        //messageQueue.Add(c);
-        //c.ChangeText(message);
-        //c.slideSpeed = messageSlideSpeed;
-        //c.movedUpMaxAmount = messageMaxStackedAmount;
-        //c.fadeTime = messageFadeTime;
-        //c.StartCoroutine("TimedDisappearance");
-        //MessageBoxAmtLimit();
-
-
-    }
 
     public void PopUpImage(Sprite whichImage)
     {//for stuff like looking in the mirror or examining a picture on the wall
@@ -166,18 +125,4 @@ public class UIManager : MonoBehaviour
         popupImageObject.sprite = whichImage;
 
     }
-
-
-
-    public class DecisionOption
-    {
-        string decisionName;
-        string decisionHopeModifier;
-
-
-
-    }
-
-
-
 }

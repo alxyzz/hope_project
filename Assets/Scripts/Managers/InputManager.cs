@@ -9,11 +9,12 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public bool IsThereAPopUp;
     [HideInInspector]
-    public bool canUseDrugs;
-
+    public bool canUseDrugs = false;
 
     [SerializeField]
     public float minimumDistanceToTalkToPeople;
+
+    public CharacterController_New CharacterControllerReference;
 
     // Update is called once per frame
     void Update()
@@ -120,25 +121,15 @@ public class InputManager : MonoBehaviour
 
         }
 
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Debug.Log("hit L");
+        //    DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("create a dialogue");
 
+
+        //}
 
 
     }
-    //    Mirror/sink: “Damn this outfit looks good…but not on me.” (Pop-up picture with a mirror reflection)
-    //Magazines: „Another boring day in shit town. They should’ve renamed this town years ago.<br>Lonelytown, Fucking dumbass town,… *sigh* whatever.”
-    //Toilette: “Eww, that hasn’t been cleaned in sometime. Looks like someone didn’t flush…”
-    //Bathtub: “I could really use a bath. I haven’t been home in days.”
-    //Door: “I don’t feel like leaving yet.”
-
-
-    // vvvvvv just need this for the fungus flowchart
-    //public void ToggleCharacterMovement(bool moving)
-    //    {
-    //        if (moving)
-    //            DataStorage.GameManagerComponent.player.PauseMovement();
-    //        else
-    //            DataStorage.GameManagerComponent.player.ResumeMovement();
-    //    }
-
 
 }
