@@ -4750,6 +4750,7 @@ MonoBehaviour:
   obj_TV: {fileID: 0}
   obj_chips: {fileID: 0}
   startingPlayerItems: []
+  bathroomisLocked: 0
 --- !u!1 &1630010693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,6 +5630,7 @@ MonoBehaviour:
   bathroomLocked: 0
   bathroomEntryPoint: {fileID: 1038670540}
   bedroomEntryPoint: {fileID: 1540681159}
+  kitchenSunrays: {fileID: 0}
   showeringSpider: {fileID: 0}
 --- !u!114 &1932278523
 MonoBehaviour:
@@ -5652,6 +5654,7 @@ MonoBehaviour:
   obj_chips: {fileID: 0}
   startingPlayerItems:
   - {fileID: 7109246314776591835}
+  bathroomisLocked: 0
 --- !u!114 &1932278524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5668,6 +5671,7 @@ MonoBehaviour:
   IsThereAPopUp: 0
   canUseDrugs: 0
   minimumDistanceToTalkToPeople: 0
+  CharacterControllerReference: {fileID: 0}
 --- !u!114 &1932278525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5681,6 +5685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfFlowchart: {fileID: 2102162859}
+  timesTalked: 0
+  enteredKitchen: 0
 --- !u!114 &1932278526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6305,6 +6311,9 @@ GameObject:
   - component: {fileID: 2102162975}
   - component: {fileID: 2102162974}
   - component: {fileID: 2102162976}
+  - component: {fileID: 2102162977}
+  - component: {fileID: 2102162978}
+  - component: {fileID: 2102162982}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -6398,7 +6407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -91.549194, y: -170.04593}
+  scrollPos: {x: -389.50812, y: -159.84184}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 483
@@ -8357,6 +8366,64 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &2102162977
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 871.14026
+    y: 631.26996
+    width: 133.6734
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 140
+  blockName: create a dialogue
+  description: 
+  eventHandler: {fileID: 2102162982}
+  commandList:
+  - {fileID: 2102162978}
+  suppressAllAutoSelections: 0
+--- !u!114 &2102162978
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b097b9790a8a1456a86bc4d322b487db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 141
+  indentLevel: 0
+  menuDialog: {fileID: 11415124, guid: b2f8f3954d4ea3345a98f520dc18677d, type: 3}
+--- !u!114 &2102162982
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102162855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000864f8e9e1748a39807861d0e60e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 2102162977}
+  suppressBlockAutoSelect: 0
+  keyPressType: 0
+  keyCode: 108
 --- !u!1 &2102250777
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,6 +8566,7 @@ MonoBehaviour:
   talkFunction:
     m_PersistentCalls:
       m_Calls: []
+  playerClosedEyes: 0
   lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference: 0
   lookAnimation_LookRadius: 0
 --- !u!195 &2123075255
@@ -10963,6 +11031,7 @@ MonoBehaviour:
   talkFunction:
     m_PersistentCalls:
       m_Calls: []
+  playerClosedEyes: 0
   lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference: 0
   lookAnimation_LookRadius: 0
 --- !u!212 &4608305988068327064
