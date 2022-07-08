@@ -16,7 +16,8 @@ public static class DataStorage
 
 
 
-
+    // input
+    public static bool textIsOnScreen; // use it to disable non-UI colliders, movement, etc.
 
 
 

@@ -96,8 +96,9 @@ public class GameManager : MonoBehaviour
 
             }
 
-        } 
-        
+        }
+
+        DataStorage.textIsOnScreen = false;
         
 
 
@@ -108,4 +109,5 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    
 }
