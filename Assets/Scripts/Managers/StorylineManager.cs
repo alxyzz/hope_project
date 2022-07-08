@@ -18,7 +18,13 @@ public class StorylineManager : MonoBehaviour
     [HideInInspector]
     public bool bathroomLocked;
     public Transform bathroomEntryPoint, bedroomEntryPoint;
-    
+
+
+    //kitchen//
+    public GameObject kitchenSunrays;
+
+
+    //kitchen end//
 
     private void Update()
     {

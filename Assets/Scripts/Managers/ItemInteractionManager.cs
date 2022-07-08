@@ -303,7 +303,7 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
-
+    public bool bathroomisLocked; //affects wether you can enter the bathroom 
 
     ////// bedroom 
     ///
@@ -311,7 +311,10 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseDoorBedroomToBathroom()
     {
         SoundPlayer.PlaySound("test_whip");
+        if (true)
+        {
 
+        }
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_door_sober_tutorial");
@@ -323,4 +326,50 @@ public class ItemInteractionManager : MonoBehaviour
 
 
     }
+
+
+
+
+
+    public void UseBedroomSkateboard()
+    {
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_skateboard_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_skateboard_high_tutorial");
+        }
+
+    }
+    public void UseBedroomLaptop()
+    {
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+
+
+
+
+
+    public void UseKitchenChips(GameObject theChipsReference)
+    {
+
+        fungusReference.ExecuteBlock("click_chips_kitchen");
+
+        theChipsReference.SetActive(false);
+
+    }
+
+
+
+
 }

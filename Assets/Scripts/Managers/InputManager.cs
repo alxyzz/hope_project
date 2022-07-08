@@ -11,9 +11,10 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public bool canUseDrugs = false;
 
-
     [SerializeField]
     public float minimumDistanceToTalkToPeople;
+
+    public CharacterController_New CharacterControllerReference;
 
     // Update is called once per frame
     void Update()

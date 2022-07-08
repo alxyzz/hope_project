@@ -32,6 +32,12 @@ public class Entity : MonoBehaviour
     //talk to
     public UnityEvent talkFunction;//this can be changed to whatever you want to happen when you interact with this little guy
 
+    [HideInInspector]
+    public bool playerClosedEyes; // this needs player to not move 
+
+
+
+
     public float lookAnimation_CardinalDirectionMaxAcceptableSidewaysDifference;
     public float lookAnimation_LookRadius;
 
@@ -101,6 +107,12 @@ public class Entity : MonoBehaviour
 
     private void HandlePlayerAnimation()
     {
+        if (playerClosedEyes)
+        {
+            animRef.SetBool("eyesClosed", true);
+        }
+
+
         if (transform.position.x > lastpos.x)
         {//moved left
             animRef.SetBool("walkLeft", true);
