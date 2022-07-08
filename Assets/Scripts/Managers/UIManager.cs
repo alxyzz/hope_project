@@ -125,4 +125,8 @@ public class UIManager : MonoBehaviour
         popupImageObject.sprite = whichImage;
 
     }
+    public void PopDownImage() // hides (maybe we should change it to fade in / out instead?)
+    {
+        popupImageObject.gameObject.SetActive(false);
+    }
 }
