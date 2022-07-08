@@ -280,14 +280,9 @@ public class ItemInteractionManager : MonoBehaviour
     {
         SoundPlayer.PlaySound("test_whip");
         DataStorage.GameManagerComponent.StorylineComponent.usedDoor = true;
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("click_door_sober_tutorial");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("click_door_high_tutorial");
-        }
+
+        fungusReference.ExecuteBlock("click_door_sober_tutorial"); // same text in both
+
 
 
     }
