@@ -123,10 +123,12 @@ public class UIManager : MonoBehaviour
         //hide if it gets clicked again
         popupImageObject.gameObject.SetActive(true);
         popupImageObject.sprite = whichImage;
+        DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = true;
 
     }
     public void PopDownImage() // hides (maybe we should change it to fade in / out instead?)
     {
         popupImageObject.gameObject.SetActive(false);
+        DataStorage.GameManagerComponent.InputComponent.IsThereAPopUp = false;
     }
 }
