@@ -233,7 +233,7 @@ public class ItemInteractionManager : MonoBehaviour
 
 
         // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
-
+        /*
         Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
         if (DataStorage.objectsInInventory.Count < 3)
         {
@@ -245,7 +245,7 @@ public class ItemInteractionManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Inventory is full :(");
-        }
+        }*/
         // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
     }
     public void UseToilet()
