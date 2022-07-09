@@ -27,31 +27,31 @@ public class DialogueManager : MonoBehaviour
 
     //LIVING ROOM
     public int timesTalked;
-    public void TalkFriendsCollective()
-    {
-        switch (timesTalked)
-        {
-            case 1:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk1");
-                break;
-            case 2:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk2");
-                break;
-            case 3:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk3");
-                break;
-            case 4:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk4");
-                break;
-            case 5:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk5");
-                break;
-            default:
-                selfFlowchart.ExecuteBlock("livingRoom_friends_talk_6+");
-                break;
-        }
+    //public void TalkFriendsCollective()
+    //{
+    //    switch (timesTalked)
+    //    {
+    //        case 1:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk1");
+    //            break;
+    //        case 2:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk2");
+    //            break;
+    //        case 3:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk3");
+    //            break;
+    //        case 4:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk4");
+    //            break;
+    //        case 5:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk5");
+    //            break;
+    //        default:
+    //            selfFlowchart.ExecuteBlock("livingRoom_friends_talk_6+");
+    //            break;
+    //    }
         
-    }
+    //}
 
     public bool enteredKitchen;
     public void MonologueEnterKitchen()
