@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!enteredKitchen)
         {
-            selfFlowchart.ExecuteBlock("kitchen_onEnter");
+            selfFlowchart.ExecuteBlock("enter_kitchen");
             enteredKitchen = true;
         }
     }
