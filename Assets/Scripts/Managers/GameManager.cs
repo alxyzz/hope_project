@@ -36,12 +36,6 @@ public class GameManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
     public void ChangeHope(int amt)
     {
         DataStorage.currentHope += amt;
@@ -64,6 +58,8 @@ public class GameManager : MonoBehaviour
         }
 
         Vector3 spawnloc = new Vector3();
+
+
         switch (StartingRoomPicker)
         {
             case StartingPlayerRoom.Bathroom:
@@ -75,6 +71,9 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+
+
+
         DataStorage.Player = player;
         player.transform.position = spawnloc;
         DontDestroyOnLoad(this.gameObject);
