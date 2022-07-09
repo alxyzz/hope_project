@@ -112,7 +112,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseSkateboard()
     {
-
+        
 
         if (checkifSober())
         {
@@ -306,21 +306,22 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseDoorBedroomToBathroom()
     {
         SoundPlayer.PlaySound("test_whip");
+        if (true)
+        {
 
-        fungusReference.ExecuteBlock("click_door_bedroom_to_bathroom");
-
+        }
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_door_sober_tutorial");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_door_high_tutorial");
+        }
 
 
     }
-    public void UseDoorBedroomToHallway()
-    {
-        SoundPlayer.PlaySound("test_whip");
 
-        fungusReference.ExecuteBlock("click_door_bedroom_to_hallway");
-
-
-
-    }
 
 
 
