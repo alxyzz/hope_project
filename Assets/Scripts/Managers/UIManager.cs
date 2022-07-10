@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         RefreshHopeVisualisation();
-        RefreshBackpackVisibility();
+        //RefreshBackpackVisibility();
     }
 
     public void RefreshHopeVisualisation()
