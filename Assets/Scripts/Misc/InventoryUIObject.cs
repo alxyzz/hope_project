@@ -8,7 +8,9 @@ public class InventoryUIObject : MonoBehaviour
 {
     public GenericObject containedObject;
     public Image itemBorder;
+    public Image itemSlotBG;
     public Image itemImage;
+    public Collider2D slotCollider;
     //public TextMeshProUGUI itemName;
 
 
@@ -18,12 +20,14 @@ public class InventoryUIObject : MonoBehaviour
         if (containedObject == null)
         {
             itemImage.enabled = false;
+            itemSlotBG.enabled = false;
             //itemName.enabled = false;
             itemBorder.enabled = false;
         }
         else
         {
             itemImage.enabled = true;
+            itemSlotBG.enabled = true;
             //itemName.enabled = true;
             itemBorder.enabled = true;
         }
