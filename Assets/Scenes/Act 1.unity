@@ -3530,8 +3530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -33.000244, y: -455}
-  m_SizeDelta: {x: 100, y: 0}
+  m_AnchoredPosition: {x: -34, y: -428}
+  m_SizeDelta: {x: 105.544, y: -993.942}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &709795679
 MonoBehaviour:
@@ -5400,6 +5400,7 @@ GameObject:
   - component: {fileID: 1182745839}
   - component: {fileID: 1182745838}
   - component: {fileID: 1182745837}
+  - component: {fileID: 1182745841}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -5492,6 +5493,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1182745841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182745835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2038bb6b6ace2e94fbcb0a7923184dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSys: {fileID: 0}
+  gRaycaster: {fileID: 1182745837}
 --- !u!1 &1188361714
 GameObject:
   m_ObjectHideFlags: 0
@@ -8468,6 +8483,7 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   IsThereAPopUp: 0
   canUseDrugs: 0
+  clicked: 0
   minimumDistanceToTalkToPeople: 0
   CharacterControllerReference: {fileID: 0}
 --- !u!114 &1932278525

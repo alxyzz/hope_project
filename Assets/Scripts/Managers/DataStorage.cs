@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 /// <summary>
 /// basically, I use DataStorage so I can call it, as a static function, from anywhere, to reference any of the instanced managers defined.
 ///instead of using a singleton.
@@ -19,6 +20,8 @@ public static class DataStorage
     // input
     public static bool textIsOnScreen; // use it to disable non-UI colliders, movement, etc.
 
+    public static PointerEventData pointerEventData; // important if we want to click UI during gameplay
+    public static List<RaycastResult> raycastResultList = new(); // important if we want to click UI during gameplay
 
 
     //entities
