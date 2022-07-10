@@ -29,6 +29,14 @@ public class DrugOverlayer : MonoBehaviour
         StartCoroutine(overlay());
 
     }
+
+     public void stopOverlaying()
+    {
+
+        overlaying = false;
+
+    }
+
     private int imageListCount;
     private int imageIndex;
     IEnumerator overlay()

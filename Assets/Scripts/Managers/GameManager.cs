@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
         }
         DataStorage.Player = player;
         player.transform.position = spawnloc;
+        ItemComponent.GivePlayerStartingItems();
 
     }
 
