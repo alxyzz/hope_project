@@ -213,7 +213,7 @@ public class TripManager : MonoBehaviour
 
     void OnDrugStateChange()
     {
-        Overlays.overlaying = false;
+
 
         ChangeHallucinatedObjectVisibilityStatus();
         Debug.Log("drug state changed");
@@ -223,25 +223,28 @@ public class TripManager : MonoBehaviour
                 workingProfile = soberProfile;
                 flipWorld = false;
                 if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundComponent.ChangeMusic(soberBackgroundAudio);
-
+                Overlays.stopOverlaying();
                 break;
 
 
             case 1:
                 workingProfile = firstStageProfile;
                 flipWorld = false;
+                Overlays.stopOverlaying();
                 break;
 
 
             case 2:
                 workingProfile = secondStageProfile;
                 flipWorld = false;
+                Overlays.stopOverlaying();
                 break;
 
 
             case 3:
                 workingProfile = thirdStageProfile;
                 flipWorld = false;
+                Overlays.stopOverlaying();
                 break;
 
 
@@ -255,6 +258,7 @@ public class TripManager : MonoBehaviour
                 workingProfile = fifthStageProfile;
                 flipWorld = false;
                 StartCoroutine(delayedDeath()); // I feel numb...
+                Overlays.stopOverlaying();
                 break;
 
             default:
