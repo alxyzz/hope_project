@@ -199,7 +199,6 @@ public class ItemInteractionManager : MonoBehaviour
 
 
         fungusReference.ExecuteBlock("click_puke_sober_tutorial");
-        PutInBackpack();
 
 
     }

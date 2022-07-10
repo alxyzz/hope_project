@@ -14,7 +14,7 @@ public class UIInputManager : MonoBehaviour
 
     void Update()
     {
-        if (DataStorage.GameManagerComponent.InputComponent.clicked)
+        if (DataStorage.GameManagerComponent.InputComponent.clicked) // calling from INputManager so that we wouldnt have duplicate input
         {
             DataStorage.raycastResultList = new(); // clears raycast list everytime
             // creates new pointer event, sets position to mouse, raycasts only into UI Canvas
