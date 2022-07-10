@@ -51,10 +51,10 @@ public class ItemInteractionManager : MonoBehaviour
     public void PutInBackpack() // item displayed in inventory (wip)
     {
         Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
-        if (DataStorage.objectsInInventory.Count < 3)
+        if (DataStorage.objectsInInventory.Count < 6)
         {
             int count = DataStorage.objectsInInventory.Count;
-            DataStorage.objectsInInventory[count] = lastUsedObject;
+            DataStorage.objectsInInventory.Add(lastUsedObject);
             DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere(lastUsedObject);
             lastUsedObject.gameObject.SetActive(false);
         }
@@ -201,7 +201,6 @@ public class ItemInteractionManager : MonoBehaviour
         fungusReference.ExecuteBlock("click_puke_sober_tutorial");
 
 
-
     }
     public void UseMirror()
     {
@@ -232,21 +231,6 @@ public class ItemInteractionManager : MonoBehaviour
         }
 
 
-        // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
-        /*
-        Debug.Log("inventory - " + DataStorage.objectsInInventory.Count);
-        if (DataStorage.objectsInInventory.Count < 3)
-        {
-            int count = DataStorage.objectsInInventory.Count;
-            DataStorage.objectsInInventory[count] = lastUsedObject;   // error: index out of bounds ???????/
-            DataStorage.GameManagerComponent.UIComponent.inventorySlotList[count].EquipItemHere(lastUsedObject);
-            lastUsedObject.gameObject.SetActive(false);
-        }
-        else
-        {
-            Debug.LogWarning("Inventory is full :(");
-        }*/
-        // !!!!!!!!!!!!! for testing purposes, just to see if the code works !!!!!!!!!!!!!!!
     }
     public void UseToilet()
     {

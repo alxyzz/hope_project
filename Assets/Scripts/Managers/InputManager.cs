@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+
 
 public class InputManager : MonoBehaviour
 {
@@ -10,18 +12,22 @@ public class InputManager : MonoBehaviour
     public bool IsThereAPopUp;
     [HideInInspector]
     public bool canUseDrugs = false;
+    [HideInInspector]
+    public bool clicked = false;
 
     [SerializeField]
     public float minimumDistanceToTalkToPeople;
 
     public CharacterController_New CharacterControllerReference;
 
+
+
     // Update is called once per frame
     void Update()
     {
-       
         if (Input.GetMouseButtonDown(0))
         {
+            StartCoroutine(ClicksForOneFrame());
             ///Debug.Log("raw input - mouse LMB detected");
             if (IsThereAPopUp)
             {
@@ -183,5 +189,12 @@ public class InputManager : MonoBehaviour
 
         //    public void StopPlayerStance()
     }
-    //private int testint = 0;
+    
+    private IEnumerator ClicksForOneFrame()
+    {
+        clicked = true;
+        yield return null;
+        clicked = false;
+        yield return null;
+    }
 }
