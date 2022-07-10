@@ -94,7 +94,7 @@ public class Entity : MonoBehaviour
         {
             return;
         }
-        if (player || !doingStance)
+        if (player && !doingStance)
         {
             HandlePlayerAnimation();
         }
