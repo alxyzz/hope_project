@@ -37,8 +37,12 @@ public class DrugOverlayer : MonoBehaviour
         while (overlaying)
         {
             yield return new WaitForSecondsRealtime(imageChangeFrequency);
-            targetImage.sprite = overlayedImages[imageIndex];
-            imageIndex = Mathf.Clamp(imageIndex + 1, 0, imageListCount);
+            targetImage.texture = overlayedImages[imageIndex];
+            imageIndex++;
+            if (imageIndex >= imageListCount && imageListCount != 0)
+            {
+                imageIndex = 0;
+            }
         }
     }
 }
