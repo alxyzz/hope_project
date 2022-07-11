@@ -25,6 +25,7 @@ public class DrugOverlayer : MonoBehaviour
         {
             return;
         }
+        overlaying = true;
         targetImage.gameObject.SetActive(true);
         StartCoroutine(overlay());
 
