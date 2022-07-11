@@ -222,8 +222,7 @@ public class TripManager : MonoBehaviour
             case 0:
                 workingProfile = soberProfile;
                 flipWorld = false;
-                if (backgroundMusic != null) DataStorage.GameManagerComponent.SoundComponent.ChangeMusic(soberBackgroundAudio);
-
+                DataStorage.GameManagerComponent.SoundComponent.ChangeBGMusic("rain_ambient");
                 break;
 
 
@@ -236,6 +235,7 @@ public class TripManager : MonoBehaviour
             case 2:
                 workingProfile = secondStageProfile;
                 flipWorld = false;
+                DataStorage.GameManagerComponent.SoundComponent.ChangeBGMusic("stage2_bg_music");
                 break;
 
 
@@ -249,6 +249,7 @@ public class TripManager : MonoBehaviour
                 workingProfile = fourthStageProfile;
                 Overlays.startOverlaying();
                 flipWorld = true;
+                DataStorage.GameManagerComponent.SoundComponent.ChangeBGMusic("stage4_bg_music");
                 break;
 
             case 5:
