@@ -111,4 +111,26 @@ public class GameManager : MonoBehaviour
 
     }
     
+
+
+
+
+
+
+    public void BlackOut()
+    {
+        //todo - find whatever variables we need to store here to return to the bathroom properly
+
+        player.transform.position = StorylineComponent.bathroomEntryPoint.position;
+
+
+
+
+
+    }
+
+
+
+
+
 }
