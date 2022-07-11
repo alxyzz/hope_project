@@ -127,37 +127,6 @@ public class InputManager : MonoBehaviour
 
         }
 
-
-
-
-
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    switch (testint)
-        //    {
-        //        case 0:
-        //            DataStorage.Player.StopPlayerStance();
-        //            testint++;
-        //            break;
-        //        case 1:
-        //            DataStorage.Player.PlayerAnimCloseEyes();
-        //            testint++;
-        //            break;
-        //        case 2:
-        //            DataStorage.Player.PlayerAnimSitting();
-        //            testint++;
-        //            break;
-        //        case 3:
-        //            DataStorage.Player.PlayerAnimBrowsePhone();
-        //            testint = 0;
-        //            break;
-        //    }
-
-
-
-
-        //}
-
         //if (Input.GetKeyDown(KeyCode.L))
         //{
         //    Debug.Log("hit L");
@@ -166,28 +135,7 @@ public class InputManager : MonoBehaviour
 
         //}
 
-        //    PlayerAnimBrowsePhone()
-        //{
-        //        if (!player) { Debug.Log("called player stance on wrong entity"); return; }
-        //        doingStance = true;
-        //        animRef.SetInteger("customStanceStatus", 3);
-        //    }
 
-        //    public void PlayerAnimSitting()
-        //    {
-        //        if (!player) { Debug.Log("called player stance on wrong entity"); return; }
-        //        doingStance = true;
-        //        animRef.SetInteger("customStanceStatus", 2);
-        //    }
-
-        //    public void PlayerAnimCloseEyes()
-        //    {
-        //        if (!player) { Debug.Log("called player stance on wrong entity"); return; }
-        //        doingStance = true;
-        //        animRef.SetInteger("customStanceStatus", 1);
-        //    }
-
-        //    public void StopPlayerStance()
     }
     
     private IEnumerator ClicksForOneFrame()
