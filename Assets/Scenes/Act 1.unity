@@ -938,6 +938,130 @@ Transform:
   m_Father: {fileID: 993186658}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &181803886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181803887}
+  - component: {fileID: 181803888}
+  m_Layer: 0
+  m_Name: InvisibleWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181803887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181803886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.085, y: -0.014, z: 1.28}
+  m_LocalScale: {x: 3.49, y: 0.5, z: 0.13}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450652706201523}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &181803888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181803886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &182381792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182381793}
+  - component: {fileID: 182381794}
+  m_Layer: 0
+  m_Name: IDCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182381793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182381792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825109906}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &182381794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182381792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextualDecisions: []
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
+  visibleHigh: 0
+  visibleSober: 0
+  objectName: ID Card
+  description: 
+  itemSprite: {fileID: -419558769, guid: e550b347892d1a84193706e189ef06c4, type: 3}
+  inRangeOfPlayer: 0
+  singleUseInWorld: 0
+  singleUseInInventory: 0
+  pickupable: 0
+  canBePutDown: 0
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278523}
+        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
+        m_MethodName: UseID
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  inventoryUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isHighlighted: 0
 --- !u!1 &199224020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1160,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199224020}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &232027179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232027180}
+  - component: {fileID: 232027181}
+  m_Layer: 0
+  m_Name: CandyJar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232027180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232027179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825109906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &232027181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232027179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextualDecisions: []
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
+  visibleHigh: 0
+  visibleSober: 0
+  objectName: Candy Jar
+  description: 
+  itemSprite: {fileID: -27049137, guid: db8ba3c39f5d6ae42a779f70eb3dcdc0, type: 3}
+  inRangeOfPlayer: 0
+  singleUseInWorld: 0
+  singleUseInInventory: 0
+  pickupable: 0
+  canBePutDown: 0
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278523}
+        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
+        m_MethodName: UseCandyJar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  inventoryUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isHighlighted: 0
 --- !u!1 &235914865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4346,6 +4549,41 @@ Transform:
   m_Father: {fileID: 1369761259}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &825109905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825109906}
+  m_Layer: 0
+  m_Name: AlreadyInTheBackpack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &825109906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825109905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1000.065, y: 588.4907, z: -2.0835724}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 232027180}
+  - {fileID: 1305905830}
+  - {fileID: 182381793}
+  - {fileID: 2125955337}
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,6 +6164,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244059613}
   m_CullTransparentMesh: 1
+--- !u!1 &1305905829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305905830}
+  - component: {fileID: 1305905831}
+  m_Layer: 0
+  m_Name: Phone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305905830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305905829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825109906}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1305905831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305905829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextualDecisions: []
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
+  visibleHigh: 0
+  visibleSober: 0
+  objectName: Phone
+  description: 
+  itemSprite: {fileID: 371612038, guid: c8e89d034369849409a90ba96b5303e5, type: 3}
+  inRangeOfPlayer: 0
+  singleUseInWorld: 0
+  singleUseInInventory: 0
+  pickupable: 0
+  canBePutDown: 0
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278523}
+        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
+        m_MethodName: UsePhone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  inventoryUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isHighlighted: 0
 --- !u!1 &1313395209
 GameObject:
   m_ObjectHideFlags: 0
@@ -8539,6 +8856,7 @@ MonoBehaviour:
   MenuComponent: {fileID: 1932278532}
   player: {fileID: 2123075252}
   DecisionComponent: {fileID: 0}
+  alreadyInInventoryParent: {fileID: 825109905}
   pickupableObjects: []
   StartingRoomPicker: 0
 --- !u!4 &1932278519
@@ -16942,6 +17260,85 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2125955336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125955337}
+  - component: {fileID: 2125955338}
+  m_Layer: 0
+  m_Name: Skateboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2125955337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125955336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825109906}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125955338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125955336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55042dbb57cc4be4f847bb9603190089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextualDecisions: []
+  usedInWorld: 0
+  usedForHope: 0
+  originalMat: {fileID: 0}
+  usedInInventory: 0
+  visibleHigh: 0
+  visibleSober: 0
+  objectName: Skateboard
+  description: 
+  itemSprite: {fileID: -1069443969, guid: 14e46f5db66ffbf419e35fd447dd6b05, type: 3}
+  inRangeOfPlayer: 0
+  singleUseInWorld: 0
+  singleUseInInventory: 0
+  pickupable: 0
+  canBePutDown: 0
+  hopeModifierOnInteraction: 0
+  inworldUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932278523}
+        m_TargetAssemblyTypeName: ItemInteractionManager, Assembly-CSharp
+        m_MethodName: UseSkateboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  inventoryUse_UnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isHighlighted: 0
 --- !u!1 &2140691332
 GameObject:
   m_ObjectHideFlags: 0
@@ -17543,6 +17940,7 @@ Transform:
   - {fileID: 8578404304591824672}
   - {fileID: 1038670540}
   - {fileID: 1846655551}
+  - {fileID: 181803887}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19493,6 +19891,7 @@ GameObject:
   - component: {fileID: 2798486352418495313}
   - component: {fileID: 7969955408771190810}
   - component: {fileID: 7969955408771190809}
+  - component: {fileID: 7969955408771190811}
   m_Layer: 0
   m_Name: Door2
   m_TagString: Untagged
@@ -21525,6 +21924,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isHighlighted: 0
+--- !u!65 &7969955408771190811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4379544589017013158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033949427, y: 1.1746916, z: 0.6148819}
+  m_Center: {x: -0.0005735568, y: -0.00000011920929, z: 0.30837208}
 --- !u!1 &8103239057366981859
 GameObject:
   m_ObjectHideFlags: 0

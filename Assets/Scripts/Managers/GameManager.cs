@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public DecisionManager DecisionComponent;
 
-    
+    public GameObject alreadyInInventoryParent; // parent object of items that are in inventory from the beginning
 
     public List<Transform> pickupableObjects = new(); //empty entries here without an actual reference will cause a null exception so just doublecheck this in the inspector 
     [Space(25)]
@@ -104,6 +104,15 @@ public class GameManager : MonoBehaviour
         MenuComponent.pauseMenuReference.SetActive(false);
         MenuComponent.setingsReference.SetActive(false);
         MenuComponent.areYouSureReference.SetActive(false);
+
+        // equips starting items
+        int i = 0;
+        foreach (GenericObject go in alreadyInInventoryParent.GetComponentsInChildren<GenericObject>())
+        {
+            UIComponent.inventorySlotList[i].EquipItemHere(go);
+            i++;
+        }
+
 
     }
 
