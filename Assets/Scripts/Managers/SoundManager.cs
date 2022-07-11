@@ -87,7 +87,8 @@ public static class SoundPlayer
                 {
                     audioSource.panStereo = steroPan;
                 }
-                audioSource.PlayOneShot(sound.audioClip); // playing
+                audioSource.clip = sound.audioClip;
+                audioSource.Play(); // playing
 
                 if (!audioSource.loop)
                 {
@@ -96,6 +97,11 @@ public static class SoundPlayer
                 else if (sound.soundType == SoundType.BGM)
                 {
                     DataStorage.GameManagerComponent.SoundComponent.previousBGMObject = soundObject;
+                    audioSource.loop = true;
+                }
+                else if (sound.soundType == SoundType.Ambient)
+                {
+                    audioSource.loop = true;
                 }
             }
         }

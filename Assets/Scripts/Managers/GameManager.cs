@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public DialogueManager DialogueComponent;
     public ItemInteractionManager ItemComponent;
     public SoundManager SoundComponent;
+    public InGameMenuManager MenuComponent;
     public Entity player;
 
     public DecisionManager DecisionComponent;
@@ -100,7 +101,9 @@ public class GameManager : MonoBehaviour
 
         DataStorage.textIsOnScreen = false;
         
-
+        MenuComponent.pauseMenuReference.SetActive(false);
+        MenuComponent.setingsReference.SetActive(false);
+        MenuComponent.areYouSureReference.SetActive(false);
 
     }
 

@@ -47,45 +47,56 @@ MonoBehaviour:
   soundsList:
   - soundName: door_sfx
     audioClip: {fileID: 8300000, guid: 8613630dd53289246b556976d8faed03, type: 3}
+    soundType: 1
     loop: 0
     volume: 1
   - soundName: backpack_sfx
     audioClip: {fileID: 8300000, guid: 277cb6d5d88a48e4b8e61bfaaa091d69, type: 3}
+    soundType: 1
     loop: 0
     volume: 1
   - soundName: jar_sfx
     audioClip: {fileID: 8300000, guid: aabd7b1eccb81de46b48d3a1bd6870fc, type: 3}
+    soundType: 1
     loop: 1
     volume: 1
   - soundName: ambulance_sfx
     audioClip: {fileID: 8300000, guid: f7b79471525b2884ea0dd6dc6ea9daa6, type: 3}
+    soundType: 1
     loop: 0
     volume: 1
   - soundName: stage4_voiceclip
     audioClip: {fileID: 8300000, guid: ad6a52bc65a15ba4797be2cdb0cd8704, type: 3}
+    soundType: 2
     loop: 1
     volume: 1
   - soundName: shower_ambient
     audioClip: {fileID: 8300000, guid: 5331f4ec29a08fd4593a73ddb8164adf, type: 3}
+    soundType: 3
     loop: 1
     volume: 1
   - soundName: childrens_room_ambient
     audioClip: {fileID: 8300000, guid: 53edb9b71a664074a95350705d6a36cd, type: 3}
+    soundType: 3
     loop: 1
     volume: 1
   - soundName: rain_ambient
     audioClip: {fileID: 8300000, guid: 9d3ced4b3df5a7746ae0e7dd64183936, type: 3}
+    soundType: 3
     loop: 1
     volume: 1
   - soundName: party_bg_music
     audioClip: {fileID: 8300000, guid: c00b3fa4a054f6d478da2a07f08c3adc, type: 3}
+    soundType: 0
     loop: 1
     volume: 1
   - soundName: stage2_bg_music
     audioClip: {fileID: 8300000, guid: 24daeb4d738b8444d84bf98ca9a3c680, type: 3}
+    soundType: 0
     loop: 1
     volume: 1
   - soundName: stage4_bg_music
     audioClip: {fileID: 8300000, guid: f37c0b1e35b96da41a87ec01b90b54a6, type: 3}
+    soundType: 0
     loop: 1
     volume: 1
