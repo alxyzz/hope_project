@@ -19,13 +19,23 @@ public class InGameMenuManager : MonoBehaviour
     {
         setingsReference.SetActive(true);
         pauseMenuReference.SetActive(false);
+        areYouSureReference.SetActive(false);
     }
     public void QuitButtonOne() // turns on prompt "are you sure?"
     {
         areYouSureReference.SetActive(true);
+        pauseMenuReference.SetActive(false);
+        setingsReference.SetActive(false);
     }
     public void QuitButtonTwo() // quits
     {
         Application.Quit();
+    }
+    public void BackToPauseMenu()
+    {
+        setingsReference.SetActive(false);
+        areYouSureReference.SetActive(false);
+        pauseMenuReference.SetActive(true);
+
     }
 }

@@ -122,7 +122,7 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed ESC to pop up ingame menu");
 
-            if (!pauseMenu.pauseMenuReference.activeInHierarchy)
+            if (!pauseMenu.pauseMenuReference.activeInHierarchy && !pauseMenu.setingsReference.activeInHierarchy && !pauseMenu.areYouSureReference.activeInHierarchy)
             {
                 Time.timeScale = 0;
                 pauseMenu.pauseMenuReference.SetActive(true);
