@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour
         }
         DataStorage.Player = player;
         player.transform.position = spawnloc;
-        ItemComponent.GivePlayerStartingItems();
 
     }
 
@@ -111,26 +110,4 @@ public class GameManager : MonoBehaviour
 
     }
     
-
-
-
-
-
-
-    public void BlackOut()
-    {
-        //todo - find whatever variables we need to store here to return to the bathroom properly
-
-        player.transform.position = StorylineComponent.bathroomEntryPoint.position;
-
-
-
-
-
-    }
-
-
-
-
-
 }

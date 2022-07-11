@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DrugOverlayer : MonoBehaviour
 {
-    public List<Texture> overlayedImages = new();
-    public RawImage targetImage;
+    public List<Sprite> overlayedImages = new();
+    public Image targetImage;
 
     public float imageChangeFrequency;
 
@@ -25,19 +25,10 @@ public class DrugOverlayer : MonoBehaviour
         {
             return;
         }
-        overlaying = true;
-        targetImage.gameObject.SetActive(true);
+
         StartCoroutine(overlay());
 
     }
-
-     public void stopOverlaying()
-    {
-        targetImage.gameObject.SetActive(false);
-        overlaying = false;
-
-    }
-
     private int imageListCount;
     private int imageIndex;
     IEnumerator overlay()

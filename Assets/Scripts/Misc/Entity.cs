@@ -94,7 +94,7 @@ public class Entity : MonoBehaviour
         {
             return;
         }
-        if (player && !doingStance)
+        if (player)
         {
             HandlePlayerAnimation();
         }
@@ -103,37 +103,16 @@ public class Entity : MonoBehaviour
             HandleCatEyeTracking();
         }
     }
-    private bool doingStance; //just to minimize unecessary stuff
-    public void PlayerAnimBrowsePhone()
-    {
-        if (!player) {Debug.Log("called player stance on wrong entity"); return; }
-        doingStance = true;
-        animRef.SetInteger("customStanceStatus", 3);
-    }
 
-    public void PlayerAnimSitting()
-    {
-        if (!player) { Debug.Log("called player stance on wrong entity"); return; }
-        doingStance = true;
-        animRef.SetInteger("customStanceStatus", 2);
-    }
-
-    public void PlayerAnimCloseEyes()
-    {
-        if (!player) { Debug.Log("called player stance on wrong entity"); return; }
-        doingStance = true;
-        animRef.SetInteger("customStanceStatus", 1);
-    }
-
-    public void StopPlayerStance()
-    {
-        doingStance = false;
-        animRef.SetInteger("customStanceStatus", 0);
-
-    }
 
     private void HandlePlayerAnimation()
     {
+        if (playerClosedEyes)
+        {
+            animRef.SetBool("eyesClosed", true);
+        }
+
+
         if (transform.position.x > lastpos.x)
         {//moved left
             animRef.SetBool("walkLeft", true);
