@@ -7664,8 +7664,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.72596055, y: 0.8431875, z: 0.6238965}
-  m_Center: {x: 0, y: -0.078406475, z: 0}
+  m_Size: {x: 0.72596055, y: 0.5524096, z: 0.6238965}
+  m_Center: {x: 0, y: -0.22379549, z: 0}
 --- !u!114 &1846655550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8508,8 +8508,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58617c61430862a47a4d75328411543e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 0}
+  backgroundMusic:
+    soundName: 
+    audioClip: {fileID: 0}
+    loop: 0
+    volume: 1
   locationBasedBackgroundMusic: {fileID: 0}
+  fadeOutVariable: 0.1
+  previousBGMObject: {fileID: 0}
   soundDestroyDelay: 0.2
 --- !u!114 &1932278529
 MonoBehaviour:
