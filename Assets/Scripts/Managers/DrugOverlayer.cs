@@ -48,7 +48,7 @@ public class DrugOverlayer : MonoBehaviour
             yield return new WaitForSecondsRealtime(imageChangeFrequency);
             targetImage.texture = overlayedImages[imageIndex];
             imageIndex++;
-            if (imageIndex >= imageListCount)
+            if (imageIndex >= imageListCount && imageListCount != 0)
             {
                 imageIndex = 0;
             }
