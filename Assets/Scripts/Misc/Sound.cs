@@ -12,6 +12,14 @@ public class Sound
 
     public string soundName;
     public AudioClip audioClip;
+    public SoundType soundType;
     public bool loop = false;
     public float volume = 1f;
+}
+public enum SoundType
+{
+    BGM,
+    SoundEffect,
+    VoiceClip,
+    Ambient
 }
