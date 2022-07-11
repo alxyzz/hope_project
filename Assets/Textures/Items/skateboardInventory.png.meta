@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8e89d034369849409a90ba96b5303e5
+guid: 14e46f5db66ffbf419e35fd447dd6b05
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: phone_rotated_0
+      name: skateboardInventory_0
       rect:
         serializedVersion: 2
-        x: 105
-        y: 83
-        width: 274
-        height: 318
+        x: 448
+        y: 277
+        width: 104
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4771af2a74213e049bebeb200e8a54a2
-      internalID: 371612038
+      spriteID: c34dd5679582438429d0b0c789c4193e
+      internalID: -1069443969
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      phone_rotated_0: 371612038
+      skateboardInventory_0: -1069443969
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

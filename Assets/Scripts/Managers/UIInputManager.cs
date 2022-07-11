@@ -14,7 +14,7 @@ public class UIInputManager : MonoBehaviour
 
     void Update()
     {
-        if (DataStorage.GameManagerComponent.InputComponent.clicked) // calling from INputManager so that we wouldnt have duplicate input
+        if (DataStorage.GameManagerComponent.InputComponent.clicked) // upon click
         {
             DataStorage.raycastResultList = new(); // clears raycast list everytime
             // creates new pointer event, sets position to mouse, raycasts only into UI Canvas
@@ -26,6 +26,7 @@ public class UIInputManager : MonoBehaviour
                 if (result.gameObject.GetComponent<InventoryUIObject>()) // we can filter the list to access objects that we want
                 {
                     Debug.LogWarning("Graphic Raycast hit " + result.gameObject.name);
+                    result.gameObject.GetComponent<InventoryUIObject>().itemAction.Invoke(); // invokes unity event
                 }
             }
         }
