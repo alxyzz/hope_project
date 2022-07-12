@@ -178,7 +178,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UsePuke()
     {//there's no puke object yet. also it disappears on being high
 
-
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         fungusReference.ExecuteBlock("click_puke_sober_tutorial");
 
 
@@ -186,6 +186,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseMirror()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedMirror = true;
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good�<br>But not on me.�");
         if (checkifSober())
         {
@@ -202,6 +203,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseMagazines()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedMagazines = true;
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_magazine_sober_tutorial");
@@ -216,6 +218,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseToilet()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedToilet = true;
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_toilet_sober_tutorial");
@@ -230,6 +233,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseBathtub()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedBathtub = true;
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_bathtub_sober_tutorial");
@@ -245,14 +249,49 @@ public class ItemInteractionManager : MonoBehaviour
     {
         SoundPlayer.PlaySound("test_whip");
         DataStorage.GameManagerComponent.StorylineComponent.usedDoor = true;
-
+        DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         fungusReference.ExecuteBlock("click_door_sober_tutorial"); // same text in both
 
 
 
     }
 
+    public bool CalculateWetherBathroomWasExaminedEnough()
+    {
+        //DataStorage.GameManagerComponent.StorylineComponent.BathroomExaminedObjects;
+        int b = 0;
+        //usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor
 
+
+        if (DataStorage.GameManagerComponent.StorylineComponent.usedMirror)
+        {
+            b++;
+        }
+        if (DataStorage.GameManagerComponent.StorylineComponent.usedMagazines || DataStorage.isHigh)  //because thhe high bathrooom has less stuff
+        {
+            b++;
+        }
+        if (DataStorage.GameManagerComponent.StorylineComponent.usedToilet)
+        {
+            b++;
+        }
+        if (DataStorage.GameManagerComponent.StorylineComponent.usedBathtub)
+        {
+            b++;
+        }
+        if (DataStorage.GameManagerComponent.StorylineComponent.usedDoor)
+        {
+            b++;
+        }
+        if (b >= DataStorage.GameManagerComponent.StorylineComponent.targetObjectExaminations)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
 
