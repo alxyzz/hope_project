@@ -189,7 +189,11 @@ public class TripManager : MonoBehaviour
         {
             if (tripStatus != 0)
             {
-                CycleCA();
+                if (DataStorage.GameManagerComponent.drugOverlayer.epileptic)
+                {
+                    CycleCA();
+                }
+               
                 CycleST();
             }
 
@@ -342,14 +346,14 @@ public class TripManager : MonoBehaviour
             Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
             OnDrugStateChange();
         }
-        else
-        {
+        //else
+        //{
 
-            wasHigh = true;
-        }
-        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
-        Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
-        OnDrugStateChange();
+        //    wasHigh = true;
+        //}
+        //tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
+        //Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
+        //OnDrugStateChange();
 
 
     }
