@@ -10,7 +10,8 @@ public class MainMenuManager : MonoBehaviour
 {
 
     public Button ContinueButton, StartButton, SettingsButton, ExitButton;
-
+    public GameObject MainMenuWindow;
+    public GameObject SettingsWindow;
 
 
     // Start is called before the first frame update
@@ -62,6 +63,9 @@ public class MainMenuManager : MonoBehaviour
     public void Settings()
     {
         Debug.Log("clciked settings");
+        MainMenuWindow.SetActive(false);
+        SettingsWindow.SetActive(true);
+
     }
     public void Exit()
     {
