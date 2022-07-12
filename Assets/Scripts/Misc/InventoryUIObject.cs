@@ -12,7 +12,7 @@ public class InventoryUIObject : MonoBehaviour
     public Image itemSlotBG;
     public Image itemImage;
     public Collider2D slotCollider;
-    public UnityEvent itemAction;
+   // public UnityEvent itemAction;
     //public TextMeshProUGUI itemName;
 
 
@@ -39,6 +39,22 @@ public class InventoryUIObject : MonoBehaviour
     /// <summary>
     /// sets all necessary values/graphics to be officially in this slot
     /// </summary>
+    /// 
+
+    public void GotClicked()
+    {
+        Debug.Log(" INV BUTTON GOT CLICKED ");
+        if (containedObject != null)
+        {
+            if (containedObject.inventoryUse_UnityEvent != null)
+            {
+                containedObject.inventoryUse_UnityEvent.Invoke();
+            }
+            
+        }
+
+
+    }
     public void EquipItemHere(GenericObject target = null)
     {
         if (target != null)
@@ -49,16 +65,6 @@ public class InventoryUIObject : MonoBehaviour
         {
             itemImage.sprite = containedObject.itemSprite;
         }
-
-        if (containedObject.inventoryUse_UnityEvent != null)
-        {
-            itemAction = containedObject.inventoryUse_UnityEvent;
-        }
-        else if (containedObject.inworldUse_UnityEvent != null)
-        {
-            //itemAction.AddListener(UnityEv)
-        }
-
         if (containedObject.objectName != null || containedObject.objectName != "")
         {
             //itemName.text = containedObject.objectName;
