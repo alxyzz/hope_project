@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 
@@ -18,7 +16,15 @@ public class StorylineManager : MonoBehaviour
     public float elapsedTime;
     [HideInInspector]
     public bool bathroomLocked;
-    public Transform bathroomEntryPoint, bedroomEntryPoint, hallwayEntryPoint, kitchenEntryPoint;
+    //firstlevel points
+    public Transform bathroomEntryPoint, bedroomEntryPoint;
+    [Space(10)]
+    public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot; //place where you respawn after blackout
+    [Space(10)]
+    public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
+    [HideInInspector]
+    public Vector3 kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
+
 
 
     //kitchen//
@@ -27,6 +33,18 @@ public class StorylineManager : MonoBehaviour
 
     //kitchen end//
 
+
+    private void Start()
+    {
+        //     public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
+        //public Vector3 kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
+
+        kitchenEntry = kitchenEntryG.transform.position;
+        secondHallwayEntry = secondHallwayEntryG.transform.position;
+        devRoomEntry = devRoomEntryG.transform.position;
+        basementEntry = basementEntryG.transform.position;
+        childhoodEntry = childhoodEntryG.transform.position;
+    }
     private void Update()
     {
         switch (CurrentLevel)
@@ -37,7 +55,7 @@ public class StorylineManager : MonoBehaviour
                     //CheckIfSpiderAngry();
                 }
                 Debug.Log("test. StorylineManager detected bathroom scene.");
-                
+
 
                 break;
             default:
@@ -65,7 +83,7 @@ public class StorylineManager : MonoBehaviour
         SoundPlayer.PlaySound("door_sfx");
         CurrentRoom = "Hallway";
         CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
-        cc.enabled = false; 
+        cc.enabled = false;
         DataStorage.Player.transform.position = hallwayEntryPoint.transform.position;
         cc.enabled = true;
         Camera playerCamera = Camera.main;
@@ -119,8 +137,8 @@ public class StorylineManager : MonoBehaviour
         //    DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
         //}
 
-        
-        if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
+
+        if (usedMirror && usedMagazines && usedToilet && usedBathtub && usedDoor)
         {
             return true;
         }

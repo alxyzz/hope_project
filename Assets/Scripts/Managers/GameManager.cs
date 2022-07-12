@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public SoundManager SoundComponent;
     public InGameMenuManager MenuComponent;
     public Entity player;
-
+    public int level = 1;
     public DecisionManager DecisionComponent;
 
     public GameObject alreadyInInventoryParent; // parent object of items that are in inventory from the beginning
@@ -37,7 +37,11 @@ public class GameManager : MonoBehaviour
 
 
 
+    public void BlackOut()
+    {
 
+
+    }
 
 
 
@@ -49,8 +53,6 @@ public class GameManager : MonoBehaviour
 
         UIComponent.RefreshHopeVisualisation();
     }
-
-
 
     private void Awake()
     {
@@ -64,20 +66,29 @@ public class GameManager : MonoBehaviour
             //later on, this is where we can do stuff like checking if there's a file with the current game state saved as a json (all kinds of booleans probably) and load it
         }
 
-        Vector3 spawnloc = new Vector3();
-        switch (StartingRoomPicker)
-        {
-            case StartingPlayerRoom.Bathroom:
-                spawnloc = StorylineComponent.bathroomEntryPoint.position;
-                break;
-            case StartingPlayerRoom.Bedroom:
-                spawnloc = StorylineComponent.bedroomEntryPoint.position;
-                break;
-            default:
-                break;
-        }
+
+
+        //if ()
+        //{
+
+        //}
+        //switch (StartingRoomPicker)
+        //{
+        //    case StartingPlayerRoom.Bathroom:
+        //        spawnloc = StorylineComponent.bathroomEntryPoint.position;
+        //        break;
+        //    case StartingPlayerRoom.Bedroom:
+        //        spawnloc = StorylineComponent.bedroomEntryPoint.position;
+        //        break;
+        //    default:
+        //        break;
+        //}
         DataStorage.Player = player;
-        player.transform.position = spawnloc;
+        if (level == 2)
+        {
+            InputComponent.canUseDrugs = true;
+        }
+        //player.transform.position = spawnloc;
 
     }
 
@@ -107,12 +118,27 @@ public class GameManager : MonoBehaviour
 
         // equips starting items
         int i = 0;
-        foreach (GenericObject go in alreadyInInventoryParent.GetComponentsInChildren<GenericObject>())
+        if (alreadyInInventoryParent != null)
         {
-            UIComponent.inventorySlotList[i].EquipItemHere(go);
-            i++;
+            foreach (GenericObject go in alreadyInInventoryParent.GetComponentsInChildren<GenericObject>())
+            {
+                UIComponent.inventorySlotList[i].EquipItemHere(go);
+                i++;
+            }
+        }
+        else
+        {
+            if (DataStorage.objectsInInventory.Count != 0)
+            {
+                foreach (GenericObject go in DataStorage.objectsInInventory)
+                {
+                    UIComponent.inventorySlotList[i].EquipItemHere(go);
+                    i++;
+                }
+            }
         }
 
+        TripComponent.ChangeHallucinatedObjectVisibilityStatus();
 
     }
 

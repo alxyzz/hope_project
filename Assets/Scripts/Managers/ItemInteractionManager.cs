@@ -113,6 +113,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseSkateboard()
     {
 
+
         fungusReference.ExecuteBlock("click_skateboard_tutorial");
 
 
@@ -185,7 +186,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseMirror()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedMirror = true;
-        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks goodï¿½<br>But not on me.ï¿½");
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_mirror_sober_tutorial");
@@ -262,9 +263,9 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
-    public bool bathroomisLocked; //affects wether you can enter the bathroom 
+    public bool bathroomisLocked; //affects wether you can enter the bathroom
 
-    ////// bedroom 
+    ////// bedroom
     ///
 
     public void UseDoorBedroomToBathroom()
@@ -285,6 +286,17 @@ public class ItemInteractionManager : MonoBehaviour
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -346,4 +358,154 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
+    ///////////// KITCHEN
+    ///
+
+
+
+
+    ///navigation///
+    ///sure we could have just 1 block for each individual location but this way we can add triggers when entering certain rooms from others
+    public void doorHallwayToKitchen()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.kitchenEntry);
+
+        if (!wentToKitchen)
+        {
+            fungusReference.ExecuteBlock("hallway_kitchen");
+            wentToKitchen = true;
+        }
+    }
+    private bool wentToKitchen;
+    public void doorKitchenToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorHallwayToStorage()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.storageEntry);
+    }
+    public void doorStorageToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorHallwayToBasement()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.basementEntry);
+    }
+
+    public void doorBasementToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorBasementToDevRoom()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.devRoomEntry);
+    }
+
+    public void useKitchenFridge()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("fridge_sober");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("fridge_high");
+        }
+
+    }
+
+    public void useKitchenTelevision()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("television_sober");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("television_high");
+        }
+
+    }
+    public void useKitchenPoopDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("door_poop_sober");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("door_poop_high");
+        }
+
+    }
+
+    public void useKitchenSexDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("door_sex_sober");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("door_sex_high");
+        }
+
+    }
+    public void useKitchenGardenDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("door_to_garden_sober");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("door_to_garden_high");
+        }
+
+    }
+
+    public void useKitchenBeerPong()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+    public void useKitchenPenguin()
+    {
+
+        if (checkifSober())
+        {
+            //fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("penguin_msg_1");
+        }
+
+    }
 }
