@@ -267,6 +267,14 @@ public class TripManager : MonoBehaviour
         globalVolume.profile = workingProfile;
         if (flipWorld) Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 180f);
         else Camera.main.transform.rotation = Quaternion.Euler(9.282f, -180f, 0f);
+        if (tripStatus == 0)
+        {
+            DataStorage.isHigh = false;
+        }
+        else
+        {
+            DataStorage.isHigh = true;
+        }
         ReinitializeProfileQualities();
     }
 
@@ -309,6 +317,7 @@ public class TripManager : MonoBehaviour
         if (tripStatus > 0)
         {
             wasHigh = true;
+
         }
         Debug.Log("got a bit more sober. trip level is " + tripStatus.ToString());
         tripStatus = Mathf.Clamp(tripStatus - 1, 0, 6);
@@ -325,6 +334,7 @@ public class TripManager : MonoBehaviour
         }
         else
         {
+            
             wasHigh = true;
         }
         tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
@@ -338,13 +348,9 @@ public class TripManager : MonoBehaviour
     {
 
         yield return new WaitForSecondsRealtime(10);
+        DataStorage.GameManagerComponent.BlackOut();
     }
 
-    public void Fadeout()
-    {
-        //this should make the screen fade to black
-
-    }
 
 
 
