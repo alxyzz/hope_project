@@ -51,10 +51,10 @@ public class TripManager : MonoBehaviour
     /*
 0. Sober --> everything a bit shitty  ;(
 1. Drug use/stage --> the player is forced in the "tutorial level" (no impact on maximum hope) ; everything beautiful and pastel coloured/light colours (we stay with this colouring for the other stages)
-2. Drug use/stage --> Objects switch with more unrealistic objects (table might be a bathtub --> we can re-use objects!) and new objects and characters appear (just a few); 
+2. Drug use/stage --> Objects switch with more unrealistic objects (table might be a bathtub --> we can re-use objects!) and new objects and characters appear (just a few);
 3. Drug use/stage --> everything is getting a bit distorted (filters (?))and stops making sense;  character might become abstract/ lose colour and be white and black (we can basically do whatever we feel like and find funny in this stage :D)
-4. Drug use/stage --> Nothing changes regarding the environment/characters, BUT the environment is turned upside down; the character is walking on the ceiling limiting  possible interactions to a minimum 
-5. Drug use/stage --> player dies of overdose. A countdown and weird music starts (death is inevitable) ; countdown ends: ambulance siren and blackout 
+4. Drug use/stage --> Nothing changes regarding the environment/characters, BUT the environment is turned upside down; the character is walking on the ceiling limiting  possible interactions to a minimum
+5. Drug use/stage --> player dies of overdose. A countdown and weird music starts (death is inevitable) ; countdown ends: ambulance siren and blackout
      */
 
 
@@ -280,8 +280,8 @@ public class TripManager : MonoBehaviour
 
     public void ChangeHallucinatedObjectVisibilityStatus()
     {
-        
-        if (wasHigh || tripStatus == 0) 
+
+        if (wasHigh || tripStatus == 0)
         {
             //loop through all sober-only objects and characters and set them active
             //loop through all hallucinated objects and characters and set them inactive
@@ -328,13 +328,23 @@ public class TripManager : MonoBehaviour
 
     public void GetHigh()
     {
-        if (tripStatus == 0)
+        if (DataStorage.GameManagerComponent.InputComponent.canUseDrugs)
         {
-            wasHigh = false;
+            if (tripStatus == 0)
+            {
+                wasHigh = false;
+            }
+            else
+            {
+                wasHigh = true;
+            }
+            tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
+            Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
+            OnDrugStateChange();
         }
         else
         {
-            
+
             wasHigh = true;
         }
         tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);

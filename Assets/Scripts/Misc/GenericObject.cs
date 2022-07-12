@@ -20,7 +20,7 @@ public class GenericObject : MonoBehaviour
     [HideInInspector]
     public bool usedInWorld; //wether it has already been used
     [HideInInspector]
-    public bool usedForHope; //wether it has already been used for hope gain/loss 
+    public bool usedForHope; //wether it has already been used for hope gain/loss
     [HideInInspector]
     public Material originalMat;
     [HideInInspector]
@@ -29,7 +29,7 @@ public class GenericObject : MonoBehaviour
     public string objectName, description;
     public Sprite itemSprite; //as seen in inventory
     [HideInInspector]
-    public bool inRangeOfPlayer;//wether we are close enough to click 
+    public bool inRangeOfPlayer;//wether we are close enough to click
 
 
     [Space(10)]
@@ -45,6 +45,7 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
+    public bool isGundorb;
     public bool isHighlighted;
 
 
@@ -70,7 +71,7 @@ public class GenericObject : MonoBehaviour
                 isSprite = true;
             }
         }
-        
+
         AddStringPrefix();
     }
 
@@ -87,7 +88,7 @@ public class GenericObject : MonoBehaviour
 
 
     }
-    
+
 
     public bool CheckIfInventory() { if (DataStorage.objectsInInventory.Contains(this)) return true; else return false; }
 
@@ -132,9 +133,9 @@ public class GenericObject : MonoBehaviour
                     Debug.LogError("exception |" + ex.Message + " |at checkanduserunevent genericobject with name " + objectName);
                     throw;
                 }
-                
+
             }
-            
+
         }
 
     }
@@ -182,31 +183,31 @@ public class GenericObject : MonoBehaviour
 
         if (gameObject.GetComponent<Renderer>() != null)
         {
-            if (select)
+            if (!isGundorb)
             {
                 isHighlighted = true;
                 if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
             }
             else
             {
-                isHighlighted = false;
-                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+                isHighlighted = true;
             }
         }
         else
         {
-            if (select)
+            if (!isGundorb)
             {
-                HighlightChildren(select);
+                isHighlighted = false;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
             }
             else
             {
-                HighlightChildren(select);
+                isHighlighted = false;
             }
         }
-        
 
-        
+
+
     }
     private List<Material> childMatList;
     private List<Transform> children;
@@ -244,16 +245,16 @@ public class GenericObject : MonoBehaviour
 
                     isHighlighted = false;
                     target.GetComponent<Renderer>().material = childMatList[i];
-                    
+
                 }
-                
+
             }
             childMatList.Clear(); //clears child matlist when done
         }
-       
+
 
 
     }
 
-   
+
 }

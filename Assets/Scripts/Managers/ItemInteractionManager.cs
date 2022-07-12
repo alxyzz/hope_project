@@ -114,14 +114,8 @@ public class ItemInteractionManager : MonoBehaviour
     {
 
 
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("use_skateboard");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("use_skateboard_high");
-        }
+        fungusReference.ExecuteBlock("click_skateboard_tutorial");
+
 
     }
 
@@ -130,11 +124,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("use_phone");
+            fungusReference.ExecuteBlock("click_phone_sober_tutorial");
         }
         else
         {
-            fungusReference.ExecuteBlock("use_phone_high");
+            fungusReference.ExecuteBlock("click_phone_high_tutorial");
         }
 
     }
@@ -143,20 +137,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseCandyJar()
     {
-        DataStorage.GameManagerComponent.InputComponent.canUseDrugs = true;
-        DataStorage.GameManagerComponent.TripComponent.GetHigh();
-
-
-
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("use_candyjar");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("use_candyjar_high");
-        }
-
+        fungusReference.ExecuteBlock("click_candyjar_tutorial");
     }
 
 
@@ -166,11 +147,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("use_id");
+            fungusReference.ExecuteBlock("click_ID_tutorial");
         }
         else
         {
-            fungusReference.ExecuteBlock("use_id_high");
+            fungusReference.ExecuteBlock("click_id_high_tutorial");
         }
 
 
@@ -205,7 +186,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void UseMirror()
     {
         DataStorage.GameManagerComponent.StorylineComponent.usedMirror = true;
-        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks good…<br>But not on me.”");
+        //DataStorage.GameManagerComponent.UIManagerComponent.PopupMessagebox("Damn, this outfit looks goodï¿½<br>But not on me.ï¿½");
         if (checkifSober())
         {
             fungusReference.ExecuteBlock("click_mirror_sober_tutorial");
@@ -282,9 +263,9 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
-    public bool bathroomisLocked; //affects wether you can enter the bathroom 
+    public bool bathroomisLocked; //affects wether you can enter the bathroom
 
-    ////// bedroom 
+    ////// bedroom
     ///
 
     public void UseDoorBedroomToBathroom()
@@ -346,14 +327,29 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
+    // ///////////////// bedroom end
 
+    // CORRIDOR / HALLWAY
+
+    public void UsePhotos()
+    {
+        fungusReference.ExecuteBlock("click_photos_hallway");
+    }
+    public void Gundorb()
+    {
+        fungusReference.ExecuteBlock("click_gundorb");
+    }
+
+    // //////////////////// HALLWAY END
+
+// kitchen
 
 
 
     public void UseKitchenChips(GameObject theChipsReference)
     {
 
-        fungusReference.ExecuteBlock("click_chips_kitchen");
+        fungusReference.ExecuteBlock("chips_selection_kitchen");
 
         theChipsReference.SetActive(false);
 
@@ -373,7 +369,7 @@ public class ItemInteractionManager : MonoBehaviour
     public void doorHallwayToKitchen()
     {
         //fungusReference.ExecuteBlock("fridge_sober");
-        
+
         DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.kitchenEntry);
 
         if (!wentToKitchen)

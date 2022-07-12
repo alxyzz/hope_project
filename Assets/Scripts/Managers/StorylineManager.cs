@@ -1,4 +1,5 @@
 using UnityEngine;
+using Fungus;
 
 public class StorylineManager : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class StorylineManager : MonoBehaviour
     public string CurrentLevel;
     public string CurrentRoom;
     [HideInInspector]
-    public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor;
+    public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor = false;
     [HideInInspector]
     public float elapsedTime;
     [HideInInspector]
     public bool bathroomLocked;
     //firstlevel points
-    public Transform bathroomEntryPoint, bedroomEntryPoint;
+    public Transform bathroomEntryPoint, bedroomEntryPoint, hallwayEntryPoint, kitchenEntryPoint;
     [Space(10)]
     public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot; //place where you respawn after blackout
     [Space(10)]
@@ -51,7 +52,7 @@ public class StorylineManager : MonoBehaviour
             case "Act 1":
                 if (CurrentRoom == "Bathroom")
                 {
-                    CheckIfSpiderAngry();
+                    //CheckIfSpiderAngry();
                 }
                 Debug.Log("test. StorylineManager detected bathroom scene.");
 
@@ -65,6 +66,7 @@ public class StorylineManager : MonoBehaviour
     public void SpiderKickOut()
     {
         //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
+        SoundPlayer.PlaySound("door_sfx");
         CurrentRoom = "Bedroom";
         bathroomLocked = true;
 
@@ -76,7 +78,29 @@ public class StorylineManager : MonoBehaviour
         Camera playerCamera = Camera.main;
         playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
+    public void GoToHallway()
+    {
+        SoundPlayer.PlaySound("door_sfx");
+        CurrentRoom = "Hallway";
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+        cc.enabled = false;
+        DataStorage.Player.transform.position = hallwayEntryPoint.transform.position;
+        cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+    }
+    public void GoToKitchen()
+    {
 
+        SoundPlayer.PlaySound("door_sfx");
+        CurrentRoom = "Kitchen";
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+        cc.enabled = false;
+        DataStorage.Player.transform.position = kitchenEntryPoint.transform.position;
+        cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+    }
     public void AllowDrugUse(bool togg)
     {
         DataStorage.GameManagerComponent.InputComponent.canUseDrugs = togg;
@@ -104,7 +128,7 @@ public class StorylineManager : MonoBehaviour
     public GameObject showeringSpider;
 
 
-    public void CheckIfSpiderAngry()
+    public bool IsSpiderAngry()
     {
 
         //elapsedTime += Time.deltaTime;
@@ -116,11 +140,23 @@ public class StorylineManager : MonoBehaviour
 
         if (usedMirror && usedMagazines && usedToilet && usedBathtub && usedDoor)
         {
-            showeringSpider.SetActive(true);
-            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("ShowSpider");
-            DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
-            DataStorage.GameManagerComponent.UIComponent.backpackVisible = true;
+            return true;
         }
+        else
+        {
+            return false;
+        }
+    }
+    public void ShowSpider()
+    {
+        if (IsSpiderAngry())
+        {
+            Debug.Log("Bruh theres spider behind curtin???");
+            showeringSpider.SetActive(true);
+            DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
+            DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("spider_showering_tutorial");
+        }
+
     }
 
 }
