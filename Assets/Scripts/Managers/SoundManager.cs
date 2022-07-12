@@ -34,6 +34,8 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         SoundPlayer.PlaySound("party_bg_music"); // test
+        SoundPlayer.PlaySound("rain_ambient");
+
     }
 
     public IEnumerator LowerVolumeToZero(float volume, float amount) // simple volume lowering coroutine
@@ -85,21 +87,31 @@ public static class SoundPlayer
                 {
                     audioSource.panStereo = steroPan;
                 }
-                audioSource.PlayOneShot(sound.audioClip); // playing
+                audioSource.clip = sound.audioClip;
+                audioSource.Play(); // playing
 
                 if (!audioSource.loop)
                 {
                     Object.Destroy(soundObject, sound.audioClip.length + DataStorage.GameManagerComponent.SoundComponent.soundDestroyDelay); // as long as its not looping, destroys once the sound is finished + delay
                 }
-                else
+                else if (sound.soundType == SoundType.BGM)
                 {
                     DataStorage.GameManagerComponent.SoundComponent.previousBGMObject = soundObject;
+                    audioSource.loop = true;
+                }
+                else if (sound.soundType == SoundType.Ambient)
+                {
+                    audioSource.loop = true;
                 }
             }
         }
     }
-
-    public static Sound GetSound(string soundName) // retrieves sound from SoundsList
+    /// <summary>
+    /// Retrieves Sound from Soundslist based on its name. Make sure you know how to spell :)
+    /// </summary>
+    /// <param name="soundName"></param>
+    /// <returns></returns>
+    public static Sound GetSound(string soundName) 
     {
         foreach (Sound sound in SoundList.Instance.soundsList)
         {
@@ -110,5 +122,14 @@ public static class SoundPlayer
         }
         Debug.LogError($"Sound '{soundName}' doesn't exist in the SoundsList!");
         return null;
+    }
+    /// <summary>
+    /// Just destroys the sound object you want.
+    /// </summary>
+    /// <param name="soundName"></param>
+    public static void StopSound(string soundName) 
+    {
+        GameObject GO = GameObject.Find(soundName);
+        Object.Destroy(GO);
     }
 }

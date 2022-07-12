@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class InventoryUIObject : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class InventoryUIObject : MonoBehaviour
     public Image itemSlotBG;
     public Image itemImage;
     public Collider2D slotCollider;
+    public UnityEvent itemAction;
     //public TextMeshProUGUI itemName;
 
 
@@ -47,6 +49,16 @@ public class InventoryUIObject : MonoBehaviour
         {
             itemImage.sprite = containedObject.itemSprite;
         }
+
+        if (containedObject.inventoryUse_UnityEvent != null)
+        {
+            itemAction = containedObject.inventoryUse_UnityEvent;
+        }
+        else if (containedObject.inworldUse_UnityEvent != null)
+        {
+            //itemAction.AddListener(UnityEv)
+        }
+
         if (containedObject.objectName != null || containedObject.objectName != "")
         {
             //itemName.text = containedObject.objectName;

@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
 
     public CharacterController_New CharacterControllerReference;
 
-
+    public InGameMenuManager pauseMenu;
 
     // Update is called once per frame
     void Update()
@@ -122,9 +122,18 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("pressed ESC to pop up ingame menu");
 
-
-
-
+            if (!pauseMenu.pauseMenuReference.activeInHierarchy && !pauseMenu.setingsReference.activeInHierarchy && !pauseMenu.areYouSureReference.activeInHierarchy)
+            {
+                Time.timeScale = 0;
+                pauseMenu.pauseMenuReference.SetActive(true);
+            }
+            else
+            {
+                pauseMenu.areYouSureReference.SetActive(false); // makes sure that the "are you sure" window is closed
+                pauseMenu.pauseMenuReference.SetActive(false);
+                pauseMenu.setingsReference.SetActive(false);
+                Time.timeScale = 1;
+            }
         }
 
         //if (Input.GetKeyDown(KeyCode.L))
