@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 using static DecisionManager;
 
 public class GenericObject : MonoBehaviour
@@ -223,7 +220,7 @@ public class GenericObject : MonoBehaviour
         {
             for (int i = 0; i < transform.childCount; i++)
             {
-                children.Insert(i,transform.GetChild(i));
+                children.Insert(i, transform.GetChild(i));
             }
         }
         if (select)
@@ -271,7 +268,8 @@ public class GenericObject : MonoBehaviour
                 Debug.Log("entered the trigger range of object " + this.objectName);
                 Highlight(true);
             }
-
+        }
+    }
     public IEnumerator BlinkingClickSymbol()
     {
         DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
@@ -282,11 +280,6 @@ public class GenericObject : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         StartCoroutine(BlinkingClickSymbol());
     }
-
-        }
-
-    }
-
     private void OnTriggerExit(Collider other)
     {
 
@@ -302,5 +295,10 @@ public class GenericObject : MonoBehaviour
         }
 
     }
-
 }
+
+
+
+
+
+
