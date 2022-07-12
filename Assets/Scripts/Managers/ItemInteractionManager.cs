@@ -112,7 +112,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseSkateboard()
     {
-        
+
 
         if (checkifSober())
         {
@@ -366,16 +366,61 @@ public class ItemInteractionManager : MonoBehaviour
     ///
 
 
+
+
+    ///navigation///
+    ///sure we could have just 1 block for each individual location but this way we can add triggers when entering certain rooms from others
+    public void doorHallwayToKitchen()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.kitchenEntry);
+    }
+
+    public void doorKitchenToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorHallwayToStorage()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.storageEntry);
+    }
+    public void doorStorageToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorHallwayToBasement()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.basementEntry);
+    }
+
+    public void doorBasementToHallway()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.secondHallwayEntry);
+    }
+
+    public void doorBasementToDevRoom()
+    {
+        //fungusReference.ExecuteBlock("fridge_sober");
+        DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.devRoomEntry);
+    }
+
     public void useKitchenFridge()
     {
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("fridge_sober");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("fridge_high");
         }
 
     }
@@ -385,11 +430,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("television_sober");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("television_high");
         }
 
     }
@@ -398,11 +443,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("door_poop_sober");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("door_poop_high");
         }
 
     }
@@ -412,11 +457,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("door_sex_sober");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("door_sex_high");
         }
 
     }
@@ -425,11 +470,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("door_to_garden_sober");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("door_to_garden_high");
         }
 
     }
@@ -452,11 +497,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            //fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("penguin_msg_1");
         }
 
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StorylineManager : MonoBehaviour
@@ -20,8 +18,11 @@ public class StorylineManager : MonoBehaviour
     //firstlevel points
     public Transform bathroomEntryPoint, bedroomEntryPoint;
     [Space(10)]
-
-    public Transform kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
+    public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot;
+    [Space(10)]
+    public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
+    [HideInInspector]
+    public Vector3 kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
 
 
 
@@ -31,6 +32,18 @@ public class StorylineManager : MonoBehaviour
 
     //kitchen end//
 
+
+    private void Start()
+    {
+        //     public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
+        //public Vector3 kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
+
+        kitchenEntry = kitchenEntryG.transform.position;
+        secondHallwayEntry = secondHallwayEntryG.transform.position;
+        devRoomEntry = devRoomEntryG.transform.position;
+        basementEntry = basementEntryG.transform.position;
+        childhoodEntry = childhoodEntryG.transform.position;
+    }
     private void Update()
     {
         switch (CurrentLevel)
@@ -41,7 +54,7 @@ public class StorylineManager : MonoBehaviour
                     CheckIfSpiderAngry();
                 }
                 Debug.Log("test. StorylineManager detected bathroom scene.");
-                
+
 
                 break;
             default:
@@ -100,8 +113,8 @@ public class StorylineManager : MonoBehaviour
         //    DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("spider_is_mad_lvl01");
         //}
 
-        
-        if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
+
+        if (usedMirror && usedMagazines && usedToilet && usedBathtub && usedDoor)
         {
             showeringSpider.SetActive(true);
             DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("ShowSpider");
