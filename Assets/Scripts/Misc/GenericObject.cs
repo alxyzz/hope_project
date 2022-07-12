@@ -191,7 +191,7 @@ public class GenericObject : MonoBehaviour
             {
                 isHighlighted = true;
             }
-            StartCoroutine(BlinkingClickSymbol());
+            //StartCoroutine(BlinkingClickSymbol());
         }
         else
         {
@@ -205,7 +205,7 @@ public class GenericObject : MonoBehaviour
             {
                 isHighlighted = false;
             }
-            StopCoroutine(BlinkingClickSymbol());
+           // StopCoroutine(BlinkingClickSymbol());
         }
 
 
