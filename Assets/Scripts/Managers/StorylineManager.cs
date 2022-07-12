@@ -17,7 +17,7 @@ public class StorylineManager : MonoBehaviour
     [HideInInspector]
     public bool bathroomLocked;
     //firstlevel points
-    public Transform bathroomEntryPoint, bedroomEntryPoint;
+    public Transform bathroomEntryPoint, bedroomEntryPoint, hallwayEntryPoint, kitchenEntryPoint;
     [Space(10)]
     public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot; //place where you respawn after blackout
     [Space(10)]
