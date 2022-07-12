@@ -319,18 +319,20 @@ public class TripManager : MonoBehaviour
 
     public void GetHigh()
     {
-        if (tripStatus == 0)
+        if (DataStorage.GameManagerComponent.InputComponent.canUseDrugs)
         {
-            wasHigh = false;
+            if (tripStatus == 0)
+            {
+                wasHigh = false;
+            }
+            else
+            {
+                wasHigh = true;
+            }
+            tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
+            Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
+            OnDrugStateChange();
         }
-        else
-        {
-            wasHigh = true;
-        }
-        tripStatus = Mathf.Clamp(tripStatus + 1, 0, 6);
-        Debug.Log("having a good time. trip is intensifying. trip level is " + tripStatus.ToString());
-        OnDrugStateChange();
-
 
     }
 

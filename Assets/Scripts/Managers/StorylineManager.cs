@@ -17,7 +17,7 @@ public class StorylineManager : MonoBehaviour
     public float elapsedTime;
     [HideInInspector]
     public bool bathroomLocked;
-    public Transform bathroomEntryPoint, bedroomEntryPoint;
+    public Transform bathroomEntryPoint, bedroomEntryPoint, hallwayEntryPoint, kitchenEntryPoint;
 
 
     //kitchen//
@@ -47,6 +47,7 @@ public class StorylineManager : MonoBehaviour
     public void SpiderKickOut()
     {
         //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
+        SoundPlayer.PlaySound("door_sfx");
         CurrentRoom = "Bedroom";
         bathroomLocked = true;
 
@@ -58,7 +59,29 @@ public class StorylineManager : MonoBehaviour
         Camera playerCamera = Camera.main;
         playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
     }
+    public void GoToHallway()
+    {
+        SoundPlayer.PlaySound("door_sfx");
+        CurrentRoom = "Hallway";
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+        cc.enabled = false; 
+        DataStorage.Player.transform.position = hallwayEntryPoint.transform.position;
+        cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+    }
+    public void GoToKitchen()
+    {
 
+        SoundPlayer.PlaySound("door_sfx");
+        CurrentRoom = "Kitchen";
+        CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
+        cc.enabled = false;
+        DataStorage.Player.transform.position = kitchenEntryPoint.transform.position;
+        cc.enabled = true;
+        Camera playerCamera = Camera.main;
+        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+    }
     public void AllowDrugUse(bool togg)
     {
         DataStorage.GameManagerComponent.InputComponent.canUseDrugs = togg;

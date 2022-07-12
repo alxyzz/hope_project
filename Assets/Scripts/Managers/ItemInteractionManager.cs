@@ -112,16 +112,9 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseSkateboard()
     {
-        
 
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("use_skateboard");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("use_skateboard_high");
-        }
+        fungusReference.ExecuteBlock("click_skateboard_tutorial");
+
 
     }
 
@@ -130,11 +123,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("use_phone");
+            fungusReference.ExecuteBlock("click_phone_sober_tutorial");
         }
         else
         {
-            fungusReference.ExecuteBlock("use_phone_high");
+            fungusReference.ExecuteBlock("click_phone_high_tutorial");
         }
 
     }
@@ -143,20 +136,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseCandyJar()
     {
-        DataStorage.GameManagerComponent.InputComponent.canUseDrugs = true;
-        DataStorage.GameManagerComponent.TripComponent.GetHigh();
-
-
-
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("use_candyjar");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("use_candyjar_high");
-        }
-
+        fungusReference.ExecuteBlock("click_candyjar_tutorial");
     }
 
 
@@ -166,11 +146,11 @@ public class ItemInteractionManager : MonoBehaviour
 
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("use_id");
+            fungusReference.ExecuteBlock("click_ID_tutorial");
         }
         else
         {
-            fungusReference.ExecuteBlock("use_id_high");
+            fungusReference.ExecuteBlock("click_id_high_tutorial");
         }
 
 
