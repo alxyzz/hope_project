@@ -265,4 +265,23 @@ public class Entity : MonoBehaviour
             }
         }
     }
+
+
+    public void PlayerTeleport(Vector3 position)
+    {
+
+        if (player)
+        {
+            Camera maincam = Camera.main;
+            maincam.transform.parent = this.transform;
+
+            gameObject.GetComponent<CharacterController>().enabled = false;
+            gameObject.GetComponent<CharacterController_New>().enabled = false;
+            gameObject.transform.position = position;
+            gameObject.GetComponent<CharacterController>().enabled = true;
+            gameObject.GetComponent<CharacterController_New>().enabled = true;
+            maincam.transform.parent = null;
+        }
+
+    }
 }

@@ -170,22 +170,81 @@ public class GenericObject : MonoBehaviour
 
     public void Highlight(bool select) // highlights the selectable object
     {
-        
 
-        
-
-        if (select)
+        if (gameObject.GetComponent<Renderer>() != null)
         {
-            isHighlighted = true;
-            if (!isSprite)  gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+            if (select)
+            {
+                isHighlighted = true;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+            }
+            else
+            {
+                isHighlighted = false;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+            }
         }
         else
         {
-            isHighlighted = false;
-            if (!isSprite)  gameObject.GetComponent<Renderer>().material = originalMat;
+            if (select)
+            {
+                HighlightChildren(select);
+            }
+            else
+            {
+                HighlightChildren(select);
+            }
         }
-    }
+        
 
+        
+    }
+    private List<Material> childMatList;
+    private List<Transform> children;
+    private void HighlightChildren(bool select)
+    {
+        if (children.Count == 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                children.Insert(i,transform.GetChild(i));
+            }
+        }
+        if (select)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                Transform target = children[i];
+                if (target.GetComponent<Renderer>() != null)
+                {
+                    childMatList[i] = target.GetComponent<Renderer>().material;
+                    isHighlighted = true;
+                    target.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+                }
+
+            }
+        }
+        else
+        {//deselect
+            for (int i = 0; i < children.Count; i++)
+            {
+                Transform target = children[i];
+                if (target.GetComponent<Renderer>() != null)
+                {
+                    childMatList[i] = transform.GetChild(i).GetComponent<Renderer>().material;
+
+                    isHighlighted = false;
+                    target.GetComponent<Renderer>().material = childMatList[i];
+                    
+                }
+                
+            }
+            childMatList.Clear(); //clears child matlist when done
+        }
+       
+
+
+    }
 
    
 }
