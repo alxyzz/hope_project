@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Entity player;
     public int level = 1;
     public DecisionManager DecisionComponent;
+    public DrugOverlayer drugOverlayer;
 
     public GameObject alreadyInInventoryParent; // parent object of items that are in inventory from the beginning
 
