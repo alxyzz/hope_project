@@ -38,12 +38,15 @@ public class StorylineManager : MonoBehaviour
     {
         //     public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
         //public Vector3 kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
-
-        kitchenEntry = kitchenEntryG.transform.position;
-        secondHallwayEntry = secondHallwayEntryG.transform.position;
-        devRoomEntry = devRoomEntryG.transform.position;
-        basementEntry = basementEntryG.transform.position;
-        childhoodEntry = childhoodEntryG.transform.position;
+        if (DataStorage.GameManagerComponent.level == 2)
+        {
+            kitchenEntry = kitchenEntryG.transform.position;
+            secondHallwayEntry = secondHallwayEntryG.transform.position;
+            devRoomEntry = devRoomEntryG.transform.position;
+            basementEntry = basementEntryG.transform.position;
+            childhoodEntry = childhoodEntryG.transform.position;
+        }
+        
     }
     private void Update()
     {
