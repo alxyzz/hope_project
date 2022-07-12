@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
@@ -192,6 +193,7 @@ public class GenericObject : MonoBehaviour
             {
                 isHighlighted = true;
             }
+            StartCoroutine(BlinkingClickSymbol());
         }
         else
         {
@@ -199,11 +201,13 @@ public class GenericObject : MonoBehaviour
             {
                 isHighlighted = false;
                 if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+
             }
             else
             {
                 isHighlighted = false;
             }
+            StopCoroutine(BlinkingClickSymbol());
         }
 
 
@@ -256,5 +260,15 @@ public class GenericObject : MonoBehaviour
 
     }
 
+    public IEnumerator BlinkingClickSymbol()
+    {
+        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
+        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
+        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(BlinkingClickSymbol());
+    }
 
 }
