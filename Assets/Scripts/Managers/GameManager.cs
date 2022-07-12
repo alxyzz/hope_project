@@ -65,19 +65,23 @@ public class GameManager : MonoBehaviour
         }
 
         Vector3 spawnloc = new Vector3();
-        switch (StartingRoomPicker)
-        {
-            case StartingPlayerRoom.Bathroom:
-                spawnloc = StorylineComponent.bathroomEntryPoint.position;
-                break;
-            case StartingPlayerRoom.Bedroom:
-                spawnloc = StorylineComponent.bedroomEntryPoint.position;
-                break;
-            default:
-                break;
-        }
+        //if ()
+        //{
+
+        //}
+        //switch (StartingRoomPicker)
+        //{
+        //    case StartingPlayerRoom.Bathroom:
+        //        spawnloc = StorylineComponent.bathroomEntryPoint.position;
+        //        break;
+        //    case StartingPlayerRoom.Bedroom:
+        //        spawnloc = StorylineComponent.bedroomEntryPoint.position;
+        //        break;
+        //    default:
+        //        break;
+        //}
         DataStorage.Player = player;
-        player.transform.position = spawnloc;
+        //player.transform.position = spawnloc;
 
     }
 
@@ -107,11 +111,26 @@ public class GameManager : MonoBehaviour
 
         // equips starting items
         int i = 0;
-        foreach (GenericObject go in alreadyInInventoryParent.GetComponentsInChildren<GenericObject>())
+        if (alreadyInInventoryParent != null)
         {
-            UIComponent.inventorySlotList[i].EquipItemHere(go);
-            i++;
+            foreach (GenericObject go in alreadyInInventoryParent.GetComponentsInChildren<GenericObject>())
+            {
+                UIComponent.inventorySlotList[i].EquipItemHere(go);
+                i++;
+            }
         }
+        else
+        {
+            if (DataStorage.objectsInInventory.Count != 0)
+            {
+                foreach (GenericObject go in DataStorage.objectsInInventory)
+                {
+                    UIComponent.inventorySlotList[i].EquipItemHere(go);
+                    i++;
+                }
+            }
+        }
+        
 
 
     }
