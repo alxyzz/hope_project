@@ -17,7 +17,12 @@ public class StorylineManager : MonoBehaviour
     public float elapsedTime;
     [HideInInspector]
     public bool bathroomLocked;
+    //firstlevel points
     public Transform bathroomEntryPoint, bedroomEntryPoint;
+    [Space(10)]
+
+    public Transform kitchenEntry, secondHallwayEntry, devRoomEntry, basementEntry, childhoodEntry, storageEntry;
+
 
 
     //kitchen//

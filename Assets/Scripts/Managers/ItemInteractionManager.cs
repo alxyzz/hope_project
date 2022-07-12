@@ -310,6 +310,17 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     public void UseBedroomSkateboard()
     {
         if (checkifSober())
@@ -351,4 +362,102 @@ public class ItemInteractionManager : MonoBehaviour
 
 
 
+    ///////////// KITCHEN
+    ///
+
+
+    public void useKitchenFridge()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+
+    public void useKitchenTelevision()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+    public void useKitchenPoopDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+
+    public void useKitchenSexDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+    public void useKitchenGardenDoor()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+
+    public void useKitchenBeerPong()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
+    public void useKitchenPenguin()
+    {
+
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
+
+    }
 }
