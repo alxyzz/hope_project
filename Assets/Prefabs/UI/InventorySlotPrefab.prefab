@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5117732782317288556}
   - component: {fileID: 5117732782317288554}
   - component: {fileID: 5117732782317288555}
+  - component: {fileID: 3484736111108245690}
   m_Layer: 5
   m_Name: InventorySlotPrefab
   m_TagString: Untagged
@@ -77,6 +78,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3484736111108245690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117732782317288557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5117732782824013213}
+          m_TargetAssemblyTypeName: InventoryUIObject, Assembly-CSharp
+          m_MethodName: GotClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5117732782824013217
 GameObject:
   m_ObjectHideFlags: 0

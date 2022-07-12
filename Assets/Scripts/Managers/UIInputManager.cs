@@ -14,21 +14,21 @@ public class UIInputManager : MonoBehaviour
 
     void Update()
     {
-        if (DataStorage.GameManagerComponent.InputComponent.clicked) // upon click
-        {
-            DataStorage.raycastResultList = new(); // clears raycast list everytime
-            // creates new pointer event, sets position to mouse, raycasts only into UI Canvas
-            DataStorage.pointerEventData = new PointerEventData(eventSys);
-            DataStorage.pointerEventData.position = Input.mousePosition;
-            gRaycaster.Raycast(DataStorage.pointerEventData, DataStorage.raycastResultList);
-            foreach (RaycastResult result in DataStorage.raycastResultList)
-            {
-                if (result.gameObject.GetComponent<InventoryUIObject>()) // we can filter the list to access objects that we want
-                {
-                    Debug.LogWarning("Graphic Raycast hit " + result.gameObject.name);
-                    result.gameObject.GetComponent<InventoryUIObject>().itemAction.Invoke(); // invokes unity event
-                }
-            }
-        }
+        //if (DataStorage.GameManagerComponent.InputComponent.clicked) // upon click
+        //{
+        //    DataStorage.raycastResultList = new(); // clears raycast list everytime
+        //    // creates new pointer event, sets position to mouse, raycasts only into UI Canvas
+        //    DataStorage.pointerEventData = new PointerEventData(eventSys);
+        //    DataStorage.pointerEventData.position = Input.mousePosition;
+        //    gRaycaster.Raycast(DataStorage.pointerEventData, DataStorage.raycastResultList);
+        //    foreach (RaycastResult result in DataStorage.raycastResultList)
+        //    {
+        //        if (result.gameObject.GetComponent<InventoryUIObject>()) // we can filter the list to access objects that we want
+        //        {
+        //            Debug.LogWarning("Graphic Raycast hit " + result.gameObject.name);
+        //            result.gameObject.GetComponent<InventoryUIObject>().itemAction.Invoke(); // invokes unity event
+        //        }
+        //    }
+        //}
     }
 }
