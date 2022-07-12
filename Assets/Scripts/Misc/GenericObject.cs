@@ -272,16 +272,6 @@ public class GenericObject : MonoBehaviour
                 Highlight(true);
             }
 
-    public IEnumerator BlinkingClickSymbol()
-    {
-        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
-        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
-        yield return new WaitForSeconds(0.3f);
-        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
-        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        StartCoroutine(BlinkingClickSymbol());
-    }
 
         }
 
@@ -302,5 +292,14 @@ public class GenericObject : MonoBehaviour
         }
 
     }
-
+    public IEnumerator BlinkingClickSymbol()
+    {
+        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
+        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
+        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(BlinkingClickSymbol());
+    }
 }

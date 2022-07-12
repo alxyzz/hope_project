@@ -53,6 +53,10 @@ public class DialogueManager : MonoBehaviour
         
     //}
 
+    //public bool TalkFriendsKitchen()
+    //{
+
+   // }
     public bool enteredKitchen;
     public void MonologueEnterKitchen()
     {
@@ -68,6 +72,7 @@ public class DialogueManager : MonoBehaviour
 
         selfFlowchart.ExecuteBlock("kitchen_petcat");
     }
+
     public void ClickWindowKitchen()
     {
 
