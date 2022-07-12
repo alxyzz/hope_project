@@ -50,7 +50,7 @@ public class GenericObject : MonoBehaviour
 
 
 
-
+    private bool isSprite;
 
 
 
@@ -59,7 +59,18 @@ public class GenericObject : MonoBehaviour
 
     private void Start()
     {
-        originalMat = GetComponent<Renderer>().material;
+        if (GetComponent<Renderer>() != null)
+        {
+            originalMat = GetComponent<Renderer>().material;
+        }
+        else
+        {
+            if (GetComponent<SpriteRenderer>() == true)
+            {
+                isSprite = true;
+            }
+        }
+        
         AddStringPrefix();
     }
 
@@ -159,16 +170,19 @@ public class GenericObject : MonoBehaviour
 
     public void Highlight(bool select) // highlights the selectable object
     {
+        
+
+        
 
         if (select)
         {
             isHighlighted = true;
-            gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+            if (!isSprite)  gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
         }
         else
         {
             isHighlighted = false;
-            gameObject.GetComponent<Renderer>().material = originalMat;
+            if (!isSprite)  gameObject.GetComponent<Renderer>().material = originalMat;
         }
     }
 
