@@ -29,7 +29,9 @@ public class InputManager : MonoBehaviour
         {
             StartCoroutine(ClicksForOneFrame());
             ///Debug.Log("raw input - mouse LMB detected");
-            if (IsThereAPopUp)
+
+             var sayDialog = Fungus.SayDialog.GetSayDialog(); 
+            if (IsThereAPopUp || sayDialog.isActiveAndEnabled)
             {
               //  Debug.Log("theres a popup that blocks clicks. click ignored");
                 return;
