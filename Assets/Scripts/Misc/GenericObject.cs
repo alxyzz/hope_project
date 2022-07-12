@@ -45,6 +45,7 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inworldUse_UnityEvent;//this can be changed to whatever you want to happen when you interact with this guy
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
+    public bool isGundorb;
     public bool isHighlighted;
 
 
@@ -176,13 +177,27 @@ public class GenericObject : MonoBehaviour
 
         if (select)
         {
-            isHighlighted = true;
-            if (!isSprite)  gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+            if (!isGundorb)
+            {
+                isHighlighted = true;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+            }
+            else
+            {
+                isHighlighted = true;
+            }
         }
         else
         {
-            isHighlighted = false;
-            if (!isSprite)  gameObject.GetComponent<Renderer>().material = originalMat;
+            if (!isGundorb)
+            {
+                isHighlighted = false;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+            }
+            else
+            {
+                isHighlighted = false;
+            }
         }
     }
 

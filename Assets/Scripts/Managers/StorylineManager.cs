@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class StorylineManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class StorylineManager : MonoBehaviour
     public string CurrentLevel;
     public string CurrentRoom;
     [HideInInspector]
-    public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor;
+    public bool usedMirror, usedMagazines, usedToilet, usedBathtub, usedDoor = false;
     [HideInInspector]
     public float elapsedTime;
     [HideInInspector]
@@ -33,7 +34,7 @@ public class StorylineManager : MonoBehaviour
             case "Act 1":
                 if (CurrentRoom == "Bathroom")
                 {
-                    CheckIfSpiderAngry();
+                    //CheckIfSpiderAngry();
                 }
                 Debug.Log("test. StorylineManager detected bathroom scene.");
                 
@@ -109,7 +110,7 @@ public class StorylineManager : MonoBehaviour
     public GameObject showeringSpider;
 
 
-    public void CheckIfSpiderAngry()
+    public bool IsSpiderAngry()
     {
 
         //elapsedTime += Time.deltaTime;
@@ -121,11 +122,23 @@ public class StorylineManager : MonoBehaviour
         
         if (usedMirror && usedMagazines && usedToilet &&  usedBathtub && usedDoor)
         {
-            showeringSpider.SetActive(true);
-            DataStorage.GameManagerComponent.DialogueComponent.selfFlowchart.ExecuteBlock("ShowSpider");
-            DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
-            DataStorage.GameManagerComponent.UIComponent.backpackVisible = true;
+            return true;
         }
+        else
+        {
+            return false;
+        }
+    }
+    public void ShowSpider()
+    {
+        if (IsSpiderAngry())
+        {
+            Debug.Log("Bruh theres spider behind curtin???");
+            showeringSpider.SetActive(true);
+            DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
+            DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("spider_showering_tutorial");
+        }
+
     }
 
 }

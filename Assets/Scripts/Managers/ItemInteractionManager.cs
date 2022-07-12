@@ -315,14 +315,29 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
+    // ///////////////// bedroom end
 
+    // CORRIDOR / HALLWAY
+
+    public void UsePhotos()
+    {
+        fungusReference.ExecuteBlock("click_photos_hallway");
+    }
+    public void Gundorb()
+    {
+        fungusReference.ExecuteBlock("click_gundorb");
+    }
+
+    // //////////////////// HALLWAY END
+
+// kitchen
 
 
 
     public void UseKitchenChips(GameObject theChipsReference)
     {
 
-        fungusReference.ExecuteBlock("click_chips_kitchen");
+        fungusReference.ExecuteBlock("chips_selection_kitchen");
 
         theChipsReference.SetActive(false);
 
