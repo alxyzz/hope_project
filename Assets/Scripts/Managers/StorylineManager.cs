@@ -18,7 +18,7 @@ public class StorylineManager : MonoBehaviour
     //firstlevel points
     public Transform bathroomEntryPoint, bedroomEntryPoint;
     [Space(10)]
-    public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot;
+    public Transform secondLevelBlackoutSpot, firstLevelBlackoutSpot; //place where you respawn after blackout
     [Space(10)]
     public GameObject kitchenEntryG, secondHallwayEntryG, devRoomEntryG, basementEntryG, childhoodEntryG, storageEntryG;
     [HideInInspector]
