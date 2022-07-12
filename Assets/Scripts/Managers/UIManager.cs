@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     public Sprite s_reflection, s_friendspics; //expand as required, these are the images for the below thing
     public Image popupImageObject; //image which we will change the sprite of when player looks in mirror/photo on wall etc
 
-
+    public GameObject clickObject1, clickObject2;
 
     //UI visiblity states
     [HideInInspector]

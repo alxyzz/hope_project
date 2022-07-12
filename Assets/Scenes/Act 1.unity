@@ -6306,7 +6306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1151689972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6347,7 +6347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c81b80ad7fbe49a4aa8fcee59440f90a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7faa93ed50dbfa540833c16d65cd9f73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6841,7 +6841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1300821063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6882,7 +6882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd446c9844fb82e4c9c3770ee47b9a18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d645b51b239ee744cb7ca6e024715c71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8384,7 +8384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1517585322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10091,6 +10091,8 @@ MonoBehaviour:
   s_reflection: {fileID: 0}
   s_friendspics: {fileID: 0}
   popupImageObject: {fileID: 102500677}
+  clickObject1: {fileID: 1151689971}
+  clickObject2: {fileID: 1300821062}
   backpackVisible: 0
   hopeVisible: 0
   invParent: {fileID: 709795677}
