@@ -46,6 +46,7 @@ public class GenericObject : MonoBehaviour
     public UnityEvent inventoryUse_UnityEvent;//this can be changed to whatever you want to happen when you use this stuff in the inventory. if any.
 
     public bool isGundorb;
+    [HideInInspector]
     public bool isHighlighted;
 
 
@@ -209,6 +210,7 @@ public class GenericObject : MonoBehaviour
 
 
     }
+
     private List<Material> childMatList;
     private List<Transform> children;
     private void HighlightChildren(bool select)
@@ -255,6 +257,36 @@ public class GenericObject : MonoBehaviour
 
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Entity b = other.gameObject.GetComponent<Entity>();
+        if (b != null)
+        {
+            if (b.player)
+            {
+                Debug.Log("entered the trigger range of object " + this.objectName);
+                Highlight(true);
+            }
 
+
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        Entity b = other.gameObject.GetComponent<Entity>();
+        if (b != null)
+        {
+            if (b.player)
+            {
+                Debug.Log("left the trigger range of object " + this.objectName);
+                Highlight(false);
+            }
+
+        }
+
+    }
 
 }

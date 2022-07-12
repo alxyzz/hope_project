@@ -7,5 +7,5 @@ public class OnlyVisibleWhenHigh : MonoBehaviour
     {
        
         DataStorage.GameManagerComponent.TripComponent.highOnlyGameObjects.Add(gameObject);
-    }
+    }   
 }
