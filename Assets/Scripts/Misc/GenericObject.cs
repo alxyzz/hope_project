@@ -123,7 +123,16 @@ public class GenericObject : MonoBehaviour
             }
             if (inworldUse_UnityEvent != null)
             {
-                inworldUse_UnityEvent.Invoke();
+                try
+                {
+                    inworldUse_UnityEvent.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("exception |" + ex.Message + " |at checkanduserunevent genericobject with name " + objectName);
+                    throw;
+                }
+                
             }
             
         }
