@@ -373,9 +373,16 @@ public class ItemInteractionManager : MonoBehaviour
     public void doorHallwayToKitchen()
     {
         //fungusReference.ExecuteBlock("fridge_sober");
+        
         DataStorage.Player.PlayerTeleport(DataStorage.GameManagerComponent.StorylineComponent.kitchenEntry);
-    }
 
+        if (!wentToKitchen)
+        {
+            fungusReference.ExecuteBlock("hallway_kitchen");
+            wentToKitchen = true;
+        }
+    }
+    private bool wentToKitchen;
     public void doorKitchenToHallway()
     {
         //fungusReference.ExecuteBlock("fridge_sober");
