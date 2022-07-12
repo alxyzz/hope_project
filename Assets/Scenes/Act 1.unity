@@ -8983,7 +8983,6 @@ GameObject:
   - component: {fileID: 1932278523}
   - component: {fileID: 1932278528}
   - component: {fileID: 1932278529}
-  - component: {fileID: 1932278531}
   - component: {fileID: 1932278532}
   m_Layer: 0
   m_Name: GameManager
@@ -9097,6 +9096,14 @@ MonoBehaviour:
   bathroomLocked: 0
   bathroomEntryPoint: {fileID: 1038670540}
   bedroomEntryPoint: {fileID: 1540681159}
+  secondLevelBlackoutSpot: {fileID: 0}
+  firstLevelBlackoutSpot: {fileID: 0}
+  kitchenEntry: {x: 0, y: 0, z: 0}
+  secondHallwayEntry: {x: 0, y: 0, z: 0}
+  devRoomEntry: {x: 0, y: 0, z: 0}
+  basementEntry: {x: 0, y: 0, z: 0}
+  childhoodEntry: {x: 0, y: 0, z: 0}
+  storageEntry: {x: 0, y: 0, z: 0}
   kitchenSunrays: {fileID: 0}
   showeringSpider: {fileID: 0}
 --- !u!114 &1932278523
@@ -9260,18 +9267,6 @@ MonoBehaviour:
   imageChangeFrequency: 0.5
   overlaying: 0
   epileptic: 0
---- !u!114 &1932278531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932278517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f6e3d0794930f4085a8697e630cb19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1932278532
 MonoBehaviour:
   m_ObjectHideFlags: 0
