@@ -345,11 +345,11 @@ public class ItemInteractionManager : MonoBehaviour
     {
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_skateboard_sober_bedroom");
+            fungusReference.ExecuteBlock("click_skateboard_bedroom");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_skateboard_high_tutorial");
+            fungusReference.ExecuteBlock("click_skateboard_bedroom");
         }
 
     }
@@ -357,11 +357,11 @@ public class ItemInteractionManager : MonoBehaviour
     {
         if (checkifSober())
         {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+            fungusReference.ExecuteBlock("click_laptop_bedroom");
         }
         else
         {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+            fungusReference.ExecuteBlock("click_laptop_bedroom");
         }
 
     }
