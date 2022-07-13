@@ -80,6 +80,21 @@ MonoBehaviour:
     soundType: 3
     loop: 1
     volume: 1
+  - soundName: toilet_ambient
+    audioClip: {fileID: 8300000, guid: 5237e1d1f5c3df24f96ed8ef8cd19685, type: 3}
+    soundType: 3
+    loop: 1
+    volume: 1
+  - soundName: weirdsex_ambient
+    audioClip: {fileID: 8300000, guid: 15ce08fe370c5e44bb9f60850145f0fa, type: 3}
+    soundType: 3
+    loop: 1
+    volume: 1
+  - soundName: vomit_ambient
+    audioClip: {fileID: 8300000, guid: eb11f85dc809fba4a9d71d6970c77713, type: 3}
+    soundType: 3
+    loop: 1
+    volume: 1
   - soundName: rain_ambient
     audioClip: {fileID: 8300000, guid: 9d3ced4b3df5a7746ae0e7dd64183936, type: 3}
     soundType: 3
@@ -92,6 +107,11 @@ MonoBehaviour:
     volume: 1
   - soundName: stage2_bg_music
     audioClip: {fileID: 8300000, guid: 24daeb4d738b8444d84bf98ca9a3c680, type: 3}
+    soundType: 0
+    loop: 1
+    volume: 1
+  - soundName: stage2_distorted_bg_music
+    audioClip: {fileID: 8300000, guid: 0ca4a02bfda811945a27df5770689a71, type: 3}
     soundType: 0
     loop: 1
     volume: 1
