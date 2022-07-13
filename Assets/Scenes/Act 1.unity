@@ -4834,6 +4834,7 @@ GameObject:
   - component: {fileID: 745698971}
   - component: {fileID: 745698973}
   - component: {fileID: 745698972}
+  - component: {fileID: 745698974}
   m_Layer: 5
   m_Name: HopeVisualizer
   m_TagString: Untagged
@@ -4901,6 +4902,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745698970}
   m_CullTransparentMesh: 1
+--- !u!114 &745698974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745698970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941e4d3dc669375468432fac18afbe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &750635366
 GameObject:
   m_ObjectHideFlags: 0
@@ -10099,8 +10112,8 @@ MonoBehaviour:
   popupImageObject: {fileID: 102500677}
   clickObject1: {fileID: 0}
   clickObject2: {fileID: 0}
-  backpackVisible: 0
-  hopeVisible: 0
+  backpackVisible: 1
+  hopeVisible: 1
   invParent: {fileID: 709795677}
   hopeParent: {fileID: 745698970}
 --- !u!114 &1932278521
@@ -32251,7 +32264,7 @@ GameObject:
   m_Layer: 0
   m_Name: Door2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
