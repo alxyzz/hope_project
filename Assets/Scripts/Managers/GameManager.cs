@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     public void BlackOut()
     {
         Debug.Log("Blackout...");
+        ItemComponent.fungusReference.ExecuteBlock("fadeout_block"); 
+        // teleport player 
 
     }
 

@@ -9447,6 +9447,7 @@ GameObject:
   - component: {fileID: 1093606142}
   - component: {fileID: 1093606145}
   - component: {fileID: 1093606141}
+  - component: {fileID: 1093606146}
   m_Layer: 0
   m_Name: H (8)
   m_TagString: Player
@@ -9585,6 +9586,20 @@ MonoBehaviour:
       m_Calls: []
   isGundorb: 1
   isHighlighted: 0
+--- !u!136 &1093606146
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093606139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.07
+  m_Height: 4.37
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1140124224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11097,8 +11112,6 @@ GameObject:
   - component: {fileID: 1329235400}
   - component: {fileID: 1329235403}
   - component: {fileID: 1329235408}
-  - component: {fileID: 1329235409}
-  - component: {fileID: 1329235410}
   - component: {fileID: 1329235411}
   - component: {fileID: 1329235414}
   - component: {fileID: 1329235413}
@@ -11605,6 +11618,11 @@ GameObject:
   - component: {fileID: 1329236035}
   - component: {fileID: 1329236034}
   - component: {fileID: 1329236033}
+  - component: {fileID: 1329236045}
+  - component: {fileID: 1329236047}
+  - component: {fileID: 1329236046}
+  - component: {fileID: 1329236044}
+  - component: {fileID: 1329236048}
   m_Layer: 0
   m_Name: LevelTwoFlowchart
   m_TagString: Untagged
@@ -11652,7 +11670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 2337.2783, y: 227.05164}
+  scrollPos: {x: 2234.2417, y: -1181.974}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 294.8
@@ -11663,7 +11681,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 1329235806}
   selectedCommands: []
   variables:
   - {fileID: 1329235171}
@@ -15314,8 +15333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -1048.872
-    y: 1374.9302
+    x: -1044.872
+    y: 1370.9302
     width: 130
     height: 40
   tint: {r: 0, g: 0, b: 0, a: 1}
@@ -18126,7 +18145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 974.60645
+    x: 978.60645
     y: 1071.9786
     width: 174.8
     height: 40
@@ -18137,58 +18156,8 @@ MonoBehaviour:
   description: call blackout here
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1329235409}
-  - {fileID: 1329235410}
   - {fileID: 1329235606}
   suppressAllAutoSelections: 0
---- !u!114 &1329235409
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329235148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 457
-  indentLevel: 0
-  targetFlowchart: {fileID: 0}
-  targetBlock: {fileID: 0}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
---- !u!114 &1329235410
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329235148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 458
-  indentLevel: 0
-  storyText: 
-  description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1329235411
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33816,16 +33785,16 @@ MonoBehaviour:
   indentLevel: 0
   description: 
   targetObject: {fileID: 414276724}
-  targetComponentAssemblyName: StorylineManager, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
+  targetComponentAssemblyName: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: StorylineManager
-  targetMethod: 
-  targetMethodText: 
+  targetComponentText: GameManager
+  targetMethod: BlackOut
+  targetMethodText: 'BlackOut (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
-  returnValueType: 
+  returnValueType: System.Void
   showInherited: 0
   callMode: 0
 --- !u!114 &1329235933
@@ -33887,7 +33856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 4879.4683
+    x: 4883.4683
     y: 1432.4282
     width: 171.6
     height: 40
@@ -37025,6 +36994,110 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1329236044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329235148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1261
+  indentLevel: 0
+  _sceneName:
+    stringRef: {fileID: 0}
+    stringVal: Bad Ending
+  loadingImage: {fileID: 0}
+  sceneNameOLD: 
+--- !u!114 &1329236045
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329235148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 4745.4863
+    y: -19.29181
+    width: 123.6
+    height: 40
+  tint: {r: 0, g: 0, b: 0, a: 1}
+  useCustomTint: 1
+  itemId: 294
+  blockName: fadeout_block
+  description: '4 sec gap '
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 1329236047}
+  - {fileID: 1329236046}
+  - {fileID: 1329236048}
+  - {fileID: 1329236044}
+  suppressAllAutoSelections: 0
+--- !u!114 &1329236046
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329235148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1260
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
+--- !u!114 &1329236047
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329235148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1259
+  indentLevel: 0
+  duration: 2
+  targetAlpha: 1
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
+--- !u!114 &1329236048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329235148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1262
+  indentLevel: 0
+  soundClip: {fileID: 8300000, guid: f7b79471525b2884ea0dd6dc6ea9daa6, type: 3}
+  volume: 1
+  waitUntilFinished: 1
 --- !u!1 &1337331436
 GameObject:
   m_ObjectHideFlags: 0
