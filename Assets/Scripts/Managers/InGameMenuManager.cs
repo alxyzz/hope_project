@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameMenuManager : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class InGameMenuManager : MonoBehaviour
     }
     public void QuitButtonTwo() // quits
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
     public void BackToPauseMenu()
     {

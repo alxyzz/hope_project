@@ -66,11 +66,14 @@ public class DialogueManager : MonoBehaviour
             enteredKitchen = true;
         }
     }
-
+    public void DialogueKitchen()
+    {
+        selfFlowchart.ExecuteBlock("friends_dialogue1");
+    }
     public void PetCatKitchen()
     {
 
-        selfFlowchart.ExecuteBlock("kitchen_petcat");
+        selfFlowchart.ExecuteBlock("pet_cat_kitchen");
     }
 
     public void ClickWindowKitchen()

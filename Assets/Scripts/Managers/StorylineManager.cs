@@ -108,6 +108,7 @@ public class StorylineManager : MonoBehaviour
         cc.enabled = true;
         Camera playerCamera = Camera.main;
         playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+
     }
     public void AllowDrugUse(bool togg)
     {
@@ -163,6 +164,10 @@ public class StorylineManager : MonoBehaviour
             showeringSpider.SetActive(true);
             DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
             DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("spider_showering_tutorial"); //this should wait a few seconds then run the method that kicks you out
+        }
+        else
+        {
+            return;
         }
 
     }
