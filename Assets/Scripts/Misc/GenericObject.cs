@@ -182,34 +182,30 @@ public class GenericObject : MonoBehaviour
 
         if (gameObject.GetComponent<Renderer>() != null)
         {
-            if (select) 
-            { 
-
-                if (!isGundorb)
-                {
-                    isHighlighted = true;
-                    if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
-                }
-                else
-                {
-                    isHighlighted = true;
-                }
-                StartCoroutine(BlinkingClickSymbol());
+            if (!isGundorb)
+            {
+                isHighlighted = true;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
             }
             else
             {
-                if (!isGundorb)
-                {
-                    isHighlighted = false;
-                    if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
-
-                }
-                else
-                {
-                    isHighlighted = false;
-                }
-                StopCoroutine(BlinkingClickSymbol());
+                isHighlighted = true;
             }
+            //StartCoroutine(BlinkingClickSymbol());
+        }
+        else
+        {
+            if (!isGundorb)
+            {
+                isHighlighted = false;
+                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+
+            }
+            else
+            {
+                isHighlighted = false;
+            }
+           // StopCoroutine(BlinkingClickSymbol());
         }
 
 

@@ -343,12 +343,26 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseBedroomSkateboard()
     {
-        fungusReference.ExecuteBlock("click_skateboard_bedroom");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_skateboard_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_skateboard_high_tutorial");
+        }
 
     }
     public void UseBedroomLaptop()
     {
-        fungusReference.ExecuteBlock("click_laptop_bedroom");
+        if (checkifSober())
+        {
+            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
+        }
+        else
+        {
+            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
+        }
 
     }
 
@@ -380,15 +394,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
-    public void UseWaterKitchen()
-    {
-        fungusReference.ExecuteBlock("click_water_kitchen");
-    }
 
-    public void PourWaterKitchen()
-    {
-        SceneLoader.LoadScene("Skateboard_Cinematic", null);
-    }
 
 
     ///////////// KITCHEN
