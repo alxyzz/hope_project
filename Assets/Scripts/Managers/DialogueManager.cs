@@ -91,8 +91,14 @@ public class DialogueManager : MonoBehaviour
         DataStorage.GameManagerComponent.InputComponent.CharacterControllerReference.canMove = true;
         DataStorage.Player.playerClosedEyes = false;
     }
+    // ////////////// HALLWAY 2 LEVEL ////////////
 
-    // DEVS
+    public void TalkLilOlive()
+    {
+
+    }
+
+    // ////////////// DEVS ///////////////////////
 
     public void TalkAndrea()
     {
@@ -119,4 +125,6 @@ public class DialogueManager : MonoBehaviour
     {
         selfFlowchart.ExecuteBlock("developers_alex");
     }
+
+    // 
 }

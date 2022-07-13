@@ -467,7 +467,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
-    public void useKitchenTelevision()
+    public void UseKitchenTelevision()
     {
 
         if (checkifSober())
@@ -480,7 +480,7 @@ public class ItemInteractionManager : MonoBehaviour
         }
 
     }
-    public void useKitchenPoopDoor()
+    public void UseKitchenPoopDoor()
     {
 
         if (checkifSober())
@@ -494,7 +494,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
-    public void useKitchenSexDoor()
+    public void UseKitchenSexDoor()
     {
 
         if (checkifSober())
@@ -507,7 +507,7 @@ public class ItemInteractionManager : MonoBehaviour
         }
 
     }
-    public void useKitchenGardenDoor()
+    public void UseKitchenGardenDoor()
     {
 
         if (checkifSober())
@@ -521,20 +521,11 @@ public class ItemInteractionManager : MonoBehaviour
 
     }
 
-    public void useKitchenBeerPong()
+    public void UseKitchenBeerPong()
     {
-
-        if (checkifSober())
-        {
-            fungusReference.ExecuteBlock("click_laptop_sober_bedroom");
-        }
-        else
-        {
-            fungusReference.ExecuteBlock("click_laptop_high_bedroom");
-        }
-
+        fungusReference.ExecuteBlock("beer_pong_table_start");
     }
-    public void useKitchenPenguin()
+    public void UseKitchenPenguin()
     {
 
         if (checkifSober())
@@ -546,5 +537,59 @@ public class ItemInteractionManager : MonoBehaviour
             fungusReference.ExecuteBlock("penguin_msg_1");
         }
 
+    }
+
+    // HALLWAY
+
+    public void ClickStairs()
+    {
+        if (!checkifSober())
+            fungusReference.ExecuteBlock("hallway_stairs_high");
+    }
+    public void ClickChair()
+    {
+        fungusReference.ExecuteBlock("hallway_chair");
+    }
+    public void ClickCloset()
+    {
+        fungusReference.ExecuteBlock("closet");
+    }
+    public void ClickPoster()
+    {
+        fungusReference.ExecuteBlock("hallway_poster");
+    }
+    public void ClickDancingChicken()
+    {
+        fungusReference.ExecuteBlock("hallway_dancing_chicken_1");
+    }
+    public void ClickSkateboard()
+    {
+        fungusReference.ExecuteBlock("skateboard_interact");
+    }
+    public void ClickUselessDoor()
+    {
+        fungusReference.ExecuteBlock("hallway_unfinished_door");
+    }
+    public void ClickSuspiciousDrink()
+    {
+        fungusReference.ExecuteBlock("hallway_drink");
+    }
+
+    // /////// STORAGE ROOM /////////////
+
+    public void ClickStorageCat()
+    {
+        if (DataStorage.GameManagerComponent.TripComponent.tripStatus >= 4)
+        {
+            fungusReference.ExecuteBlock("storage_upside_down");
+        }
+        else if (DataStorage.GameManagerComponent.TripComponent.tripStatus >= 1)
+        {
+            fungusReference.ExecuteBlock("storage_high");
+        }
+        else
+        {
+            return;
+        }
     }
 }
