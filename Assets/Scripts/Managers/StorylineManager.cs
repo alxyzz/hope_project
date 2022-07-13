@@ -5,7 +5,8 @@ public class StorylineManager : MonoBehaviour
 {
     [HideInInspector]
     public int BathroomExaminedObjects;
-    public int BathroomTargetExaminedObjects; //hit this number in previous variable to be able to see the inventory
+    [HideInInspector]
+    public int targetObjectExaminations = 5; //hit this number in previous variable to be able to see the inventory
     public float bathroomTimeUntilKickedOut;
 
     public string CurrentLevel;
@@ -68,18 +69,19 @@ public class StorylineManager : MonoBehaviour
 
     public void SpiderKickOut()
     {
+        Camera playerCamera = Camera.main;
         //it honestly feels kinda weird to go from the code -> to the flowchart -> just to invoke this function in the code
         SoundPlayer.PlaySound("door_sfx");
         CurrentRoom = "Bedroom";
         bathroomLocked = true;
 
         CharacterController cc = DataStorage.Player.GetComponent<CharacterController>();
-
+        playerCamera.transform.parent = DataStorage.Player.transform;
         cc.enabled = false; //yea the character controller does not like it if you change the position, you gotta turn it off and on again...
         DataStorage.Player.transform.position = bedroomEntryPoint.transform.position;
         cc.enabled = true;
-        Camera playerCamera = Camera.main;
-        playerCamera.transform.position = new Vector3(DataStorage.Player.transform.position.x, playerCamera.transform.position.y, playerCamera.transform.position.z);
+        playerCamera.transform.parent = null;
+        
     }
     public void GoToHallway()
     {
@@ -152,12 +154,12 @@ public class StorylineManager : MonoBehaviour
     }
     public void ShowSpider()
     {
-        if (IsSpiderAngry())
+        if (DataStorage.GameManagerComponent.ItemComponent.CalculateWetherBathroomWasExaminedEnough())
         {
             Debug.Log("Bruh theres spider behind curtin???");
             showeringSpider.SetActive(true);
             DataStorage.GameManagerComponent.UIComponent.hopeVisible = true;
-            DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("spider_showering_tutorial");
+            DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("spider_showering_tutorial"); //this should wait a few seconds then run the method that kicks you out
         }
 
     }

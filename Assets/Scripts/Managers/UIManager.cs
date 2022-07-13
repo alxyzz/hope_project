@@ -33,8 +33,7 @@ public class UIManager : MonoBehaviour
     public GameObject clickObject1, clickObject2;
 
     //UI visiblity states
-    [HideInInspector]
-    public bool backpackVisible = false, hopeVisible = false;
+    public bool backpackVisible = true, hopeVisible = true;
     public GameObject invParent, hopeParent;
 
 
@@ -47,16 +46,8 @@ public class UIManager : MonoBehaviour
     public void RefreshHopeVisualisation()
     {//Current Hope<br>100%<br Max Hope <br>100%
 
-        if (!hopeVisible)
-        {
-            hopeParent.SetActive(false);
-            return;
-        }
-        else
-        {
-            hopeParent.SetActive(true);
-        }
-        maxHopeText.text = "Current Hope<br>"+ DataStorage.currentHope.ToString() +"%<br>Max Hope<br>"+ DataStorage.maxHope.ToString()+"%";
+        hopeParent.SetActive(hopeVisible);
+        maxHopeText.text = "Current Hope<br>" + DataStorage.currentHope.ToString() + "%<br>Max Hope<br>" + DataStorage.maxHope.ToString() + "%";
         hopeSlider.value = DataStorage.currentHope;
         if (IsBetween(DataStorage.maxHope, 0, 20))
         {
@@ -82,15 +73,7 @@ public class UIManager : MonoBehaviour
 
     public void RefreshBackpackVisibility()
     {
-        if (backpackVisible)
-        {
-            invParent.SetActive(true);
-        }
-        else
-        {
-            invParent.SetActive(false);
-        }
-
+        invParent.SetActive(backpackVisible);
     }
 
     public bool IsBetween(double testValue, double bound1, double bound2)
