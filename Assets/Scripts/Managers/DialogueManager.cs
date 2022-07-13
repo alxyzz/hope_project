@@ -91,4 +91,32 @@ public class DialogueManager : MonoBehaviour
         DataStorage.GameManagerComponent.InputComponent.CharacterControllerReference.canMove = true;
         DataStorage.Player.playerClosedEyes = false;
     }
+
+    // DEVS
+
+    public void TalkAndrea()
+    {
+        selfFlowchart.ExecuteBlock("developers_andrea");
+    }
+    public void TalkFrieda()
+    {
+        selfFlowchart.ExecuteBlock("developers_frieda");
+    }
+    public void TalkDiego()
+    {
+        selfFlowchart.ExecuteBlock("developers_diego");
+
+    }
+    public void TalkRita()
+    {
+        selfFlowchart.ExecuteBlock("developers_rita");
+    }
+    public void TalkTimur()
+    {
+        selfFlowchart.ExecuteBlock("developers_timur");
+    }
+    public void TalkAlex()
+    {
+        selfFlowchart.ExecuteBlock("developers_alex");
+    }
 }
