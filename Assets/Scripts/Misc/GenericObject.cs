@@ -51,7 +51,7 @@ public class GenericObject : MonoBehaviour
 
 
     private bool isSprite;
-
+    private bool CoroutineIsStopped = false;
 
 
 
@@ -182,33 +182,34 @@ public class GenericObject : MonoBehaviour
 
         if (gameObject.GetComponent<Renderer>() != null)
         {
-            if (!isGundorb)
+            if (select)
             {
-                isHighlighted = true;
-                if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+                if (!isGundorb)
+                {
+                    isHighlighted = true;
+                    if (!isSprite) gameObject.GetComponent<Renderer>().material = DataStorage.GameManagerComponent.ItemComponent.SelectedObjectMaterial;
+                }
+                else
+                {
+                    isHighlighted = true;
+                }
             }
             else
             {
-                isHighlighted = true;
+                if (!isGundorb)
+                {
+                    isHighlighted = false;
+                    if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
+
+                }
+                else
+                {
+                    isHighlighted = false;
+                }
+
             }
-            //StartCoroutine(BlinkingClickSymbol());
+
         }
-        else
-        {
-            if (!isGundorb)
-            {
-                isHighlighted = false;
-                if (!isSprite) gameObject.GetComponent<Renderer>().material = originalMat;
-
-            }
-            else
-            {
-                isHighlighted = false;
-            }
-           // StopCoroutine(BlinkingClickSymbol());
-        }
-
-
 
     }
 
@@ -267,18 +268,31 @@ public class GenericObject : MonoBehaviour
             {
                 Debug.Log("entered the trigger range of object " + this.objectName);
                 Highlight(true);
+                CoroutineIsStopped = false;
+                StartCoroutine(BlinkingClickSymbol());
             }
         }
+        
     }
     public IEnumerator BlinkingClickSymbol()
     {
-        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
-        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
-        yield return new WaitForSeconds(0.3f);
-        DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
-        DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
-        StartCoroutine(BlinkingClickSymbol());
+        if (!CoroutineIsStopped)
+        {
+            DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(true);
+            DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
+            DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            StartCoroutine(BlinkingClickSymbol());
+        }
+        else
+        {
+            DataStorage.GameManagerComponent.UIComponent.clickObject1.SetActive(false);
+            DataStorage.GameManagerComponent.UIComponent.clickObject2.SetActive(false);
+            yield return null;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -290,6 +304,7 @@ public class GenericObject : MonoBehaviour
             {
                 Debug.Log("left the trigger range of object " + this.objectName);
                 Highlight(false);
+                CoroutineIsStopped = true;
             }
 
         }
