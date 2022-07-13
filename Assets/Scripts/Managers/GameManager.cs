@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void BlackOut()
     {
-
+        Debug.Log("Blackout...");
 
     }
 
