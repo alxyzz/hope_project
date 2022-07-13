@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0014417665, g: 0.0011752454, b: 0.0032855088, a: 1}
+  m_IndirectSpecularColor: {r: 0.0014417714, g: 0.0011752482, b: 0.0032855172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3522,6 +3522,8 @@ GameObject:
   - component: {fileID: 945479320}
   - component: {fileID: 945479321}
   - component: {fileID: 945479322}
+  - component: {fileID: 945479324}
+  - component: {fileID: 945479323}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3560,7 +3562,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 72
     y: 68
-    width: 113
+    width: 110.40811
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3569,6 +3571,7 @@ MonoBehaviour:
   description: (dialogue with the player actually :) )
   eventHandler: {fileID: 945479232}
   commandList:
+  - {fileID: 945479324}
   - {fileID: 945479240}
   - {fileID: 945479236}
   - {fileID: 945479249}
@@ -3587,19 +3590,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 420, y: -971}
+  scrollPos: {x: 661.69006, y: -525.99347}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.49000046
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 945479319}
+  selectedCommands:
+  - {fileID: 945479323}
   variables: []
   description: 
   stepPause: 0
@@ -3696,7 +3701,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 40
     y: 199
-    width: 74
+    width: 72.857124
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3907,7 +3912,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -11.5
     y: 389.5
-    width: 197
+    width: 190.40804
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3964,7 +3969,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 210
     y: 198.5
-    width: 156
+    width: 151.2244
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4019,7 +4024,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -170.5
     y: 201.5
-    width: 115
+    width: 112.04076
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4223,7 +4228,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -4
     y: 472.5
-    width: 238
+    width: 229.59167
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5304,7 +5309,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -24
     y: 1310
-    width: 157
+    width: 151.2244
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5313,6 +5318,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 945479323}
   - {fileID: 945479321}
   suppressAllAutoSelections: 0
 --- !u!114 &945479320
@@ -5375,6 +5381,38 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
+--- !u!114 &945479323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945479231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b359b09a7ba2e4af981f07c07f8af85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 112
+  indentLevel: 0
+--- !u!114 &945479324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945479231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 111
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 9d3ced4b3df5a7746ae0e7dd64183936, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
 --- !u!1 &970185555
 GameObject:
   m_ObjectHideFlags: 0

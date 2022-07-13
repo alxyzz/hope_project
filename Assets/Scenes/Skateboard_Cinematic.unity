@@ -3078,8 +3078,8 @@ MonoBehaviour:
   description: (dialogue with the player actually :) )
   eventHandler: {fileID: 945479232}
   commandList:
-  - {fileID: 945479240}
   - {fileID: 945479249}
+  - {fileID: 945479240}
   - {fileID: 945479236}
   - {fileID: 945479237}
   - {fileID: 945479238}
@@ -3118,7 +3118,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 945479233}
   selectedCommands:
-  - {fileID: 945479249}
+  - {fileID: 945479240}
   variables: []
   description: 
   stepPause: 0
