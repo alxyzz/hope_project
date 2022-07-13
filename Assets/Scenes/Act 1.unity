@@ -2503,7 +2503,7 @@ MonoBehaviour:
   inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  isGundorb: 0
+  isGundorb: 1
   isHighlighted: 0
 --- !u!212 &473269742
 SpriteRenderer:
@@ -9718,8 +9718,8 @@ MonoBehaviour:
   s_reflection: {fileID: 0}
   s_friendspics: {fileID: 0}
   popupImageObject: {fileID: 102500677}
-  clickObject1: {fileID: 0}
-  clickObject2: {fileID: 0}
+  clickObject1: {fileID: 1151689971}
+  clickObject2: {fileID: 1300821062}
   backpackVisible: 1
   hopeVisible: 1
   invParent: {fileID: 709795677}
@@ -10807,7 +10807,7 @@ MonoBehaviour:
   inventoryUse_UnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  isGundorb: 0
+  isGundorb: 1
   isHighlighted: 0
 --- !u!65 &1995598333
 BoxCollider:
