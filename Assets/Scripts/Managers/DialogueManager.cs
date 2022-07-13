@@ -66,11 +66,14 @@ public class DialogueManager : MonoBehaviour
             enteredKitchen = true;
         }
     }
-
+    public void DialogueKitchenOne()
+    {
+        selfFlowchart.ExecuteBlock("friends_dialogue1");
+    }
     public void PetCatKitchen()
     {
 
-        selfFlowchart.ExecuteBlock("kitchen_petcat");
+        selfFlowchart.ExecuteBlock("pet_cat_kitchen");
     }
 
     public void ClickWindowKitchen()
@@ -95,7 +98,7 @@ public class DialogueManager : MonoBehaviour
 
     public void TalkLilOlive()
     {
-
+        selfFlowchart.ExecuteBlock("hallway_talkolive_start");
     }
 
     // ////////////// DEVS ///////////////////////

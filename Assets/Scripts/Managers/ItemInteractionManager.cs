@@ -393,7 +393,10 @@ public class ItemInteractionManager : MonoBehaviour
         theChipsReference.SetActive(false);
 
     }
-
+    public void UseKitchenWater()
+    {
+        fungusReference.ExecuteBlock("click_water_kitchen");
+    }
 
 
 
@@ -560,7 +563,7 @@ public class ItemInteractionManager : MonoBehaviour
     }
     public void ClickDancingChicken()
     {
-        fungusReference.ExecuteBlock("hallway_dancing_chicken_1");
+        fungusReference.ExecuteBlock("hallway_dancing_cahicken_1");
     }
     public void ClickSkateboard()
     {
