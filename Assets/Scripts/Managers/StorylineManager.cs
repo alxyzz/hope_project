@@ -62,6 +62,9 @@ public class StorylineManager : MonoBehaviour
 
 
                 break;
+            case "Act 2":
+
+                break;
             default:
                 break;
         }

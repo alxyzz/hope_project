@@ -273,7 +273,7 @@ public class Entity : MonoBehaviour
         if (player)
         {
             Camera maincam = Camera.main;
-            maincam.transform.parent = this.transform;
+            maincam.transform.parent = transform;
 
             gameObject.GetComponent<CharacterController>().enabled = false;
             gameObject.GetComponent<CharacterController_New>().enabled = false;
