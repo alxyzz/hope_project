@@ -1544,6 +1544,7 @@ GameObject:
   - component: {fileID: 861736506}
   - component: {fileID: 861736505}
   - component: {fileID: 861736514}
+  - component: {fileID: 861736515}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 861736515}
   - {fileID: 861736508}
   - {fileID: 861736509}
   - {fileID: 861736506}
@@ -1767,7 +1769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 267.6, y: 85.3}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -1779,9 +1781,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 861736512}
+  - {fileID: 861736510}
   selectedCommands:
-  - {fileID: 861736514}
+  - {fileID: 861736507}
   variables: []
   description: 
   stepPause: 0
@@ -1813,6 +1815,24 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
+--- !u!114 &861736515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861736503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 9
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 77a886c62695b164189e6ad044db3185, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
 --- !u!1 &876661354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditsGO: {fileID: 2034450322}
   creditsText: {fileID: 573878614}
-  creditRollSpeed: 0.7
+  creditRollSpeed: 150
   creditsHaveStarted: 0
 --- !u!114 &966607169
 MonoBehaviour:

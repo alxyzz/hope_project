@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditsGO: {fileID: 1320864353}
   creditsText: {fileID: 363429292}
-  creditRollSpeed: 0.7
+  creditRollSpeed: 150
   creditsHaveStarted: 0
 --- !u!1 &1363572624
 GameObject:
