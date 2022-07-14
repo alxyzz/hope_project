@@ -3018,7 +3018,6 @@ GameObject:
   - component: {fileID: 945479233}
   - component: {fileID: 945479232}
   - component: {fileID: 945479240}
-  - component: {fileID: 945479239}
   - component: {fileID: 945479238}
   - component: {fileID: 945479237}
   - component: {fileID: 945479236}
@@ -3031,6 +3030,7 @@ GameObject:
   - component: {fileID: 945479247}
   - component: {fileID: 945479249}
   - component: {fileID: 945479248}
+  - component: {fileID: 945479250}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3067,9 +3067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
-    width: 114.8
+    x: 84.04544
+    y: 84.7727
+    width: 112.068924
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3083,7 +3083,6 @@ MonoBehaviour:
   - {fileID: 945479236}
   - {fileID: 945479237}
   - {fileID: 945479238}
-  - {fileID: 945479239}
   - {fileID: 945479243}
   - {fileID: 945479241}
   - {fileID: 945479242}
@@ -3104,11 +3103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 890.6303, y: 415.95343}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.5800004
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -3116,9 +3115,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 945479233}
+  - {fileID: 945479245}
   selectedCommands:
-  - {fileID: 945479240}
+  - {fileID: 945479250}
   variables: []
   description: 
   stepPause: 0
@@ -3214,34 +3213,6 @@ MonoBehaviour:
   itemId: 4
   indentLevel: 0
   storyText: I'm really scared of making my own decisions...
-  description: 
-  character: {fileID: 2094614606}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 1689320592}
---- !u!114 &945479239
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945479231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 3
-  indentLevel: 0
-  storyText: ' I don''t even know anymore why I try to get along with them. It''s
-    driving me crazy. I just want to live like I did before...'
   description: 
   character: {fileID: 2094614606}
   portrait: {fileID: 0}
@@ -3406,7 +3377,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 100
     y: 217
-    width: 70.8
+    width: 69.31033
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3415,6 +3386,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 945479250}
   - {fileID: 945479247}
   suppressAllAutoSelections: 0
 --- !u!114 &945479246
@@ -3489,6 +3461,26 @@ MonoBehaviour:
   atTime: 0
   loop: 1
   fadeDuration: 1
+--- !u!114 &945479250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945479231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 16
+  indentLevel: 0
+  duration: 2
+  targetAlpha: 1
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
 --- !u!1 &970185555
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ public class InGameMenuManager : MonoBehaviour
     public GameObject setingsReference;
     public GameObject areYouSureReference;
     public GameObject pauseMenuReference;
-    
+
+
     public void ResumeButton() // goes back to the game
     {
         pauseMenuReference.SetActive(false);
@@ -18,8 +19,12 @@ public class InGameMenuManager : MonoBehaviour
     public void SettingsButton() // audio settings ? if i have time
     {
         setingsReference.SetActive(true);
-        pauseMenuReference.SetActive(false);
-        areYouSureReference.SetActive(false);
+        if (pauseMenuReference != null && areYouSureReference != null)
+        {
+            pauseMenuReference.SetActive(false);
+            areYouSureReference.SetActive(false);
+        }
+
     }
     public void QuitButtonOne() // turns on prompt "are you sure?"
     {
@@ -38,4 +43,5 @@ public class InGameMenuManager : MonoBehaviour
         pauseMenuReference.SetActive(true);
 
     }
+
 }

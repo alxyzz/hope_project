@@ -398,7 +398,10 @@ public class ItemInteractionManager : MonoBehaviour
         fungusReference.ExecuteBlock("click_water_kitchen");
     }
 
-
+    public void PourWaterKitchen()
+    {
+        SceneLoader.LoadScene("Skateboard_Cinematic", null);
+    }
 
     ///////////// KITCHEN
     ///
@@ -594,5 +597,10 @@ public class ItemInteractionManager : MonoBehaviour
         {
             return;
         }
+    }
+    // bAsement
+    public void ClickBasementBoxes()
+    {
+        fungusReference.ExecuteBlock("basement_boxes");
     }
 }
