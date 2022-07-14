@@ -63,7 +63,7 @@ public class StorylineManager : MonoBehaviour
 
                 break;
             case "Act 2":
-
+                DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("basement_prompt");
                 break;
             default:
                 break;

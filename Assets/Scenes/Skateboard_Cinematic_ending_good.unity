@@ -3562,7 +3562,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 72
     y: 68
-    width: 110.40811
+    width: 113.52933
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3590,11 +3590,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 661.69006, y: -525.99347}
+  scrollPos: {x: 978.94214, y: -71.898575}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.49000046
+  zoom: 0.34000045
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -3602,9 +3602,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 945479319}
-  selectedCommands:
-  - {fileID: 945479323}
+  - {fileID: 945479294}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -3701,7 +3700,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 40
     y: 199
-    width: 72.857124
+    width: 75.882324
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3912,7 +3911,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -11.5
     y: 389.5
-    width: 190.40804
+    width: 202.94098
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3969,7 +3968,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 210
     y: 198.5
-    width: 151.2244
+    width: 160.58809
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4024,7 +4023,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -170.5
     y: 201.5
-    width: 112.04076
+    width: 118.23521
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4228,7 +4227,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -4
     y: 472.5
-    width: 229.59167
+    width: 240
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5309,7 +5308,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -24
     y: 1310
-    width: 151.2244
+    width: 158.23515
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5383,7 +5382,7 @@ MonoBehaviour:
   fadeTweenType: 4
 --- !u!114 &945479323
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5397,7 +5396,7 @@ MonoBehaviour:
   indentLevel: 0
 --- !u!114 &945479324
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
