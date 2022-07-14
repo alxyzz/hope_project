@@ -31,7 +31,7 @@ public class StorylineManager : MonoBehaviour
     //kitchen//
     public GameObject kitchenSunrays;
 
-
+    bool loadBasementOnce = false;
     //kitchen end//
 
 
@@ -47,7 +47,7 @@ public class StorylineManager : MonoBehaviour
             basementEntry = basementEntryG.transform.position;
             childhoodEntry = childhoodEntryG.transform.position;
         }
-        
+        loadBasementOnce = false;
     }
     private void Update()
     {
@@ -63,7 +63,8 @@ public class StorylineManager : MonoBehaviour
 
                 break;
             case "Act 2":
-                DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("basement_prompt");
+                if (!loadBasementOnce)
+                    DataStorage.GameManagerComponent.ItemComponent.fungusReference.ExecuteBlock("basement_prompt");
                 break;
             default:
                 break;
@@ -166,5 +167,8 @@ public class StorylineManager : MonoBehaviour
         }
 
     }
-
+    public void LoadBasementOnlyOnce()
+    {
+        loadBasementOnce = true;
+    }
 }

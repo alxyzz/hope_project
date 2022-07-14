@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Fungus;
 
 
 public class MainMenuManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class MainMenuManager : MonoBehaviour
     public Button ContinueButton, StartButton, SettingsButton, ExitButton;
     public GameObject MainMenuWindow;
     public GameObject SettingsWindow;
-
+    public Flowchart fungusRef;
 
     // Start is called before the first frame update
     private void Start() 
@@ -47,8 +48,11 @@ public class MainMenuManager : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("clciked newgame");
+        fungusRef.ExecuteBlock("stop_music");
         DataStorage.WipeSave();
+
         SceneManager.LoadScene("Act 1");
+
     }
 
 

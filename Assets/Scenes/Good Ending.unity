@@ -383,6 +383,8 @@ GameObject:
   - component: {fileID: 260061091}
   - component: {fileID: 260061096}
   - component: {fileID: 260061095}
+  - component: {fileID: 260061097}
+  - component: {fileID: 260061098}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -445,6 +447,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 260061088}
   commandList:
+  - {fileID: 260061097}
   - {fileID: 260061095}
   suppressAllAutoSelections: 0
 --- !u!114 &260061090
@@ -473,8 +476,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 260061094}
-  selectedCommands:
-  - {fileID: 260061092}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -587,6 +589,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 260061098}
   - {fileID: 260061092}
   - {fileID: 260061093}
   - {fileID: 260061096}
@@ -631,6 +634,44 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 0.5
   durationOLD: 0
+--- !u!114 &260061097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260061086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 7
+  indentLevel: 0
+  duration: 1
+  targetAlpha: 0
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
+--- !u!114 &260061098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260061086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 8
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 77a886c62695b164189e6ad044db3185, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
