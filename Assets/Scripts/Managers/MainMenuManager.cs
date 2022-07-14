@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start() 
     {
         HideContinueButtonIfNoSave();
-
+        SettingsWindow.SetActive(false);
 
     }
 
@@ -73,7 +73,11 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-
+    public void BackToMainMenu()
+    {
+        SettingsWindow.SetActive(false);
+        MainMenuWindow.SetActive(true);
+    }
 
 
 
