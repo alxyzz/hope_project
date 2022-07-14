@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
 
     public void TalkLilOlive()
     {
-        selfFlowchart.ExecuteBlock("hallway_talkolive_start");
+        selfFlowchart.ExecuteBlock("hallway_talkolive");
     }
 
     // ////////////// DEVS ///////////////////////

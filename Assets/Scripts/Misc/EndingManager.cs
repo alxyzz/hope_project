@@ -20,7 +20,7 @@ public class EndingManager : MonoBehaviour
     {
         if (creditsHaveStarted)
         {
-            creditsText.position = new Vector3(creditsText.position.x, creditsText.position.y + creditRollSpeed);
+            creditsText.position = new Vector3(creditsText.position.x, creditsText.position.y + creditRollSpeed*Time.deltaTime);
             if (creditsText.position.y > 4500)
             {
                 SceneManager.LoadScene(0);

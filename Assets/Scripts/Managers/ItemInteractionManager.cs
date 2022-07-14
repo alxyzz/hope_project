@@ -247,7 +247,7 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseDoorBathroom()
     {
-        SoundPlayer.PlaySound("test_whip");
+
         DataStorage.GameManagerComponent.StorylineComponent.usedDoor = true;
         DataStorage.GameManagerComponent.StorylineComponent.ShowSpider();
         fungusReference.ExecuteBlock("click_door_sober_tutorial"); // same text in both
@@ -309,7 +309,6 @@ public class ItemInteractionManager : MonoBehaviour
 
     public void UseDoorBedroomToBathroom()
     {
-        SoundPlayer.PlaySound("test_whip");
         if (true)
         {
 
