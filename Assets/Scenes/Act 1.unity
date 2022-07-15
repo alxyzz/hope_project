@@ -19782,7 +19782,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3
   m_Radius: 1.07
-  m_SlopeLimit: 1
+  m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
